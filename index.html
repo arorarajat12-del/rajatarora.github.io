@@ -48,7 +48,8 @@
     body.recruiter-mode #proof,
     body.recruiter-mode #faqRecruiter,
     body.recruiter-mode .toolkit,
-    body.recruiter-mode .hero-side {
+    body.recruiter-mode .hero-side,
+    body.recruiter-mode #presentationLab {
       display: none !important;
     }
 
@@ -76,10 +77,7 @@
       transition: width 120ms linear;
     }
 
-    .container {
-      width: min(1120px, calc(100% - 2rem));
-      margin-inline: auto;
-    }
+    .container { width: min(1120px, calc(100% - 2rem)); margin-inline: auto; }
 
     .skip-link {
       position: absolute;
@@ -92,7 +90,6 @@
       font-weight: 700;
       z-index: 130;
     }
-
     .skip-link:focus { top: 1rem; }
 
     .glass {
@@ -112,11 +109,7 @@
       font-weight: 600;
     }
 
-    .ok-pill {
-      border-color: var(--ok-line);
-      background: var(--ok-bg);
-      color: #9af2cd;
-    }
+    .ok-pill { border-color: var(--ok-line); background: var(--ok-bg); color: #9af2cd; }
 
     .btn {
       border: 1px solid rgba(255, 255, 255, 0.13);
@@ -141,26 +134,14 @@
       outline: none;
     }
 
-    .btn-primary {
-      border: 1px solid transparent;
-      background: #fff;
-      color: #0a0a0a;
-    }
-
+    .btn-primary { border: 1px solid transparent; background: #fff; color: #0a0a0a; }
     .btn-primary:hover,
     .btn-primary:focus-visible { background: #e8e8ff; }
 
-    .btn-ghost {
-      border-color: rgba(170, 184, 255, 0.4);
-      color: var(--brand);
-      background: rgba(170, 184, 255, 0.08);
-    }
+    .btn-ghost { border-color: rgba(170, 184, 255, 0.4); color: var(--brand); background: rgba(170, 184, 255, 0.08); }
 
     a:focus-visible,
-    button:focus-visible {
-      outline: 2px solid rgba(99, 102, 241, 0.8);
-      outline-offset: 2px;
-    }
+    button:focus-visible { outline: 2px solid rgba(99, 102, 241, 0.8); outline-offset: 2px; }
 
     .topbar {
       position: sticky;
@@ -171,288 +152,75 @@
       background: rgba(7, 7, 18, 0.65);
     }
 
-    .topbar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 0.9rem 0;
-    }
-
-    .top-actions {
-      display: flex;
-      gap: 0.45rem;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .brand {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-    }
-
-    nav {
-      display: flex;
-      gap: 1rem;
-    }
-
-    nav a {
-      color: rgba(255, 255, 255, 0.72);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.9rem 0; }
+    .top-actions { display: flex; gap: 0.45rem; flex-wrap: wrap; justify-content: flex-end; }
+    .brand { color: #fff; text-decoration: none; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; }
+    nav { display: flex; gap: 1rem; }
+    nav a { color: rgba(255, 255, 255, 0.72); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
     nav a:hover { color: #fff; }
 
     main { padding: 0 0 1rem; }
     .hero { padding: 3rem 0 2.7rem; }
+    .hero-tags { display: flex; gap: 0.45rem; flex-wrap: wrap; }
+    .hero-grid { margin-top: 1.5rem; display: grid; gap: 1rem; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); align-items: start; }
 
-    .hero-tags {
-      display: flex;
-      gap: 0.45rem;
-      flex-wrap: wrap;
-    }
-
-    .hero-grid {
-      margin-top: 1.5rem;
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-      align-items: start;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2rem, 4.8vw, 3.8rem);
-      line-height: 1.12;
-      letter-spacing: -0.02em;
-      max-width: 16ch;
-      text-wrap: balance;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: clamp(1.45rem, 2.6vw, 2.05rem);
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-    }
-
-    h3 {
-      margin: 0;
-      font-size: 1.18rem;
-      line-height: 1.25;
-      letter-spacing: -0.01em;
-    }
-
+    h1 { margin: 0; font-size: clamp(2rem, 4.8vw, 3.8rem); line-height: 1.12; letter-spacing: -0.02em; max-width: 16ch; text-wrap: balance; }
+    h2 { margin: 0; font-size: clamp(1.45rem, 2.6vw, 2.05rem); line-height: 1.2; letter-spacing: -0.02em; }
+    h3 { margin: 0; font-size: 1.18rem; line-height: 1.25; letter-spacing: -0.01em; }
     p { margin: 0; }
     .muted { color: var(--muted); }
     .muted-2 { color: var(--muted-2); }
 
-    .hero-copy {
-      max-width: 62ch;
-      margin-top: 1rem;
-      font-size: 1.04rem;
-    }
+    .hero-copy { max-width: 62ch; margin-top: 1rem; font-size: 1.04rem; }
+    .hero-actions { margin-top: 1.35rem; display: flex; gap: 0.55rem; flex-wrap: wrap; }
+    .stats { margin-top: 1.4rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; }
+    .stat { border-radius: var(--radius); padding: 0.95rem; }
+    .stat strong { display: block; font-size: 1.35rem; margin-top: 0.15rem; }
 
-    .hero-actions {
-      margin-top: 1.35rem;
-      display: flex;
-      gap: 0.55rem;
-      flex-wrap: wrap;
-    }
+    .quick-pack { margin-top: 0.75rem; border-top: 1px solid var(--line); padding-top: 0.75rem; display: grid; gap: 0.45rem; font-size: 0.85rem; color: var(--muted); }
+    .toolkit { margin-top: 0.9rem; display: flex; flex-wrap: wrap; gap: 0.45rem; }
 
-    .stats {
-      margin-top: 1.4rem;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.7rem;
-    }
+    .side-card { border-radius: var(--radius-lg); padding: 1.2rem; }
+    .side-list { list-style: none; margin: 0.8rem 0 0; padding: 0; display: grid; gap: 0.6rem; }
+    .side-list li { border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255, 255, 255, 0.05); padding: 0.75rem; }
 
-    .stat {
-      border-radius: var(--radius);
-      padding: 0.95rem;
-    }
+    .section { border-top: 1px solid var(--line); padding: 2.4rem 0; }
+    .eyebrow { margin: 0; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em; color: rgba(255, 255, 255, 0.56); font-weight: 700; }
+    .section-sub { margin-top: 0.7rem; max-width: 70ch; }
 
-    .stat strong {
-      display: block;
-      font-size: 1.35rem;
-      margin-top: 0.15rem;
-    }
-
-    .quick-pack {
-      margin-top: 0.75rem;
-      border-top: 1px solid var(--line);
-      padding-top: 0.75rem;
-      display: grid;
-      gap: 0.45rem;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .toolkit {
-      margin-top: 0.9rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-    }
-
-    .side-card {
-      border-radius: var(--radius-lg);
-      padding: 1.2rem;
-    }
-
-    .side-list {
-      list-style: none;
-      margin: 0.8rem 0 0;
-      padding: 0;
-      display: grid;
-      gap: 0.6rem;
-    }
-
-    .side-list li {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.05);
-      padding: 0.75rem;
-    }
-
-    .section {
-      border-top: 1px solid var(--line);
-      padding: 2.4rem 0;
-    }
-
-    .eyebrow {
-      margin: 0;
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: rgba(255, 255, 255, 0.56);
-      font-weight: 700;
-    }
-
-    .section-sub {
-      margin-top: 0.7rem;
-      max-width: 70ch;
-    }
-
-    .cards-2 {
-      margin-top: 1.2rem;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.8rem;
-    }
-
-    .case {
-      border-radius: var(--radius-lg);
-      padding: 1.1rem;
-    }
-
-    .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .bullet-list {
-      margin: 0.75rem 0 0;
-      padding-left: 1rem;
-      color: var(--muted);
-    }
-
+    .cards-2 { margin-top: 1.2rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; }
+    .case { border-radius: var(--radius-lg); padding: 1.1rem; }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.8rem; }
+    .bullet-list { margin: 0.75rem 0 0; padding-left: 1rem; color: var(--muted); }
     .bullet-list li { margin-bottom: 0.35rem; }
 
-    .scoreboard {
-      margin-top: 1rem;
-      border-top: 1px solid var(--line);
-      padding-top: 0.9rem;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.6rem;
-    }
+    .scoreboard { margin-top: 1rem; border-top: 1px solid var(--line); padding-top: 0.9rem; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem; }
+    .score { border: 1px solid var(--line); border-radius: 12px; padding: 0.7rem; background: rgba(255, 255, 255, 0.03); }
+    .score strong { display: block; font-size: 1.2rem; }
 
-    .score {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 0.7rem;
-      background: rgba(255, 255, 255, 0.03);
-    }
+    .presentation-lab { margin-top: 1.2rem; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.03); padding: .9rem; }
+    .presentation-lab h3 { font-size: 1rem; }
+    .presentation-grid { margin-top: .7rem; display:grid; grid-template-columns: 1fr 1fr; gap:.65rem; }
+    .presentation-grid article { border:1px solid var(--line); border-radius:10px; padding:.65rem; background:rgba(255,255,255,.02); }
+    .presentation-grid p { color: var(--muted); font-size:.86rem; margin-top:.35rem; }
 
-    .score strong {
-      display: block;
-      font-size: 1.2rem;
-    }
+    .spotlight { box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.75), 0 0 0 10px rgba(129, 140, 248, 0.1), 0 18px 50px rgba(0, 0, 0, 0.38) !important; }
 
-    .spotlight {
-      box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.75), 0 0 0 10px rgba(129, 140, 248, 0.1), 0 18px 50px rgba(0, 0, 0, 0.38) !important;
-    }
+    .faq { margin-top: 1rem; display: grid; gap: 0.6rem; }
+    .faq details { border: 1px solid var(--line); border-radius: 12px; padding: 0.75rem 0.85rem; background: rgba(255, 255, 255, 0.03); }
+    .faq summary { cursor: pointer; font-weight: 700; color: #fff; }
+    .faq p { margin-top: 0.55rem; color: var(--muted); }
 
-    .faq {
-      margin-top: 1rem;
-      display: grid;
-      gap: 0.6rem;
-    }
-
-    .faq details {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 0.75rem 0.85rem;
-      background: rgba(255, 255, 255, 0.03);
-    }
-
-    .faq summary {
-      cursor: pointer;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .faq p {
-      margin-top: 0.55rem;
-      color: var(--muted);
-    }
-
-    .contact-card {
-      margin-top: 1rem;
-      border-radius: var(--radius-lg);
-      padding: 1.2rem;
-      display: flex;
-      gap: 1rem;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .contact-card { margin-top: 1rem; border-radius: var(--radius-lg); padding: 1.2rem; display: flex; gap: 1rem; justify-content: space-between; align-items: center; }
 
     .toast {
-      position: fixed;
-      bottom: 1rem;
-      right: 1rem;
-      background: rgba(13, 19, 34, 0.95);
-      border: 1px solid var(--line);
-      color: #fff;
-      padding: 0.65rem 0.85rem;
-      border-radius: 10px;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-      z-index: 120;
-      opacity: 0;
-      transform: translateY(8px);
-      pointer-events: none;
-      transition: 0.18s ease;
-      font-size: 0.85rem;
+      position: fixed; bottom: 1rem; right: 1rem; background: rgba(13, 19, 34, 0.95); border: 1px solid var(--line);
+      color: #fff; padding: 0.65rem 0.85rem; border-radius: 10px; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+      z-index: 120; opacity: 0; transform: translateY(8px); pointer-events: none; transition: 0.18s ease; font-size: 0.85rem;
     }
+    .toast.show { opacity: 1; transform: translateY(0); }
 
-    .toast.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .hotkeys {
-      margin-top: 0.5rem;
-      color: var(--muted-2);
-      font-size: 0.75rem;
-    }
+    .hotkeys { margin-top: 0.5rem; color: var(--muted-2); font-size: 0.75rem; }
 
     .overlay {
       position: fixed;
@@ -464,7 +232,6 @@
       justify-content: center;
       padding: 1rem;
     }
-
     .overlay.show { display: flex; }
 
     .overlay-card {
@@ -477,22 +244,18 @@
     }
 
     .overlay-card h3 { font-size: 1.15rem; }
-    .overlay-card ul { margin: .75rem 0 0; padding-left: 1rem; color: var(--muted); }
+    .overlay-card ul { margin: 0.75rem 0 0; padding-left: 1rem; color: var(--muted); }
     .overlay-card li { margin-bottom: 0.45rem; }
 
-    footer {
-      margin-top: 0.8rem;
-      font-size: 0.84rem;
-      color: rgba(255, 255, 255, 0.46);
-      padding: 0.5rem 0 2.2rem;
-    }
+    footer { margin-top: 0.8rem; font-size: 0.84rem; color: rgba(255, 255, 255, 0.46); padding: 0.5rem 0 2.2rem; }
 
     @media (max-width: 960px) {
       nav { display: none; }
       .hero-grid,
       .stats,
       .cards-2,
-      .scoreboard { grid-template-columns: 1fr; }
+      .scoreboard,
+      .presentation-grid { grid-template-columns: 1fr; }
       .contact-card { flex-direction: column; align-items: flex-start; }
     }
 
@@ -601,6 +364,32 @@
       </div>
     </section>
 
+    <section id="presentationLab" class="section" aria-labelledby="presentation-title">
+      <p class="eyebrow">Presentation lab</p>
+      <h2 id="presentation-title" style="margin-top:.45rem;">One-click recruiter presentation flow</h2>
+      <div class="presentation-lab">
+        <h3>What’s new in this magic pass</h3>
+        <div class="presentation-grid">
+          <article>
+            <strong>Guided demo mode</strong>
+            <p>Automatically walks through your strongest sections in the right pitch order.</p>
+          </article>
+          <article>
+            <strong>Shareable recruiter URL</strong>
+            <p>Generates a link that opens directly in recruiter mode and jumps to case studies.</p>
+          </article>
+          <article>
+            <strong>Keyboard-driven control</strong>
+            <p>Run the whole flow without touching the mouse during calls.</p>
+          </article>
+          <article>
+            <strong>Command overlay</strong>
+            <p>Built-in operator panel so you never forget keys in live conversations.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="proof" class="section optional" aria-labelledby="proof-title">
       <p class="eyebrow">Proof</p>
       <h2 id="proof-title" style="margin-top:.45rem;">Tools & credibility</h2>
@@ -649,6 +438,7 @@
         <li><strong>R</strong> → Toggle recruiter mode</li>
         <li><strong>D</strong> → Start live demo walkthrough</li>
         <li><strong>?</strong> → Open/close this help panel</li>
+        <li><strong>Esc</strong> → Close help panel</li>
         <li><strong>Copy recruiter link</strong> → Shares URL that auto-enables recruiter mode</li>
       </ul>
       <button id="closeHelp" class="btn" type="button" style="margin-top:.7rem;">Close help</button>
