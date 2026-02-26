@@ -1,171 +1,268 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rajat Arora — RevOps & Business Systems</title>
-  <meta name="description" content="Rajat Arora designs RevOps and business systems that improve reporting trust, reduce manual work, and scale execution." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rajat Arora — Business Systems & Automation Architect</title>
+  <meta name="description" content="Business Systems & Automation Architect. I build scalable RevOps + operational systems with clean data, reliable reporting, and automation that sticks." />
+  <meta name="theme-color" content="#0b0b10" />
+  <meta property="og:title" content="Rajat Arora — Business Systems & Automation Architect" />
+  <meta property="og:description" content="RevOps, business systems, and automation architecture focused on measurable outcomes." />
+  <meta property="og:type" content="website" />
+
   <style>
     :root {
-      --bg: #080b18;
-      --bg-2: #10162f;
-      --panel: rgba(255,255,255,0.06);
-      --panel-2: rgba(255,255,255,0.03);
-      --line: rgba(255,255,255,0.14);
-      --text: #eef2ff;
-      --muted: #b8c4ef;
-      --brand: #94a8ff;
-      --brand-2: #34d9ff;
-      --ok: #7be7be;
-      --radius: 14px;
-      --radius-lg: 18px;
-      --shadow: 0 24px 70px rgba(0,0,0,0.45);
+      --bg-top: #05050a;
+      --bg-mid: #070712;
+      --bg-bottom: #05050a;
+      --text: #fff;
+      --muted: rgba(255, 255, 255, 0.74);
+      --muted-2: rgba(255, 255, 255, 0.58);
+      --line: rgba(255, 255, 255, 0.10);
+      --card: rgba(255, 255, 255, 0.04);
+      --card-strong: rgba(255, 255, 255, 0.06);
+      --radius: 18px;
+      --radius-lg: 24px;
+      --ok-bg: rgba(16, 185, 129, 0.12);
+      --ok-line: rgba(16, 185, 129, 0.45);
+      --brand: #aab8ff;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       color: var(--text);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background:
-        radial-gradient(circle at 12% -8%, color-mix(in oklab, var(--brand) 26%, transparent), transparent 55%),
-        radial-gradient(circle at 90% 8%, color-mix(in oklab, var(--brand-2) 16%, transparent), transparent 50%),
-        linear-gradient(180deg, var(--bg), var(--bg-2));
-      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      line-height: 1.6;
+      background-image:
+        radial-gradient(circle at 20% 0%, rgba(99, 102, 241, 0.22), transparent 55%),
+        radial-gradient(circle at 80% 10%, rgba(34, 211, 238, 0.14), transparent 55%),
+        radial-gradient(circle at 40% 120%, rgba(16, 185, 129, 0.12), transparent 55%),
+        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 40%, var(--bg-bottom) 100%);
     }
 
-    .skip {
-      position: absolute; top: -120%; left: 1rem; z-index: 140;
-      background: #fff; color: #090b16; padding: .45rem .7rem; border-radius: 9px; font-weight: 700;
-    }
-    .skip:focus { top: .8rem; }
-
-    .progress { position: fixed; top: 0; left: 0; width: 100%; height: 3px; z-index: 150; background: rgba(255,255,255,.1); }
-    .progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--brand), var(--brand-2)); transition: width .12s linear; }
-
-    .container { width: min(1100px, calc(100% - 2rem)); margin-inline: auto; }
-    .glass {
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, var(--panel), var(--panel-2));
-      backdrop-filter: blur(9px) saturate(120%);
-      -webkit-backdrop-filter: blur(9px) saturate(120%);
-      box-shadow: var(--shadow);
-    }
-
-    .topbar {
-      position: sticky; top: 0; z-index: 120;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      background: rgba(10, 12, 27, .74);
-      backdrop-filter: blur(8px);
-    }
-    .topbar-inner { display:flex; justify-content:space-between; align-items:center; gap: 1rem; padding: .9rem 0; }
-    .brand { color: #fff; text-decoration:none; font-weight: 760; letter-spacing: -.01em; }
-    nav { display:flex; gap: .95rem; }
-    nav a { color: var(--muted); text-decoration: none; font-size: .92rem; }
-    nav a:hover { color: #fff; }
-
-    .btns { display:flex; flex-wrap:wrap; gap: .45rem; }
-    .btn {
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: .55rem .8rem;
-      font-size: .86rem;
-      font-weight: 650;
-      color: #fff;
-      background: rgba(255,255,255,.05);
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .btn:hover, .btn:focus-visible { background: rgba(255,255,255,.1); }
-    .btn.primary { border-color: transparent; background: #fff; color: #090b16; }
-    .btn.primary:hover, .btn.primary:focus-visible { background: #e8ecff; }
-    .btn.ghost { border-color: color-mix(in oklab, var(--brand) 50%, transparent); color: var(--brand); background: color-mix(in oklab, var(--brand) 12%, transparent); }
-
-    a:focus-visible, button:focus-visible {
-      outline: 2px solid color-mix(in oklab, var(--brand) 72%, white 28%);
-      outline-offset: 2px;
-    }
-
-    main { padding-bottom: 1.4rem; }
-    .hero { padding: 2.9rem 0 2.2rem; }
-    .eyebrow { color: var(--muted); text-transform: uppercase; letter-spacing: .14em; font-size: .74rem; font-weight: 700; }
-    h1 { margin: .45rem 0 0; font-size: clamp(2rem, 5.3vw, 3.9rem); line-height: 1.08; letter-spacing: -.03em; max-width: 15ch; }
-    h2 { margin: 0; font-size: clamp(1.35rem, 2.6vw, 2.05rem); line-height: 1.2; letter-spacing: -.015em; }
-    h3 { margin: 0; font-size: 1.1rem; }
-    p { margin: 0; }
-    .muted { color: var(--muted); }
-
-    .hero-grid { margin-top: 1.25rem; display: grid; gap: 1rem; grid-template-columns: minmax(0,1.16fr) minmax(0,.84fr); }
-    .hero-copy { margin-top: 1rem; max-width: 64ch; font-size: 1.03rem; }
-    .chips { margin-top: .9rem; display:flex; flex-wrap:wrap; gap:.38rem; }
-    .chip { border:1px solid var(--line); border-radius:999px; padding: .25rem .58rem; color: var(--muted); font-size:.74rem; }
-
-    .stats { margin-top: 1.1rem; display:grid; gap:.65rem; grid-template-columns: repeat(3,minmax(0,1fr)); }
-    .stat { border-radius: var(--radius); padding:.85rem; }
-    .stat strong { display:block; margin-top:.2rem; font-size: 1.25rem; }
-
-    .section { padding: 1rem 0; }
-    .grid-2 { margin-top:.85rem; display:grid; gap:.85rem; grid-template-columns: repeat(2,minmax(0,1fr)); }
-    .card { border-radius: var(--radius-lg); padding: 1rem; }
-
-    .story-rail { margin-top: 1rem; border-radius: var(--radius-lg); padding: .9rem; display:grid; gap:.7rem; }
-    .rail { display:grid; gap:.55rem; grid-template-columns: repeat(4,minmax(0,1fr)); }
-    .rail article { border:1px solid var(--line); border-radius: 12px; padding: .68rem; background: rgba(255,255,255,.03); }
-
-    .cases-wrap { margin-top: .85rem; border-radius: var(--radius-lg); padding: .9rem; }
-    .tab-row { display:flex; flex-wrap:wrap; gap:.45rem; }
-    .tab {
-      border:1px solid var(--line); background: rgba(255,255,255,.04); color:#fff;
-      border-radius:999px; font-size:.78rem; padding:.34rem .62rem; cursor:pointer;
-    }
-    .tab.active { background: color-mix(in oklab, var(--brand) 18%, transparent); border-color: color-mix(in oklab, var(--brand) 60%, transparent); }
-    .case-panel { margin-top: .8rem; border:1px solid var(--line); border-radius: 12px; padding: .9rem; background: rgba(255,255,255,.03); }
-    .list { margin: .6rem 0 0; padding-left: 1rem; color: var(--muted); display:grid; gap:.34rem; }
-
-    .impact { margin-top: .9rem; display:grid; gap:.6rem; grid-template-columns: repeat(4,minmax(0,1fr)); }
-    .impact div { border:1px solid var(--line); border-radius:12px; background: rgba(255,255,255,.04); padding:.75rem; }
-    .impact strong { display:block; margin-top:.15rem; font-size: 1.2rem; }
-
-    .signal { margin-top: .85rem; border-radius: var(--radius-lg); padding:.95rem; }
-    .signal-grid { margin-top: .65rem; display:grid; gap:.55rem; grid-template-columns: repeat(3,minmax(0,1fr)); }
-    .signal-grid div { border:1px solid var(--line); border-radius: 10px; padding: .58rem; background: rgba(255,255,255,.03); }
-
-    .contact { margin-top:.85rem; border-radius: var(--radius-lg); padding:1rem; display:flex; justify-content:space-between; gap:1rem; align-items:center; }
-    footer { margin-top: 1rem; color: rgba(255,255,255,.46); font-size:.84rem; padding: .5rem 0 2rem; }
-
-    .toast {
-      position: fixed; right: 1rem; bottom: 1rem; z-index: 180;
-      padding: .54rem .75rem; border-radius: 10px; border:1px solid var(--line);
-      background: #0e1430; color:#fff; opacity:0; transform: translateY(10px); transition: all .18s ease;
-    }
-    .toast.show { opacity:1; transform: translateY(0); }
-
-    .help {
-      position: fixed; inset: 0; z-index: 170; display: none; align-items:center; justify-content:center;
-      background: rgba(0,0,0,.6); padding: 1rem;
-    }
-    .help.show { display:flex; }
-    .help-card { width:min(650px,100%); border-radius: 16px; padding: 1rem; border:1px solid var(--line); background: linear-gradient(180deg,#121a39,#0f1531); }
-    .help-card ul { margin:.7rem 0 0; padding-left:1rem; color:var(--muted); display:grid; gap:.38rem; }
-
-    .spotlight { outline: 2px solid color-mix(in oklab, var(--brand) 65%, white 35%); outline-offset: 4px; border-radius: 12px; }
-
-    body.recruiter-mode .longform,
-    body.recruiter-mode #signal,
-    body.recruiter-mode #about {
+    body.recruiter-mode .optional,
+    body.recruiter-mode #about,
+    body.recruiter-mode #proof,
+    body.recruiter-mode #faqRecruiter,
+    body.recruiter-mode .toolkit,
+    body.recruiter-mode .hero-side,
+    body.recruiter-mode #presentationLab {
       display: none !important;
     }
 
+    body.recruiter-mode .hero-grid,
+    body.recruiter-mode .cards-2,
+    body.recruiter-mode .scoreboard {
+      grid-template-columns: 1fr;
+    }
+
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      z-index: 120;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .progress > span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #818cf8, #22d3ee);
+      transition: width 120ms linear;
+    }
+
+    .container { width: min(1120px, calc(100% - 2rem)); margin-inline: auto; }
+
+    .skip-link {
+      position: absolute;
+      top: -120%;
+      left: 1rem;
+      background: #fff;
+      color: #0a0a0a;
+      padding: 0.4rem 0.7rem;
+      border-radius: 8px;
+      font-weight: 700;
+      z-index: 130;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    .glass {
+      background: linear-gradient(180deg, var(--card-strong), rgba(255, 255, 255, 0.02));
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
+      backdrop-filter: blur(8px);
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.84);
+      font-weight: 600;
+    }
+
+    .ok-pill { border-color: var(--ok-line); background: var(--ok-bg); color: #9af2cd; }
+
+    .btn {
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      padding: 0.7rem 1rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: 140ms ease;
+      cursor: pointer;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .btn-primary { border: 1px solid transparent; background: #fff; color: #0a0a0a; }
+    .btn-primary:hover,
+    .btn-primary:focus-visible { background: #e8e8ff; }
+
+    .btn-ghost { border-color: rgba(170, 184, 255, 0.4); color: var(--brand); background: rgba(170, 184, 255, 0.08); }
+
+    a:focus-visible,
+    button:focus-visible { outline: 2px solid rgba(99, 102, 241, 0.8); outline-offset: 2px; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(7, 7, 18, 0.65);
+    }
+
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.9rem 0; }
+    .top-actions { display: flex; gap: 0.45rem; flex-wrap: wrap; justify-content: flex-end; }
+    .brand { color: #fff; text-decoration: none; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; }
+    nav { display: flex; gap: 1rem; }
+    nav a { color: rgba(255, 255, 255, 0.72); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+    nav a:hover { color: #fff; }
+
+    main { padding: 0 0 1rem; }
+    .hero { padding: 3rem 0 2.7rem; }
+    .hero-tags { display: flex; gap: 0.45rem; flex-wrap: wrap; }
+    .hero-grid { margin-top: 1.5rem; display: grid; gap: 1rem; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); align-items: start; }
+
+    h1 { margin: 0; font-size: clamp(2rem, 4.8vw, 3.8rem); line-height: 1.12; letter-spacing: -0.02em; max-width: 16ch; text-wrap: balance; }
+    h2 { margin: 0; font-size: clamp(1.45rem, 2.6vw, 2.05rem); line-height: 1.2; letter-spacing: -0.02em; }
+    h3 { margin: 0; font-size: 1.18rem; line-height: 1.25; letter-spacing: -0.01em; }
+    p { margin: 0; }
+    .muted { color: var(--muted); }
+    .muted-2 { color: var(--muted-2); }
+
+    .hero-copy { max-width: 62ch; margin-top: 1rem; font-size: 1.04rem; }
+    .hero-actions { margin-top: 1.35rem; display: flex; gap: 0.55rem; flex-wrap: wrap; }
+    .stats { margin-top: 1.4rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; }
+    .stat { border-radius: var(--radius); padding: 0.95rem; }
+    .stat strong { display: block; font-size: 1.35rem; margin-top: 0.15rem; }
+
+    .quick-pack { margin-top: 0.75rem; border-top: 1px solid var(--line); padding-top: 0.75rem; display: grid; gap: 0.45rem; font-size: 0.85rem; color: var(--muted); }
+    .toolkit { margin-top: 0.9rem; display: flex; flex-wrap: wrap; gap: 0.45rem; }
+
+    .side-card { border-radius: var(--radius-lg); padding: 1.2rem; }
+    .side-list { list-style: none; margin: 0.8rem 0 0; padding: 0; display: grid; gap: 0.6rem; }
+    .side-list li { border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255, 255, 255, 0.05); padding: 0.75rem; }
+
+    .section { border-top: 1px solid var(--line); padding: 2.4rem 0; }
+    .eyebrow { margin: 0; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em; color: rgba(255, 255, 255, 0.56); font-weight: 700; }
+    .section-sub { margin-top: 0.7rem; max-width: 70ch; }
+
+    .cards-2 { margin-top: 1.2rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; }
+    .case { border-radius: var(--radius-lg); padding: 1.1rem; }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.8rem; }
+    .bullet-list { margin: 0.75rem 0 0; padding-left: 1rem; color: var(--muted); }
+    .bullet-list li { margin-bottom: 0.35rem; }
+
+    .scoreboard { margin-top: 1rem; border-top: 1px solid var(--line); padding-top: 0.9rem; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem; }
+    .score { border: 1px solid var(--line); border-radius: 12px; padding: 0.7rem; background: rgba(255, 255, 255, 0.03); }
+    .score strong { display: block; font-size: 1.2rem; }
+
+    .presentation-lab { margin-top: 1.2rem; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.03); padding: .9rem; }
+    .presentation-lab h3 { font-size: 1rem; }
+    .presentation-grid { margin-top: .7rem; display:grid; grid-template-columns: 1fr 1fr; gap:.65rem; }
+    .presentation-grid article { border:1px solid var(--line); border-radius:10px; padding:.65rem; background:rgba(255,255,255,.02); }
+    .presentation-grid p { color: var(--muted); font-size:.86rem; margin-top:.35rem; }
+
+    .spotlight { box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.75), 0 0 0 10px rgba(129, 140, 248, 0.1), 0 18px 50px rgba(0, 0, 0, 0.38) !important; }
+
+    .faq { margin-top: 1rem; display: grid; gap: 0.6rem; }
+    .faq details { border: 1px solid var(--line); border-radius: 12px; padding: 0.75rem 0.85rem; background: rgba(255, 255, 255, 0.03); }
+    .faq summary { cursor: pointer; font-weight: 700; color: #fff; }
+    .faq p { margin-top: 0.55rem; color: var(--muted); }
+
+    .contact-card { margin-top: 1rem; border-radius: var(--radius-lg); padding: 1.2rem; display: flex; gap: 1rem; justify-content: space-between; align-items: center; }
+
+    .toast {
+      position: fixed; bottom: 1rem; right: 1rem; background: rgba(13, 19, 34, 0.95); border: 1px solid var(--line);
+      color: #fff; padding: 0.65rem 0.85rem; border-radius: 10px; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+      z-index: 120; opacity: 0; transform: translateY(8px); pointer-events: none; transition: 0.18s ease; font-size: 0.85rem;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    .hotkeys { margin-top: 0.5rem; color: var(--muted-2); font-size: 0.75rem; }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 8, 18, 0.86);
+      z-index: 140;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .overlay.show { display: flex; }
+
+    .overlay-card {
+      width: min(720px, 100%);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: linear-gradient(180deg, #111a31, #0f172b);
+      padding: 1rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    .overlay-card h3 { font-size: 1.15rem; }
+    .overlay-card ul { margin: 0.75rem 0 0; padding-left: 1rem; color: var(--muted); }
+    .overlay-card li { margin-bottom: 0.45rem; }
+
+    footer { margin-top: 0.8rem; font-size: 0.84rem; color: rgba(255, 255, 255, 0.46); padding: 0.5rem 0 2.2rem; }
+
     @media (max-width: 960px) {
-      nav { display:none; }
-      .hero-grid, .grid-2, .rail, .impact, .signal-grid { grid-template-columns: 1fr; }
-      .contact { flex-direction: column; align-items: flex-start; }
+      nav { display: none; }
+      .hero-grid,
+      .stats,
+      .cards-2,
+      .scoreboard,
+      .presentation-grid { grid-template-columns: 1fr; }
+      .contact-card { flex-direction: column; align-items: flex-start; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
         transition-duration: 1ms !important;
         scroll-behavior: auto !important;
       }
@@ -174,296 +271,329 @@
 </head>
 <body>
   <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
-  <a href="#main" class="skip">Skip to content</a>
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <header class="topbar">
     <div class="container topbar-inner">
-      <a class="brand" href="#top">Rajat Arora</a>
+      <a href="#top" class="brand">Rajat Arora</a>
       <nav aria-label="Primary">
         <a href="#work">Work</a>
-        <a href="#story">Story rail</a>
-        <a href="#signal">Signals</a>
+        <a href="#proof">Proof</a>
+        <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
-      <div class="btns">
-        <button id="modeToggle" class="btn" type="button">Recruiter mode</button>
-        <button id="demoToggle" class="btn ghost" type="button">Live walkthrough</button>
-        <button id="helpToggle" class="btn" type="button">Help</button>
+      <div class="top-actions">
+        <button id="startDemo" class="btn btn-ghost" type="button">Live demo</button>
+        <button id="toggleRecruiterMode" class="btn" type="button">Recruiter mode</button>
       </div>
     </div>
   </header>
 
   <main id="main" class="container">
     <section class="hero" id="top" aria-labelledby="hero-title">
-      <p class="eyebrow">RevOps · GTM Systems · Business Systems</p>
-      <h1 id="hero-title">Built for messy operations. Tuned for reliable execution.</h1>
-      <p class="hero-copy muted">I design operating systems in HubSpot and adjacent tools that make lifecycle ownership clear, restore reporting trust, and remove manual bottlenecks without creating process debt.</p>
-      <div class="chips"><span class="chip">HubSpot</span><span class="chip">Automation</span><span class="chip">Governance</span><span class="chip">Lifecycle design</span><span class="chip">Toronto</span></div>
-      <div class="btns" style="margin-top:1rem;">
-        <a class="btn primary" href="#work">See case outcomes →</a>
-        <button class="btn ghost" id="copyPitch" type="button">Copy 30s pitch</button>
-        <button class="btn ghost" id="copyStory" type="button">Copy 2-min story</button>
-        <button class="btn" id="copySnapshot" type="button">Copy recruiter link</button>
+      <div class="hero-tags">
+        <span class="pill">Business Systems</span><span class="pill">RevOps</span><span class="pill">Automation</span><span class="pill">HubSpot</span><span class="pill">Toronto, Canada</span>
       </div>
 
       <div class="hero-grid">
         <div>
-          <div class="stats">
-            <div class="glass stat"><p class="muted">Automations built</p><strong>600+</strong></div>
-            <div class="glass stat"><p class="muted">System focus</p><strong>HubSpot + GTM stack</strong></div>
-            <div class="glass stat"><p class="muted">North star</p><strong>Scale without chaos</strong></div>
+          <h1 id="hero-title">Business Systems & Automation Architect</h1>
+          <p class="hero-copy muted">I build scalable operating foundations across HubSpot and connected tools — clean data, clear lifecycle workflows, and automation that sticks — so teams execute faster and leadership can trust reporting.</p>
+
+          <div class="hero-actions">
+            <a href="#work" class="btn btn-primary">View case studies →</a>
+            <a href="#contact" class="btn">Contact</a>
+            <a href="mailto:arorarajat12@gmail.com" class="btn">Email</a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" class="btn">LinkedIn</a>
           </div>
-          <div class="glass card" style="margin-top:.75rem;"><p class="muted"><strong>Recruiter quick-fit:</strong> Ideal for teams needing RevOps / GTM systems ownership where data trust + execution speed both matter.</p></div>
+
+          <div class="stats">
+            <div class="glass stat"><p class="muted-2">Automation built</p><strong>600+ workflows</strong></div>
+            <div class="glass stat"><p class="muted-2">Systems</p><strong>HubSpot + GTM stack</strong></div>
+            <div class="glass stat"><p class="muted-2">Focus</p><strong>SSOT + scale</strong></div>
+          </div>
+
+          <div class="quick-pack">
+            <div><strong>Recruiter quick-pack:</strong> Open to RevOps / Business Systems / GTM Systems roles.</div>
+            <div>Best-fit teams: B2B SaaS, services, and scaling ops environments.</div>
+            <div>Call-ready summary: “I bring systems clarity to cross-functional execution.”</div>
+          </div>
+
+          <div class="toolkit" aria-label="Recruiter toolkit">
+            <button class="btn btn-ghost" id="copyPitch" type="button">Copy 30s pitch</button>
+            <button class="btn btn-ghost" id="copyStory" type="button">Copy 2-min story</button>
+            <button class="btn btn-ghost" id="downloadBrief" type="button">Download hiring brief</button>
+            <button class="btn btn-ghost" id="shareSnapshot" type="button">Copy recruiter link</button>
+          </div>
+          <p class="hotkeys">Hotkeys: <strong>R</strong> recruiter mode · <strong>D</strong> live demo · <strong>?</strong> command help</p>
         </div>
-        <aside class="glass card" id="about">
-          <h3>How I operate</h3>
-          <ul class="list">
-            <li>Model first, automate second.</li>
-            <li>Guardrails over hero workflows.</li>
-            <li>Cross-functional handoff clarity by default.</li>
-            <li>Business impact over tooling vanity.</li>
-          </ul>
+
+        <aside class="hero-side">
+          <div class="glass side-card">
+            <p class="muted">Signature outcomes</p>
+            <ul class="side-list">
+              <li><p><strong>Operational efficiency</strong></p><p class="muted">Remove manual work. Reduce errors. Speed up execution.</p></li>
+              <li><p><strong>Data foundations</strong></p><p class="muted">Governance + structure so reporting doesn’t drift.</p></li>
+              <li><p><strong>Lifecycle clarity</strong></p><p class="muted">Clear stages, ownership, and handoffs across teams.</p></li>
+            </ul>
+            <div style="margin-top:1rem; border-top:1px solid var(--line); padding-top:1rem;">
+              <p class="muted">Operating style</p>
+              <div class="chip-row" style="margin-top:.55rem;"><span class="pill">System-first</span><span class="pill">Governance</span><span class="pill">Measure impact</span><span class="pill">Ship fast</span><span class="pill">Reduce chaos</span></div>
+            </div>
+          </div>
         </aside>
       </div>
     </section>
 
     <section id="work" class="section" aria-labelledby="work-title">
       <p class="eyebrow">Selected work</p>
-      <h2 id="work-title" style="margin-top:.45rem;">Outcome-focused case stack</h2>
-      <p class="muted" style="margin-top:.55rem;">Switched from static cards to a cleaner case switcher so interviewers can inspect one story deeply, fast.</p>
-
-      <div class="glass cases-wrap">
-        <div class="tab-row" role="tablist" aria-label="Case selector">
-          <button class="tab active" role="tab" aria-selected="true" data-case="ssot">SSOT in HubSpot</button>
-          <button class="tab" role="tab" aria-selected="false" data-case="finance">Finance automation</button>
-          <button class="tab" role="tab" aria-selected="false" data-case="onboarding">Onboarding pipeline</button>
-          <button class="tab" role="tab" aria-selected="false" data-case="chatbot">AI chatbot routing</button>
-        </div>
-        <article class="case-panel" id="casePanel" aria-live="polite"></article>
+      <h2 id="work-title" style="margin-top:.45rem;">Case studies</h2>
+      <p class="section-sub muted">Built to show outcomes and thinking. Detailed walkthroughs (screenshots/diagrams) available privately depending on NDA constraints.</p>
+      <div class="cards-2">
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Governance</span><span class="pill">Reporting</span></div><h3>HubSpot as Single Source of Truth</h3><p class="muted" style="margin-top:.45rem;">Standardized lifecycle stages, ownership, and data integrity across teams.</p><ul class="bullet-list"><li>Unified stakeholder data model across departments</li><li>Reduced duplicated records and reporting drift</li><li>Implemented governance + automation to prevent regression</li><li>Enabled leadership-ready dashboards teams trust</li></ul></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">QuickBooks</span><span class="pill">Zapier/Make</span></div><h3>Finance Ops Automation (Invoicing)</h3><p class="muted" style="margin-top:.45rem;">Reduced manual processing and improved accuracy from request → invoice.</p><ul class="bullet-list"><li>Automated intake → validation → invoicing workflow</li><li>Eliminated repetitive reconciliation steps</li><li>Created consistent audit trail and exception handling</li><li>Improved cycle time from request to invoice</li></ul></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Automation</span><span class="pill">Slack</span></div><h3>Contractor Onboarding Pipeline</h3><p class="muted" style="margin-top:.45rem;">Built a consistent onboarding workflow with clear handoffs and reminders.</p><ul class="bullet-list"><li>Designed stages + ownership across stakeholders</li><li>Automated reminders, tasks, and approvals</li><li>Reduced back-and-forth via structured intake</li><li>Improved time-to-ready for new contractors</li></ul></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">Web</span><span class="pill">AI Chatbot</span><span class="pill">HubSpot</span></div><h3>Website AI Chatbot Implementation</h3><p class="muted" style="margin-top:.45rem;">Deployed guided experiences with routing, lead capture, and deflection.</p><ul class="bullet-list"><li>Implemented routing logic for FAQ vs sales vs support</li><li>Captured structured data into CRM properties</li><li>Reduced inbound load via deflection</li><li>Improved response speed and conversion paths</li></ul></article>
       </div>
 
-      <div class="impact" aria-label="Impact metrics">
-        <div><span class="muted">Manual effort reduction</span><strong>40%</strong></div>
-        <div><span class="muted">Lifecycle handoff visibility</span><strong>2×</strong></div>
-        <div><span class="muted">Reporting reliability uplift</span><strong>30%+</strong></div>
-        <div><span class="muted">Adoption quality</span><strong>High</strong></div>
+      <div class="scoreboard" aria-label="Impact scoreboard">
+        <div class="score"><strong>40%</strong><span class="muted">Less manual ops in high-friction processes</span></div>
+        <div class="score"><strong>2x</strong><span class="muted">Faster lifecycle handoff visibility</span></div>
+        <div class="score"><strong>30%+</strong><span class="muted">Cleaner reporting reliability baseline</span></div>
+        <div class="score"><strong>High</strong><span class="muted">Team adoption with low retraining overhead</span></div>
       </div>
     </section>
 
-    <section id="story" class="section" aria-labelledby="story-title">
-      <p class="eyebrow">Presentation rail</p>
-      <h2 id="story-title" style="margin-top:.45rem;">Call-ready narrative in 4 beats</h2>
-      <div class="glass story-rail">
-        <div class="rail">
-          <article><strong>1. Context</strong><p class="muted">Fragmented ops and reporting drift.</p></article>
-          <article><strong>2. Architecture</strong><p class="muted">Lifecycle model + ownership + controls.</p></article>
-          <article><strong>3. Automation</strong><p class="muted">High-friction paths systematized.</p></article>
-          <article><strong>4. Outcomes</strong><p class="muted">Faster execution and trustable dashboards.</p></article>
+    <section id="presentationLab" class="section" aria-labelledby="presentation-title">
+      <p class="eyebrow">Presentation lab</p>
+      <h2 id="presentation-title" style="margin-top:.45rem;">One-click recruiter presentation flow</h2>
+      <div class="presentation-lab">
+        <h3>What’s new in this magic pass</h3>
+        <div class="presentation-grid">
+          <article>
+            <strong>Guided demo mode</strong>
+            <p>Automatically walks through your strongest sections in the right pitch order.</p>
+          </article>
+          <article>
+            <strong>Shareable recruiter URL</strong>
+            <p>Generates a link that opens directly in recruiter mode and jumps to case studies.</p>
+          </article>
+          <article>
+            <strong>Keyboard-driven control</strong>
+            <p>Run the whole flow without touching the mouse during calls.</p>
+          </article>
+          <article>
+            <strong>Command overlay</strong>
+            <p>Built-in operator panel so you never forget keys in live conversations.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="signal" class="section longform" aria-labelledby="signal-title">
-      <p class="eyebrow">Hiring signals</p>
-      <h2 id="signal-title" style="margin-top:.45rem;">Role-fit matrix for interviewers</h2>
-      <div class="glass signal">
-        <div class="signal-grid">
-          <div><span class="muted">Systems architecture</span><strong>Strong</strong></div>
-          <div><span class="muted">Cross-functional ops</span><strong>Strong</strong></div>
-          <div><span class="muted">Automation depth</span><strong>Strong</strong></div>
-          <div><span class="muted">Governance mindset</span><strong>Strong</strong></div>
-          <div><span class="muted">Operator UX</span><strong>High</strong></div>
-          <div><span class="muted">Stakeholder comms</span><strong>High</strong></div>
-        </div>
+    <section id="proof" class="section optional" aria-labelledby="proof-title">
+      <p class="eyebrow">Proof</p>
+      <h2 id="proof-title" style="margin-top:.45rem;">Tools & credibility</h2>
+      <div class="cards-2">
+        <article class="glass case"><h3>Tool stack</h3><p class="muted" style="margin-top:.55rem;">HubSpot • Zapier • Make • Slack • Apollo • Typeform • Stripe • QuickBooks • Box • Asana/ClickUp • AI chatbots • APIs</p></article>
+        <article class="glass case"><h3>What I’m known for</h3><ul class="bullet-list"><li>Turning messy ops into clean, governed architecture</li><li>Automation that doesn’t break when teams scale</li><li>Clear lifecycle stages, ownership, and handoffs</li><li>Translating ambiguity into decisions + execution</li></ul></article>
+      </div>
+    </section>
+
+    <section id="about" class="section optional" aria-labelledby="about-title">
+      <p class="eyebrow">About</p>
+      <h2 id="about-title" style="margin-top:.45rem;">How I work</h2>
+      <div class="cards-2" style="grid-template-columns:minmax(0,2fr) minmax(0,1fr);">
+        <article class="glass case"><h3>Short version</h3><p class="muted" style="margin-top:.55rem;">I work at the intersection of GTM operations, business systems, and automation. My focus is building clean operating foundations: reliable data, clear workflows, governance that holds, and connected tools that reduce manual work.</p><p class="muted" style="margin-top:.7rem;">I’m strongest when the problem is ambiguous, cross-functional, and high impact — where structure and execution have to land at the same time.</p></article>
+        <article class="glass case"><h3>What I value</h3><ul class="bullet-list"><li>Clarity over complexity</li><li>Governance over heroics</li><li>Systems that outlive people</li><li>Simple UX for operators</li></ul></article>
+      </div>
+
+      <div id="faqRecruiter" class="faq" aria-label="Frequently asked recruiter questions">
+        <details><summary>How do you usually start with a new team?</summary><p>I start with lifecycle mapping + ownership clarity, then layer governance, then automate high-friction flows tied to KPI outcomes.</p></details>
+        <details><summary>What’s your strongest differentiator?</summary><p>I combine systems architecture depth with operator-first UX, so what gets built is both durable and adopted quickly.</p></details>
       </div>
     </section>
 
     <section id="contact" class="section" aria-labelledby="contact-title">
       <p class="eyebrow">Contact</p>
-      <h2 id="contact-title" style="margin-top:.45rem;">If you're hiring for durable execution, let's talk.</h2>
-      <div class="glass contact">
+      <h2 id="contact-title" style="margin-top:.45rem;">Let’s build something durable</h2>
+      <div class="glass contact-card">
         <div>
-          <p class="muted">Open to full-time and contract roles in RevOps / GTM Systems / Business Systems.</p>
-          <p class="muted" style="margin-top:.45rem;">Email: <a href="mailto:arorarajat12@gmail.com" style="color:#fff;">arorarajat12@gmail.com</a></p>
+          <p class="muted">If you’re hiring for RevOps / GTM Systems / Business Systems, or need an operator who can architect and ship, I’m open to conversations.</p>
+          <p class="muted-2" style="margin-top:.45rem;">Email: <a href="mailto:arorarajat12@gmail.com" style="color:#fff;">arorarajat12@gmail.com</a></p>
+          <div class="chip-row" style="margin-top:.55rem;"><span class="pill ok-pill">Open to full-time roles</span><span class="pill ok-pill">Open to contract projects</span></div>
         </div>
-        <div class="btns">
-          <a class="btn primary" href="mailto:arorarajat12@gmail.com">Email →</a>
-          <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn →</a>
-        </div>
+        <div class="actions"><a class="btn btn-primary" href="mailto:arorarajat12@gmail.com">Email →</a><a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn →</a><a class="btn" href="#" onclick="alert('Add your resume link here (PDF).'); return false;">Resume (PDF) →</a></div>
       </div>
     </section>
 
-    <footer>© <span id="year"></span> Rajat Arora — quiet confidence, clear outcomes.</footer>
+    <footer>© <span id="year"></span> Rajat Arora. Built to showcase outcomes, not noise.</footer>
   </main>
-
-  <div id="help" class="help" aria-hidden="true">
-    <div class="help-card">
-      <h3>Quick controls</h3>
-      <ul>
-        <li><strong>R</strong> toggle recruiter mode</li>
-        <li><strong>D</strong> run live walkthrough</li>
-        <li><strong>?</strong> open/close help</li>
-        <li><strong>Esc</strong> close help and clear spotlight</li>
-      </ul>
-      <button class="btn" id="helpClose" type="button" style="margin-top:.75rem;">Close</button>
-    </div>
-  </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
+  <div id="helpOverlay" class="overlay" aria-hidden="true">
+    <div class="overlay-card">
+      <h3>Command Help</h3>
+      <ul>
+        <li><strong>R</strong> → Toggle recruiter mode</li>
+        <li><strong>D</strong> → Start live demo walkthrough</li>
+        <li><strong>?</strong> → Open/close this help panel</li>
+        <li><strong>Esc</strong> → Close help panel</li>
+        <li><strong>Copy recruiter link</strong> → Shares URL that auto-enables recruiter mode</li>
+      </ul>
+      <button id="closeHelp" class="btn" type="button" style="margin-top:.7rem;">Close help</button>
+    </div>
+  </div>
+
   <script>
-    const $ = (s, root = document) => root.querySelector(s);
-    const $$ = (s, root = document) => Array.from(root.querySelectorAll(s));
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    $('#year').textContent = new Date().getFullYear();
+    const progressBar = document.getElementById('progressBar');
+    const updateProgress = () => {
+      const scrollTop = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const width = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
+      progressBar.style.width = width + '%';
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
 
-    const toast = $('#toast');
+    const toast = document.getElementById('toast');
     let toastTimer;
     const showToast = (message) => {
       toast.textContent = message;
       toast.classList.add('show');
       clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove('show'), 1750);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
     };
 
-    const progressBar = $('#progressBar');
-    const updateProgress = () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
-      progressBar.style.width = pct + '%';
-    };
-    addEventListener('scroll', updateProgress, { passive: true });
-    updateProgress();
+    const pitch = "Hi, I'm Rajat. I design RevOps and business systems that turn messy operations into reliable execution—clean data, clear lifecycle handoffs, and automation that scales.";
+    const story = "One example: I rebuilt a HubSpot lifecycle + governance model as a single source of truth. That reduced reporting drift, improved handoff clarity, and gave leadership dashboards they could trust weekly.";
 
-    const cases = {
-      ssot: {
-        title: 'HubSpot as single source of truth',
-        body: 'Standardized lifecycle stages and owner rules across teams, with validation guardrails and reporting governance to reduce drift.',
-        bullets: ['Unified stage architecture and ownership boundaries', 'Reduced duplicate records and conflicting handoff states', 'Created dashboards leadership trusted for weekly decisions']
-      },
-      finance: {
-        title: 'Finance operations automation',
-        body: 'Connected request intake, validation, and invoice generation to remove repetitive work and improve exception handling.',
-        bullets: ['Automated request → validate → invoice pipeline', 'Lowered reconciliation overhead and manual bottlenecks', 'Added auditable trails for finance operations']
-      },
-      onboarding: {
-        title: 'Contractor onboarding pipeline',
-        body: 'Built a stage-driven onboarding system with explicit owners, reminders, and approvals to eliminate ambiguity.',
-        bullets: ['Mapped onboarding phases to accountable teams', 'Automated reminder and handoff sequence', 'Improved time-to-ready and consistency']
-      },
-      chatbot: {
-        title: 'AI chatbot routing + CRM capture',
-        body: 'Implemented intent-based routing and structured CRM capture to improve lead quality and response speed.',
-        bullets: ['Split FAQ/support/sales flows by intent', 'Mapped key context into CRM properties', 'Reduced inbound support noise with better routing']
-      }
+    const copyText = async (text, label) => {
+      await navigator.clipboard.writeText(text);
+      showToast(label + ' copied');
     };
 
-    const casePanel = $('#casePanel');
-    const renderCase = (key) => {
-      const data = cases[key];
-      if (!data) return;
-      casePanel.innerHTML = `<h3>${data.title}</h3><p class="muted" style="margin-top:.45rem;">${data.body}</p><ul class="list">${data.bullets.map((b) => `<li>${b}</li>`).join('')}</ul>`;
-      $$('.tab').forEach((tab) => {
-        const active = tab.dataset.case === key;
-        tab.classList.toggle('active', active);
-        tab.setAttribute('aria-selected', active ? 'true' : 'false');
-      });
-    };
-    $$('.tab').forEach((tab) => tab.addEventListener('click', () => renderCase(tab.dataset.case)));
-    renderCase('ssot');
+    document.getElementById('copyPitch').addEventListener('click', () => copyText(pitch, '30s pitch'));
+    document.getElementById('copyStory').addEventListener('click', () => copyText(story, '2-min story'));
+    document.getElementById('downloadBrief').addEventListener('click', () => {
+      const brief = `Rajat Arora — Hiring Brief
 
-    const pitch = "Hi, I'm Rajat. I build RevOps and business systems that replace operational chaos with clear ownership, trustable data, and automation that scales.";
-    const story = "A representative example: I redesigned lifecycle architecture and governance in HubSpot as a single source of truth, reducing reporting drift and giving leadership reliable weekly visibility.";
+Role fit: RevOps / GTM Systems / Business Systems
 
-    const copyText = async (value, label) => {
-      try {
-        await navigator.clipboard.writeText(value);
-        showToast(label + ' copied');
-      } catch {
-        showToast('Clipboard access unavailable');
-      }
-    };
+Core outcomes:
+- Clean lifecycle architecture
+- Reliable reporting trust
+- Durable automation at scale
 
-    $('#copyPitch').addEventListener('click', () => copyText(pitch, '30s pitch'));
-    $('#copyStory').addEventListener('click', () => copyText(story, '2-min story'));
-    $('#copySnapshot').addEventListener('click', () => {
-      const url = new URL(location.href);
-      url.searchParams.set('mode', 'recruiter');
-      url.searchParams.set('focus', 'work');
-      copyText(url.toString(), 'Recruiter snapshot link');
+Contact: arorarajat12@gmail.com`;
+      const blob = new Blob([brief], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'rajat-arora-hiring-brief.txt';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(a.href);
+      showToast('Hiring brief downloaded');
     });
 
-    let recruiterMode = false;
-    const setMode = (on, quiet = false) => {
-      recruiterMode = on;
-      document.body.classList.toggle('recruiter-mode', recruiterMode);
-      $('#modeToggle').textContent = recruiterMode ? 'Full mode' : 'Recruiter mode';
-      if (!quiet) showToast(recruiterMode ? 'Recruiter mode on' : 'Full mode on');
-      if (!recruiterMode) setSpotlight(null);
-    };
-    $('#modeToggle').addEventListener('click', () => setMode(!recruiterMode));
+    const toggleBtn = document.getElementById('toggleRecruiterMode');
+    const demoBtn = document.getElementById('startDemo');
+    const shareBtn = document.getElementById('shareSnapshot');
+    const helpOverlay = document.getElementById('helpOverlay');
+    const closeHelpBtn = document.getElementById('closeHelp');
 
+    let recruiterMode = false;
     let activeSpotlight = null;
+    let demoRunning = false;
+
     const setSpotlight = (el) => {
       if (activeSpotlight) activeSpotlight.classList.remove('spotlight');
       activeSpotlight = el;
       if (activeSpotlight) activeSpotlight.classList.add('spotlight');
     };
 
-    let demoRunning = false;
-    const runDemo = async () => {
+    const setRecruiterMode = (enabled, quiet = false) => {
+      recruiterMode = enabled;
+      document.body.classList.toggle('recruiter-mode', recruiterMode);
+      toggleBtn.textContent = recruiterMode ? 'Full mode' : 'Recruiter mode';
+      if (!quiet) showToast(recruiterMode ? 'Recruiter mode on' : 'Full mode on');
+      if (!recruiterMode) setSpotlight(null);
+    };
+
+    const runLiveDemo = async () => {
       if (demoRunning) return;
       demoRunning = true;
-      if (!recruiterMode) setMode(true, true);
+      if (!recruiterMode) setRecruiterMode(true, true);
+      showToast('Live recruiter demo started');
+
       const steps = [
-        ['#hero-title', 'Step 1: positioning'],
-        ['#work', 'Step 2: case evidence'],
-        ['#story', 'Step 3: narrative rail'],
-        ['#contact', 'Step 4: close']
+        { selector: '#hero-title', msg: 'Step 1: Positioning headline' },
+        { selector: '.quick-pack', msg: 'Step 2: Recruiter quick-pack' },
+        { selector: '#work', msg: 'Step 3: Case studies' },
+        { selector: '.scoreboard', msg: 'Step 4: Impact scoreboard' },
+        { selector: '#contact', msg: 'Step 5: Conversion CTA' }
       ];
-      for (const [selector, message] of steps) {
-        const el = $(selector);
+
+      for (const step of steps) {
+        const el = document.querySelector(step.selector);
         if (!el) continue;
         setSpotlight(el);
         el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        showToast(message);
-        await new Promise((resolve) => setTimeout(resolve, 1150));
+        showToast(step.msg);
+        await new Promise((resolve) => setTimeout(resolve, 1200));
       }
+
+      showToast('Demo complete');
       setSpotlight(null);
-      showToast('Walkthrough complete');
       demoRunning = false;
     };
-    $('#demoToggle').addEventListener('click', runDemo);
 
-    const help = $('#help');
     const toggleHelp = () => {
-      const open = help.classList.toggle('show');
-      help.setAttribute('aria-hidden', open ? 'false' : 'true');
+      const open = helpOverlay.classList.toggle('show');
+      helpOverlay.setAttribute('aria-hidden', open ? 'false' : 'true');
     };
-    $('#helpToggle').addEventListener('click', toggleHelp);
-    $('#helpClose').addEventListener('click', toggleHelp);
-    help.addEventListener('click', (e) => { if (e.target === help) toggleHelp(); });
 
-    addEventListener('keydown', (event) => {
-      const key = event.key.toLowerCase();
-      if (key === 'r') setMode(!recruiterMode);
-      if (key === 'd') runDemo();
-      if (key === '?') toggleHelp();
-      if (key === 'escape') {
-        if (help.classList.contains('show')) toggleHelp();
-        setSpotlight(null);
-      }
+    const copyRecruiterLink = async () => {
+      const url = new URL(window.location.href);
+      url.searchParams.set('mode', 'recruiter');
+      url.searchParams.set('focus', 'work');
+      await navigator.clipboard.writeText(url.toString());
+      showToast('Recruiter link copied');
+    };
+
+    toggleBtn.addEventListener('click', () => setRecruiterMode(!recruiterMode));
+    demoBtn.addEventListener('click', runLiveDemo);
+    shareBtn.addEventListener('click', copyRecruiterLink);
+    closeHelpBtn.addEventListener('click', toggleHelp);
+    helpOverlay.addEventListener('click', (event) => {
+      if (event.target === helpOverlay) toggleHelp();
     });
 
-    const params = new URLSearchParams(location.search);
+    window.addEventListener('keydown', (event) => {
+      const key = event.key.toLowerCase();
+      if (key === 'r') setRecruiterMode(!recruiterMode);
+      if (key === 'd') runLiveDemo();
+      if (key === '?') toggleHelp();
+      if (key === 'escape' && helpOverlay.classList.contains('show')) toggleHelp();
+    });
+
+    const params = new URLSearchParams(window.location.search);
     if (params.get('mode') === 'recruiter') {
-      setMode(true, true);
+      setRecruiterMode(true, true);
       const focus = params.get('focus');
       const target = focus ? document.getElementById(focus) : null;
-      if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
-      showToast('Recruiter snapshot loaded');
+      if (target) {
+        setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
+      }
+      showToast('Recruiter mode loaded from shared link');
     }
-    if (params.get('demo') === '1') setTimeout(runDemo, 220);
+    if (params.get('demo') === '1') {
+      setTimeout(runLiveDemo, 200);
+    }
   </script>
 </body>
 </html>
