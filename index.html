@@ -11,50 +11,115 @@
   <meta property="og:type" content="website" />
 
   <style>
-    :root { --bg-top:#05050a; --bg-mid:#070712; --bg-bottom:#05050a; --text:#fff; --muted:rgba(255,255,255,.74); --muted-2:rgba(255,255,255,.58); --line:rgba(255,255,255,.10); --card:rgba(255,255,255,.04); --card-strong:rgba(255,255,255,.06); --radius:18px; --radius-lg:24px; --ok-bg:rgba(16,185,129,.12); --ok-line:rgba(16,185,129,.45); --brand:#aab8ff; }
-    *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background-image:radial-gradient(circle at 20% 0%, rgba(99,102,241,.22), transparent 55%),radial-gradient(circle at 80% 10%, rgba(34,211,238,.14), transparent 55%),radial-gradient(circle at 40% 120%, rgba(16,185,129,.12), transparent 55%),linear-gradient(180deg,var(--bg-top) 0%,var(--bg-mid) 40%,var(--bg-bottom) 100%);line-height:1.6}
-    .progress{position:fixed;top:0;left:0;width:100%;height:3px;z-index:120;background:rgba(255,255,255,.12)} .progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,#818cf8,#22d3ee);transition:width .12s linear}
+    :root {
+      --bg-top:#05050a; --bg-mid:#070712; --bg-bottom:#05050a;
+      --text:#fff; --muted:rgba(255,255,255,.74); --muted-2:rgba(255,255,255,.58);
+      --line:rgba(255,255,255,.10); --card:rgba(255,255,255,.04); --card-strong:rgba(255,255,255,.06);
+      --radius:18px; --radius-lg:24px; --ok-bg:rgba(16,185,129,.12); --ok-line:rgba(16,185,129,.45);
+      --brand:#aab8ff;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;
+      background-image:
+        radial-gradient(circle at 20% 0%, rgba(99,102,241,.22), transparent 55%),
+        radial-gradient(circle at 80% 10%, rgba(34,211,238,.14), transparent 55%),
+        radial-gradient(circle at 40% 120%, rgba(16,185,129,.12), transparent 55%),
+        linear-gradient(180deg,var(--bg-top) 0%,var(--bg-mid) 40%,var(--bg-bottom) 100%);
+    }
+
+    body.recruiter-mode .optional,
+    body.recruiter-mode #about,
+    body.recruiter-mode #proof,
+    body.recruiter-mode #faqRecruiter,
+    body.recruiter-mode .toolkit,
+    body.recruiter-mode .hero-side {
+      display:none !important;
+    }
+
+    body.recruiter-mode .hero-grid,
+    body.recruiter-mode .cards-2,
+    body.recruiter-mode .scoreboard { grid-template-columns:1fr; }
+
+    .progress{position:fixed;top:0;left:0;width:100%;height:3px;z-index:120;background:rgba(255,255,255,.12)}
+    .progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,#818cf8,#22d3ee);transition:width .12s linear}
     .container{width:min(1120px,calc(100% - 2rem));margin-inline:auto}
-    .skip-link{position:absolute;top:-120%;left:1rem;background:#fff;color:#0a0a0a;padding:.4rem .7rem;border-radius:8px;font-weight:700;z-index:130}.skip-link:focus{top:1rem}
+    .skip-link{position:absolute;top:-120%;left:1rem;background:#fff;color:#0a0a0a;padding:.4rem .7rem;border-radius:8px;font-weight:700;z-index:130}
+    .skip-link:focus{top:1rem}
+
     .glass{background:linear-gradient(180deg,var(--card-strong),rgba(255,255,255,.02));border:1px solid var(--line);box-shadow:0 18px 50px rgba(0,0,0,.38);backdrop-filter:blur(8px)}
-    .pill{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.25rem .7rem;font-size:.75rem;color:rgba(255,255,255,.84);font-weight:600}.ok-pill{border-color:var(--ok-line);background:var(--ok-bg);color:#9af2cd}
+    .pill{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.25rem .7rem;font-size:.75rem;color:rgba(255,255,255,.84);font-weight:600}
+    .ok-pill{border-color:var(--ok-line);background:var(--ok-bg);color:#9af2cd}
+
     .btn{border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.04);color:#fff;text-decoration:none;border-radius:12px;padding:.7rem 1rem;font-size:.88rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;transition:.14s ease;cursor:pointer}
     .btn:hover,.btn:focus-visible{border-color:rgba(255,255,255,.25);transform:translateY(-1px);outline:none}
-    .btn-primary{border:1px solid transparent;background:#fff;color:#0a0a0a}.btn-primary:hover,.btn-primary:focus-visible{background:#e8e8ff}
+    .btn-primary{border:1px solid transparent;background:#fff;color:#0a0a0a}
+    .btn-primary:hover,.btn-primary:focus-visible{background:#e8e8ff}
     .btn-ghost{border-color:rgba(170,184,255,.4);color:var(--brand);background:rgba(170,184,255,.08)}
     a:focus-visible,button:focus-visible{outline:2px solid rgba(99,102,241,.8);outline-offset:2px}
+
     .topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);border-bottom:1px solid var(--line);background:rgba(7,7,18,.65)}
     .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0}
     .brand{color:#fff;text-decoration:none;font-weight:700;letter-spacing:-.01em;white-space:nowrap}
     nav{display:flex;gap:1rem} nav a{color:rgba(255,255,255,.72);text-decoration:none;font-size:.9rem;font-weight:500} nav a:hover{color:#fff}
-    main{padding:0 0 1rem}.hero{padding:3rem 0 2.7rem}.hero-tags{display:flex;gap:.45rem;flex-wrap:wrap}
+
+    main{padding:0 0 1rem}
+    .hero{padding:3rem 0 2.7rem}
+    .hero-tags{display:flex;gap:.45rem;flex-wrap:wrap}
     .hero-grid{margin-top:1.5rem;display:grid;gap:1rem;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);align-items:start}
+
     h1{margin:0;font-size:clamp(2rem,4.8vw,3.8rem);line-height:1.12;letter-spacing:-.02em;max-width:16ch;text-wrap:balance}
     h2{margin:0;font-size:clamp(1.45rem,2.6vw,2.05rem);line-height:1.2;letter-spacing:-.02em}
     h3{margin:0;font-size:1.18rem;line-height:1.25;letter-spacing:-.01em}
     p{margin:0}.muted{color:var(--muted)}.muted-2{color:var(--muted-2)}
-    .hero-copy{max-width:62ch;margin-top:1rem;font-size:1.04rem}.hero-actions{margin-top:1.35rem;display:flex;gap:.55rem;flex-wrap:wrap}
-    .stats{margin-top:1.4rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem}.stat{border-radius:var(--radius);padding:.95rem}.stat strong{display:block;font-size:1.35rem;margin-top:.15rem}
+
+    .hero-copy{max-width:62ch;margin-top:1rem;font-size:1.04rem}
+    .hero-actions{margin-top:1.35rem;display:flex;gap:.55rem;flex-wrap:wrap}
+    .stats{margin-top:1.4rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem}
+    .stat{border-radius:var(--radius);padding:.95rem}.stat strong{display:block;font-size:1.35rem;margin-top:.15rem}
+
     .quick-pack{margin-top:.75rem;border-top:1px solid var(--line);padding-top:.75rem;display:grid;gap:.45rem;font-size:.85rem;color:var(--muted)}
     .toolkit{margin-top:.9rem;display:flex;flex-wrap:wrap;gap:.45rem}
-    .side-card{border-radius:var(--radius-lg);padding:1.2rem}.side-list{list-style:none;margin:.8rem 0 0;padding:0;display:grid;gap:.6rem}
+
+    .side-card{border-radius:var(--radius-lg);padding:1.2rem}
+    .side-list{list-style:none;margin:.8rem 0 0;padding:0;display:grid;gap:.6rem}
     .side-list li{border:1px solid var(--line);border-radius:var(--radius);background:rgba(255,255,255,.05);padding:.75rem}
+
     .section{border-top:1px solid var(--line);padding:2.4rem 0}
     .eyebrow{margin:0;font-size:.72rem;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,.56);font-weight:700}
     .section-sub{margin-top:.7rem;max-width:70ch}
+
     .cards-2{margin-top:1.2rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
-    .case{border-radius:var(--radius-lg);padding:1.1rem}.chip-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.8rem}
+    .case{border-radius:var(--radius-lg);padding:1.1rem}
+    .chip-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.8rem}
     .bullet-list{margin:.75rem 0 0;padding-left:1rem;color:var(--muted)} .bullet-list li{margin-bottom:.35rem}
+
     .scoreboard{margin-top:1rem;border-top:1px solid var(--line);padding-top:.9rem;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem}
-    .score{border:1px solid var(--line);border-radius:12px;padding:.7rem;background:rgba(255,255,255,.03)} .score strong{display:block;font-size:1.2rem}
-    .faq{margin-top:1rem;display:grid;gap:.6rem}.faq details{border:1px solid var(--line);border-radius:12px;padding:.75rem .85rem;background:rgba(255,255,255,.03)} .faq summary{cursor:pointer;font-weight:700;color:#fff} .faq p{margin-top:.55rem;color:var(--muted)}
+    .score{border:1px solid var(--line);border-radius:12px;padding:.7rem;background:rgba(255,255,255,.03)}
+    .score strong{display:block;font-size:1.2rem}
+
+    .faq{margin-top:1rem;display:grid;gap:.6rem}
+    .faq details{border:1px solid var(--line);border-radius:12px;padding:.75rem .85rem;background:rgba(255,255,255,.03)}
+    .faq summary{cursor:pointer;font-weight:700;color:#fff}
+    .faq p{margin-top:.55rem;color:var(--muted)}
+
     .contact-card{margin-top:1rem;border-radius:var(--radius-lg);padding:1.2rem;display:flex;gap:1rem;justify-content:space-between;align-items:center}
+
     .toast{position:fixed;bottom:1rem;right:1rem;background:rgba(13,19,34,.95);border:1px solid var(--line);color:#fff;padding:.65rem .85rem;border-radius:10px;box-shadow:0 10px 24px rgba(0,0,0,.35);z-index:120;opacity:0;transform:translateY(8px);pointer-events:none;transition:.18s ease;font-size:.85rem}
     .toast.show{opacity:1;transform:translateY(0)}
+
     footer{margin-top:.8rem;font-size:.84rem;color:rgba(255,255,255,.46);padding:.5rem 0 2.2rem}
-    @media (max-width:960px){nav{display:none}.hero-grid,.stats,.cards-2,.scoreboard{grid-template-columns:1fr}.contact-card{flex-direction:column;align-items:flex-start}}
-    @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:1ms !important;animation-iteration-count:1 !important;transition-duration:1ms !important;scroll-behavior:auto !important}}
+
+    @media (max-width:960px){
+      nav{display:none}
+      .hero-grid,.stats,.cards-2,.scoreboard{grid-template-columns:1fr}
+      .contact-card{flex-direction:column;align-items:flex-start}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation-duration:1ms !important;animation-iteration-count:1 !important;transition-duration:1ms !important;scroll-behavior:auto !important}
+    }
   </style>
 </head>
 <body>
@@ -70,7 +135,7 @@
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a href="#contact" class="btn btn-primary">Let’s talk →</a>
+      <button id="toggleRecruiterMode" class="btn">Recruiter mode</button>
     </div>
   </header>
 
@@ -111,7 +176,7 @@
           </div>
         </div>
 
-        <aside>
+        <aside class="hero-side">
           <div class="glass side-card">
             <p class="muted">Signature outcomes</p>
             <ul class="side-list">
@@ -147,7 +212,7 @@
       </div>
     </section>
 
-    <section id="proof" class="section" aria-labelledby="proof-title">
+    <section id="proof" class="section optional" aria-labelledby="proof-title">
       <p class="eyebrow">Proof</p>
       <h2 id="proof-title" style="margin-top:.45rem;">Tools & credibility</h2>
       <div class="cards-2">
@@ -156,7 +221,7 @@
       </div>
     </section>
 
-    <section id="about" class="section" aria-labelledby="about-title">
+    <section id="about" class="section optional" aria-labelledby="about-title">
       <p class="eyebrow">About</p>
       <h2 id="about-title" style="margin-top:.45rem;">How I work</h2>
       <div class="cards-2" style="grid-template-columns:minmax(0,2fr) minmax(0,1fr);">
@@ -164,7 +229,7 @@
         <article class="glass case"><h3>What I value</h3><ul class="bullet-list"><li>Clarity over complexity</li><li>Governance over heroics</li><li>Systems that outlive people</li><li>Simple UX for operators</li></ul></article>
       </div>
 
-      <div class="faq" aria-label="Frequently asked recruiter questions">
+      <div id="faqRecruiter" class="faq" aria-label="Frequently asked recruiter questions">
         <details><summary>How do you usually start with a new team?</summary><p>I start with lifecycle mapping + ownership clarity, then layer governance, then automate high-friction flows tied to KPI outcomes.</p></details>
         <details><summary>What’s your strongest differentiator?</summary><p>I combine systems architecture depth with operator-first UX, so what gets built is both durable and adopted quickly.</p></details>
       </div>
@@ -233,6 +298,16 @@
       URL.revokeObjectURL(a.href);
       showToast('Hiring brief downloaded');
     });
+
+    const toggleBtn = document.getElementById('toggleRecruiterMode');
+    let recruiterMode = false;
+    const setRecruiterMode = (enabled) => {
+      recruiterMode = enabled;
+      document.body.classList.toggle('recruiter-mode', recruiterMode);
+      toggleBtn.textContent = recruiterMode ? 'Full mode' : 'Recruiter mode';
+      showToast(recruiterMode ? 'Recruiter mode on' : 'Full mode on');
+    };
+    toggleBtn.addEventListener('click', () => setRecruiterMode(!recruiterMode));
   </script>
 </body>
 </html>
