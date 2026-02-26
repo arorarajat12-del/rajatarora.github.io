@@ -198,6 +198,19 @@
     .bullet-list { margin: 0.75rem 0 0; padding-left: 1rem; color: var(--muted); }
     .bullet-list li { margin-bottom: 0.35rem; }
 
+    .evidence-btn { margin-top:.65rem; }
+    .evidence-drawer { margin-top:.65rem; border:1px dashed rgba(170,184,255,.35); border-radius:12px; background:rgba(170,184,255,.06); padding:.7rem; display:none; }
+    .evidence-drawer.open { display:block; }
+    .evidence-drawer h4 { margin:.2rem 0 .35rem; font-size:.85rem; color:#dbe2ff; letter-spacing:.02em; text-transform:uppercase; }
+    .evidence-drawer p { color:var(--muted); font-size:.88rem; }
+
+    .impact-calc { margin-top:1rem; border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.03); padding:.9rem; }
+    .impact-calc-grid { margin-top:.65rem; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.6rem; }
+    .impact-calc label { display:grid; gap:.3rem; color:var(--muted); font-size:.84rem; }
+    .impact-calc input { width:100%; border:1px solid var(--line); border-radius:10px; padding:.55rem .6rem; background:rgba(255,255,255,.04); color:#fff; }
+    .impact-calc-result { margin-top:.7rem; border:1px solid rgba(16,185,129,.45); background:rgba(16,185,129,.12); border-radius:10px; padding:.7rem; }
+    .impact-calc-result strong { font-size:1.2rem; display:block; }
+
     .scoreboard { margin-top: 1rem; border-top: 1px solid var(--line); padding-top: 0.9rem; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem; }
     .score { border: 1px solid var(--line); border-radius: 12px; padding: 0.7rem; background: rgba(255, 255, 255, 0.03); }
     .score strong { display: block; font-size: 1.2rem; }
@@ -270,7 +283,7 @@
       .stats,
       .cards-2,
       .scoreboard,
-      .presentation-grid, .timeline, .vault-grid { grid-template-columns: 1fr; }
+      .presentation-grid, .timeline, .vault-grid, .impact-calc-grid { grid-template-columns: 1fr; }
       .contact-card { flex-direction: column; align-items: flex-start; }
     }
 
@@ -371,10 +384,10 @@
       <h2 id="work-title" style="margin-top:.45rem;">Case studies</h2>
       <p class="section-sub muted">Built to show outcomes and thinking. Detailed walkthroughs (screenshots/diagrams) available privately depending on NDA constraints.</p>
       <div class="cards-2">
-        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Governance</span><span class="pill">Reporting</span></div><h3>HubSpot as Single Source of Truth</h3><p class="muted" style="margin-top:.45rem;">Standardized lifecycle stages, ownership, and data integrity across teams.</p><ul class="bullet-list"><li>Unified stakeholder data model across departments</li><li>Reduced duplicated records and reporting drift</li><li>Implemented governance + automation to prevent regression</li><li>Enabled leadership-ready dashboards teams trust</li></ul></article>
-        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">QuickBooks</span><span class="pill">Zapier/Make</span></div><h3>Finance Ops Automation (Invoicing)</h3><p class="muted" style="margin-top:.45rem;">Reduced manual processing and improved accuracy from request → invoice.</p><ul class="bullet-list"><li>Automated intake → validation → invoicing workflow</li><li>Eliminated repetitive reconciliation steps</li><li>Created consistent audit trail and exception handling</li><li>Improved cycle time from request to invoice</li></ul></article>
-        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Automation</span><span class="pill">Slack</span></div><h3>Contractor Onboarding Pipeline</h3><p class="muted" style="margin-top:.45rem;">Built a consistent onboarding workflow with clear handoffs and reminders.</p><ul class="bullet-list"><li>Designed stages + ownership across stakeholders</li><li>Automated reminders, tasks, and approvals</li><li>Reduced back-and-forth via structured intake</li><li>Improved time-to-ready for new contractors</li></ul></article>
-        <article class="glass case"><div class="chip-row"><span class="pill">Web</span><span class="pill">AI Chatbot</span><span class="pill">HubSpot</span></div><h3>Website AI Chatbot Implementation</h3><p class="muted" style="margin-top:.45rem;">Deployed guided experiences with routing, lead capture, and deflection.</p><ul class="bullet-list"><li>Implemented routing logic for FAQ vs sales vs support</li><li>Captured structured data into CRM properties</li><li>Reduced inbound load via deflection</li><li>Improved response speed and conversion paths</li></ul></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Governance</span><span class="pill">Reporting</span></div><h3>HubSpot as Single Source of Truth</h3><p class="muted" style="margin-top:.45rem;">Standardized lifecycle stages, ownership, and data integrity across teams.</p><ul class="bullet-list"><li>Unified stakeholder data model across departments</li><li>Reduced duplicated records and reporting drift</li><li>Implemented governance + automation to prevent regression</li><li>Enabled leadership-ready dashboards teams trust</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="ssot">Open evidence</button><div class="evidence-drawer" id="drawer-ssot"><h4>Problem</h4><p>Lifecycle definitions were inconsistent between teams, causing reporting disputes.</p><h4>Architecture decision</h4><p>Unified stage model + owner mapping + data-quality gates in HubSpot.</p><h4>Measured result</h4><p>Reporting trust improved and handoff confusion dropped significantly.</p></div></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">QuickBooks</span><span class="pill">Zapier/Make</span></div><h3>Finance Ops Automation (Invoicing)</h3><p class="muted" style="margin-top:.45rem;">Reduced manual processing and improved accuracy from request → invoice.</p><ul class="bullet-list"><li>Automated intake → validation → invoicing workflow</li><li>Eliminated repetitive reconciliation steps</li><li>Created consistent audit trail and exception handling</li><li>Improved cycle time from request to invoice</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="finance">Open evidence</button><div class="evidence-drawer" id="drawer-finance"><h4>Problem</h4><p>Manual invoice creation caused delays and reconciliation overhead.</p><h4>Architecture decision</h4><p>Form-driven intake with validation branch before QuickBooks sync.</p><h4>Measured result</h4><p>Faster invoice turnaround and fewer exception tickets.</p></div></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Automation</span><span class="pill">Slack</span></div><h3>Contractor Onboarding Pipeline</h3><p class="muted" style="margin-top:.45rem;">Built a consistent onboarding workflow with clear handoffs and reminders.</p><ul class="bullet-list"><li>Designed stages + ownership across stakeholders</li><li>Automated reminders, tasks, and approvals</li><li>Reduced back-and-forth via structured intake</li><li>Improved time-to-ready for new contractors</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="onboarding">Open evidence</button><div class="evidence-drawer" id="drawer-onboarding"><h4>Problem</h4><p>Onboarding moved through email threads with unclear owners.</p><h4>Architecture decision</h4><p>Stage-gated pipeline with SLA reminders and approval checkpoints.</p><h4>Measured result</h4><p>More predictable onboarding cycles and reduced missed handoffs.</p></div></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">Web</span><span class="pill">AI Chatbot</span><span class="pill">HubSpot</span></div><h3>Website AI Chatbot Implementation</h3><p class="muted" style="margin-top:.45rem;">Deployed guided experiences with routing, lead capture, and deflection.</p><ul class="bullet-list"><li>Implemented routing logic for FAQ vs sales vs support</li><li>Captured structured data into CRM properties</li><li>Reduced inbound load via deflection</li><li>Improved response speed and conversion paths</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="chatbot">Open evidence</button><div class="evidence-drawer" id="drawer-chatbot"><h4>Problem</h4><p>Website inquiries lacked structured qualification and routing consistency.</p><h4>Architecture decision</h4><p>Intent branching + CRM field mapping + fallback routing.</p><h4>Measured result</h4><p>Higher quality lead context and lower support deflection noise.</p></div></article>
       </div>
 
       <div class="scoreboard" aria-label="Impact scoreboard">
@@ -382,6 +395,26 @@
         <div class="score"><strong>2x</strong><span class="muted">Faster lifecycle handoff visibility</span></div>
         <div class="score"><strong>30%+</strong><span class="muted">Cleaner reporting reliability baseline</span></div>
         <div class="score"><strong>High</strong><span class="muted">Team adoption with low retraining overhead</span></div>
+      </div>
+
+      <div class="impact-calc" aria-label="Impact calculator lite">
+        <h3>Impact calculator lite</h3>
+        <p class="muted" style="margin-top:.35rem;">Quick estimate to anchor ROI discussion in interviews.</p>
+        <div class="impact-calc-grid">
+          <label>Manual hours/week
+            <input id="calcHours" type="number" min="1" step="1" value="12" />
+          </label>
+          <label>Automation gain (%)
+            <input id="calcGain" type="number" min="1" max="100" step="1" value="35" />
+          </label>
+          <label>Blended hourly cost (USD)
+            <input id="calcRate" type="number" min="10" step="1" value="70" />
+          </label>
+        </div>
+        <div class="impact-calc-result">
+          <strong id="calcResult">$15,288 / year</strong>
+          <span id="calcRange" class="muted">Estimated savings range: $13,759 – $16,817 annually.</span>
+        </div>
       </div>
     </section>
 
@@ -723,6 +756,36 @@ Contact: arorarajat12@gmail.com`;
     } else {
       revealEls.forEach((el) => el.classList.add('visible'));
     }
+
+    const evidenceButtons = Array.from(document.querySelectorAll('.evidence-btn'));
+    evidenceButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const id = button.getAttribute('data-drawer');
+        const drawer = document.getElementById(`drawer-${id}`);
+        if (!drawer) return;
+        const open = drawer.classList.toggle('open');
+        button.textContent = open ? 'Hide evidence' : 'Open evidence';
+      });
+    });
+
+    const calcHours = document.getElementById('calcHours');
+    const calcGain = document.getElementById('calcGain');
+    const calcRate = document.getElementById('calcRate');
+    const calcResult = document.getElementById('calcResult');
+    const calcRange = document.getElementById('calcRange');
+
+    const updateImpactCalc = () => {
+      const hours = Math.max(1, Number(calcHours.value) || 0);
+      const gain = Math.min(100, Math.max(1, Number(calcGain.value) || 0));
+      const rate = Math.max(10, Number(calcRate.value) || 0);
+      const annual = hours * (gain / 100) * rate * 52;
+      const low = annual * 0.9;
+      const high = annual * 1.1;
+      calcResult.textContent = `$${Math.round(annual).toLocaleString()} / year`;
+      calcRange.textContent = `Estimated savings range: $${Math.round(low).toLocaleString()} – $${Math.round(high).toLocaleString()} annually.`;
+    };
+    [calcHours, calcGain, calcRate].forEach((el) => el.addEventListener('input', updateImpactCalc));
+    updateImpactCalc();
 
     const params = new URLSearchParams(window.location.search);
     if (params.get('mode') === 'recruiter') {
