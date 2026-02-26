@@ -6,6 +6,9 @@
   <title>Rajat Arora — Business Systems & Automation Architect</title>
   <meta name="description" content="Business Systems & Automation Architect. I build scalable RevOps + operational systems with clean data, reliable reporting, and automation that sticks." />
   <meta name="theme-color" content="#0b0b10" />
+  <meta property="og:title" content="Rajat Arora — Business Systems & Automation Architect" />
+  <meta property="og:description" content="RevOps, business systems, and automation architecture focused on measurable outcomes." />
+  <meta property="og:type" content="website" />
 
   <style>
     :root {
@@ -20,6 +23,8 @@
       --card-strong: rgba(255,255,255,0.06);
       --radius: 18px;
       --radius-lg: 24px;
+      --ok-bg: rgba(16,185,129,0.12);
+      --ok-line: rgba(16,185,129,0.45);
     }
 
     * { box-sizing: border-box; }
@@ -53,8 +58,6 @@
 
     .skip-link:focus { top: 1rem; }
 
-    .line { border-color: var(--line); }
-
     .glass {
       background: linear-gradient(180deg, var(--card-strong), rgba(255,255,255,0.02));
       border: 1px solid var(--line);
@@ -70,6 +73,12 @@
       font-size: 0.75rem;
       color: rgba(255,255,255,0.84);
       font-weight: 600;
+    }
+
+    .ok-pill {
+      border-color: var(--ok-line);
+      background: var(--ok-bg);
+      color: #9af2cd;
     }
 
     .btn {
@@ -193,6 +202,16 @@
     .stat { border-radius: var(--radius); padding: 0.95rem; }
     .stat strong { display: block; font-size: 1.35rem; margin-top: 0.15rem; }
 
+    .quick-pack {
+      margin-top: 0.75rem;
+      border-top: 1px solid var(--line);
+      padding-top: 0.75rem;
+      display: grid;
+      gap: 0.45rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
     .side-card { border-radius: var(--radius-lg); padding: 1.2rem; }
     .side-list { list-style: none; margin: 0.8rem 0 0; padding: 0; display: grid; gap: 0.6rem; }
 
@@ -240,6 +259,27 @@
     }
 
     .bullet-list li { margin-bottom: 0.35rem; }
+
+    .faq {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .faq details {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.75rem 0.85rem;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .faq summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .faq p { margin-top: 0.55rem; color: var(--muted); }
 
     .contact-card {
       margin-top: 1rem;
@@ -330,6 +370,12 @@
               <p class="muted-2">Focus</p>
               <strong>SSOT + scale</strong>
             </div>
+          </div>
+
+          <div class="quick-pack">
+            <div><strong>Recruiter quick-pack:</strong> Open to RevOps / Business Systems / GTM Systems roles.</div>
+            <div>Best-fit teams: B2B SaaS, services, and scaling ops environments.</div>
+            <div>Call-ready summary: “I bring systems clarity to cross-functional execution.”</div>
           </div>
         </div>
 
@@ -469,6 +515,17 @@
           </ul>
         </article>
       </div>
+
+      <div class="faq" aria-label="Frequently asked recruiter questions">
+        <details>
+          <summary>How do you usually start with a new team?</summary>
+          <p>I start with lifecycle mapping + ownership clarity, then layer governance, then automate high-friction flows tied to KPI outcomes.</p>
+        </details>
+        <details>
+          <summary>What’s your strongest differentiator?</summary>
+          <p>I combine systems architecture depth with operator-first UX, so what gets built is both durable and adopted quickly.</p>
+        </details>
+      </div>
     </section>
 
     <section id="contact" class="section" aria-labelledby="contact-title">
@@ -478,6 +535,10 @@
         <div>
           <p class="muted">If you’re hiring for RevOps / GTM Systems / Business Systems, or need an operator who can architect and ship, I’m open to conversations.</p>
           <p class="muted-2" style="margin-top:.45rem;">Email: <a href="mailto:arorarajat12@gmail.com" style="color:#fff;">arorarajat12@gmail.com</a></p>
+          <div class="chip-row" style="margin-top:.55rem;">
+            <span class="pill ok-pill">Open to full-time roles</span>
+            <span class="pill ok-pill">Open to contract projects</span>
+          </div>
         </div>
         <div class="actions">
           <a class="btn btn-primary" href="mailto:arorarajat12@gmail.com">Email →</a>
