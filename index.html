@@ -44,6 +44,42 @@
     }
     .btnPrimary:hover { background: #e8e8ff; }
     a:focus { outline: 2px solid rgba(99,102,241,0.8); outline-offset: 2px; }
+
+    .caseCard {
+      cursor: pointer;
+      transition: transform 180ms ease, border-color 180ms ease;
+    }
+    .caseCard:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .videoModal {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.82);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 100;
+    }
+    .videoModal.show { display: flex; }
+    .videoPanel {
+      width: min(900px, 100%);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: linear-gradient(180deg, rgba(15,23,42,0.98), rgba(2,6,23,0.98));
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+      padding: 1rem;
+    }
+    .videoEl {
+      width: 100%;
+      border-radius: 12px;
+      aspect-ratio: 16/9;
+      background: #000;
+      margin-top: 0.75rem;
+    }
   </style>
 </head>
 
@@ -167,7 +203,7 @@
 
       <div class="mt-8 grid gap-5 md:grid-cols-2">
         <!-- Case 1 -->
-        <article class="glass rounded-3xl p-6">
+        <article class="glass rounded-3xl p-6 caseCard" tabindex="0" role="button" data-title="HubSpot as Single Source of Truth" data-subtitle="Lifecycle design + governance + trustable reporting." aria-label="Play case study video for HubSpot as Single Source of Truth">
           <div class="flex flex-wrap gap-2">
             <span class="pill rounded-full px-3 py-1 text-xs text-white/80">HubSpot</span>
             <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Governance</span>
@@ -185,7 +221,7 @@
         </article>
 
         <!-- Case 2 -->
-        <article class="glass rounded-3xl p-6">
+        <article class="glass rounded-3xl p-6 caseCard" tabindex="0" role="button" data-title="Finance Ops Automation (Invoicing)" data-subtitle="Intake to invoice with less manual effort and fewer errors." aria-label="Play case study video for Finance Ops Automation">
           <div class="flex flex-wrap gap-2">
             <span class="pill rounded-full px-3 py-1 text-xs text-white/80">HubSpot</span>
             <span class="pill rounded-full px-3 py-1 text-xs text-white/80">QuickBooks</span>
@@ -203,7 +239,7 @@
         </article>
 
         <!-- Case 3 -->
-        <article class="glass rounded-3xl p-6">
+        <article class="glass rounded-3xl p-6 caseCard" tabindex="0" role="button" data-title="Contractor Onboarding Pipeline" data-subtitle="Clear onboarding stages, ownership, and reminders." aria-label="Play case study video for Contractor Onboarding Pipeline">
           <div class="flex flex-wrap gap-2">
             <span class="pill rounded-full px-3 py-1 text-xs text-white/80">HubSpot</span>
             <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Automation</span>
@@ -221,7 +257,7 @@
         </article>
 
         <!-- Case 4 -->
-        <article class="glass rounded-3xl p-6">
+        <article class="glass rounded-3xl p-6 caseCard" tabindex="0" role="button" data-title="Website AI Chatbot Implementation" data-subtitle="Smart routing + CRM capture + better conversion paths." aria-label="Play case study video for Website AI Chatbot Implementation">
           <div class="flex flex-wrap gap-2">
             <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Web</span>
             <span class="pill rounded-full px-3 py-1 text-xs text-white/80">AI Chatbot</span>
@@ -333,8 +369,165 @@
     </section>
   </main>
 
+  <div id="videoModal" class="videoModal" aria-hidden="true">
+    <div class="videoPanel">
+      <div class="flex items-center justify-between gap-3">
+        <div>
+          <p class="text-xs uppercase tracking-widest text-white/55">Surprise walkthrough</p>
+          <h3 id="videoHeading" class="text-lg font-semibold">Case study highlight</h3>
+        </div>
+        <button id="closeVideoModal" class="rounded-xl px-4 py-2 text-sm font-semibold btn" type="button">Close</button>
+      </div>
+      <video id="caseVideo" class="videoEl" controls playsinline></video>
+    </div>
+  </div>
+
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const modal = document.getElementById("videoModal");
+    const modalClose = document.getElementById("closeVideoModal");
+    const caseVideo = document.getElementById("caseVideo");
+    const videoHeading = document.getElementById("videoHeading");
+    const caseCards = document.querySelectorAll(".caseCard");
+    const generatedVideos = new Map();
+
+    async function generateSurpriseVideo(title, subtitle) {
+      const cacheKey = `${title}::${subtitle}`;
+      if (generatedVideos.has(cacheKey)) return generatedVideos.get(cacheKey);
+      if (!(window.MediaRecorder && HTMLCanvasElement.prototype.captureStream)) return "";
+
+      const canvas = document.createElement("canvas");
+      canvas.width = 1280;
+      canvas.height = 720;
+      const ctx = canvas.getContext("2d");
+      const durationMs = 6000;
+      const fps = 30;
+      const stream = canvas.captureStream(fps);
+      const recorder = new MediaRecorder(stream, { mimeType: "video/webm;codecs=vp9" });
+      const chunks = [];
+
+      recorder.ondataavailable = (event) => {
+        if (event.data && event.data.size > 0) chunks.push(event.data);
+      };
+
+      const done = new Promise((resolve) => {
+        recorder.onstop = () => {
+          const blob = new Blob(chunks, { type: "video/webm" });
+          resolve(URL.createObjectURL(blob));
+        };
+      });
+
+      recorder.start();
+      const start = performance.now();
+
+      await new Promise((resolve) => {
+        function draw(now) {
+          const elapsed = now - start;
+          const t = Math.min(elapsed / durationMs, 1);
+
+          const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+          grad.addColorStop(0, "#111827");
+          grad.addColorStop(0.55, "#0f172a");
+          grad.addColorStop(1, "#1e1b4b");
+          ctx.fillStyle = grad;
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          ctx.fillStyle = "rgba(129,140,248,0.25)";
+          ctx.beginPath();
+          ctx.arc(260 + t * 120, 180, 170, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.fillStyle = "rgba(34,211,238,0.18)";
+          ctx.beginPath();
+          ctx.arc(1040 - t * 140, 540, 210, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.fillStyle = "#a5b4fc";
+          ctx.font = "700 24px Inter, Arial, sans-serif";
+          ctx.fillText("Surprise walkthrough", 90, 100);
+
+          ctx.fillStyle = "#ffffff";
+          ctx.font = "800 54px Inter, Arial, sans-serif";
+          ctx.fillText(title.slice(0, 42), 90, 190);
+
+          ctx.fillStyle = "rgba(255,255,255,0.88)";
+          ctx.font = "500 30px Inter, Arial, sans-serif";
+          ctx.fillText(subtitle.slice(0, 72), 90, 255);
+
+          const barW = 1060;
+          const barX = 90;
+          const barY = 610;
+          ctx.fillStyle = "rgba(255,255,255,0.22)";
+          ctx.fillRect(barX, barY, barW, 10);
+          ctx.fillStyle = "#22d3ee";
+          ctx.fillRect(barX, barY, barW * t, 10);
+
+          const beats = ["Discovery", "System design", "Automation", "Impact"]; 
+          beats.forEach((beat, index) => {
+            const x = 90 + (index * 265);
+            const active = t > index * 0.23;
+            ctx.fillStyle = active ? "#ffffff" : "rgba(255,255,255,0.45)";
+            ctx.font = active ? "700 24px Inter, Arial" : "500 24px Inter, Arial";
+            ctx.fillText(beat, x, 560);
+          });
+
+          if (elapsed < durationMs) {
+            requestAnimationFrame(draw);
+          } else {
+            recorder.stop();
+            resolve();
+          }
+        }
+        requestAnimationFrame(draw);
+      });
+
+      const url = await done;
+      generatedVideos.set(cacheKey, url);
+      return url;
+    }
+
+    async function openVideo(card) {
+      const title = card.getAttribute("data-title") || "Case study highlight";
+      const subtitle = card.getAttribute("data-subtitle") || "A recruiter-friendly walkthrough of outcomes and process.";
+      videoHeading.textContent = `${title} — surprise clip`;
+      modal.classList.add("show");
+      modal.setAttribute("aria-hidden", "false");
+      caseVideo.muted = true;
+
+      const videoSrc = await generateSurpriseVideo(title, subtitle);
+      if (videoSrc) {
+        caseVideo.src = videoSrc;
+        caseVideo.play().catch(() => {});
+      }
+    }
+
+    function closeVideo() {
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+      caseVideo.pause();
+      caseVideo.currentTime = 0;
+      caseVideo.removeAttribute("src");
+      caseVideo.load();
+    }
+
+    caseCards.forEach((card) => {
+      card.addEventListener("click", () => openVideo(card));
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openVideo(card);
+        }
+      });
+    });
+
+    modalClose.addEventListener("click", closeVideo);
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeVideo();
+    });
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && modal.classList.contains("show")) closeVideo();
+    });
   </script>
 </body>
 </html>
