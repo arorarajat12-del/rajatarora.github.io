@@ -1,268 +1,197 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rajat Arora — Business Systems & Automation Architect</title>
-  <meta name="description" content="Business Systems & Automation Architect. I build scalable RevOps + operational systems with clean data, reliable reporting, and automation that sticks." />
-  <meta name="theme-color" content="#0b0b10" />
-  <meta property="og:title" content="Rajat Arora — Business Systems & Automation Architect" />
-  <meta property="og:description" content="RevOps, business systems, and automation architecture focused on measurable outcomes." />
-  <meta property="og:type" content="website" />
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rajat Arora — RevOps & Business Systems Architect</title>
+  <meta name="description" content="Rajat Arora builds RevOps and business systems that reduce manual work, improve reporting trust, and scale cross-functional execution." />
   <style>
     :root {
-      --bg-top: #05050a;
-      --bg-mid: #070712;
-      --bg-bottom: #05050a;
-      --text: #fff;
-      --muted: rgba(255, 255, 255, 0.74);
-      --muted-2: rgba(255, 255, 255, 0.58);
-      --line: rgba(255, 255, 255, 0.10);
-      --card: rgba(255, 255, 255, 0.04);
-      --card-strong: rgba(255, 255, 255, 0.06);
-      --radius: 18px;
-      --radius-lg: 24px;
-      --ok-bg: rgba(16, 185, 129, 0.12);
-      --ok-line: rgba(16, 185, 129, 0.45);
-      --brand: #aab8ff;
+      --bg-0: #060710;
+      --bg-1: #0c1021;
+      --bg-2: #111730;
+      --text: #eef1ff;
+      --muted: #b8c2ea;
+      --line: rgba(255,255,255,.14);
+      --line-2: rgba(255,255,255,.08);
+      --card: rgba(255,255,255,.06);
+      --card-2: rgba(255,255,255,.03);
+      --accent: #8ea2ff;
+      --accent-2: #27d8ff;
+      --ok: #6de2b7;
+      --warn: #ffd76c;
+      --radius: 14px;
+      --radius-lg: 18px;
+      --shadow: 0 20px 60px rgba(0, 0, 0, .45);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color: var(--text);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      line-height: 1.6;
-      background-image:
-        radial-gradient(circle at 20% 0%, rgba(99, 102, 241, 0.22), transparent 55%),
-        radial-gradient(circle at 80% 10%, rgba(34, 211, 238, 0.14), transparent 55%),
-        radial-gradient(circle at 40% 120%, rgba(16, 185, 129, 0.12), transparent 55%),
-        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 40%, var(--bg-bottom) 100%);
-    }
-
-    body.recruiter-mode .optional,
-    body.recruiter-mode #about,
-    body.recruiter-mode #proof,
-    body.recruiter-mode #faqRecruiter,
-    body.recruiter-mode .toolkit,
-    body.recruiter-mode .hero-side,
-    body.recruiter-mode #presentationLab {
-      display: none !important;
-    }
-
-    body.recruiter-mode .hero-grid,
-    body.recruiter-mode .cards-2,
-    body.recruiter-mode .scoreboard {
-      grid-template-columns: 1fr;
+      background:
+        radial-gradient(circle at 15% -10%, color-mix(in oklab, var(--accent) 24%, transparent), transparent 58%),
+        radial-gradient(circle at 90% 0%, color-mix(in oklab, var(--accent-2) 18%, transparent), transparent 52%),
+        linear-gradient(180deg, var(--bg-0), var(--bg-1) 42%, var(--bg-2));
+      min-height: 100vh;
     }
 
     .progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      z-index: 120;
-      background: rgba(255, 255, 255, 0.12);
+      position: fixed; top: 0; left: 0; width: 100%; height: 3px;
+      background: rgba(255,255,255,.12); z-index: 120;
     }
+    .progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width .12s linear; }
 
-    .progress > span {
-      display: block;
-      height: 100%;
-      width: 0;
-      background: linear-gradient(90deg, #818cf8, #22d3ee);
-      transition: width 120ms linear;
+    .skip {
+      position: absolute; top: -120%; left: .8rem; z-index: 140;
+      background: #fff; color: #000; padding: .45rem .72rem; border-radius: 9px; font-weight: 700;
     }
+    .skip:focus { top: .8rem; }
 
-    .container { width: min(1120px, calc(100% - 2rem)); margin-inline: auto; }
-
-    .skip-link {
-      position: absolute;
-      top: -120%;
-      left: 1rem;
-      background: #fff;
-      color: #0a0a0a;
-      padding: 0.4rem 0.7rem;
-      border-radius: 8px;
-      font-weight: 700;
-      z-index: 130;
-    }
-    .skip-link:focus { top: 1rem; }
-
+    .container { width: min(1160px, calc(100% - 2rem)); margin-inline: auto; }
     .glass {
-      background: linear-gradient(180deg, var(--card-strong), rgba(255, 255, 255, 0.02));
       border: 1px solid var(--line);
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
-      backdrop-filter: blur(8px);
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      backdrop-filter: blur(10px) saturate(120%);
+      -webkit-backdrop-filter: blur(10px) saturate(120%);
+      box-shadow: var(--shadow);
     }
-
-    .pill {
-      border: 1px solid var(--line);
-      background: var(--card);
-      border-radius: 999px;
-      padding: 0.25rem 0.7rem;
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.84);
-      font-weight: 600;
-    }
-
-    .ok-pill { border-color: var(--ok-line); background: var(--ok-bg); color: #9af2cd; }
-
-    .btn {
-      border: 1px solid rgba(255, 255, 255, 0.13);
-      background: rgba(255, 255, 255, 0.04);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 12px;
-      padding: 0.7rem 1rem;
-      font-size: 0.88rem;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: 140ms ease;
-      cursor: pointer;
-    }
-
-    .btn:hover,
-    .btn:focus-visible {
-      border-color: rgba(255, 255, 255, 0.25);
-      transform: translateY(-1px);
-      outline: none;
-    }
-
-    .btn-primary { border: 1px solid transparent; background: #fff; color: #0a0a0a; }
-    .btn-primary:hover,
-    .btn-primary:focus-visible { background: #e8e8ff; }
-
-    .btn-ghost { border-color: rgba(170, 184, 255, 0.4); color: var(--brand); background: rgba(170, 184, 255, 0.08); }
-
-    a:focus-visible,
-    button:focus-visible { outline: 2px solid rgba(99, 102, 241, 0.8); outline-offset: 2px; }
 
     .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-      background: rgba(7, 7, 18, 0.65);
+      position: sticky; top: 0; z-index: 110;
+      border-bottom: 1px solid var(--line-2);
+      background: rgba(8, 10, 24, .72);
+      backdrop-filter: blur(8px);
     }
-
-    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.9rem 0; }
-    .top-actions { display: flex; gap: 0.45rem; flex-wrap: wrap; justify-content: flex-end; }
-    .brand { color: #fff; text-decoration: none; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; }
-    nav { display: flex; gap: 1rem; }
-    nav a { color: rgba(255, 255, 255, 0.72); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+    .topbar-inner { display:flex; gap:1rem; align-items:center; justify-content:space-between; padding:.88rem 0; }
+    .brand { color: #fff; text-decoration: none; font-weight: 750; letter-spacing: -.01em; }
+    nav { display: flex; gap: .9rem; }
+    nav a { color: var(--muted); text-decoration: none; font-size: .92rem; }
     nav a:hover { color: #fff; }
 
-    main { padding: 0 0 1rem; }
-    .hero { padding: 3rem 0 2.7rem; }
-    .hero-tags { display: flex; gap: 0.45rem; flex-wrap: wrap; }
-    .hero-grid { margin-top: 1.5rem; display: grid; gap: 1rem; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); align-items: start; }
+    .btn-row { display: flex; gap: .45rem; flex-wrap: wrap; justify-content: flex-end; }
+    .btn {
+      border: 1px solid var(--line);
+      color: #fff;
+      background: rgba(255,255,255,.05);
+      border-radius: 10px;
+      font-weight: 650;
+      font-size: .86rem;
+      padding: .56rem .82rem;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn:hover, .btn:focus-visible { background: rgba(255,255,255,.1); }
+    .btn.primary { border-color: transparent; background: #fff; color: #090b17; }
+    .btn.primary:hover, .btn.primary:focus-visible { background: #e8ebff; }
+    .btn.ghost { border-color: color-mix(in oklab, var(--accent) 52%, transparent); color: var(--accent); background: color-mix(in oklab, var(--accent) 12%, transparent); }
 
-    h1 { margin: 0; font-size: clamp(2rem, 4.8vw, 3.8rem); line-height: 1.12; letter-spacing: -0.02em; max-width: 16ch; text-wrap: balance; }
-    h2 { margin: 0; font-size: clamp(1.45rem, 2.6vw, 2.05rem); line-height: 1.2; letter-spacing: -0.02em; }
-    h3 { margin: 0; font-size: 1.18rem; line-height: 1.25; letter-spacing: -0.01em; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+      outline: 2px solid color-mix(in oklab, var(--accent) 78%, white 22%);
+      outline-offset: 2px;
+    }
+
+    main { padding-bottom: 1.8rem; }
+    .hero { padding: 2.8rem 0 2rem; }
+    .eyebrow { color: var(--muted); text-transform: uppercase; letter-spacing: .13em; font-size: .73rem; font-weight: 700; }
+    h1 { margin: .5rem 0 0; font-size: clamp(2rem, 5.2vw, 4.1rem); line-height: 1.05; letter-spacing: -.03em; max-width: 15ch; }
+    h2 { margin: 0; font-size: clamp(1.4rem, 2.7vw, 2rem); line-height: 1.2; letter-spacing: -.015em; }
+    h3 { margin: 0; font-size: 1.1rem; }
     p { margin: 0; }
     .muted { color: var(--muted); }
-    .muted-2 { color: var(--muted-2); }
 
-    .hero-copy { max-width: 62ch; margin-top: 1rem; font-size: 1.04rem; }
-    .hero-actions { margin-top: 1.35rem; display: flex; gap: 0.55rem; flex-wrap: wrap; }
-    .stats { margin-top: 1.4rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; }
-    .stat { border-radius: var(--radius); padding: 0.95rem; }
-    .stat strong { display: block; font-size: 1.35rem; margin-top: 0.15rem; }
+    .hero-grid { margin-top: 1.1rem; display:grid; grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr); gap: 1rem; align-items:start; }
+    .hero-copy { margin-top: 1rem; max-width: 65ch; font-size: 1.02rem; }
+    .chip-row { display:flex; flex-wrap: wrap; gap:.4rem; margin-top:.95rem; }
+    .chip { border: 1px solid var(--line); background: rgba(255,255,255,.04); border-radius: 999px; padding: .33rem .64rem; font-size: .76rem; color: var(--muted); }
 
-    .quick-pack { margin-top: 0.75rem; border-top: 1px solid var(--line); padding-top: 0.75rem; display: grid; gap: 0.45rem; font-size: 0.85rem; color: var(--muted); }
-    .toolkit { margin-top: 0.9rem; display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .stats { margin-top: 1rem; display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: .7rem; }
+    .stat { border-radius: var(--radius); padding: .85rem; }
+    .stat strong { display:block; margin-top: .18rem; font-size: 1.26rem; }
 
-    .side-card { border-radius: var(--radius-lg); padding: 1.2rem; }
-    .side-list { list-style: none; margin: 0.8rem 0 0; padding: 0; display: grid; gap: 0.6rem; }
-    .side-list li { border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255, 255, 255, 0.05); padding: 0.75rem; }
+    .section { padding: 1rem 0; }
+    .section-sub { margin-top: .52rem; }
 
-    .section { border-top: 1px solid var(--line); padding: 2.4rem 0; }
-    .eyebrow { margin: 0; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em; color: rgba(255, 255, 255, 0.56); font-weight: 700; }
-    .section-sub { margin-top: 0.7rem; max-width: 70ch; }
+    .cards { margin-top: .8rem; display:grid; gap: .8rem; grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .card { border-radius: var(--radius-lg); padding: 1rem; }
+    .case-meta { display:flex; flex-wrap: wrap; gap:.34rem; margin-bottom: .65rem; }
+    .pill { border:1px solid var(--line); border-radius:999px; padding:.2rem .55rem; font-size:.72rem; color:var(--muted); }
+    .bullet { margin: .62rem 0 0; padding-left: 1rem; color: var(--muted); display:grid; gap:.32rem; }
 
-    .cards-2 { margin-top: 1.2rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; }
-    .case { border-radius: var(--radius-lg); padding: 1.1rem; }
-    .chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.8rem; }
-    .bullet-list { margin: 0.75rem 0 0; padding-left: 1rem; color: var(--muted); }
-    .bullet-list li { margin-bottom: 0.35rem; }
+    .impact-grid { margin-top:.8rem; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.66rem; }
+    .impact { border-radius:12px; padding:.8rem; border:1px solid var(--line); background: rgba(255,255,255,.04); }
+    .impact strong { display:block; font-size:1.24rem; margin-top:.16rem; }
 
-    .scoreboard { margin-top: 1rem; border-top: 1px solid var(--line); padding-top: 0.9rem; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem; }
-    .score { border: 1px solid var(--line); border-radius: 12px; padding: 0.7rem; background: rgba(255, 255, 255, 0.03); }
-    .score strong { display: block; font-size: 1.2rem; }
+    .presentation-lab { margin-top:.8rem; border-radius: var(--radius-lg); padding: 1rem; }
+    .flow { margin-top:.7rem; display:grid; gap:.6rem; grid-template-columns:repeat(4,minmax(0,1fr)); }
+    .flow article { border:1px solid var(--line); border-radius: 12px; padding:.75rem; background: rgba(255,255,255,.03); }
 
-    .presentation-lab { margin-top: 1.2rem; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.03); padding: .9rem; }
-    .presentation-lab h3 { font-size: 1rem; }
-    .presentation-grid { margin-top: .7rem; display:grid; grid-template-columns: 1fr 1fr; gap:.65rem; }
-    .presentation-grid article { border:1px solid var(--line); border-radius:10px; padding:.65rem; background:rgba(255,255,255,.02); }
-    .presentation-grid p { color: var(--muted); font-size:.86rem; margin-top:.35rem; }
+    .tools { margin-top: .8rem; border-radius: var(--radius-lg); padding: 1rem; }
+    .tool-grid { margin-top:.7rem; display:grid; gap:.8rem; grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr); }
+    .tool-box { border:1px solid var(--line); border-radius:12px; padding:.82rem; background:rgba(255,255,255,.03); }
+    .kpi { display:grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap:.55rem; margin-top:.55rem; }
+    .kpi div { border:1px solid var(--line); border-radius:10px; padding:.55rem; background: rgba(255,255,255,.04); }
 
-    .spotlight { box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.75), 0 0 0 10px rgba(129, 140, 248, 0.1), 0 18px 50px rgba(0, 0, 0, 0.38) !important; }
+    .range-wrap { margin-top:.66rem; display:grid; gap:.55rem; }
+    .range-wrap label { font-size:.84rem; color:var(--muted); display:grid; gap:.35rem; }
+    .range-wrap input[type="range"] { width: 100%; accent-color: var(--accent); }
+    .calc-result { margin-top:.65rem; border:1px solid color-mix(in oklab, var(--ok) 42%, transparent); background: color-mix(in oklab, var(--ok) 12%, transparent); border-radius:10px; padding:.65rem; }
 
-    .faq { margin-top: 1rem; display: grid; gap: 0.6rem; }
-    .faq details { border: 1px solid var(--line); border-radius: 12px; padding: 0.75rem 0.85rem; background: rgba(255, 255, 255, 0.03); }
-    .faq summary { cursor: pointer; font-weight: 700; color: #fff; }
-    .faq p { margin-top: 0.55rem; color: var(--muted); }
+    .contact { margin-top:.8rem; border-radius:var(--radius-lg); padding:1rem; display:flex; justify-content:space-between; gap:1rem; align-items:center; }
 
-    .contact-card { margin-top: 1rem; border-radius: var(--radius-lg); padding: 1.2rem; display: flex; gap: 1rem; justify-content: space-between; align-items: center; }
-
-    .toast {
-      position: fixed; bottom: 1rem; right: 1rem; background: rgba(13, 19, 34, 0.95); border: 1px solid var(--line);
-      color: #fff; padding: 0.65rem 0.85rem; border-radius: 10px; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-      z-index: 120; opacity: 0; transform: translateY(8px); pointer-events: none; transition: 0.18s ease; font-size: 0.85rem;
-    }
-    .toast.show { opacity: 1; transform: translateY(0); }
-
-    .hotkeys { margin-top: 0.5rem; color: var(--muted-2); font-size: 0.75rem; }
+    .footer { margin-top: 1rem; padding: .5rem 0 2rem; color: rgba(255,255,255,.46); font-size:.84rem; }
 
     .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(4, 8, 18, 0.86);
-      z-index: 140;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
+      position: fixed; inset: 0; background: rgba(0,0,0,.58); display:none;
+      align-items: center; justify-content: center; z-index: 160; padding: 1rem;
     }
-    .overlay.show { display: flex; }
+    .overlay.show { display:flex; }
+    .overlay-card { width:min(680px,100%); border-radius:16px; padding:1rem; border:1px solid var(--line); background:linear-gradient(180deg,#121a36,#0f1630); box-shadow:var(--shadow); }
+    .overlay-card ul { margin:.7rem 0 0; padding-left: 1rem; color:var(--muted); display:grid; gap:.4rem; }
 
-    .overlay-card {
-      width: min(720px, 100%);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: linear-gradient(180deg, #111a31, #0f172b);
-      padding: 1rem;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    .palette {
+      position: fixed; inset: 0; z-index: 170; display:none; align-items: flex-start; justify-content: center;
+      background: rgba(0,0,0,.58); padding: min(14vh, 8rem) 1rem 1rem;
+    }
+    .palette.show { display:flex; }
+    .palette-box { width:min(760px,100%); border:1px solid var(--line); border-radius:14px; background:#0f1630; box-shadow:var(--shadow); overflow:hidden; }
+    .palette-box input { width:100%; border:0; border-bottom:1px solid var(--line); background:transparent; color:#fff; font-size:1rem; padding:.8rem .9rem; }
+    .palette-list { max-height: 48vh; overflow:auto; }
+    .palette-item { width:100%; text-align:left; border:0; border-bottom:1px solid var(--line-2); background:transparent; color:#fff; padding:.72rem .9rem; cursor:pointer; }
+    .palette-item small { color: var(--muted); display:block; margin-top:.2rem; }
+    .palette-item.active, .palette-item:hover { background: rgba(255,255,255,.08); }
+
+    .toast {
+      position: fixed; right: 1rem; bottom: 1rem; z-index: 180;
+      border:1px solid var(--line); border-radius:10px; background:#0f1630; color:#fff;
+      padding:.56rem .78rem; opacity:0; transform:translateY(10px); transition:all .18s ease;
+    }
+    .toast.show { opacity:1; transform:translateY(0); }
+
+    .spotlight { outline: 2px solid color-mix(in oklab, var(--accent) 65%, white 35%); outline-offset: 4px; border-radius: 12px; }
+
+    body.mode-recruiter #proof,
+    body.mode-recruiter #about,
+    body.mode-recruiter #deepDive,
+    body.mode-recruiter .longform,
+    body.mode-recruiter .secondary {
+      display:none !important;
     }
 
-    .overlay-card h3 { font-size: 1.15rem; }
-    .overlay-card ul { margin: 0.75rem 0 0; padding-left: 1rem; color: var(--muted); }
-    .overlay-card li { margin-bottom: 0.45rem; }
+    body.mode-interview #deepDive { display:block; }
+    body.mode-deep .secondary { display:block; }
 
-    footer { margin-top: 0.8rem; font-size: 0.84rem; color: rgba(255, 255, 255, 0.46); padding: 0.5rem 0 2.2rem; }
-
-    @media (max-width: 960px) {
-      nav { display: none; }
-      .hero-grid,
-      .stats,
-      .cards-2,
-      .scoreboard,
-      .presentation-grid { grid-template-columns: 1fr; }
-      .contact-card { flex-direction: column; align-items: flex-start; }
+    @media (max-width: 980px) {
+      nav { display:none; }
+      .hero-grid, .cards, .impact-grid, .flow, .tool-grid, .kpi, .contact { grid-template-columns: 1fr; display:grid; }
+      .contact { display:flex; flex-direction:column; align-items:flex-start; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 1ms !important;
-        animation-iteration-count: 1 !important;
         transition-duration: 1ms !important;
         scroll-behavior: auto !important;
       }
@@ -271,195 +200,255 @@
 </head>
 <body>
   <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
-  <a href="#main" class="skip-link">Skip to content</a>
+  <a class="skip" href="#main">Skip to content</a>
 
   <header class="topbar">
     <div class="container topbar-inner">
       <a href="#top" class="brand">Rajat Arora</a>
       <nav aria-label="Primary">
         <a href="#work">Work</a>
-        <a href="#proof">Proof</a>
-        <a href="#about">About</a>
+        <a href="#presentationLab">Presentation</a>
+        <a href="#deepDive">Deep dive</a>
         <a href="#contact">Contact</a>
       </nav>
-      <div class="top-actions">
-        <button id="startDemo" class="btn btn-ghost" type="button">Live demo</button>
-        <button id="toggleRecruiterMode" class="btn" type="button">Recruiter mode</button>
+      <div class="btn-row">
+        <button id="modeBtn" class="btn" type="button">Mode: Full</button>
+        <button id="demoBtn" class="btn ghost" type="button">Live demo</button>
+        <button id="paletteBtn" class="btn" type="button">Cmd</button>
       </div>
     </div>
   </header>
 
   <main id="main" class="container">
     <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="hero-tags">
-        <span class="pill">Business Systems</span><span class="pill">RevOps</span><span class="pill">Automation</span><span class="pill">HubSpot</span><span class="pill">Toronto, Canada</span>
+      <p class="eyebrow">RevOps · GTM Systems · Business Systems</p>
+      <h1 id="hero-title">I turn operational chaos into systems teams actually trust.</h1>
+      <p class="hero-copy muted">I architect HubSpot-centered operating systems with clean lifecycle design, governance, and automation—so handoffs are clear, dashboards are reliable, and growth doesn't create process debt.</p>
+      <div class="chip-row" aria-label="Tags">
+        <span class="chip">HubSpot</span><span class="chip">Automation</span><span class="chip">Lifecycle Design</span><span class="chip">Reporting Trust</span><span class="chip">Toronto</span>
+      </div>
+      <div class="btn-row" style="margin-top: .95rem; justify-content:flex-start;">
+        <a class="btn primary" href="#work">View case studies →</a>
+        <button id="copyPitch" class="btn ghost" type="button">Copy 30s pitch</button>
+        <button id="copyStory" class="btn ghost" type="button">Copy 2-min story</button>
+        <button id="shareLink" class="btn" type="button">Copy recruiter snapshot</button>
       </div>
 
       <div class="hero-grid">
         <div>
-          <h1 id="hero-title">Business Systems & Automation Architect</h1>
-          <p class="hero-copy muted">I build scalable operating foundations across HubSpot and connected tools — clean data, clear lifecycle workflows, and automation that sticks — so teams execute faster and leadership can trust reporting.</p>
-
-          <div class="hero-actions">
-            <a href="#work" class="btn btn-primary">View case studies →</a>
-            <a href="#contact" class="btn">Contact</a>
-            <a href="mailto:arorarajat12@gmail.com" class="btn">Email</a>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" class="btn">LinkedIn</a>
-          </div>
-
           <div class="stats">
-            <div class="glass stat"><p class="muted-2">Automation built</p><strong>600+ workflows</strong></div>
-            <div class="glass stat"><p class="muted-2">Systems</p><strong>HubSpot + GTM stack</strong></div>
-            <div class="glass stat"><p class="muted-2">Focus</p><strong>SSOT + scale</strong></div>
+            <div class="glass stat"><p class="muted">Automations built</p><strong>600+</strong></div>
+            <div class="glass stat"><p class="muted">Core stack</p><strong>HubSpot + GTM tooling</strong></div>
+            <div class="glass stat"><p class="muted">Primary outcome</p><strong>Speed with governance</strong></div>
           </div>
-
-          <div class="quick-pack">
-            <div><strong>Recruiter quick-pack:</strong> Open to RevOps / Business Systems / GTM Systems roles.</div>
-            <div>Best-fit teams: B2B SaaS, services, and scaling ops environments.</div>
-            <div>Call-ready summary: “I bring systems clarity to cross-functional execution.”</div>
+          <div class="glass card" style="margin-top:.75rem;">
+            <p class="muted"><strong>Recruiter quick-pack:</strong> Best fit for RevOps, GTM Systems, and Business Systems roles where cross-functional process design and execution quality both matter.</p>
           </div>
-
-          <div class="toolkit" aria-label="Recruiter toolkit">
-            <button class="btn btn-ghost" id="copyPitch" type="button">Copy 30s pitch</button>
-            <button class="btn btn-ghost" id="copyStory" type="button">Copy 2-min story</button>
-            <button class="btn btn-ghost" id="downloadBrief" type="button">Download hiring brief</button>
-            <button class="btn btn-ghost" id="shareSnapshot" type="button">Copy recruiter link</button>
-          </div>
-          <p class="hotkeys">Hotkeys: <strong>R</strong> recruiter mode · <strong>D</strong> live demo · <strong>?</strong> command help</p>
         </div>
-
-        <aside class="hero-side">
-          <div class="glass side-card">
-            <p class="muted">Signature outcomes</p>
-            <ul class="side-list">
-              <li><p><strong>Operational efficiency</strong></p><p class="muted">Remove manual work. Reduce errors. Speed up execution.</p></li>
-              <li><p><strong>Data foundations</strong></p><p class="muted">Governance + structure so reporting doesn’t drift.</p></li>
-              <li><p><strong>Lifecycle clarity</strong></p><p class="muted">Clear stages, ownership, and handoffs across teams.</p></li>
-            </ul>
-            <div style="margin-top:1rem; border-top:1px solid var(--line); padding-top:1rem;">
-              <p class="muted">Operating style</p>
-              <div class="chip-row" style="margin-top:.55rem;"><span class="pill">System-first</span><span class="pill">Governance</span><span class="pill">Measure impact</span><span class="pill">Ship fast</span><span class="pill">Reduce chaos</span></div>
-            </div>
-          </div>
+        <aside class="glass card secondary">
+          <h3>Operator profile</h3>
+          <ul class="bullet">
+            <li>System-first: design foundations before automation scale.</li>
+            <li>Governance-aware: reduce drift and regression as teams grow.</li>
+            <li>Adoption-focused: architecture that operators actually use.</li>
+            <li>Outcome-driven: map workflows to business KPIs.</li>
+          </ul>
         </aside>
       </div>
     </section>
 
     <section id="work" class="section" aria-labelledby="work-title">
       <p class="eyebrow">Selected work</p>
-      <h2 id="work-title" style="margin-top:.45rem;">Case studies</h2>
-      <p class="section-sub muted">Built to show outcomes and thinking. Detailed walkthroughs (screenshots/diagrams) available privately depending on NDA constraints.</p>
-      <div class="cards-2">
-        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Governance</span><span class="pill">Reporting</span></div><h3>HubSpot as Single Source of Truth</h3><p class="muted" style="margin-top:.45rem;">Standardized lifecycle stages, ownership, and data integrity across teams.</p><ul class="bullet-list"><li>Unified stakeholder data model across departments</li><li>Reduced duplicated records and reporting drift</li><li>Implemented governance + automation to prevent regression</li><li>Enabled leadership-ready dashboards teams trust</li></ul></article>
-        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">QuickBooks</span><span class="pill">Zapier/Make</span></div><h3>Finance Ops Automation (Invoicing)</h3><p class="muted" style="margin-top:.45rem;">Reduced manual processing and improved accuracy from request → invoice.</p><ul class="bullet-list"><li>Automated intake → validation → invoicing workflow</li><li>Eliminated repetitive reconciliation steps</li><li>Created consistent audit trail and exception handling</li><li>Improved cycle time from request to invoice</li></ul></article>
-        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Automation</span><span class="pill">Slack</span></div><h3>Contractor Onboarding Pipeline</h3><p class="muted" style="margin-top:.45rem;">Built a consistent onboarding workflow with clear handoffs and reminders.</p><ul class="bullet-list"><li>Designed stages + ownership across stakeholders</li><li>Automated reminders, tasks, and approvals</li><li>Reduced back-and-forth via structured intake</li><li>Improved time-to-ready for new contractors</li></ul></article>
-        <article class="glass case"><div class="chip-row"><span class="pill">Web</span><span class="pill">AI Chatbot</span><span class="pill">HubSpot</span></div><h3>Website AI Chatbot Implementation</h3><p class="muted" style="margin-top:.45rem;">Deployed guided experiences with routing, lead capture, and deflection.</p><ul class="bullet-list"><li>Implemented routing logic for FAQ vs sales vs support</li><li>Captured structured data into CRM properties</li><li>Reduced inbound load via deflection</li><li>Improved response speed and conversion paths</li></ul></article>
+      <h2 id="work-title" style="margin-top:.45rem;">Proof through outcomes</h2>
+      <p class="section-sub muted">Every project below is designed as reusable operating infrastructure, not one-off fixes.</p>
+
+      <div class="cards">
+        <article class="glass card case" data-case="ssot">
+          <div class="case-meta"><span class="pill">HubSpot</span><span class="pill">Governance</span><span class="pill">Reporting</span></div>
+          <h3>HubSpot single source of truth</h3>
+          <ul class="bullet">
+            <li>Unified lifecycle model across stakeholders and teams.</li>
+            <li>Reduced duplicate records and reporting drift.</li>
+            <li>Introduced controls preventing process regression.</li>
+          </ul>
+          <div class="btn-row" style="justify-content:flex-start; margin-top:.7rem;"><button class="btn case-open" type="button">Open walkthrough</button></div>
+        </article>
+
+        <article class="glass card case" data-case="finance">
+          <div class="case-meta"><span class="pill">QuickBooks</span><span class="pill">Zapier/Make</span><span class="pill">Finance Ops</span></div>
+          <h3>Automation for invoicing ops</h3>
+          <ul class="bullet">
+            <li>Automated intake → validation → invoice creation flow.</li>
+            <li>Cut manual reconciliation and repetitive interventions.</li>
+            <li>Added audit trail for exceptions and approvals.</li>
+          </ul>
+          <div class="btn-row" style="justify-content:flex-start; margin-top:.7rem;"><button class="btn case-open" type="button">Open walkthrough</button></div>
+        </article>
+
+        <article class="glass card case" data-case="onboarding">
+          <div class="case-meta"><span class="pill">HubSpot</span><span class="pill">Onboarding</span><span class="pill">Slack</span></div>
+          <h3>Contractor onboarding pipeline</h3>
+          <ul class="bullet">
+            <li>Defined stages + owners across cross-functional handoffs.</li>
+            <li>Automated reminders, checklists, and approvals.</li>
+            <li>Improved time-to-ready and reduced ambiguity.</li>
+          </ul>
+          <div class="btn-row" style="justify-content:flex-start; margin-top:.7rem;"><button class="btn case-open" type="button">Open walkthrough</button></div>
+        </article>
+
+        <article class="glass card case" data-case="chatbot">
+          <div class="case-meta"><span class="pill">Website</span><span class="pill">AI Chatbot</span><span class="pill">CRM Sync</span></div>
+          <h3>AI chatbot implementation</h3>
+          <ul class="bullet">
+            <li>Built routing between support, FAQ, and sales intent.</li>
+            <li>Captured structured lead context to CRM fields.</li>
+            <li>Reduced inbound noise while improving response speed.</li>
+          </ul>
+          <div class="btn-row" style="justify-content:flex-start; margin-top:.7rem;"><button class="btn case-open" type="button">Open walkthrough</button></div>
+        </article>
       </div>
 
-      <div class="scoreboard" aria-label="Impact scoreboard">
-        <div class="score"><strong>40%</strong><span class="muted">Less manual ops in high-friction processes</span></div>
-        <div class="score"><strong>2x</strong><span class="muted">Faster lifecycle handoff visibility</span></div>
-        <div class="score"><strong>30%+</strong><span class="muted">Cleaner reporting reliability baseline</span></div>
-        <div class="score"><strong>High</strong><span class="muted">Team adoption with low retraining overhead</span></div>
+      <div class="impact-grid" aria-label="Impact scoreboard">
+        <div class="impact"><span class="muted">Manual work reduction</span><strong>40%</strong></div>
+        <div class="impact"><span class="muted">Handoff visibility</span><strong>2× faster</strong></div>
+        <div class="impact"><span class="muted">Reporting trust baseline</span><strong>30%+</strong></div>
+        <div class="impact"><span class="muted">Adoption quality</span><strong>High</strong></div>
       </div>
     </section>
 
     <section id="presentationLab" class="section" aria-labelledby="presentation-title">
       <p class="eyebrow">Presentation lab</p>
-      <h2 id="presentation-title" style="margin-top:.45rem;">One-click recruiter presentation flow</h2>
-      <div class="presentation-lab">
-        <h3>What’s new in this magic pass</h3>
-        <div class="presentation-grid">
-          <article>
-            <strong>Guided demo mode</strong>
-            <p>Automatically walks through your strongest sections in the right pitch order.</p>
+      <h2 id="presentation-title" style="margin-top:.45rem;">Turn this portfolio into a live call command center</h2>
+      <div class="glass presentation-lab">
+        <p class="muted">New magic layer: this page can run in three story modes (Full, Recruiter, Interview), jump to key moments, and generate a recruiter snapshot link instantly.</p>
+        <div class="flow">
+          <article><strong>1. Positioning</strong><p class="muted">Lead with role fit + operating thesis.</p></article>
+          <article><strong>2. Evidence</strong><p class="muted">Open outcomes and case walkthroughs fast.</p></article>
+          <article><strong>3. Value model</strong><p class="muted">Use ROI estimator to anchor business impact.</p></article>
+          <article><strong>4. Conversion</strong><p class="muted">End on contact CTA and snapshot link.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="deepDive" class="section longform" aria-labelledby="deep-title">
+      <p class="eyebrow">Deep dive tools</p>
+      <h2 id="deep-title" style="margin-top:.45rem;">Interactive value estimator + role-fit lens</h2>
+      <div class="glass tools">
+        <div class="tool-grid">
+          <article class="tool-box">
+            <h3>ROI estimator (conversation aid)</h3>
+            <p class="muted" style="margin-top:.45rem;">Adjust assumptions to estimate annualized value from process automation and reporting trust improvements.</p>
+            <div class="range-wrap">
+              <label>Hours saved per week <span id="hoursVal">12</span>
+                <input id="hours" type="range" min="2" max="40" step="1" value="12" />
+              </label>
+              <label>Loaded hourly rate (USD) <span id="rateVal">70</span>
+                <input id="rate" type="range" min="25" max="250" step="5" value="70" />
+              </label>
+              <label>Error/rework reduction value per year (USD) <span id="reworkVal">18000</span>
+                <input id="rework" type="range" min="0" max="120000" step="1000" value="18000" />
+              </label>
+            </div>
+            <div class="calc-result">
+              <strong id="roiTotal">$61,680</strong>
+              <p class="muted" id="roiBreakdown">Annual estimate = labor savings + avoided rework cost.</p>
+            </div>
           </article>
-          <article>
-            <strong>Shareable recruiter URL</strong>
-            <p>Generates a link that opens directly in recruiter mode and jumps to case studies.</p>
-          </article>
-          <article>
-            <strong>Keyboard-driven control</strong>
-            <p>Run the whole flow without touching the mouse during calls.</p>
-          </article>
-          <article>
-            <strong>Command overlay</strong>
-            <p>Built-in operator panel so you never forget keys in live conversations.</p>
+
+          <article class="tool-box">
+            <h3>Role fit signal board</h3>
+            <p class="muted" style="margin-top:.45rem;">Quick way to map profile strengths to hiring criteria.</p>
+            <div class="kpi">
+              <div><span class="muted">Systems architecture</span><strong>Strong</strong></div>
+              <div><span class="muted">Cross-functional ops</span><strong>Strong</strong></div>
+              <div><span class="muted">Automation depth</span><strong>Strong</strong></div>
+              <div><span class="muted">Governance mindset</span><strong>Strong</strong></div>
+              <div><span class="muted">Operator UX</span><strong>High</strong></div>
+              <div><span class="muted">Exec communication</span><strong>High</strong></div>
+            </div>
+            <div class="btn-row" style="justify-content:flex-start; margin-top:.7rem;">
+              <button id="downloadBrief" class="btn" type="button">Download hiring brief</button>
+              <button id="printMode" class="btn" type="button">Print one-pager</button>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="proof" class="section optional" aria-labelledby="proof-title">
-      <p class="eyebrow">Proof</p>
-      <h2 id="proof-title" style="margin-top:.45rem;">Tools & credibility</h2>
-      <div class="cards-2">
-        <article class="glass case"><h3>Tool stack</h3><p class="muted" style="margin-top:.55rem;">HubSpot • Zapier • Make • Slack • Apollo • Typeform • Stripe • QuickBooks • Box • Asana/ClickUp • AI chatbots • APIs</p></article>
-        <article class="glass case"><h3>What I’m known for</h3><ul class="bullet-list"><li>Turning messy ops into clean, governed architecture</li><li>Automation that doesn’t break when teams scale</li><li>Clear lifecycle stages, ownership, and handoffs</li><li>Translating ambiguity into decisions + execution</li></ul></article>
+    <section id="proof" class="section longform" aria-labelledby="proof-title">
+      <p class="eyebrow">How I work</p>
+      <h2 id="proof-title" style="margin-top:.45rem;">Operating principles that scale</h2>
+      <div class="cards">
+        <article class="glass card"><h3>Design for maintainability</h3><p class="muted" style="margin-top:.45rem;">Prefer clear models and ownership maps before layering automation. Sustainable systems beat clever scripts.</p></article>
+        <article class="glass card"><h3>Guardrails over heroics</h3><p class="muted" style="margin-top:.45rem;">The goal is a system that keeps working without a constant “power user” firefighting in the middle.</p></article>
       </div>
     </section>
 
-    <section id="about" class="section optional" aria-labelledby="about-title">
+    <section id="about" class="section longform" aria-labelledby="about-title">
       <p class="eyebrow">About</p>
-      <h2 id="about-title" style="margin-top:.45rem;">How I work</h2>
-      <div class="cards-2" style="grid-template-columns:minmax(0,2fr) minmax(0,1fr);">
-        <article class="glass case"><h3>Short version</h3><p class="muted" style="margin-top:.55rem;">I work at the intersection of GTM operations, business systems, and automation. My focus is building clean operating foundations: reliable data, clear workflows, governance that holds, and connected tools that reduce manual work.</p><p class="muted" style="margin-top:.7rem;">I’m strongest when the problem is ambiguous, cross-functional, and high impact — where structure and execution have to land at the same time.</p></article>
-        <article class="glass case"><h3>What I value</h3><ul class="bullet-list"><li>Clarity over complexity</li><li>Governance over heroics</li><li>Systems that outlive people</li><li>Simple UX for operators</li></ul></article>
-      </div>
-
-      <div id="faqRecruiter" class="faq" aria-label="Frequently asked recruiter questions">
-        <details><summary>How do you usually start with a new team?</summary><p>I start with lifecycle mapping + ownership clarity, then layer governance, then automate high-friction flows tied to KPI outcomes.</p></details>
-        <details><summary>What’s your strongest differentiator?</summary><p>I combine systems architecture depth with operator-first UX, so what gets built is both durable and adopted quickly.</p></details>
+      <h2 id="about-title" style="margin-top:.45rem;">Best-fit environments</h2>
+      <div class="glass card">
+        <p class="muted">Most valuable where GTM complexity is rising quickly: scaling SaaS, service businesses with fragmented operations, and teams migrating from ad-hoc processes to consistent lifecycle systems.</p>
       </div>
     </section>
 
     <section id="contact" class="section" aria-labelledby="contact-title">
       <p class="eyebrow">Contact</p>
-      <h2 id="contact-title" style="margin-top:.45rem;">Let’s build something durable</h2>
-      <div class="glass contact-card">
+      <h2 id="contact-title" style="margin-top:.45rem;">Let’s build durable operations</h2>
+      <div class="glass contact">
         <div>
-          <p class="muted">If you’re hiring for RevOps / GTM Systems / Business Systems, or need an operator who can architect and ship, I’m open to conversations.</p>
-          <p class="muted-2" style="margin-top:.45rem;">Email: <a href="mailto:arorarajat12@gmail.com" style="color:#fff;">arorarajat12@gmail.com</a></p>
-          <div class="chip-row" style="margin-top:.55rem;"><span class="pill ok-pill">Open to full-time roles</span><span class="pill ok-pill">Open to contract projects</span></div>
+          <p class="muted">Open to full-time and contract opportunities in RevOps, GTM Systems, and Business Systems.</p>
+          <p class="muted" style="margin-top:.45rem;">Email: <a href="mailto:arorarajat12@gmail.com" style="color:#fff;">arorarajat12@gmail.com</a></p>
         </div>
-        <div class="actions"><a class="btn btn-primary" href="mailto:arorarajat12@gmail.com">Email →</a><a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn →</a><a class="btn" href="#" onclick="alert('Add your resume link here (PDF).'); return false;">Resume (PDF) →</a></div>
+        <div class="btn-row" style="justify-content:flex-start;">
+          <a class="btn primary" href="mailto:arorarajat12@gmail.com">Email →</a>
+          <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn →</a>
+        </div>
       </div>
     </section>
 
-    <footer>© <span id="year"></span> Rajat Arora. Built to showcase outcomes, not noise.</footer>
+    <footer class="footer">© <span id="year"></span> Rajat Arora — Built for clarity, speed, and recruiter scanability.</footer>
   </main>
 
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
-
-  <div id="helpOverlay" class="overlay" aria-hidden="true">
+  <div class="overlay" id="helpOverlay" aria-hidden="true">
     <div class="overlay-card">
-      <h3>Command Help</h3>
+      <h3>Command help</h3>
       <ul>
-        <li><strong>R</strong> → Toggle recruiter mode</li>
-        <li><strong>D</strong> → Start live demo walkthrough</li>
-        <li><strong>?</strong> → Open/close this help panel</li>
-        <li><strong>Esc</strong> → Close help panel</li>
-        <li><strong>Copy recruiter link</strong> → Shares URL that auto-enables recruiter mode</li>
+        <li><strong>R</strong> toggle recruiter mode</li>
+        <li><strong>I</strong> toggle interview mode</li>
+        <li><strong>D</strong> run live demo walkthrough</li>
+        <li><strong>⌘/Ctrl + K</strong> open command palette</li>
+        <li><strong>?</strong> open/close help</li>
+        <li><strong>Esc</strong> close overlays</li>
       </ul>
-      <button id="closeHelp" class="btn" type="button" style="margin-top:.7rem;">Close help</button>
+      <button class="btn" type="button" id="closeHelp" style="margin-top:.7rem;">Close</button>
     </div>
   </div>
 
+  <div class="overlay" id="caseOverlay" aria-hidden="true">
+    <div class="overlay-card">
+      <h3 id="caseTitle">Case walkthrough</h3>
+      <p id="caseBody" class="muted" style="margin-top:.6rem;"></p>
+      <button class="btn" type="button" id="closeCase" style="margin-top:.75rem;">Close</button>
+    </div>
+  </div>
+
+  <div class="palette" id="palette" aria-hidden="true">
+    <div class="palette-box">
+      <input id="paletteInput" type="text" placeholder="Type a command… (e.g., recruiter mode, start demo, go to contact)" autocomplete="off" />
+      <div id="paletteList" class="palette-list"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
   <script>
-    const yearEl = document.getElementById('year');
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
+    const $ = (s, root = document) => root.querySelector(s);
+    const $$ = (s, root = document) => Array.from(root.querySelectorAll(s));
 
-    const progressBar = document.getElementById('progressBar');
-    const updateProgress = () => {
-      const scrollTop = window.scrollY;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const width = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
-      progressBar.style.width = width + '%';
-    };
-    window.addEventListener('scroll', updateProgress, { passive: true });
-    updateProgress();
+    $('#year').textContent = new Date().getFullYear();
 
-    const toast = document.getElementById('toast');
+    const toast = $('#toast');
     let toastTimer;
     const showToast = (message) => {
       toast.textContent = message;
@@ -468,18 +457,32 @@
       toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
     };
 
-    const pitch = "Hi, I'm Rajat. I design RevOps and business systems that turn messy operations into reliable execution—clean data, clear lifecycle handoffs, and automation that scales.";
-    const story = "One example: I rebuilt a HubSpot lifecycle + governance model as a single source of truth. That reduced reporting drift, improved handoff clarity, and gave leadership dashboards they could trust weekly.";
+    const progressBar = $('#progressBar');
+    const updateProgress = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      progressBar.style.width = pct + '%';
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    const pitch = "Hi, I'm Rajat. I architect RevOps and business systems that turn fragmented operations into reliable execution with clean data, clear lifecycle handoffs, and automation that scales.";
+    const story = "A representative project: I redesigned a HubSpot lifecycle and governance framework as a single source of truth. This reduced reporting drift, clarified ownership across teams, and produced dashboards leadership could trust every week.";
 
     const copyText = async (text, label) => {
-      await navigator.clipboard.writeText(text);
-      showToast(label + ' copied');
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast(label + ' copied');
+      } catch {
+        showToast('Clipboard unavailable in this browser context');
+      }
     };
 
-    document.getElementById('copyPitch').addEventListener('click', () => copyText(pitch, '30s pitch'));
-    document.getElementById('copyStory').addEventListener('click', () => copyText(story, '2-min story'));
-    document.getElementById('downloadBrief').addEventListener('click', () => {
-      const brief = `Rajat Arora — Hiring Brief\n\nRole fit: RevOps / GTM Systems / Business Systems\n\nCore outcomes:\n- Clean lifecycle architecture\n- Reliable reporting trust\n- Durable automation at scale\n\nContact: arorarajat12@gmail.com`;
+    $('#copyPitch').addEventListener('click', () => copyText(pitch, '30s pitch'));
+    $('#copyStory').addEventListener('click', () => copyText(story, '2-min story'));
+
+    $('#downloadBrief').addEventListener('click', () => {
+      const brief = `Rajat Arora — Hiring Brief\n\nRole fit: RevOps / GTM Systems / Business Systems\n\nWhy hire:\n- Builds scalable operating models\n- Restores reporting trust\n- Ships durable automation with governance\n\nContact: arorarajat12@gmail.com`;
       const blob = new Blob([brief], { type: 'text/plain' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
@@ -491,100 +494,219 @@
       showToast('Hiring brief downloaded');
     });
 
-    const toggleBtn = document.getElementById('toggleRecruiterMode');
-    const demoBtn = document.getElementById('startDemo');
-    const shareBtn = document.getElementById('shareSnapshot');
-    const helpOverlay = document.getElementById('helpOverlay');
-    const closeHelpBtn = document.getElementById('closeHelp');
+    $('#printMode').addEventListener('click', () => window.print());
 
-    let recruiterMode = false;
-    let activeSpotlight = null;
-    let demoRunning = false;
+    const modes = ['full', 'recruiter', 'interview'];
+    let modeIndex = 0;
 
-    const setSpotlight = (el) => {
-      if (activeSpotlight) activeSpotlight.classList.remove('spotlight');
-      activeSpotlight = el;
-      if (activeSpotlight) activeSpotlight.classList.add('spotlight');
+    const setMode = (mode, quiet = false) => {
+      document.body.classList.remove('mode-recruiter', 'mode-interview', 'mode-deep');
+      if (mode === 'recruiter') document.body.classList.add('mode-recruiter');
+      if (mode === 'interview') document.body.classList.add('mode-interview');
+      $('#modeBtn').textContent = `Mode: ${mode.charAt(0).toUpperCase() + mode.slice(1)}`;
+      modeIndex = modes.indexOf(mode);
+      if (!quiet) showToast(`${mode.charAt(0).toUpperCase() + mode.slice(1)} mode on`);
     };
 
-    const setRecruiterMode = (enabled, quiet = false) => {
-      recruiterMode = enabled;
-      document.body.classList.toggle('recruiter-mode', recruiterMode);
-      toggleBtn.textContent = recruiterMode ? 'Full mode' : 'Recruiter mode';
-      if (!quiet) showToast(recruiterMode ? 'Recruiter mode on' : 'Full mode on');
-      if (!recruiterMode) setSpotlight(null);
+    $('#modeBtn').addEventListener('click', () => {
+      const next = modes[(modeIndex + 1) % modes.length];
+      setMode(next);
+    });
+
+    let spotlightEl = null;
+    const spotlight = (el) => {
+      if (spotlightEl) spotlightEl.classList.remove('spotlight');
+      spotlightEl = el;
+      if (spotlightEl) spotlightEl.classList.add('spotlight');
     };
 
-    const runLiveDemo = async () => {
-      if (demoRunning) return;
-      demoRunning = true;
-      if (!recruiterMode) setRecruiterMode(true, true);
-      showToast('Live recruiter demo started');
-
+    let runningDemo = false;
+    const runDemo = async () => {
+      if (runningDemo) return;
+      runningDemo = true;
+      if (!document.body.classList.contains('mode-recruiter')) setMode('recruiter', true);
       const steps = [
-        { selector: '#hero-title', msg: 'Step 1: Positioning headline' },
-        { selector: '.quick-pack', msg: 'Step 2: Recruiter quick-pack' },
-        { selector: '#work', msg: 'Step 3: Case studies' },
-        { selector: '.scoreboard', msg: 'Step 4: Impact scoreboard' },
-        { selector: '#contact', msg: 'Step 5: Conversion CTA' }
+        ['#hero-title', 'Step 1: positioning headline'],
+        ['#work', 'Step 2: outcomes section'],
+        ['#presentationLab', 'Step 3: presentation flow'],
+        ['#deepDive', 'Step 4: ROI conversation aid'],
+        ['#contact', 'Step 5: conversion CTA']
       ];
-
-      for (const step of steps) {
-        const el = document.querySelector(step.selector);
+      for (const [selector, label] of steps) {
+        const el = $(selector);
         if (!el) continue;
-        setSpotlight(el);
+        spotlight(el);
         el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        showToast(step.msg);
-        await new Promise((resolve) => setTimeout(resolve, 1200));
+        showToast(label);
+        await new Promise(r => setTimeout(r, 1200));
       }
-
+      spotlight(null);
       showToast('Demo complete');
-      setSpotlight(null);
-      demoRunning = false;
+      runningDemo = false;
     };
 
-    const toggleHelp = () => {
-      const open = helpOverlay.classList.toggle('show');
-      helpOverlay.setAttribute('aria-hidden', open ? 'false' : 'true');
-    };
+    $('#demoBtn').addEventListener('click', runDemo);
 
-    const copyRecruiterLink = async () => {
+    $('#shareLink').addEventListener('click', async () => {
       const url = new URL(window.location.href);
       url.searchParams.set('mode', 'recruiter');
       url.searchParams.set('focus', 'work');
-      await navigator.clipboard.writeText(url.toString());
-      showToast('Recruiter link copied');
+      await copyText(url.toString(), 'Recruiter snapshot URL');
+    });
+
+    const helpOverlay = $('#helpOverlay');
+    const caseOverlay = $('#caseOverlay');
+    const palette = $('#palette');
+
+    const toggleOverlay = (el, force) => {
+      const open = typeof force === 'boolean' ? force : !el.classList.contains('show');
+      el.classList.toggle('show', open);
+      el.setAttribute('aria-hidden', open ? 'false' : 'true');
+      return open;
     };
 
-    toggleBtn.addEventListener('click', () => setRecruiterMode(!recruiterMode));
-    demoBtn.addEventListener('click', runLiveDemo);
-    shareBtn.addEventListener('click', copyRecruiterLink);
-    closeHelpBtn.addEventListener('click', toggleHelp);
-    helpOverlay.addEventListener('click', (event) => {
-      if (event.target === helpOverlay) toggleHelp();
+    $('#closeHelp').addEventListener('click', () => toggleOverlay(helpOverlay, false));
+    $('#closeCase').addEventListener('click', () => toggleOverlay(caseOverlay, false));
+    helpOverlay.addEventListener('click', (e) => e.target === helpOverlay && toggleOverlay(helpOverlay, false));
+    caseOverlay.addEventListener('click', (e) => e.target === caseOverlay && toggleOverlay(caseOverlay, false));
+
+    const caseContent = {
+      ssot: 'Situation: fragmented lifecycle definitions across teams. Action: redesigned stage architecture, ownership rules, and validation checks. Result: less reporting drift and stronger weekly dashboard confidence.',
+      finance: 'Situation: invoicing relied on manual, error-prone handoffs. Action: automated request intake, validation logic, and invoice triggers with exception paths. Result: faster cycle times and cleaner auditability.',
+      onboarding: 'Situation: contractor onboarding lacked clear ownership and timing. Action: built a stage-gated pipeline with reminders and approvals. Result: fewer delays and consistent time-to-ready.',
+      chatbot: 'Situation: inbound requests were unstructured and slow to route. Action: implemented intent-aware chatbot flows with CRM field mapping. Result: better lead quality capture and reduced support noise.'
+    };
+
+    $$('.case-open').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.case');
+        const key = card?.dataset.case;
+        if (!key || !caseContent[key]) return;
+        $('#caseTitle').textContent = card.querySelector('h3')?.textContent || 'Case walkthrough';
+        $('#caseBody').textContent = caseContent[key];
+        toggleOverlay(caseOverlay, true);
+      });
     });
 
-    window.addEventListener('keydown', (event) => {
-      const key = event.key.toLowerCase();
-      if (key === 'r') setRecruiterMode(!recruiterMode);
-      if (key === 'd') runLiveDemo();
-      if (key === '?') toggleHelp();
-      if (key === 'escape' && helpOverlay.classList.contains('show')) toggleHelp();
-    });
+    const updateROI = () => {
+      const hours = Number($('#hours').value);
+      const rate = Number($('#rate').value);
+      const rework = Number($('#rework').value);
+      $('#hoursVal').textContent = hours;
+      $('#rateVal').textContent = rate;
+      $('#reworkVal').textContent = rework;
+      const labor = hours * rate * 52;
+      const total = labor + rework;
+      $('#roiTotal').textContent = '$' + total.toLocaleString();
+      $('#roiBreakdown').textContent = `Annual estimate = ${hours}h/week × $${rate}/h × 52 + $${rework.toLocaleString()} rework avoidance.`;
+    };
+    ['hours', 'rate', 'rework'].forEach((id) => $('#' + id).addEventListener('input', updateROI));
+    updateROI();
 
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('mode') === 'recruiter') {
-      setRecruiterMode(true, true);
-      const focus = params.get('focus');
-      const target = focus ? document.getElementById(focus) : null;
-      if (target) {
-        setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
+    const commands = [
+      { title: 'Switch to recruiter mode', hint: 'Focuses recruiter-friendly flow', run: () => setMode('recruiter') },
+      { title: 'Switch to interview mode', hint: 'Keeps deep-dive tools visible', run: () => setMode('interview') },
+      { title: 'Switch to full mode', hint: 'Shows all sections', run: () => setMode('full') },
+      { title: 'Start live demo', hint: 'Runs guided walkthrough', run: runDemo },
+      { title: 'Go to case studies', hint: 'Jump to #work', run: () => $('#work').scrollIntoView({ behavior: 'smooth', block: 'start' }) },
+      { title: 'Go to deep dive', hint: 'Jump to ROI estimator', run: () => $('#deepDive').scrollIntoView({ behavior: 'smooth', block: 'start' }) },
+      { title: 'Go to contact', hint: 'Jump to CTA', run: () => $('#contact').scrollIntoView({ behavior: 'smooth', block: 'start' }) },
+      { title: 'Copy recruiter snapshot link', hint: 'Copies URL with recruiter params', run: () => $('#shareLink').click() },
+      { title: 'Open help', hint: 'Keyboard and controls', run: () => toggleOverlay(helpOverlay, true) }
+    ];
+
+    const paletteInput = $('#paletteInput');
+    const paletteList = $('#paletteList');
+    let activeCommandIndex = 0;
+
+    const renderCommands = (query = '') => {
+      const q = query.trim().toLowerCase();
+      const filtered = commands.filter(c => c.title.toLowerCase().includes(q) || c.hint.toLowerCase().includes(q));
+      activeCommandIndex = 0;
+      paletteList.innerHTML = '';
+      filtered.forEach((cmd, i) => {
+        const button = document.createElement('button');
+        button.className = 'palette-item' + (i === 0 ? ' active' : '');
+        button.type = 'button';
+        button.innerHTML = `${cmd.title}<small>${cmd.hint}</small>`;
+        button.addEventListener('click', () => {
+          cmd.run();
+          toggleOverlay(palette, false);
+          showToast('Command executed');
+        });
+        paletteList.appendChild(button);
+      });
+      if (!filtered.length) {
+        const empty = document.createElement('div');
+        empty.className = 'palette-item';
+        empty.textContent = 'No matching commands';
+        paletteList.appendChild(empty);
       }
-      showToast('Recruiter mode loaded from shared link');
+      return filtered;
+    };
+
+    let filteredCommands = renderCommands('');
+
+    const openPalette = () => {
+      toggleOverlay(palette, true);
+      paletteInput.value = '';
+      filteredCommands = renderCommands('');
+      setTimeout(() => paletteInput.focus(), 10);
+    };
+
+    $('#paletteBtn').addEventListener('click', openPalette);
+    palette.addEventListener('click', (e) => e.target === palette && toggleOverlay(palette, false));
+    paletteInput.addEventListener('input', () => { filteredCommands = renderCommands(paletteInput.value); });
+
+    paletteInput.addEventListener('keydown', (e) => {
+      const items = $$('.palette-item', paletteList).filter(node => node.tagName === 'BUTTON');
+      if (!items.length) return;
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        activeCommandIndex = (activeCommandIndex + 1) % items.length;
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        activeCommandIndex = (activeCommandIndex - 1 + items.length) % items.length;
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        filteredCommands[activeCommandIndex]?.run();
+        toggleOverlay(palette, false);
+        showToast('Command executed');
+      } else {
+        return;
+      }
+      items.forEach((item, i) => item.classList.toggle('active', i === activeCommandIndex));
+      items[activeCommandIndex].scrollIntoView({ block: 'nearest' });
+    });
+
+    window.addEventListener('keydown', (e) => {
+      const key = e.key.toLowerCase();
+      if ((e.ctrlKey || e.metaKey) && key === 'k') {
+        e.preventDefault();
+        openPalette();
+        return;
+      }
+      if (key === '?' && !e.ctrlKey && !e.metaKey) toggleOverlay(helpOverlay);
+      if (key === 'r') setMode('recruiter');
+      if (key === 'i') setMode('interview');
+      if (key === 'd') runDemo();
+      if (key === 'escape') {
+        toggleOverlay(helpOverlay, false);
+        toggleOverlay(caseOverlay, false);
+        toggleOverlay(palette, false);
+        spotlight(null);
+      }
+    });
+
+    const params = new URLSearchParams(location.search);
+    const mode = params.get('mode');
+    if (mode && ['recruiter', 'interview', 'full'].includes(mode)) setMode(mode, true);
+    const focus = params.get('focus');
+    if (focus) {
+      const el = document.getElementById(focus);
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
     }
-    if (params.get('demo') === '1') {
-      setTimeout(runLiveDemo, 200);
-    }
+    if (params.get('demo') === '1') setTimeout(runDemo, 180);
   </script>
 </body>
 </html>
