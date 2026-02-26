@@ -61,6 +61,7 @@
 
     .topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);border-bottom:1px solid var(--line);background:rgba(7,7,18,.65)}
     .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0}
+    .top-actions{display:flex;gap:.45rem;flex-wrap:wrap;justify-content:flex-end}
     .brand{color:#fff;text-decoration:none;font-weight:700;letter-spacing:-.01em;white-space:nowrap}
     nav{display:flex;gap:1rem} nav a{color:rgba(255,255,255,.72);text-decoration:none;font-size:.9rem;font-weight:500} nav a:hover{color:#fff}
 
@@ -99,6 +100,8 @@
     .score{border:1px solid var(--line);border-radius:12px;padding:.7rem;background:rgba(255,255,255,.03)}
     .score strong{display:block;font-size:1.2rem}
 
+    .spotlight { box-shadow: 0 0 0 2px rgba(129,140,248,.75), 0 0 0 10px rgba(129,140,248,.1), 0 18px 50px rgba(0,0,0,.38) !important; }
+
     .faq{margin-top:1rem;display:grid;gap:.6rem}
     .faq details{border:1px solid var(--line);border-radius:12px;padding:.75rem .85rem;background:rgba(255,255,255,.03)}
     .faq summary{cursor:pointer;font-weight:700;color:#fff}
@@ -135,7 +138,10 @@
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
-      <button id="toggleRecruiterMode" class="btn">Recruiter mode</button>
+      <div class="top-actions">
+        <button id="startDemo" class="btn btn-ghost" type="button">Live demo</button>
+        <button id="toggleRecruiterMode" class="btn" type="button">Recruiter mode</button>
+      </div>
     </div>
   </header>
 
@@ -300,14 +306,62 @@
     });
 
     const toggleBtn = document.getElementById('toggleRecruiterMode');
+    const demoBtn = document.getElementById('startDemo');
     let recruiterMode = false;
+    let activeSpotlight = null;
+    let demoRunning = false;
+
+    const setSpotlight = (el) => {
+      if (activeSpotlight) activeSpotlight.classList.remove('spotlight');
+      activeSpotlight = el;
+      if (activeSpotlight) activeSpotlight.classList.add('spotlight');
+    };
+
     const setRecruiterMode = (enabled) => {
       recruiterMode = enabled;
       document.body.classList.toggle('recruiter-mode', recruiterMode);
       toggleBtn.textContent = recruiterMode ? 'Full mode' : 'Recruiter mode';
       showToast(recruiterMode ? 'Recruiter mode on' : 'Full mode on');
+      if (!recruiterMode) {
+        setSpotlight(null);
+      }
     };
+
+    const runLiveDemo = async () => {
+      if (demoRunning) return;
+      demoRunning = true;
+      if (!recruiterMode) setRecruiterMode(true);
+      showToast('Live recruiter demo started');
+
+      const steps = [
+        { selector: '#hero-title', msg: 'Step 1: Positioning headline' },
+        { selector: '.quick-pack', msg: 'Step 2: Recruiter quick-pack' },
+        { selector: '#work', msg: 'Step 3: Case studies' },
+        { selector: '.scoreboard', msg: 'Step 4: Impact scoreboard' },
+        { selector: '#contact', msg: 'Step 5: Conversion CTA' }
+      ];
+
+      for (const step of steps) {
+        const el = document.querySelector(step.selector);
+        if (!el) continue;
+        setSpotlight(el);
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        showToast(step.msg);
+        await new Promise((resolve) => setTimeout(resolve, 1200));
+      }
+
+      showToast('Demo complete');
+      setSpotlight(null);
+      demoRunning = false;
+    };
+
     toggleBtn.addEventListener('click', () => setRecruiterMode(!recruiterMode));
+    demoBtn.addEventListener('click', runLiveDemo);
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key.toLowerCase() === 'r') setRecruiterMode(!recruiterMode);
+      if (event.key.toLowerCase() === 'd') runLiveDemo();
+    });
   </script>
 </body>
 </html>
