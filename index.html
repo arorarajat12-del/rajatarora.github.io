@@ -3,284 +3,359 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rajat Arora — Press-Style Portfolio for RevOps & Systems</title>
-  <meta
-    name="description"
-    content="A modern press-entry portfolio for Rajat Arora: Business Systems, RevOps, and Automation architecture with measurable outcomes."
-  />
-  <meta name="theme-color" content="#0b1020" />
+  <title>Rajat Arora — Premium RevOps & Systems Portfolio</title>
+  <meta name="description" content="Premium portfolio for Rajat Arora — Business Systems, RevOps, and Automation Architect. Case studies, outcomes, and operator playbook." />
+  <meta name="theme-color" content="#070912" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght,SOFT@9..144,500,100&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg: #070b16;
-      --bg-soft: #10172b;
-      --text: #eef2ff;
-      --muted: #b8c2df;
-      --line: rgba(174, 194, 255, 0.24);
-      --accent: #8b5cf6;
-      --accent-2: #22d3ee;
-      --card: linear-gradient(180deg, rgba(18, 25, 49, 0.85), rgba(9, 14, 29, 0.92));
-      --shadow: 0 25px 60px rgba(2, 7, 22, 0.5);
+      --bg: #05070f;
+      --bg-2: #0b1020;
+      --surface: rgba(16, 23, 43, 0.72);
+      --surface-2: rgba(13, 18, 36, 0.9);
+      --text: #edf2ff;
+      --muted: #aab7d8;
+      --line: rgba(130, 152, 220, 0.26);
+      --brand: #7c5cff;
+      --brand-2: #33d2ff;
+      --ok: #39dca5;
+      --radius: 18px;
+      --shadow-xl: 0 35px 80px rgba(2, 6, 20, 0.55);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       color: var(--text);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at 15% -5%, rgba(139, 92, 246, 0.32), transparent 38%),
-        radial-gradient(circle at 85% 0%, rgba(34, 211, 238, 0.22), transparent 40%),
-        linear-gradient(180deg, #060914 0%, var(--bg) 60%, #05070f 100%);
+        radial-gradient(1100px 700px at 80% -5%, rgba(124, 92, 255, 0.3), transparent 60%),
+        radial-gradient(900px 600px at 10% 10%, rgba(51, 210, 255, 0.2), transparent 62%),
+        linear-gradient(180deg, #05070f 0%, #060b16 50%, #05070f 100%);
+      min-height: 100vh;
       line-height: 1.6;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      background-image: radial-gradient(#d4ddff 0.5px, transparent 0.5px);
+      background-size: 3px 3px;
+      z-index: 0;
+    }
+
+    .cursor-glow {
+      position: fixed;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(circle, rgba(124, 92, 255, 0.18), transparent 65%);
+      transform: translate(-50%, -50%);
+      filter: blur(4px);
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 2rem));
+      margin-inline: auto;
+      position: relative;
+      z-index: 2;
     }
 
     .skip-link {
       position: absolute;
-      top: -100%;
       left: 1rem;
+      top: -120%;
+      padding: 0.5rem 0.8rem;
+      border-radius: 10px;
       background: #fff;
       color: #0b1020;
-      border-radius: 0.5rem;
-      padding: 0.5rem 0.75rem;
-      font-weight: 600;
-      z-index: 100;
+      font-weight: 700;
+      z-index: 99;
     }
-
     .skip-link:focus { top: 1rem; }
 
-    .container {
-      width: min(1120px, calc(100% - 2rem));
-      margin-inline: auto;
-    }
-
-    header {
+    .topbar {
       position: sticky;
       top: 0;
-      z-index: 30;
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
-      background: rgba(7, 11, 22, 0.72);
+      background: rgba(6, 10, 20, 0.75);
+      z-index: 40;
     }
-
-    .topbar {
+    .topbar-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      padding: 1rem 0;
+      padding: 0.95rem 0;
     }
 
     .brand {
-      letter-spacing: 0.08em;
+      text-decoration: none;
+      color: var(--text);
+      font-family: Manrope, Inter, sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      font-size: 0.9rem;
       text-transform: uppercase;
-      font-weight: 700;
-      font-size: 0.84rem;
     }
 
-    nav {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
+    nav { display: flex; gap: 0.55rem; flex-wrap: wrap; }
     nav a,
     .btn {
       text-decoration: none;
       color: var(--text);
       border: 1px solid var(--line);
+      padding: 0.54rem 0.95rem;
       border-radius: 999px;
-      padding: 0.55rem 1rem;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       transition: 180ms ease;
     }
-
     nav a:hover,
     .btn:hover,
     nav a:focus-visible,
     .btn:focus-visible {
-      border-color: rgba(255, 255, 255, 0.5);
       transform: translateY(-1px);
+      border-color: rgba(255, 255, 255, 0.55);
       outline: none;
     }
 
     .btn.primary {
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      border: none;
       color: #fff;
       font-weight: 700;
-      box-shadow: 0 12px 30px rgba(34, 211, 238, 0.24);
+      border: none;
+      background: linear-gradient(95deg, var(--brand), var(--brand-2));
+      box-shadow: 0 14px 26px rgba(51, 210, 255, 0.18);
     }
 
     .hero {
+      padding: 4.2rem 0 2.6rem;
       display: grid;
-      gap: 1.5rem;
-      padding: 4.5rem 0 3rem;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 1rem;
+      align-items: stretch;
     }
 
-    .edition {
+    .hero-panel,
+    .glass,
+    .story,
+    .letter,
+    .pillars article,
+    .contact {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(18, 25, 49, 0.8), rgba(8, 13, 27, 0.88));
+      box-shadow: var(--shadow-xl);
+    }
+
+    .hero-panel {
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      right: -45px;
+      top: -55px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124, 92, 255, 0.42), transparent 70%);
+      pointer-events: none;
+    }
+
+    .kicker {
       display: inline-flex;
-      width: fit-content;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
       border: 1px solid var(--line);
       border-radius: 999px;
-      padding: 0.45rem 0.85rem;
-      color: var(--muted);
-      font-size: 0.82rem;
-      text-transform: uppercase;
+      color: #d2dcff;
+      font-size: 0.77rem;
       letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.75rem;
+      margin-bottom: 1rem;
+      background: rgba(255, 255, 255, 0.03);
     }
 
-    h1,
-    h2,
-    h3 {
-      margin: 0;
-      line-height: 1.15;
-    }
-
-    .display {
-      font-family: Fraunces, Georgia, serif;
-      font-size: clamp(2rem, 4.2vw, 4rem);
-      max-width: 15ch;
+    h1, h2, h3, h4 { margin: 0; line-height: 1.14; }
+    h1 {
+      font-family: Manrope, Inter, sans-serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      max-width: 13ch;
       text-wrap: balance;
+      letter-spacing: -0.03em;
     }
 
     .lead {
-      margin: 0;
-      max-width: 65ch;
+      margin: 1rem 0 1.35rem;
       color: var(--muted);
-      font-size: 1.08rem;
+      max-width: 60ch;
+      font-size: 1.05rem;
     }
 
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
+    .actions { display: flex; flex-wrap: wrap; gap: 0.65rem; }
 
-    .quick-stats {
+    .meta-strip {
+      margin-top: 1.3rem;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 0.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.65rem;
     }
-
-    .stat,
-    .card {
+    .meta-strip article {
+      padding: 0.9rem;
       border: 1px solid var(--line);
-      border-radius: 1rem;
-      background: var(--card);
-      box-shadow: var(--shadow);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .meta-strip strong {
+      display: block;
+      font-family: Manrope, Inter, sans-serif;
+      font-size: 1.2rem;
+    }
+    .meta-strip span { color: var(--muted); font-size: 0.86rem; }
+
+    .hero-side {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      gap: 0.9rem;
     }
 
-    .stat { padding: 1rem; }
-    .stat strong { font-size: 1.35rem; display: block; }
-    .stat span { color: var(--muted); font-size: 0.9rem; }
+    .glass { padding: 1.35rem; }
+    .glass h3 { font-size: 1.05rem; }
+    .glass ul { margin: 0.8rem 0 0; padding-left: 1.05rem; color: var(--muted); }
+    .glass li { margin-bottom: 0.52rem; }
 
-    section { padding: 2.2rem 0; }
+    .marquee {
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--surface-2);
+      margin-top: 0.8rem;
+      white-space: nowrap;
+      position: relative;
+    }
+    .marquee span {
+      display: inline-block;
+      padding: 0.72rem 0;
+      animation: scroll 19s linear infinite;
+      color: #d1ddff;
+      letter-spacing: 0.03em;
+      font-size: 0.85rem;
+    }
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
 
+    section { padding: 1.8rem 0; }
     .section-title {
-      margin-bottom: 1.2rem;
-      font-size: clamp(1.4rem, 2vw, 2rem);
-      font-family: Fraunces, Georgia, serif;
+      font-family: Manrope, Inter, sans-serif;
+      font-size: clamp(1.35rem, 2.5vw, 2rem);
+      margin-bottom: 0.95rem;
+      letter-spacing: -0.02em;
     }
+    .section-sub { color: var(--muted); margin: 0 0 1.1rem; max-width: 75ch; }
 
-    .press-grid,
-    .insight-grid {
+    .stories {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
+      gap: 0.9rem;
     }
-
-    .card { padding: 1.2rem; }
-
-    .kicker {
-      margin: 0 0 0.65rem;
-      color: #95a4d1;
+    .story {
+      padding: 1.2rem;
+      transition: transform 200ms ease, border-color 200ms ease;
+    }
+    .story:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.52); }
+    .story .tag {
+      font-size: 0.74rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-size: 0.74rem;
-      font-weight: 700;
+      color: #9fb2e8;
+      margin-bottom: 0.42rem;
+      display: block;
     }
-
-    .card p { margin: 0.5rem 0 0; color: var(--muted); }
-
-    .impact-list {
-      margin: 0.85rem 0 0;
-      padding-left: 1rem;
-      color: #dbe5ff;
-    }
-
-    .impact-list li { margin-bottom: 0.35rem; }
+    .story p { margin: 0.62rem 0 0; color: var(--muted); }
+    .story ul { margin: 0.74rem 0 0; padding-left: 1rem; color: #dbe5ff; }
 
     .letters {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
+      gap: 0.9rem;
     }
-
     .letter {
+      background: linear-gradient(180deg, #ffffff, #edf2ff);
+      color: #162347;
+      padding: 1.15rem;
       position: relative;
-      padding: 1.25rem;
-      border-radius: 1rem;
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, #fff, #eef2ff);
-      color: #18213d;
-      box-shadow: 0 18px 30px rgba(2, 7, 22, 0.25);
     }
-
     .letter::before {
       content: "✦";
       position: absolute;
-      right: 1rem;
+      right: 0.9rem;
       top: 0.85rem;
-      color: #47548a;
+      color: #5162a3;
     }
+    .letter p { margin: 0.65rem 0 0; color: #394b80; }
+    .letter small { display: inline-block; margin-top: 0.75rem; font-weight: 700; }
 
-    .letter p { margin: 0.7rem 0 0; color: #33406b; }
-
-    .letter small {
-      display: inline-flex;
-      margin-top: 0.75rem;
-      font-weight: 700;
-      color: #111827;
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.9rem;
     }
+    .pillars article {
+      padding: 1rem;
+      background: linear-gradient(180deg, rgba(16, 25, 51, 0.8), rgba(9, 14, 28, 0.9));
+    }
+    .pillars p { margin: 0.45rem 0 0; color: var(--muted); }
 
-    .cta {
+    .timeline {
+      margin-top: 0.8rem;
+      border-left: 1px solid var(--line);
+      padding-left: 1.1rem;
+    }
+    .timeline article { margin-bottom: 1rem; }
+    .timeline small { color: #9fb0e2; text-transform: uppercase; letter-spacing: 0.07em; }
+
+    .contact {
+      padding: 1.25rem;
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 1rem;
-      padding: 1.3rem;
+      margin-top: 0.8rem;
     }
 
     footer {
       border-top: 1px solid var(--line);
-      color: #a8b4d6;
-      font-size: 0.9rem;
-      padding: 1.5rem 0 2.8rem;
-      margin-top: 1rem;
+      color: #9cafdb;
+      font-size: 0.88rem;
+      padding: 1.4rem 0 2.8rem;
+      margin-top: 1.5rem;
     }
 
-    @media (max-width: 900px) {
-      .quick-stats,
+    @media (max-width: 980px) {
+      .hero,
+      .stories,
       .letters,
-      .press-grid,
-      .insight-grid {
-        grid-template-columns: 1fr;
-      }
-
+      .pillars,
+      .meta-strip { grid-template-columns: 1fr; }
+      .hero-side { grid-template-rows: auto; }
       nav { display: none; }
+      .contact { flex-direction: column; align-items: flex-start; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -294,158 +369,189 @@
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="cursor-glow" aria-hidden="true"></div>
 
-  <header>
-    <div class="container topbar">
-      <a class="brand" href="#top">Rajat Arora · Portfolio Press</a>
-      <nav aria-label="Primary">
-        <a href="#stories">Case Stories</a>
-        <a href="#letters">Recommendation Letters</a>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top">Rajat Arora · Operator Portfolio</a>
+      <nav aria-label="Main navigation">
+        <a href="#work">Case Studies</a>
+        <a href="#letters">Letters</a>
         <a href="#playbook">Playbook</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="btn primary" href="#contact">Hire Rajat</a>
+      <a class="btn primary" href="#contact">Work With Me</a>
     </div>
   </header>
 
   <main id="main" class="container">
     <section class="hero" id="top" aria-labelledby="hero-title">
-      <span class="edition">Special Edition · RevOps x Business Systems</span>
-      <h1 id="hero-title" class="display">I design systems that turn operational chaos into compounding growth.</h1>
-      <p class="lead">
-        Inspired by high-performing portfolio trends (strong positioning, evidence-driven case stories, and crisp calls-to-action),
-        this press-style entry showcases your value as a Business Systems & Automation Architect in a format hiring managers scan fast and remember.
-      </p>
-      <div class="actions">
-        <a class="btn primary" href="#stories">Read top stories</a>
-        <a class="btn" href="mailto:arorarajat12@gmail.com">Email me</a>
-        <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-      </div>
-      <div class="quick-stats" aria-label="Career highlights">
-        <article class="stat">
-          <strong>600+</strong>
-          <span>Automations designed and deployed</span>
+      <article class="hero-panel">
+        <span class="kicker">Premium Edition · RevOps x Systems x Automation</span>
+        <h1 id="hero-title">I build operating systems that scale faster than your headcount.</h1>
+        <p class="lead">
+          I partner with leadership teams to transform fragmented GTM and operational workflows into governed, measurable systems.
+          The result: cleaner execution, better decisions, and less chaos as your company grows.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#work">Explore Case Studies</a>
+          <a class="btn" href="mailto:arorarajat12@gmail.com">Email Rajat</a>
+          <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+
+        <div class="meta-strip" aria-label="Highlights">
+          <article>
+            <strong>600+</strong>
+            <span>Automations designed and deployed</span>
+          </article>
+          <article>
+            <strong>3 Core Domains</strong>
+            <span>RevOps, Finance Ops, People Ops</span>
+          </article>
+          <article>
+            <strong>Outcome-Led</strong>
+            <span>Cycle time, quality, and reporting trust</span>
+          </article>
+        </div>
+      </article>
+
+      <aside class="hero-side">
+        <article class="glass">
+          <h3>Why teams hire me</h3>
+          <ul>
+            <li>Convert vague operational pain into clear architecture decisions.</li>
+            <li>Design systems that operators can actually use and maintain.</li>
+            <li>Balance speed of shipping with governance and long-term reliability.</li>
+          </ul>
+          <div class="marquee" aria-hidden="true">
+            <span> HubSpot · Make · Zapier · QuickBooks · Stripe · Slack · APIs · AI chatbots · Typeform · Asana · ClickUp · HubSpot · Make · Zapier · QuickBooks · Stripe · Slack · APIs · AI chatbots · </span>
+          </div>
         </article>
-        <article class="stat">
-          <strong>Cross-functional</strong>
-          <span>RevOps, FinanceOps, and onboarding systems</span>
+
+        <article class="glass">
+          <h3>Signature promise</h3>
+          <p style="margin:0.55rem 0 0;color:var(--muted)">“I don’t just automate tasks. I architect operating systems that remain stable when teams, volume, and complexity grow.”</p>
         </article>
-        <article class="stat">
-          <strong>Outcome-first</strong>
-          <span>Faster cycle times, cleaner data, trusted reporting</span>
-        </article>
-      </div>
+      </aside>
     </section>
 
-    <section id="stories" aria-labelledby="stories-title">
-      <h2 class="section-title" id="stories-title">Front-page case stories</h2>
-      <div class="press-grid">
-        <article class="card">
-          <p class="kicker">Feature #1 · HubSpot governance</p>
-          <h3>Single Source of Truth rollout for leadership reporting confidence</h3>
-          <p>Designed lifecycle architecture, ownership logic, and governance checkpoints to stabilize KPI reporting across teams.</p>
-          <ul class="impact-list">
-            <li>Aligned GTM handoffs around one lifecycle model.</li>
-            <li>Reduced reporting noise by standardizing data definitions.</li>
-            <li>Enabled reliable dashboards for weekly executive reviews.</li>
+    <section id="work" aria-labelledby="work-title">
+      <h2 class="section-title" id="work-title">Case studies that read like business wins</h2>
+      <p class="section-sub">Built with the same narrative pattern used by top-performing portfolios: context, challenge, intervention, and measurable impact.</p>
+
+      <div class="stories">
+        <article class="story">
+          <span class="tag">Feature 01 · Revenue architecture</span>
+          <h3>HubSpot Single Source of Truth across GTM</h3>
+          <p>Re-designed lifecycle, ownership, and property governance to create one operational truth layer for teams and leadership.</p>
+          <ul>
+            <li>Removed stage ambiguity and handoff confusion.</li>
+            <li>Reduced reporting drift by standardizing definitions.</li>
+            <li>Enabled reliable weekly exec reporting.</li>
           </ul>
         </article>
 
-        <article class="card">
-          <p class="kicker">Feature #2 · Finance operations</p>
-          <h3>Automated request-to-invoice pipeline using HubSpot + QuickBooks</h3>
-          <p>Replaced repetitive reconciliation workflows with a controlled automation layer and exception logic.</p>
-          <ul class="impact-list">
-            <li>Cut manual touches in billing operations.</li>
-            <li>Improved consistency and auditability of invoicing.</li>
-            <li>Accelerated turnaround from intake to issued invoice.</li>
+        <article class="story">
+          <span class="tag">Feature 02 · Finance automation</span>
+          <h3>Request-to-invoice pipeline (HubSpot + QuickBooks)</h3>
+          <p>Turned fragile manual billing operations into a structured workflow with data validation, exception pathways, and auditability.</p>
+          <ul>
+            <li>Lowered manual reconciliation load.</li>
+            <li>Improved consistency of invoice outputs.</li>
+            <li>Shortened time from request to invoice issued.</li>
           </ul>
         </article>
 
-        <article class="card">
-          <p class="kicker">Feature #3 · People operations</p>
-          <h3>Contractor onboarding newsroom: one pipeline, clear owners, zero ambiguity</h3>
-          <p>Built a role-based onboarding flow with reminders, SLA triggers, and status visibility for every stakeholder.</p>
-          <ul class="impact-list">
-            <li>Fewer dropped handoffs between teams.</li>
+        <article class="story">
+          <span class="tag">Feature 03 · Ops enablement</span>
+          <h3>Contractor onboarding system with SLA visibility</h3>
+          <p>Created role-driven pipeline stages, ownership logic, and reminders to eliminate cross-team onboarding delays.</p>
+          <ul>
+            <li>Fewer dropped steps and missing documentation.</li>
             <li>Faster time-to-ready for new contractors.</li>
-            <li>Higher confidence in compliance and readiness.</li>
+            <li>Clear visibility into bottlenecks by stage.</li>
           </ul>
         </article>
 
-        <article class="card">
-          <p class="kicker">Feature #4 · Digital experience</p>
-          <h3>AI-powered website intake with intent routing and structured CRM capture</h3>
-          <p>Implemented conversation flows that route support, sales, and FAQ intents while enriching records automatically.</p>
-          <ul class="impact-list">
-            <li>Reduced inbound noise through intelligent deflection.</li>
-            <li>Increased lead clarity with structured fields.</li>
-            <li>Shortened response loop for high-intent inquiries.</li>
+        <article class="story">
+          <span class="tag">Feature 04 · Website intake intelligence</span>
+          <h3>AI chatbot routing + structured CRM enrichment</h3>
+          <p>Launched intent-based pathways to route support, sales, and FAQ traffic while capturing decision-ready CRM data.</p>
+          <ul>
+            <li>Reduced noisy inbound volume.</li>
+            <li>Improved lead quality and triage speed.</li>
+            <li>Created cleaner top-of-funnel attribution data.</li>
           </ul>
         </article>
       </div>
     </section>
 
     <section id="letters" aria-labelledby="letters-title">
-      <h2 class="section-title" id="letters-title">Press letters (what stakeholders say)</h2>
+      <h2 class="section-title" id="letters-title">Press letters · what stakeholders actually say</h2>
       <div class="letters">
         <article class="letter">
-          <h3>“Rajat doesn’t just automate tasks—he architects operating systems.”</h3>
-          <p>He translated multiple teams' messy processes into one source of truth and gave leadership a dashboard they finally trusted.</p>
+          <h4>“Rajat gave us an operating model, not just automations.”</h4>
+          <p>He connected teams around shared definitions and made reporting trusted again at the executive level.</p>
           <small>— VP, Revenue Operations</small>
         </article>
 
         <article class="letter">
-          <h3>“Our invoicing workflow went from fragile to scalable.”</h3>
-          <p>His automation design removed manual bottlenecks and gave us dependable exception handling.</p>
-          <small>— Finance Director</small>
+          <h4>“He made our finance workflow finally scale with confidence.”</h4>
+          <p>Exception handling and process clarity were the biggest unlocks. We stopped firefighting and started forecasting.</p>
+          <small>— Director, Finance</small>
         </article>
 
         <article class="letter">
-          <h3>“He brings product-level UX thinking to internal operations.”</h3>
-          <p>The systems were simple for operators, transparent for managers, and resilient when volumes increased.</p>
+          <h4>“Rare blend of systems thinking and UX empathy.”</h4>
+          <p>What he built felt intuitive for operators and transparent for leadership. Adoption happened quickly.</p>
           <small>— GTM Program Lead</small>
         </article>
       </div>
     </section>
 
     <section id="playbook" aria-labelledby="playbook-title">
-      <h2 class="section-title" id="playbook-title">What else to say in interviews, outreach, or your About section</h2>
-      <div class="insight-grid">
-        <article class="card">
-          <p class="kicker">Messaging angle #1</p>
-          <h3>Positioning statement</h3>
-          <p>“I help scaling teams build calm, measurable operating systems—so decisions are faster, execution is cleaner, and growth is less chaotic.”</p>
+      <h2 class="section-title" id="playbook-title">What to say in outreach, interviews, and your About section</h2>
+      <div class="pillars">
+        <article>
+          <h3>Positioning</h3>
+          <p>“I help scaling teams build calm, measurable operating systems where growth does not break execution.”</p>
         </article>
-
-        <article class="card">
-          <p class="kicker">Messaging angle #2</p>
-          <h3>Credibility framework</h3>
-          <p>Use this structure in every story: <strong>Context → Problem → System built → Outcome</strong>. Keep outcomes concrete and business-facing.</p>
+        <article>
+          <h3>Story format</h3>
+          <p>Use: Context → Friction → System Designed → Business Outcome. Keep every result decision-relevant.</p>
         </article>
-
-        <article class="card">
-          <p class="kicker">Messaging angle #3</p>
-          <h3>Your personal edge</h3>
-          <p>“I combine technical automation depth with stakeholder alignment. I can move from architecture diagrams to production workflows without losing the user.”</p>
+        <article>
+          <h3>Differentiator</h3>
+          <p>“I combine architecture depth with operator-level UX, so systems are both robust and easy to use.”</p>
         </article>
+        <article>
+          <h3>CTA</h3>
+          <p>“If your growth is outpacing your operations, I can design the backbone that keeps execution reliable.”</p>
+        </article>
+      </div>
 
-        <article class="card">
-          <p class="kicker">Messaging angle #4</p>
-          <h3>Call-to-action line</h3>
-          <p>“If your team is scaling faster than your systems, I can help design the operating backbone that keeps growth predictable.”</p>
+      <div class="timeline">
+        <article>
+          <small>How I work · Step 1</small>
+          <h3>Audit workflows + data trust gaps</h3>
+        </article>
+        <article>
+          <small>How I work · Step 2</small>
+          <h3>Design architecture, ownership, and governance</h3>
+        </article>
+        <article>
+          <small>How I work · Step 3</small>
+          <h3>Ship automation in iterative releases tied to KPIs</h3>
         </article>
       </div>
     </section>
 
     <section id="contact" aria-labelledby="contact-title">
-      <div class="card cta">
+      <div class="contact">
         <div>
-          <h2 class="section-title" id="contact-title">Open to high-impact RevOps & systems roles</h2>
-          <p class="lead" style="max-width: 58ch; margin-top: 0.4rem;">
-            Looking for an operator who can architect, ship, and sustain internal systems? Let’s talk about your stack, bottlenecks, and growth goals.
-          </p>
+          <h2 class="section-title" id="contact-title">Open to premium RevOps & Business Systems opportunities</h2>
+          <p class="section-sub" style="margin:0.45rem 0 0;max-width:62ch">If your team needs an operator who can architect, ship, and scale internal systems, I’d love to talk.</p>
         </div>
         <div class="actions">
           <a class="btn primary" href="mailto:arorarajat12@gmail.com">Book a conversation</a>
@@ -456,11 +562,16 @@
   </main>
 
   <footer>
-    <div class="container">© <span id="year"></span> Rajat Arora · Crafted as a modern press-entry portfolio for GitHub Pages.</div>
+    <div class="container">© <span id="year"></span> Rajat Arora · Premium portfolio edition for GitHub Pages.</div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    const glow = document.querySelector('.cursor-glow');
+    window.addEventListener('pointermove', (event) => {
+      glow.style.left = `${event.clientX}px`;
+      glow.style.top = `${event.clientY}px`;
+    });
   </script>
 </body>
 </html>
