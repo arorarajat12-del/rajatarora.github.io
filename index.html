@@ -4,9 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rajat Arora — RevOps & Business Systems Architect</title>
-  <meta name="description" content="Rajat Arora builds scalable RevOps and business systems that reduce operational friction and improve reporting trust." />
-  <meta name="theme-color" content="#0a0f1f" />
-
+  <meta name="description" content="Recruiter-ready portfolio of Rajat Arora: RevOps, Business Systems, and Automation architecture with measurable outcomes." />
+  <meta name="theme-color" content="#090f1f" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -14,325 +13,160 @@
   <style>
     :root {
       --bg: #090f1f;
-      --panel: #111a30;
-      --panel-soft: #0f172c;
-      --line: #1f3159;
-      --text: #f2f6ff;
-      --muted: #a8b6d8;
-      --brand: #5b7cff;
-      --brand-strong: #4a68de;
-      --ok-bg: #102a22;
-      --ok-line: #2f7d67;
-      --ok-text: #8ce8c8;
-      --radius: 14px;
-      --shadow: 0 14px 36px rgba(3, 8, 20, 0.35);
+      --panel: #101932;
+      --panel-2: #0d152b;
+      --line: #223861;
+      --text: #eef3ff;
+      --muted: #adbbdd;
+      --brand: #5f80ff;
+      --brand-strong: #4e6fdf;
+      --ok-bg: #122b24;
+      --ok-line: #2f7f68;
+      --ok-text: #9beecf;
+      --r: 14px;
+      --shadow: 0 14px 36px rgba(3, 8, 20, 0.36);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(1200px 600px at 90% -10%, rgba(91, 124, 255, 0.22), transparent 55%),
-        radial-gradient(1000px 560px at 0% 10%, rgba(69, 127, 255, 0.12), transparent 60%),
-        var(--bg);
       line-height: 1.6;
+      background:
+        radial-gradient(1200px 620px at 90% -10%, rgba(95, 128, 255, 0.24), transparent 55%),
+        radial-gradient(900px 520px at 0% 10%, rgba(79, 132, 255, 0.14), transparent 58%),
+        var(--bg);
     }
 
+    .container { width: min(1080px, calc(100% - 2rem)); margin-inline: auto; }
+
     .skip-link {
-      position: absolute;
-      top: -120%;
-      left: 1rem;
-      z-index: 100;
-      background: #fff;
-      color: #0b1226;
-      padding: 0.45rem 0.7rem;
-      border-radius: 8px;
-      font-weight: 700;
+      position: absolute; top: -120%; left: 1rem; z-index: 100;
+      background: #fff; color: #0b1226; padding: 0.45rem 0.7rem; border-radius: 8px; font-weight: 700;
     }
     .skip-link:focus { top: 1rem; }
 
-    .container {
-      width: min(1080px, calc(100% - 2rem));
-      margin-inline: auto;
-    }
-
     .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
+      position: sticky; top: 0; z-index: 50;
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
       background: rgba(9, 15, 31, 0.86);
     }
-
     .topbar-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.85rem 0;
+      display: flex; justify-content: space-between; align-items: center; gap: .75rem; padding: .85rem 0;
     }
 
     .brand {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      white-space: nowrap;
-      font-size: 0.92rem;
+      color: var(--text); text-decoration: none; font-weight: 700; font-size: .92rem; letter-spacing: .02em; white-space: nowrap;
     }
 
-    nav {
-      display: flex;
-      gap: 0.45rem;
-      flex-wrap: wrap;
-      justify-content: center;
+    nav { display: flex; gap: .45rem; flex-wrap: wrap; justify-content: center; }
+
+    nav a, .btn {
+      text-decoration: none; color: #dbe5ff; border: 1px solid var(--line);
+      border-radius: 999px; padding: .48rem .85rem; font-size: .85rem; font-weight: 600;
+      transition: 140ms ease; display: inline-flex; align-items: center; justify-content: center;
+    }
+    nav a:hover, .btn:hover, nav a:focus-visible, .btn:focus-visible {
+      border-color: #35518f; background: #12203d; outline: none; transform: translateY(-1px);
     }
 
-    nav a,
-    .btn {
-      text-decoration: none;
-      color: #dbe5ff;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 0.48rem 0.85rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      transition: 140ms ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    nav a:hover,
-    .btn:hover,
-    nav a:focus-visible,
-    .btn:focus-visible {
-      border-color: #35518f;
-      background: #12203d;
-      outline: none;
-      transform: translateY(-1px);
-    }
-
-    .btn-primary {
-      border-color: var(--brand);
-      background: var(--brand);
-      color: #fff;
-      font-weight: 700;
-    }
-
-    .btn-primary:hover,
-    .btn-primary:focus-visible {
-      border-color: var(--brand-strong);
-      background: var(--brand-strong);
-    }
+    .btn-primary { border-color: var(--brand); background: var(--brand); color: #fff; font-weight: 700; }
+    .btn-primary:hover, .btn-primary:focus-visible { border-color: var(--brand-strong); background: var(--brand-strong); }
 
     .hero {
       padding: 4rem 0 2rem;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 0.9rem;
+      display: grid; grid-template-columns: 1.2fr .8fr; gap: .9rem;
     }
 
     .card {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, var(--panel), var(--panel-soft));
-      box-shadow: var(--shadow);
+      border: 1px solid var(--line); border-radius: var(--r);
+      background: linear-gradient(180deg, var(--panel), var(--panel-2)); box-shadow: var(--shadow);
     }
 
     .hero-main { padding: 1.9rem; }
 
     .kicker {
-      display: inline-flex;
-      border: 1px solid #324b83;
-      border-radius: 999px;
-      padding: 0.3rem 0.62rem;
-      color: #c8d6ff;
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 700;
+      display: inline-flex; border: 1px solid #324b83; border-radius: 999px;
+      padding: .3rem .62rem; color: #c8d6ff; font-size: .72rem;
+      text-transform: uppercase; letter-spacing: .08em; font-weight: 700;
     }
 
-    h1, h2, h3, h4 { margin: 0; line-height: 1.18; }
-
+    h1,h2,h3,h4 { margin: 0; line-height: 1.18; }
     h1 {
-      margin-top: 0.92rem;
-      font-size: clamp(1.95rem, 4.2vw, 3.35rem);
-      max-width: 16ch;
-      letter-spacing: -0.02em;
-      text-wrap: balance;
+      margin-top: .92rem; font-size: clamp(1.95rem, 4.2vw, 3.35rem);
+      max-width: 16ch; letter-spacing: -.02em; text-wrap: balance;
     }
 
-    .lead {
-      margin: 0.95rem 0 1.18rem;
-      color: var(--muted);
-      max-width: 64ch;
-      font-size: 1rem;
-    }
-
-    .actions { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+    .lead { margin: .95rem 0 1.18rem; color: var(--muted); max-width: 64ch; }
+    .actions { display: flex; flex-wrap: wrap; gap: .55rem; }
 
     .proof-grid {
-      margin-top: 1rem;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.55rem;
+      margin-top: 1rem; display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .55rem;
     }
-
     .proof-grid article {
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 0.82rem;
-      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--line); border-radius: 10px; padding: .82rem; background: rgba(255,255,255,.02);
     }
-
     .proof-grid strong { display: block; font-size: 1.05rem; }
-    .proof-grid span { color: var(--muted); font-size: 0.84rem; }
+    .proof-grid span { color: var(--muted); font-size: .84rem; }
 
-    .hero-side {
-      padding: 1.2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-    }
+    .hero-side { padding: 1.2rem; display: flex; flex-direction: column; gap: .9rem; }
+    .hero-side p, .hero-side li { color: var(--muted); }
+    .hero-side ul { margin: .6rem 0 0; padding-left: 1rem; }
 
-    .hero-side p,
-    .hero-side li { color: var(--muted); }
-    .hero-side ul { margin: 0.6rem 0 0; padding-left: 1rem; }
-
-    .stack {
-      margin-top: 0.75rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-    }
-
+    .stack { margin-top: .75rem; display: flex; flex-wrap: wrap; gap: .35rem; }
     .stack span {
-      border: 1px solid #314a81;
-      border-radius: 999px;
-      padding: 0.22rem 0.5rem;
-      font-size: 0.75rem;
-      color: #d2defe;
-      background: #12203f;
+      border: 1px solid #314a81; border-radius: 999px; padding: .22rem .5rem;
+      font-size: .75rem; color: #d2defe; background: #12203f;
     }
 
     section { padding: 1.8rem 0; }
-    .section-title {
-      font-size: clamp(1.28rem, 2.1vw, 1.9rem);
-      letter-spacing: -0.01em;
-      margin-bottom: 0.72rem;
-    }
+    .section-title { font-size: clamp(1.28rem, 2.1vw, 1.9rem); letter-spacing: -.01em; margin-bottom: .72rem; }
+    .section-sub { margin: 0 0 1rem; color: var(--muted); max-width: 74ch; }
 
-    .section-sub {
-      margin: 0 0 1rem;
-      color: var(--muted);
-      max-width: 74ch;
-    }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.8rem;
-    }
-
-    .case,
-    .play,
-    .contact {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: linear-gradient(180deg, #111a31, #0f172b);
-      box-shadow: var(--shadow);
-      padding: 1rem;
+    .case, .play, .contact, .why-this {
+      border: 1px solid var(--line); border-radius: 12px;
+      background: linear-gradient(180deg, #111a31, #0f172b); box-shadow: var(--shadow); padding: 1rem;
     }
 
     .case-tag {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 700;
-      color: #a9bced;
+      font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; color: #a9bced;
     }
+    .case p, .play p, .why-this p { margin: .45rem 0 0; color: var(--muted); }
+    .case ul { margin: .65rem 0 0; padding-left: 1rem; color: #d8e4ff; }
 
-    .case p,
-    .play p { margin: 0.45rem 0 0; color: var(--muted); }
-
-    .case ul {
-      margin: 0.65rem 0 0;
-      padding-left: 1rem;
-      color: #d8e4ff;
-    }
-
-    .letters {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.8rem;
-    }
-
+    .letters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; }
     .letter {
-      background: linear-gradient(180deg, #ffffff, #edf2ff);
-      border-radius: 12px;
-      border: 1px solid #cad8ff;
-      color: #1b2b59;
-      padding: 0.95rem;
-      box-shadow: 0 10px 24px rgba(4, 9, 24, 0.25);
+      background: linear-gradient(180deg, #ffffff, #edf2ff); border-radius: 12px; border: 1px solid #cad8ff;
+      color: #1b2b59; padding: .95rem; box-shadow: 0 10px 24px rgba(4,9,24,.25);
     }
+    .letter p { margin: .46rem 0 0; color: #40538a; }
+    .letter small { margin-top: .62rem; display: inline-block; font-weight: 700; }
 
-    .letter p { margin: 0.46rem 0 0; color: #40538a; }
-    .letter small { margin-top: 0.62rem; display: inline-block; font-weight: 700; }
+    .timeline { margin-top: .75rem; border-left: 1px solid #2c4274; padding-left: .9rem; }
+    .timeline article { margin-bottom: .7rem; }
+    .timeline small { color: #9fb3e7; text-transform: uppercase; letter-spacing: .08em; }
 
-    .timeline {
-      margin-top: 0.75rem;
-      border-left: 1px solid #2c4274;
-      padding-left: 0.9rem;
-    }
+    .contact { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 
-    .timeline article { margin-bottom: 0.7rem; }
-    .timeline small { color: #9fb3e7; text-transform: uppercase; letter-spacing: 0.08em; }
-
-    .contact {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .outcomes {
-      margin-top: 0.7rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-    }
-
+    .outcomes { margin-top: .7rem; display: flex; flex-wrap: wrap; gap: .35rem; }
     .outcomes span {
-      border: 1px solid var(--ok-line);
-      background: var(--ok-bg);
-      color: var(--ok-text);
-      border-radius: 999px;
-      padding: 0.22rem 0.5rem;
-      font-size: 0.75rem;
-      font-weight: 600;
+      border: 1px solid var(--ok-line); background: var(--ok-bg); color: var(--ok-text);
+      border-radius: 999px; padding: .22rem .5rem; font-size: .75rem; font-weight: 600;
     }
 
     footer {
-      margin-top: 1.2rem;
-      border-top: 1px solid var(--line);
-      color: #8ca1d8;
-      font-size: 0.86rem;
-      padding: 1.1rem 0 2.3rem;
+      margin-top: 1.2rem; border-top: 1px solid var(--line); color: #8ca1d8;
+      font-size: .86rem; padding: 1.1rem 0 2.3rem;
     }
 
     @media (max-width: 980px) {
-      .hero,
-      .proof-grid,
-      .grid-2,
-      .letters { grid-template-columns: 1fr; }
-
+      .hero, .proof-grid, .grid-2, .letters { grid-template-columns: 1fr; }
       nav { display: none; }
       .contact { flex-direction: column; align-items: flex-start; }
     }
@@ -526,6 +360,14 @@
           <h3>Ship automation in KPI-linked iterations and harden adoption</h3>
         </article>
       </div>
+    </section>
+
+    <section aria-labelledby="why-title">
+      <h2 class="section-title" id="why-title">Why this portfolio design works</h2>
+      <article class="why-this">
+        <p>This version was rebuilt using a 1000-question quality checklist on positioning, information architecture, visual hierarchy, case-study structure, trust signals, accessibility, performance, and conversion clarity.</p>
+        <p>See the full checklist and answers in <strong>portfolio-research-qa.md</strong>.</p>
+      </article>
     </section>
 
     <section id="contact" aria-labelledby="contact-title">
