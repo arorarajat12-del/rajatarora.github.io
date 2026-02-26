@@ -3,42 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rajat Arora — Premium RevOps & Systems Portfolio</title>
-  <meta name="description" content="Premium portfolio for Rajat Arora — Business Systems, RevOps, and Automation Architect. Case studies, outcomes, and operator playbook." />
-  <meta name="theme-color" content="#070912" />
+  <title>Rajat Arora — RevOps & Systems Architect</title>
+  <meta
+    name="description"
+    content="Premium portfolio of Rajat Arora, a Business Systems, RevOps, and Automation Architect focused on measurable operational outcomes."
+  />
+  <meta name="theme-color" content="#070a14" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg: #05070f;
-      --bg-2: #0b1020;
-      --surface: rgba(16, 23, 43, 0.72);
-      --surface-2: rgba(13, 18, 36, 0.9);
-      --text: #edf2ff;
-      --muted: #aab7d8;
-      --line: rgba(130, 152, 220, 0.26);
-      --brand: #7c5cff;
-      --brand-2: #33d2ff;
-      --ok: #39dca5;
-      --radius: 18px;
-      --shadow-xl: 0 35px 80px rgba(2, 6, 20, 0.55);
+      --bg: #050812;
+      --bg-2: #0b1124;
+      --panel: linear-gradient(180deg, rgba(18, 27, 56, 0.78), rgba(10, 15, 30, 0.92));
+      --text: #ebf1ff;
+      --muted: #aeb8d6;
+      --line: rgba(133, 156, 232, 0.24);
+      --brand: #7e67ff;
+      --brand-2: #2ed3ff;
+      --good: #34d399;
+      --shadow: 0 24px 70px rgba(3, 9, 26, 0.5);
+      --radius: 20px;
+      --radius-sm: 14px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      color: var(--text);
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(1100px 700px at 80% -5%, rgba(124, 92, 255, 0.3), transparent 60%),
-        radial-gradient(900px 600px at 10% 10%, rgba(51, 210, 255, 0.2), transparent 62%),
-        linear-gradient(180deg, #05070f 0%, #060b16 50%, #05070f 100%);
       min-height: 100vh;
-      line-height: 1.6;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.58;
+      background:
+        radial-gradient(900px 580px at 85% -15%, rgba(126, 103, 255, 0.3), transparent 60%),
+        radial-gradient(820px 560px at 10% 10%, rgba(46, 211, 255, 0.22), transparent 62%),
+        linear-gradient(180deg, #060914 0%, #070b17 40%, #050812 100%);
     }
 
     body::after {
@@ -46,22 +49,23 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      opacity: 0.08;
-      background-image: radial-gradient(#d4ddff 0.5px, transparent 0.5px);
-      background-size: 3px 3px;
       z-index: 0;
+      opacity: 0.08;
+      background-image: radial-gradient(#dce5ff 0.55px, transparent 0.55px);
+      background-size: 3px 3px;
     }
 
     .cursor-glow {
       position: fixed;
-      width: 380px;
-      height: 380px;
-      border-radius: 50%;
+      inset: auto;
+      width: 340px;
+      height: 340px;
+      border-radius: 999px;
       pointer-events: none;
       z-index: 1;
-      background: radial-gradient(circle, rgba(124, 92, 255, 0.18), transparent 65%);
+      filter: blur(8px);
       transform: translate(-50%, -50%);
-      filter: blur(4px);
+      background: radial-gradient(circle, rgba(126, 103, 255, 0.18), transparent 68%);
     }
 
     .container {
@@ -73,25 +77,26 @@
 
     .skip-link {
       position: absolute;
-      left: 1rem;
       top: -120%;
-      padding: 0.5rem 0.8rem;
+      left: 1rem;
+      background: #ffffff;
+      color: #0d152f;
       border-radius: 10px;
-      background: #fff;
-      color: #0b1020;
+      padding: 0.45rem 0.75rem;
       font-weight: 700;
-      z-index: 99;
+      z-index: 100;
     }
     .skip-link:focus { top: 1rem; }
 
     .topbar {
       position: sticky;
       top: 0;
-      backdrop-filter: blur(14px);
+      z-index: 50;
       border-bottom: 1px solid var(--line);
-      background: rgba(6, 10, 20, 0.75);
-      z-index: 40;
+      background: rgba(6, 11, 24, 0.78);
+      backdrop-filter: blur(14px);
     }
+
     .topbar-inner {
       display: flex;
       align-items: center;
@@ -103,259 +108,323 @@
     .brand {
       text-decoration: none;
       color: var(--text);
-      font-family: Manrope, Inter, sans-serif;
-      font-weight: 800;
-      letter-spacing: 0.04em;
+      font-family: Sora, Inter, sans-serif;
       font-size: 0.9rem;
       text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
     }
 
     nav { display: flex; gap: 0.55rem; flex-wrap: wrap; }
+
     nav a,
     .btn {
       text-decoration: none;
-      color: var(--text);
       border: 1px solid var(--line);
-      padding: 0.54rem 0.95rem;
+      color: var(--text);
       border-radius: 999px;
+      padding: 0.55rem 0.95rem;
       font-size: 0.88rem;
-      transition: 180ms ease;
+      transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
     }
+
     nav a:hover,
     .btn:hover,
     nav a:focus-visible,
     .btn:focus-visible {
       transform: translateY(-1px);
-      border-color: rgba(255, 255, 255, 0.55);
+      border-color: rgba(255, 255, 255, 0.58);
       outline: none;
     }
 
-    .btn.primary {
+    .btn-primary {
+      border: none;
       color: #fff;
       font-weight: 700;
-      border: none;
       background: linear-gradient(95deg, var(--brand), var(--brand-2));
-      box-shadow: 0 14px 26px rgba(51, 210, 255, 0.18);
+      box-shadow: 0 12px 30px rgba(46, 211, 255, 0.24);
     }
 
+    h1, h2, h3, h4 { margin: 0; line-height: 1.12; }
+
     .hero {
-      padding: 4.2rem 0 2.6rem;
+      padding: 4.2rem 0 2.8rem;
       display: grid;
-      grid-template-columns: 1.18fr 0.82fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 1rem;
       align-items: stretch;
     }
 
-    .hero-panel,
-    .glass,
-    .story,
-    .letter,
-    .pillars article,
-    .contact {
+    .card {
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(18, 25, 49, 0.8), rgba(8, 13, 27, 0.88));
-      box-shadow: var(--shadow-xl);
+      background: var(--panel);
+      box-shadow: var(--shadow);
     }
 
-    .hero-panel {
-      padding: 2rem;
+    .hero-main {
       position: relative;
       overflow: hidden;
+      padding: 2rem;
     }
-    .hero-panel::before {
+
+    .hero-main::before {
       content: "";
       position: absolute;
-      width: 250px;
-      height: 250px;
-      right: -45px;
-      top: -55px;
+      right: -70px;
+      top: -70px;
+      width: 260px;
+      height: 260px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(124, 92, 255, 0.42), transparent 70%);
+      background: radial-gradient(circle, rgba(126, 103, 255, 0.38), transparent 70%);
       pointer-events: none;
     }
 
     .kicker {
+      width: fit-content;
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.42rem;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #d2dcff;
       border: 1px solid var(--line);
       border-radius: 999px;
-      color: #d2dcff;
-      font-size: 0.77rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.4rem 0.75rem;
-      margin-bottom: 1rem;
-      background: rgba(255, 255, 255, 0.03);
+      padding: 0.4rem 0.7rem;
+      background: rgba(255, 255, 255, 0.04);
     }
 
-    h1, h2, h3, h4 { margin: 0; line-height: 1.14; }
-    h1 {
-      font-family: Manrope, Inter, sans-serif;
-      font-size: clamp(2rem, 5vw, 4rem);
+    .title {
+      margin-top: 1rem;
+      font-family: Sora, Inter, sans-serif;
+      font-size: clamp(2.05rem, 5.1vw, 4rem);
+      letter-spacing: -0.03em;
       max-width: 13ch;
       text-wrap: balance;
-      letter-spacing: -0.03em;
     }
 
     .lead {
-      margin: 1rem 0 1.35rem;
+      margin: 1rem 0 1.4rem;
       color: var(--muted);
-      max-width: 60ch;
-      font-size: 1.05rem;
+      max-width: 63ch;
+      font-size: 1.02rem;
     }
 
-    .actions { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 0.62rem; }
 
-    .meta-strip {
-      margin-top: 1.3rem;
+    .proof-grid {
+      margin-top: 1.2rem;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.65rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.62rem;
     }
-    .meta-strip article {
-      padding: 0.9rem;
+
+    .proof-grid article {
       border: 1px solid var(--line);
-      border-radius: 14px;
+      border-radius: var(--radius-sm);
       background: rgba(255, 255, 255, 0.03);
+      padding: 0.88rem;
     }
-    .meta-strip strong {
+
+    .proof-grid strong {
       display: block;
-      font-family: Manrope, Inter, sans-serif;
-      font-size: 1.2rem;
+      font-family: Sora, Inter, sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
     }
-    .meta-strip span { color: var(--muted); font-size: 0.86rem; }
+
+    .proof-grid span { color: var(--muted); font-size: 0.84rem; }
 
     .hero-side {
       display: grid;
       grid-template-rows: 1fr auto;
-      gap: 0.9rem;
+      gap: 0.92rem;
     }
 
-    .glass { padding: 1.35rem; }
-    .glass h3 { font-size: 1.05rem; }
-    .glass ul { margin: 0.8rem 0 0; padding-left: 1.05rem; color: var(--muted); }
-    .glass li { margin-bottom: 0.52rem; }
+    .panel {
+      padding: 1.25rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .panel ul { margin: 0.72rem 0 0; padding-left: 1rem; color: var(--muted); }
+    .panel li { margin-bottom: 0.48rem; }
 
     .marquee {
+      margin-top: 0.85rem;
       overflow: hidden;
-      border-radius: 12px;
       border: 1px solid var(--line);
-      background: var(--surface-2);
-      margin-top: 0.8rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02);
       white-space: nowrap;
-      position: relative;
     }
+
     .marquee span {
       display: inline-block;
-      padding: 0.72rem 0;
-      animation: scroll 19s linear infinite;
-      color: #d1ddff;
+      padding: 0.68rem 0;
+      color: #d0dcff;
+      font-size: 0.83rem;
       letter-spacing: 0.03em;
-      font-size: 0.85rem;
+      animation: scroll 22s linear infinite;
     }
+
     @keyframes scroll {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
     }
 
-    section { padding: 1.8rem 0; }
+    section { padding: 1.85rem 0; }
+
     .section-title {
-      font-family: Manrope, Inter, sans-serif;
+      font-family: Sora, Inter, sans-serif;
       font-size: clamp(1.35rem, 2.5vw, 2rem);
-      margin-bottom: 0.95rem;
       letter-spacing: -0.02em;
+      margin-bottom: 0.92rem;
     }
-    .section-sub { color: var(--muted); margin: 0 0 1.1rem; max-width: 75ch; }
+
+    .section-sub {
+      margin: 0 0 1.12rem;
+      color: var(--muted);
+      max-width: 74ch;
+    }
 
     .stories {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.9rem;
+      gap: 0.92rem;
     }
+
     .story {
       padding: 1.2rem;
-      transition: transform 200ms ease, border-color 200ms ease;
+      transition: transform 180ms ease, border-color 180ms ease;
     }
-    .story:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.52); }
-    .story .tag {
-      font-size: 0.74rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #9fb2e8;
+
+    .story:hover,
+    .story:focus-within {
+      transform: translateY(-3px);
+      border-color: rgba(255, 255, 255, 0.56);
+    }
+
+    .story-tag {
+      display: inline-block;
       margin-bottom: 0.42rem;
-      display: block;
+      color: #9eb2ea;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.73rem;
+      font-weight: 700;
     }
-    .story p { margin: 0.62rem 0 0; color: var(--muted); }
-    .story ul { margin: 0.74rem 0 0; padding-left: 1rem; color: #dbe5ff; }
+
+    .story p { margin: 0.55rem 0 0; color: var(--muted); }
+    .story ul { margin: 0.7rem 0 0; padding-left: 1rem; color: #dce6ff; }
 
     .letters {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.9rem;
+      gap: 0.92rem;
     }
+
     .letter {
-      background: linear-gradient(180deg, #ffffff, #edf2ff);
-      color: #162347;
-      padding: 1.15rem;
+      padding: 1.1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(177, 192, 236, 0.65);
+      background: linear-gradient(180deg, #ffffff, #eef3ff);
+      color: #19254a;
+      box-shadow: 0 18px 30px rgba(3, 11, 31, 0.24);
       position: relative;
     }
+
     .letter::before {
       content: "✦";
       position: absolute;
-      right: 0.9rem;
-      top: 0.85rem;
-      color: #5162a3;
+      right: 0.85rem;
+      top: 0.75rem;
+      color: #5868a5;
     }
-    .letter p { margin: 0.65rem 0 0; color: #394b80; }
-    .letter small { display: inline-block; margin-top: 0.75rem; font-weight: 700; }
 
-    .pillars {
+    .letter p { margin: 0.62rem 0 0; color: #3f4e7f; }
+    .letter small { display: inline-block; margin-top: 0.72rem; font-weight: 700; }
+
+    .playbook {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.9rem;
+      gap: 0.92rem;
     }
-    .pillars article {
+
+    .playbook article {
       padding: 1rem;
-      background: linear-gradient(180deg, rgba(16, 25, 51, 0.8), rgba(9, 14, 28, 0.9));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--panel);
+      box-shadow: var(--shadow);
     }
-    .pillars p { margin: 0.45rem 0 0; color: var(--muted); }
+
+    .playbook p { margin: 0.45rem 0 0; color: var(--muted); }
 
     .timeline {
-      margin-top: 0.8rem;
+      margin-top: 0.9rem;
       border-left: 1px solid var(--line);
-      padding-left: 1.1rem;
+      padding-left: 1rem;
     }
-    .timeline article { margin-bottom: 1rem; }
-    .timeline small { color: #9fb0e2; text-transform: uppercase; letter-spacing: 0.07em; }
 
-    .contact {
-      padding: 1.25rem;
+    .timeline article { margin-bottom: 0.92rem; }
+    .timeline small {
+      color: #99b0e6;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .contact-wrap {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 1rem;
+      padding: 1.2rem;
+    }
+
+    .contact-text {
+      margin: 0.45rem 0 0;
+      color: var(--muted);
+      max-width: 63ch;
+    }
+
+    .impact-row {
       margin-top: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .impact-row span {
+      border: 1px solid rgba(52, 211, 153, 0.42);
+      color: #a9f2d8;
+      background: rgba(52, 211, 153, 0.11);
+      border-radius: 999px;
+      padding: 0.26rem 0.6rem;
+      font-size: 0.79rem;
+      font-weight: 600;
     }
 
     footer {
       border-top: 1px solid var(--line);
-      color: #9cafdb;
+      color: #99abdc;
       font-size: 0.88rem;
-      padding: 1.4rem 0 2.8rem;
-      margin-top: 1.5rem;
+      padding: 1.3rem 0 2.6rem;
+      margin-top: 1.45rem;
     }
 
-    @media (max-width: 980px) {
+    @media (max-width: 1020px) {
       .hero,
       .stories,
       .letters,
-      .pillars,
-      .meta-strip { grid-template-columns: 1fr; }
+      .playbook,
+      .proof-grid { grid-template-columns: 1fr; }
       .hero-side { grid-template-rows: auto; }
+      .contact-wrap { flex-direction: column; align-items: flex-start; }
       nav { display: none; }
-      .contact { flex-direction: column; align-items: flex-start; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -365,6 +434,7 @@
         transition-duration: 1ms !important;
         scroll-behavior: auto !important;
       }
+      .cursor-glow { display: none; }
     }
   </style>
 </head>
@@ -374,204 +444,224 @@
 
   <header class="topbar">
     <div class="container topbar-inner">
-      <a class="brand" href="#top">Rajat Arora · Operator Portfolio</a>
-      <nav aria-label="Main navigation">
+      <a class="brand" href="#top">Rajat Arora · Systems Architect</a>
+      <nav aria-label="Primary navigation">
         <a href="#work">Case Studies</a>
         <a href="#letters">Letters</a>
         <a href="#playbook">Playbook</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="btn primary" href="#contact">Work With Me</a>
+      <a class="btn btn-primary" href="#contact">Hire Rajat</a>
     </div>
   </header>
 
   <main id="main" class="container">
     <section class="hero" id="top" aria-labelledby="hero-title">
-      <article class="hero-panel">
-        <span class="kicker">Premium Edition · RevOps x Systems x Automation</span>
-        <h1 id="hero-title">I build operating systems that scale faster than your headcount.</h1>
+      <article class="card hero-main">
+        <span class="kicker">Premium Portfolio · RevOps + Automation + Business Systems</span>
+        <h1 id="hero-title" class="title">I design operating systems that make growth predictable.</h1>
         <p class="lead">
-          I partner with leadership teams to transform fragmented GTM and operational workflows into governed, measurable systems.
-          The result: cleaner execution, better decisions, and less chaos as your company grows.
+          I help scaling companies replace fragile workflows with governed, measurable systems. The result is cleaner execution,
+          stronger reporting trust, and operational consistency that compounds as teams grow.
         </p>
+
         <div class="actions">
-          <a class="btn primary" href="#work">Explore Case Studies</a>
-          <a class="btn" href="mailto:arorarajat12@gmail.com">Email Rajat</a>
+          <a class="btn btn-primary" href="#work">View Case Studies</a>
+          <a class="btn" href="mailto:arorarajat12@gmail.com">Email</a>
           <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
 
-        <div class="meta-strip" aria-label="Highlights">
+        <div class="proof-grid" aria-label="Highlights">
           <article>
             <strong>600+</strong>
-            <span>Automations designed and deployed</span>
+            <span>Automations designed and maintained</span>
           </article>
           <article>
-            <strong>3 Core Domains</strong>
-            <span>RevOps, Finance Ops, People Ops</span>
+            <strong>Cross-Functional</strong>
+            <span>RevOps, Finance Ops, and People Ops systems</span>
           </article>
           <article>
             <strong>Outcome-Led</strong>
-            <span>Cycle time, quality, and reporting trust</span>
+            <span>Cycle time reduction, cleaner data, better forecasts</span>
           </article>
         </div>
       </article>
 
       <aside class="hero-side">
-        <article class="glass">
-          <h3>Why teams hire me</h3>
+        <article class="panel">
+          <h3>Why teams trust my work</h3>
           <ul>
-            <li>Convert vague operational pain into clear architecture decisions.</li>
-            <li>Design systems that operators can actually use and maintain.</li>
-            <li>Balance speed of shipping with governance and long-term reliability.</li>
+            <li>Translate ambiguous ops pain into clear architecture decisions.</li>
+            <li>Build systems that are robust for leadership and intuitive for operators.</li>
+            <li>Move quickly without sacrificing governance and long-term reliability.</li>
           </ul>
+
           <div class="marquee" aria-hidden="true">
-            <span> HubSpot · Make · Zapier · QuickBooks · Stripe · Slack · APIs · AI chatbots · Typeform · Asana · ClickUp · HubSpot · Make · Zapier · QuickBooks · Stripe · Slack · APIs · AI chatbots · </span>
+            <span> HubSpot · Make · Zapier · QuickBooks · Stripe · Slack · APIs · AI chatbots · Typeform · Asana · ClickUp · HubSpot · Make · Zapier · QuickBooks · Stripe · Slack · APIs · </span>
           </div>
         </article>
 
-        <article class="glass">
-          <h3>Signature promise</h3>
-          <p style="margin:0.55rem 0 0;color:var(--muted)">“I don’t just automate tasks. I architect operating systems that remain stable when teams, volume, and complexity grow.”</p>
+        <article class="panel">
+          <h3>Signature line</h3>
+          <p class="section-sub" style="margin:0.5rem 0 0;">
+            “I don’t just automate tasks — I architect operating foundations that keep performance stable at scale.”
+          </p>
+          <div class="impact-row" aria-label="Business outcomes">
+            <span>Less manual work</span>
+            <span>Faster handoffs</span>
+            <span>Trusted dashboards</span>
+          </div>
         </article>
       </aside>
     </section>
 
     <section id="work" aria-labelledby="work-title">
-      <h2 class="section-title" id="work-title">Case studies that read like business wins</h2>
-      <p class="section-sub">Built with the same narrative pattern used by top-performing portfolios: context, challenge, intervention, and measurable impact.</p>
+      <h2 class="section-title" id="work-title">Case studies built around measurable business wins</h2>
+      <p class="section-sub">
+        Structured using the strongest portfolio narrative pattern: context, challenge, system intervention, and clear impact.
+      </p>
 
       <div class="stories">
-        <article class="story">
-          <span class="tag">Feature 01 · Revenue architecture</span>
-          <h3>HubSpot Single Source of Truth across GTM</h3>
-          <p>Re-designed lifecycle, ownership, and property governance to create one operational truth layer for teams and leadership.</p>
+        <article class="card story">
+          <span class="story-tag">Feature 01 · Revenue architecture</span>
+          <h3>HubSpot Single Source of Truth across GTM teams</h3>
+          <p>Redesigned lifecycle stages, ownership logic, and data governance to align execution and reporting across departments.</p>
           <ul>
-            <li>Removed stage ambiguity and handoff confusion.</li>
-            <li>Reduced reporting drift by standardizing definitions.</li>
-            <li>Enabled reliable weekly exec reporting.</li>
+            <li>Removed handoff ambiguity across sales, marketing, and ops.</li>
+            <li>Reduced reporting drift through controlled property standards.</li>
+            <li>Enabled reliable executive dashboards for weekly decisions.</li>
           </ul>
         </article>
 
-        <article class="story">
-          <span class="tag">Feature 02 · Finance automation</span>
-          <h3>Request-to-invoice pipeline (HubSpot + QuickBooks)</h3>
-          <p>Turned fragile manual billing operations into a structured workflow with data validation, exception pathways, and auditability.</p>
+        <article class="card story">
+          <span class="story-tag">Feature 02 · Finance operations</span>
+          <h3>Automated request-to-invoice flow (HubSpot + QuickBooks)</h3>
+          <p>Replaced manual billing bottlenecks with validated workflow automation, exception routing, and better auditability.</p>
           <ul>
-            <li>Lowered manual reconciliation load.</li>
-            <li>Improved consistency of invoice outputs.</li>
-            <li>Shortened time from request to invoice issued.</li>
+            <li>Lowered manual reconciliation load for finance teams.</li>
+            <li>Improved consistency and quality of invoice generation.</li>
+            <li>Shortened intake-to-invoice cycle time.</li>
           </ul>
         </article>
 
-        <article class="story">
-          <span class="tag">Feature 03 · Ops enablement</span>
-          <h3>Contractor onboarding system with SLA visibility</h3>
-          <p>Created role-driven pipeline stages, ownership logic, and reminders to eliminate cross-team onboarding delays.</p>
+        <article class="card story">
+          <span class="story-tag">Feature 03 · People operations</span>
+          <h3>Contractor onboarding system with ownership and SLA tracking</h3>
+          <p>Built role-based onboarding stages and reminder automation to reduce delays and improve accountability.</p>
           <ul>
-            <li>Fewer dropped steps and missing documentation.</li>
-            <li>Faster time-to-ready for new contractors.</li>
-            <li>Clear visibility into bottlenecks by stage.</li>
+            <li>Decreased dropped steps across multi-team handoffs.</li>
+            <li>Improved readiness speed for new contractor starts.</li>
+            <li>Created visibility into process bottlenecks by stage.</li>
           </ul>
         </article>
 
-        <article class="story">
-          <span class="tag">Feature 04 · Website intake intelligence</span>
-          <h3>AI chatbot routing + structured CRM enrichment</h3>
-          <p>Launched intent-based pathways to route support, sales, and FAQ traffic while capturing decision-ready CRM data.</p>
+        <article class="card story">
+          <span class="story-tag">Feature 04 · Website intake intelligence</span>
+          <h3>AI routing assistant with structured CRM enrichment</h3>
+          <p>Implemented intent-based conversation pathways that route support and sales queries while writing clean CRM context.</p>
           <ul>
-            <li>Reduced noisy inbound volume.</li>
-            <li>Improved lead quality and triage speed.</li>
-            <li>Created cleaner top-of-funnel attribution data.</li>
+            <li>Reduced low-intent inbound noise through smarter triage.</li>
+            <li>Improved lead quality and response prioritization.</li>
+            <li>Strengthened top-of-funnel attribution confidence.</li>
           </ul>
         </article>
       </div>
     </section>
 
     <section id="letters" aria-labelledby="letters-title">
-      <h2 class="section-title" id="letters-title">Press letters · what stakeholders actually say</h2>
+      <h2 class="section-title" id="letters-title">Press-style letters from stakeholders</h2>
       <div class="letters">
         <article class="letter">
-          <h4>“Rajat gave us an operating model, not just automations.”</h4>
-          <p>He connected teams around shared definitions and made reporting trusted again at the executive level.</p>
+          <h4>“Rajat gave us an operating model, not another patch.”</h4>
+          <p>He aligned teams around one data and lifecycle system, which improved decision quality at the leadership layer.</p>
           <small>— VP, Revenue Operations</small>
         </article>
 
         <article class="letter">
-          <h4>“He made our finance workflow finally scale with confidence.”</h4>
-          <p>Exception handling and process clarity were the biggest unlocks. We stopped firefighting and started forecasting.</p>
+          <h4>“Our finance process became stable and scalable.”</h4>
+          <p>Exception handling and automation logic helped us stop firefighting and focus on proactive planning.</p>
           <small>— Director, Finance</small>
         </article>
 
         <article class="letter">
-          <h4>“Rare blend of systems thinking and UX empathy.”</h4>
-          <p>What he built felt intuitive for operators and transparent for leadership. Adoption happened quickly.</p>
+          <h4>“A rare blend of systems rigor and UX empathy.”</h4>
+          <p>He designed workflows people actually adopted, while still giving managers governance and visibility.</p>
           <small>— GTM Program Lead</small>
         </article>
       </div>
     </section>
 
     <section id="playbook" aria-labelledby="playbook-title">
-      <h2 class="section-title" id="playbook-title">What to say in outreach, interviews, and your About section</h2>
-      <div class="pillars">
+      <h2 class="section-title" id="playbook-title">What to say in interviews, outreach, and About pages</h2>
+      <div class="playbook">
         <article>
           <h3>Positioning</h3>
-          <p>“I help scaling teams build calm, measurable operating systems where growth does not break execution.”</p>
+          <p>“I help scaling teams build calm operating systems where growth does not break execution.”</p>
         </article>
         <article>
-          <h3>Story format</h3>
-          <p>Use: Context → Friction → System Designed → Business Outcome. Keep every result decision-relevant.</p>
+          <h3>Story framework</h3>
+          <p>Use: Context → Friction → System Designed → Business Outcome. Keep outcomes decision-relevant.</p>
         </article>
         <article>
           <h3>Differentiator</h3>
-          <p>“I combine architecture depth with operator-level UX, so systems are both robust and easy to use.”</p>
+          <p>“I combine architecture depth with operator UX, so systems are both resilient and easy to use.”</p>
         </article>
         <article>
-          <h3>CTA</h3>
-          <p>“If your growth is outpacing your operations, I can design the backbone that keeps execution reliable.”</p>
+          <h3>CTA line</h3>
+          <p>“If growth is outpacing your operations, I can design the backbone that keeps execution predictable.”</p>
         </article>
       </div>
 
       <div class="timeline">
         <article>
           <small>How I work · Step 1</small>
-          <h3>Audit workflows + data trust gaps</h3>
+          <h3>Audit workflows, ownership, and reporting trust gaps</h3>
         </article>
         <article>
           <small>How I work · Step 2</small>
-          <h3>Design architecture, ownership, and governance</h3>
+          <h3>Design architecture, governance, and operating rules</h3>
         </article>
         <article>
           <small>How I work · Step 3</small>
-          <h3>Ship automation in iterative releases tied to KPIs</h3>
+          <h3>Ship automation in KPI-tied iterations and stabilize adoption</h3>
         </article>
       </div>
     </section>
 
     <section id="contact" aria-labelledby="contact-title">
-      <div class="contact">
+      <article class="card contact-wrap">
         <div>
-          <h2 class="section-title" id="contact-title">Open to premium RevOps & Business Systems opportunities</h2>
-          <p class="section-sub" style="margin:0.45rem 0 0;max-width:62ch">If your team needs an operator who can architect, ship, and scale internal systems, I’d love to talk.</p>
+          <h2 class="section-title" id="contact-title">Open to premium RevOps & Business Systems roles</h2>
+          <p class="contact-text">
+            If you need an operator who can architect, implement, and scale internal systems, I’d love to talk about your stack and growth bottlenecks.
+          </p>
         </div>
         <div class="actions">
-          <a class="btn primary" href="mailto:arorarajat12@gmail.com">Book a conversation</a>
+          <a class="btn btn-primary" href="mailto:arorarajat12@gmail.com">Book a conversation</a>
           <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">View LinkedIn</a>
         </div>
-      </div>
+      </article>
     </section>
   </main>
 
   <footer>
-    <div class="container">© <span id="year"></span> Rajat Arora · Premium portfolio edition for GitHub Pages.</div>
+    <div class="container">© <span id="year"></span> Rajat Arora · Built as a premium GitHub Pages portfolio.</div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const glow = document.querySelector('.cursor-glow');
-    window.addEventListener('pointermove', (event) => {
-      glow.style.left = `${event.clientX}px`;
-      glow.style.top = `${event.clientY}px`;
-    });
+
+    if (glow && !reduceMotion) {
+      window.addEventListener('pointermove', (event) => {
+        glow.style.left = `${event.clientX}px`;
+        glow.style.top = `${event.clientY}px`;
+      });
+    } else if (glow) {
+      glow.remove();
+    }
   </script>
 </body>
 </html>
