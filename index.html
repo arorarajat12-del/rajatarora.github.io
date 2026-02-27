@@ -148,21 +148,19 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      background: linear-gradient(90deg, #1f2a61 0%, #152a52 55%, #0d2a47 100%);
+      border-bottom: 1px solid var(--line);
+      background: rgba(7, 7, 18, 0.65);
     }
 
-    .topbar-inner { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1.2rem; padding: 1.05rem 0; }
-    .top-actions { display: flex; justify-content: flex-end; }
-    .brand { color: #fff; text-decoration: none; font-weight: 760; letter-spacing: -0.01em; white-space: nowrap; font-size: 1.05rem; }
-    nav { display: flex; gap: 1.6rem; justify-content: center; }
-    nav a { color: rgba(255, 255, 255, 0.75); text-decoration: none; font-size: 0.94rem; font-weight: 550; }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.9rem 0; }
+    .top-actions { display: flex; gap: 0.45rem; flex-wrap: wrap; justify-content: flex-end; }
+    .brand { color: #fff; text-decoration: none; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; }
+    nav { display: flex; gap: 1rem; }
+    nav a { color: rgba(255, 255, 255, 0.72); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
     nav a:hover { color: #fff; }
-    .top-cta { border-radius: 14px; padding: .76rem 1.25rem; background: #f4f4f6; color: #141824; border: 1px solid rgba(255,255,255,.18); font-weight: 720; }
-    .top-cta:hover, .top-cta:focus-visible { background: #fff; color:#0f1320; transform: translateY(-1px); }
 
     main { padding: 0 0 1rem; }
-    .hero { padding: 3.4rem 0 2.7rem; }
+    .hero { padding: 3rem 0 2.7rem; }
     .hero-tags { display: flex; gap: 0.45rem; flex-wrap: wrap; }
     .hero-grid { margin-top: 1.5rem; display: grid; gap: 1rem; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); align-items: start; }
 
@@ -292,7 +290,6 @@
 
     @media (max-width: 960px) {
       nav { display: none; }
-      .topbar-inner { grid-template-columns: 1fr auto; }
       .hero-grid,
       .stats,
       .cards-2,
@@ -325,7 +322,8 @@
         <a href="#contact">Contact</a>
       </nav>
       <div class="top-actions">
-        <a href="#contact" class="btn top-cta">Let’s talk →</a>
+        <button id="startDemo" class="btn btn-ghost" type="button">Live demo</button>
+        <button id="toggleRecruiterMode" class="btn" type="button">Recruiter mode</button>
       </div>
     </div>
   </header>
@@ -708,7 +706,7 @@ Contact: arorarajat12@gmail.com`;
     const setRecruiterMode = (enabled, quiet = false) => {
       recruiterMode = enabled;
       document.body.classList.toggle('recruiter-mode', recruiterMode);
-      if (toggleBtn) toggleBtn.textContent = recruiterMode ? 'Full mode' : 'Recruiter mode';
+      toggleBtn.textContent = recruiterMode ? 'Full mode' : 'Recruiter mode';
       if (!quiet) showToast(recruiterMode ? 'Recruiter mode on' : 'Full mode on');
       if (!recruiterMode) setSpotlight(null);
     };
@@ -754,8 +752,8 @@ Contact: arorarajat12@gmail.com`;
       showToast('Recruiter link copied');
     };
 
-    if (toggleBtn) toggleBtn.addEventListener('click', () => setRecruiterMode(!recruiterMode));
-    if (demoBtn) demoBtn.addEventListener('click', runLiveDemo);
+    toggleBtn.addEventListener('click', () => setRecruiterMode(!recruiterMode));
+    demoBtn.addEventListener('click', runLiveDemo);
     shareBtn.addEventListener('click', copyRecruiterLink);
     closeHelpBtn.addEventListener('click', toggleHelp);
     helpOverlay.addEventListener('click', (event) => {
