@@ -172,6 +172,9 @@
 
     .hero-copy { max-width: 62ch; margin-top: 1rem; font-size: 1.04rem; }
     .hero-copy { transition: opacity .35s ease, transform .35s ease; }
+    .role-switch { margin-top: .8rem; display:flex; gap:.45rem; flex-wrap:wrap; }
+    .role-btn { border:1px solid var(--line); background:rgba(255,255,255,.03); color:var(--muted); border-radius:999px; padding:.45rem .78rem; min-height:44px; font-size:.78rem; font-weight:700; cursor:pointer; }
+    .role-btn.active { color:#fff; border-color:rgba(170,184,255,.55); background:rgba(170,184,255,.12); }
     .hero-actions { margin-top: 1.35rem; display: flex; gap: 0.55rem; flex-wrap: wrap; }
     .stats { margin-top: 1.4rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; }
     .stat { border-radius: var(--radius); padding: 0.95rem; }
@@ -288,42 +291,6 @@
     .arch-flow { margin-top:.6rem; display:grid; gap:.45rem; }
     .arch-step { border:1px solid rgba(170,184,255,.45); border-radius:10px; padding:.45rem .55rem; background:rgba(170,184,255,.10); font-size:.82rem; }
     .arch-arrow { color:#aab8ff; text-align:center; font-weight:700; }
-    .journey-map { margin-top:.4rem; display:grid; gap:.5rem; }
-    .journey-stage {
-      border:1px solid #dbe2ea;
-      border-radius:12px;
-      background:#fff;
-      padding:.65rem .7rem;
-      display:grid;
-      gap:.35rem;
-    }
-    .journey-stage-head {
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:space-between;
-      gap:.45rem;
-      align-items:center;
-    }
-    .journey-phase {
-      display:inline-flex;
-      border:1px solid #bfdbfe;
-      background:#eff6ff;
-      color:#1d4ed8;
-      border-radius:999px;
-      font-size:.72rem;
-      font-weight:700;
-      padding:.12rem .55rem;
-    }
-    .journey-title { font-size:.9rem; color:#0f172a; font-weight:700; }
-    .journey-detail { margin:0; color:#334155; font-size:.84rem; }
-    .journey-link {
-      text-align:center;
-      color:#1d4ed8;
-      font-size:.95rem;
-      font-weight:700;
-      line-height:1;
-      padding:.1rem 0;
-    }
 
     .overlay-card.case-modal {
       background:#ffffff;
@@ -338,9 +305,6 @@
     .overlay-card.case-modal .case-panel { border-color:#dbe2ea; background:#f8fafc; }
     .overlay-card.case-modal .arch-step { border-color:#bfdbfe; background:#eff6ff; color:#1e3a8a; }
     .overlay-card.case-modal .arch-arrow { color:#1d4ed8; }
-    .overlay-card.case-modal .journey-stage { border-color:#dbe2ea; background:#fff; }
-    .overlay-card.case-modal .journey-title { color:#0f172a; }
-    .overlay-card.case-modal .journey-detail { color:#334155; }
     .overlay-card.case-modal .case-kpi { border-color:#86efac; background:#f0fdf4; color:#166534; }
     .overlay-card.case-modal .btn {
       background:#0f172a;
@@ -409,7 +373,7 @@
       <a href="#top" class="brand">Rajat Arora</a>
       <nav aria-label="Primary">
         <a href="#work">Work</a>
-        <a href="#proof">Metrics</a>
+        <a href="#proof">Proof</a>
         <a href="#architecture">Architecture</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
@@ -424,22 +388,28 @@
     <section class="hero" id="top" aria-labelledby="hero-title" style="position:relative; overflow:hidden;">
       <canvas id="heroNetwork" class="hero-network" aria-hidden="true"></canvas>
       <div class="hero-tags">
-        <span class="pill">RevOps</span><span class="pill">GTM Strategy</span><span class="pill">CRM Architecture</span><span class="pill">Marketing Automation</span>
+        <span class="pill">Demand-to-Revenue Ops</span><span class="pill">CRM Architecture</span><span class="pill">Marketing Automation</span><span class="pill">PLG + Sales-Led GTM</span>
       </div>
 
       <div class="hero-grid">
         <div>
           <h1 id="hero-title">Architecting <span class="hero-title-muted">Scale.</span></h1>
-          <p id="heroCopy" class="hero-copy muted">Scaling breaks people-dependent processes. I design demand-to-revenue systems with clear lifecycle definitions, accountable handoffs, and reporting leadership can actually trust.</p>
+          <p id="heroCopy" class="hero-copy muted">Scaling breaks people-dependent processes. I design demand-to-revenue systems with clear lifecycle definitions, accountable handoffs, and reporting leadership can trust weekly.</p>
+
+          <div class="role-switch" aria-label="Role targeted view">
+            <button class="role-btn active" data-role="revops" type="button" aria-pressed="true">RevOps</button>
+            <button class="role-btn" data-role="bizsys" type="button" aria-pressed="false">Business Systems</button>
+            <button class="role-btn" data-role="gtm" type="button" aria-pressed="false">GTM Systems</button>
+          </div>
 
           <div class="hero-actions">
             <a href="#work" class="btn btn-primary">View case studies →</a>
-            <a href="mailto:arorarajat12@gmail.com" class="btn">Contact me</a>
+            <a href="mailto:arorarajat12@gmail.com" class="btn">Email</a>
           </div>
 
           <div class="stats">
             <div class="glass stat"><p class="muted-2">Automation built</p><strong>600+ workflows</strong></div>
-            <div class="glass stat"><p class="muted-2">Systems</p><strong>HubSpot + Salesforce</strong></div>
+            <div class="glass stat"><p class="muted-2">Systems</p><strong>HubSpot + GTM stack</strong></div>
             <div class="glass stat"><p class="muted-2">Focus</p><strong>SSOT + scale</strong></div>
           </div>
           <p class="context-note">Context: metrics shown are aggregated across multiple engagements and anonymized for NDA compliance.</p>
@@ -467,7 +437,7 @@
       <p class="section-sub muted">Each case study opens in a structured frame with context, architecture, implementation details, and outcomes.</p>
       <div class="cards-2">
         <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Typeform</span><span class="pill">PandaDoc</span></div><h3>Designed and Implemented End-to-End GTM Operating System</h3><p class="muted" style="margin-top:.45rem;">Connected marketing, sales, onboarding, and revenue intelligence into one scalable lifecycle architecture.</p><div class="proof-chips"><span class="proof-chip">Lifecycle automation ↑</span><span class="proof-chip">Forecast visibility ↑</span></div><ul class="bullet-list"><li>Built structured MQL → SQL lead scoring with behavioral, intent, and demographic signals</li><li>Designed connected Sales, Onboarding, Branding, Growth, and Retention pipelines</li><li>Implemented multi-touch attribution for campaign-to-revenue visibility</li><li>Integrated Typeform, PandaDoc, and Calendly with precise routing logic</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="gtmos">Open case study</button></article>
-        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Zapier</span><span class="pill">Slack</span></div><h3>Replaced Third-Party Referral Tool with Automated In-House System</h3><p class="muted" style="margin-top:.45rem;">Improved data integrity, reporting reliability, and conversion tracking by replacing the legacy referral workflow with a scalable native system.</p><div class="proof-chips"><span class="proof-chip">Third-party dependency removed</span><span class="proof-chip">Attribution visibility ↑</span></div><ul class="bullet-list"><li>Auto-generated alumni referral codes at graduation</li><li>Applied referral discount logic (20%) with zero manual intervention</li><li>Linked referrer and referee as structured CRM relationships</li><li>Triggered Slack alerts and dashboard-ready reporting</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="referral">Open case study</button></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Zapier</span><span class="pill">Slack</span></div><h3>Fully Automated Referral Engine</h3><p class="muted" style="margin-top:.45rem;">Replaced a paid referral platform with a fully automated in-house system that enabled reliable tracking and reporting.</p><div class="proof-chips"><span class="proof-chip">Tool dependency removed</span><span class="proof-chip">Structured reporting ↑</span></div><ul class="bullet-list"><li>Auto-generated alumni referral codes at graduation</li><li>Applied referral discount logic (20%) with zero manual intervention</li><li>Linked referrer and referee as structured CRM relationships</li><li>Triggered Slack alerts and dashboard-ready reporting</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="referral">Open case study</button></article>
         <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Governance</span><span class="pill">Reporting</span></div><h3>HubSpot as Single Source of Truth</h3><p class="muted" style="margin-top:.45rem;">Standardized lifecycle stages, ownership, and data integrity across teams.</p><div class="proof-chips"><span class="proof-chip">Reporting trust ↑</span><span class="proof-chip">Lifecycle clarity ↑</span></div><ul class="bullet-list"><li>Unified stakeholder data model across departments</li><li>Reduced duplicated records and reporting drift</li><li>Implemented governance + automation to prevent regression</li><li>Enabled leadership-ready dashboards teams trust</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="ssot">Open case study</button></article>
         <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">QuickBooks</span><span class="pill">Zapier/Make</span></div><h3>Finance Ops Automation (Invoicing)</h3><p class="muted" style="margin-top:.45rem;">Reduced manual processing and improved accuracy from request → invoice.</p><div class="proof-chips"><span class="proof-chip">Cycle time ↓</span><span class="proof-chip">Auditability ↑</span></div><ul class="bullet-list"><li>Automated intake → validation → invoicing workflow</li><li>Eliminated repetitive reconciliation steps</li><li>Created consistent audit trail and exception handling</li><li>Improved cycle time from request to invoice</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="finance">Open case study</button></article><article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Google Sheets</span><span class="pill">QuickBooks</span></div><h3>End-to-End Project Tracking System</h3><p class="muted" style="margin-top:.45rem;">Built a CRM-driven reporting system that synced live project status to Google Sheets and automated stakeholder communication.</p><div class="proof-chips"><span class="proof-chip">Manual reporting removed</span><span class="proof-chip">Scaled across 300+ permits</span></div><ul class="bullet-list"><li>Connected Sales → Project → Permit pipelines with stage logic</li><li>Automated Google Sheets creation and real-time updates</li><li>Enabled stage-to-stage duration tracking and milestone emails</li><li>Integrated QuickBooks estimate creation at quote stage</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="projecttracking">Open case study</button></article>
         <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Automation</span><span class="pill">Slack</span></div><h3>Contractor Onboarding Pipeline</h3><p class="muted" style="margin-top:.45rem;">Built a consistent onboarding workflow with clear handoffs and reminders.</p><div class="proof-chips"><span class="proof-chip">Time-to-ready ↓</span><span class="proof-chip">Handoff quality ↑</span></div><ul class="bullet-list"><li>Designed stages + ownership across stakeholders</li><li>Automated reminders, tasks, and approvals</li><li>Reduced back-and-forth via structured intake</li><li>Improved time-to-ready for new contractors</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="onboarding">Open case study</button></article>
@@ -560,7 +530,7 @@
         <article class="timeline-step reveal"><h3>Before</h3><p class="muted" style="margin-top:.35rem;">Fragmented lifecycle ownership, ad-hoc workflows, and inconsistent reporting trust.</p></article>
         <article class="timeline-step reveal"><h3>System design</h3><p class="muted" style="margin-top:.35rem;">Mapped lifecycle architecture, ownership boundaries, and governance checkpoints.</p></article>
         <article class="timeline-step reveal"><h3>Automation</h3><p class="muted" style="margin-top:.35rem;">Connected high-friction handoffs with robust workflows and exception handling.</p></article>
-        <article class="timeline-step reveal"><h3>Outcome</h3><p class="muted" style="margin-top:.35rem;">Faster execution, lower manual load, and dashboards leadership can actually trust.</p></article>
+        <article class="timeline-step reveal"><h3>Outcome</h3><p class="muted" style="margin-top:.35rem;">Faster execution, lower manual load, and dashboards leadership can trust weekly.</p></article>
       </div>
     </section>
 
@@ -940,62 +910,45 @@
         ]
       },
       referral: {
-        title: 'Replaced Third-Party Referral Tool with Automated In-House System, Improving Data Integrity, Reporting, and Conversion Tracking',
-        context: 'Worked with the Alumni team to redesign the referral system for two internal programs. The existing process relied on a third-party referral workflow with poor integration into HubSpot, limiting reporting and operational efficiency. My role was to design and implement a scalable, automated referral system fully integrated within the existing RevOps stack.',
-        kpis: ['Third-party dependency removed', 'Data integrity improved', 'Attribution visibility enabled', '2 successful referrals in first week'],
-        problem: 'The existing referral system was fragmented, inefficient, and difficult to scale. It depended on a paid third-party platform, stored referral tracking data as unstructured text, had poor HubSpot integration, and forced alumni through multiple landing pages to generate links and codes. Manual effort was required to apply discounts, identify referred applicants, and track referrer–referee relationships, resulting in low adoption and inaccurate tracking.',
+        title: 'Building a Fully Automated Referral Engine',
+        context: 'Worked with the Alumni team to redesign referrals for SalesCamp and AdTech by replacing Referral Factory with a fully automated HubSpot + Zapier system.',
+        kpis: ['Third-party tool eliminated', 'Structured attribution enabled', 'Manual effort reduced to near-zero', '2 successful referrals in week one'],
+        problem: 'The prior process depended on a paid external tool, tracked referrals in unstructured text, and forced a multi-step alumni experience that hurt adoption and reporting reliability.',
         constraints: [
-          'Needed to work fully within HubSpot + Zapier ecosystem (no engineering support)',
-          'Required clean, structured data model for reporting',
-          'Had to support multiple internal programs',
-          'Needed to be fully automated end-to-end',
-          'Required high adoption with minimal friction for alumni'
+          'No engineering support; solution had to run in HubSpot + Zapier ecosystem',
+          'Needed clean structured data model for accurate reporting and attribution',
+          'System had to support two programs (SalesCamp + AdTech)',
+          'End-to-end automation required with minimal alumni friction'
         ],
         approach: [
-          'Eliminated external dependency to reduce cost and increase control',
-          'Prioritized data structure over quick fixes (critical for reporting)',
-          'Designed system around automatic code generation + ownership mapping',
-          'Focused on zero-friction experience for alumni (no portals, no setup)',
-          'Accepted more upfront system design work for long-term scalability and reliability'
+          'Replaced external dependency entirely to reduce cost and increase control',
+          'Prioritized data structure first (property design + associations) over quick UI fixes',
+          'Designed around automatic referral-code generation and owner mapping',
+          'Accepted higher upfront design effort for long-term scalability and reliability'
         ],
         solution: [
-          'Referral Code Generation: Participant graduation triggers unique referral code creation via Zapier, stored in a dedicated HubSpot property',
-          'Alumni Experience: automated email sends personalized referral code with no login or landing pages required',
-          'Applicant Flow: intake form captures referral code, validates it, links referrer automatically, and triggers discount eligibility',
-          'Automation Layer: correct discounted invoice selected automatically, no manual intervention required, Slack notification triggered for internal visibility',
-          'Data & Reporting Layer: referrer ↔ referee relationship stored structurally for referrals per alumni, program-level performance, and conversion tracking'
+          'Graduation trigger auto-generates unique referral code via Zapier and stores it in a dedicated HubSpot property',
+          'Automated personalized email sends each alumni their referral code (no login, no portal setup)',
+          'Intake form captures referral code, validates it, and links referrer to applicant automatically',
+          'Automation applies discount logic (20%) and selects the correct invoice flow with zero manual intervention',
+          'Slack notifications provide real-time internal visibility'
         ],
         execution: [
-          'Built automated workflows using HubSpot + Zapier',
-          'Designed structured data model for referral tracking',
-          'Implemented auto-generation of referral codes',
-          'Implemented automated email workflows',
-          'Implemented intake form validation logic',
-          'Implemented invoice automation with dynamic discounting',
-          'Integrated Slack notifications for real-time visibility',
-          'Built dashboards for referral performance tracking'
+          'Built HubSpot + Zapier workflows for code generation, emailing, validation, invoicing, and notifications',
+          'Implemented structured referral relationship model (referrer ↔ referee)',
+          'Configured intake validation and dynamic invoicing paths',
+          'Published dashboards for referral volume, conversion, and program-level performance'
         ],
         impact: [
-          'Fully eliminated dependency on third-party referral software',
-          'Created accurate, reportable referral tracking system',
-          'Improved data integrity and attribution visibility',
+          'Fully eliminated third-party referral software dependency',
+          'Created accurate, reportable referral tracking and attribution visibility',
           'Reduced manual work across admissions and operations',
-          'Achieved immediate adoption with 2 successful referrals within the first week',
-          'Built a scalable system supporting multiple programs'
+          'System showed immediate adoption with two successful referrals in first week',
+          'Delivered scalable architecture supporting multiple programs'
         ],
-        diagram: ['Participant Graduation Trigger', 'Referral Code Generation (Zapier)', 'HubSpot Structured Property Storage', 'Automated Alumni Referral Email', 'Applicant Intake + Referral Code Input', 'Validation + Referrer Association', 'Discounted Invoice Automation (20%)', 'Slack Notification + Reporting Layer'],
-        diagramJourney: [
-          { phase: 'Trigger', title: 'Participant Graduation Event', detail: 'A graduation milestone triggers an automated workflow kickoff in HubSpot.' },
-          { phase: 'Identity', title: 'Unique Referral Code Generation', detail: 'Zapier generates a unique referral code and stores it in a structured HubSpot property.' },
-          { phase: 'Distribution', title: 'Automated Alumni Communication', detail: 'Personalized email sends the referral code immediately with no login or portal dependency.' },
-          { phase: 'Capture', title: 'Applicant Intake and Code Submission', detail: 'Applicants submit referral codes through intake form fields tied to data validation rules.' },
-          { phase: 'Validation', title: 'Association and Eligibility Logic', detail: 'System validates the code, links referrer ↔ referee records, and flags discount eligibility.' },
-          { phase: 'Finance', title: 'Discounted Invoice Automation', detail: 'Correct discounted invoice path is selected and delivered with zero manual intervention.' },
-          { phase: 'Visibility', title: 'Slack Alerts + Operational Monitoring', detail: 'Internal teams receive real-time Slack notifications when referral events occur.' },
-          { phase: 'Intelligence', title: 'Attribution Reporting and Dashboards', detail: 'Structured relationship data powers conversion tracking, referrer performance, and program-level insights.' }
-        ],
-        differential: ['Previous system was tool-dependent with weak tracking and limited reporting.', 'New system is fully automated, zero-friction for users, and native to HubSpot.', 'Structured relationship data enabled reliable conversion tracking and actionable performance reporting.'],
-        demonstrates: ['End-to-end system architecture thinking', 'Strong CRM data modeling capability', 'Ability to replace tools with scalable internal systems', 'Focus on both user experience and operational efficiency'],
+        diagram: ['Alumni Graduates', 'Code Generation (Zapier → HubSpot)', 'Automated Referral Email', 'Applicant Intake + Code Input', 'Validation + Contact Association', 'Discounted Invoice Automation (20%)', 'Slack Notification + Dashboards', 'Reporting & Dashboards'],
+        differential: ['Previous workflow was fragmented and tool-bound; new system is native, automated, and reportable end-to-end.', 'Data is modeled as structured CRM relationships instead of text notes, enabling reliable analytics and attribution.', 'Operations teams receive real-time referral visibility without manual dashboard checks.'],
+        demonstrates: ['End-to-end system architecture in RevOps context', 'Strong CRM data modeling and attribution design', 'Ability to replace paid tooling with scalable internal automation', 'Execution focus across UX, operations, and reporting outcomes'],
         beforeAfter: [
           ['Third-party tool dependency', 'Fully in-house system'],
           ['Unstructured text data', 'Structured, reportable data'],
@@ -1118,21 +1071,7 @@
       document.getElementById('caseStudyExecution').innerHTML = (data.execution || []).map((item) => `<li>${item}</li>`).join('');
       document.getElementById('caseStudyImpact').innerHTML = data.impact.map((item) => `<li>${item}</li>`).join('');
       document.getElementById('caseStudyKpis').innerHTML = data.kpis.map((kpi) => `<span class="case-kpi">${kpi}</span>`).join('');
-      const diagramHost = document.getElementById('caseStudyDiagram');
-      if (Array.isArray(data.diagramJourney) && data.diagramJourney.length) {
-        diagramHost.innerHTML = `<div class="journey-map">${data.diagramJourney.map((step, index) => `
-          <article class="journey-stage">
-            <div class="journey-stage-head">
-              <span class="journey-phase">${step.phase}</span>
-              <span class="journey-title">${step.title}</span>
-            </div>
-            <p class="journey-detail">${step.detail}</p>
-          </article>
-          ${index < data.diagramJourney.length - 1 ? '<div class="journey-link">↓</div>' : ''}
-        `).join('')}</div>`;
-      } else {
-        diagramHost.innerHTML = data.diagram.map((step, index) => `<div class="arch-step">${step}</div>${index < data.diagram.length - 1 ? '<div class="arch-arrow">↓</div>' : ''}`).join('');
-      }
+      document.getElementById('caseStudyDiagram').innerHTML = data.diagram.map((step, index) => `<div class="arch-step">${step}</div>${index < data.diagram.length - 1 ? '<div class="arch-arrow">↓</div>' : ''}`).join('');
       const diffWrap = document.getElementById('caseStudyDiffWrap');
       const demoWrap = document.getElementById('caseStudyDemoWrap');
       const diff = data.differential || [];
