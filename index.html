@@ -188,6 +188,31 @@
     .side-list { list-style: none; margin: 0.8rem 0 0; padding: 0; display: grid; gap: 0.6rem; }
     .side-list li { border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255, 255, 255, 0.05); padding: 0.75rem; }
 
+
+
+    .hero-network {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      z-index:-1;
+      opacity:.4;
+      pointer-events:none;
+    }
+
+    .bento-grid { margin-top:1rem; display:grid; gap:.8rem; grid-template-columns:repeat(4,minmax(0,1fr)); }
+    .bento-card { border:1px solid var(--line); border-radius:16px; background:linear-gradient(180deg,var(--card-strong),rgba(255,255,255,.02)); padding:.95rem; }
+    .bento-card.large { grid-column:span 2; grid-row:span 2; }
+    .kpi-ring { width:74px; aspect-ratio:1 / 1; border-radius:50%; margin:.55rem auto .35rem; position:relative; background:conic-gradient(#818cf8 calc(var(--p)*1%), rgba(255,255,255,.09) 0); }
+    .kpi-ring::after { content:''; position:absolute; inset:9px; border-radius:50%; background:#0a0f1d; }
+    .kpi-ring span { position:absolute; inset:0; display:grid; place-items:center; z-index:1; font-size:.8rem; font-weight:700; }
+
+    .arch-pipeline { margin-top:1rem; display:flex; gap:.5rem; align-items:center; overflow-x:auto; padding-bottom:.35rem; }
+    .arch-node { border:1px solid var(--line); border-radius:12px; min-width:180px; padding:.75rem; background:rgba(255,255,255,.03); color:#fff; cursor:pointer; text-align:left; }
+    .arch-node.active, .arch-node:hover { border-color:rgba(129,140,248,.8); box-shadow:0 0 0 2px rgba(129,140,248,.2); }
+    .arch-link { color:#aab8ff; font-weight:700; }
+    .arch-detail { margin-top:.8rem; border:1px solid var(--line); border-radius:14px; padding:.85rem; background:rgba(255,255,255,.02); }
+
     .section { border-top: 1px solid var(--line); padding: 2.4rem 0; }
     .eyebrow { margin: 0; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em; color: rgba(255, 255, 255, 0.56); font-weight: 700; }
     .section-sub { margin-top: 0.7rem; max-width: 70ch; }
@@ -319,7 +344,7 @@
       .stats,
       .cards-2,
       .scoreboard,
-      .presentation-grid, .timeline, .vault-grid, .impact-calc-grid { grid-template-columns: 1fr; }
+      .presentation-grid, .timeline, .vault-grid, .impact-calc-grid, .bento-grid { grid-template-columns: 1fr; }
       .contact-card { flex-direction: column; align-items: flex-start; }
     }
 
@@ -343,6 +368,7 @@
       <nav aria-label="Primary">
         <a href="#work">Work</a>
         <a href="#proof">Proof</a>
+        <a href="#architecture">Architecture</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -354,7 +380,8 @@
   </header>
 
   <main id="main" class="container">
-    <section class="hero" id="top" aria-labelledby="hero-title">
+    <section class="hero" id="top" aria-labelledby="hero-title" style="position:relative; overflow:hidden;">
+      <canvas id="heroNetwork" class="hero-network" aria-hidden="true"></canvas>
       <div class="hero-tags">
         <span class="pill">Business Systems</span><span class="pill">RevOps</span><span class="pill">Automation</span><span class="pill">HubSpot</span><span class="pill">Toronto, Canada</span>
       </div>
@@ -434,6 +461,17 @@
         <div class="score"><strong>High</strong><span class="muted">Team adoption with low retraining overhead</span></div>
       </div>
 
+      <div class="bento-grid" aria-label="Impact bento grid">
+        <article class="bento-card large">
+          <h3>Systems over silos</h3>
+          <p class="muted" style="margin-top:.45rem;">Most RevOps friction is a design problem, not a tooling problem. I model lifecycle ownership, enforce field contracts, and automate handoffs so reporting becomes a byproduct of good architecture.</p>
+          <p class="muted" style="margin-top:.55rem;">Core stack: HubSpot, Make/Zapier, QuickBooks, Slack, API connectors.</p>
+        </article>
+        <article class="bento-card" style="--p:85;"><p class="eyebrow">Time saved</p><div class="kpi-ring"><span>85%</span></div><p class="muted" style="text-align:center;">Automation uplift in high-volume admin tasks.</p></article>
+        <article class="bento-card" style="--p:40;"><p class="eyebrow">Accuracy gain</p><div class="kpi-ring"><span>40%</span></div><p class="muted" style="text-align:center;">Cleaner invoicing + reduced rework loops.</p></article>
+        <article class="bento-card" style="--p:60;"><p class="eyebrow">Deflection</p><div class="kpi-ring"><span>60%</span></div><p class="muted" style="text-align:center;">FAQ/chat automation reduced inbound noise.</p></article>
+      </div>
+
       <div class="impact-calc" aria-label="Impact calculator lite">
         <h3>Impact model (efficiency + revenue)</h3>
         <p class="muted" style="margin-top:.35rem;">Models both operating efficiency and pipeline conversion lift.</p>
@@ -462,6 +500,26 @@
           <span id="calcRange" class="muted">Estimated annual value range: $34,009 – $44,412.</span>
         </div>
       </div>
+    </section>
+
+
+    <section id="architecture" class="section" aria-labelledby="architecture-title">
+      <p class="eyebrow">Blueprint</p>
+      <h2 id="architecture-title" style="margin-top:.45rem;">GTM architecture pipeline</h2>
+      <p class="section-sub muted">Inspired by your pipeline concept: click each stage to inspect the architecture logic.</p>
+      <div class="arch-pipeline" role="tablist" aria-label="Architecture stages">
+        <button class="arch-node active" type="button" data-arch="capture" role="tab" aria-selected="true">Phase 1<br><strong>Capture + score</strong></button>
+        <span class="arch-link" aria-hidden="true">→</span>
+        <button class="arch-node" type="button" data-arch="routing" role="tab" aria-selected="false">Phase 2<br><strong>Lifecycle routing</strong></button>
+        <span class="arch-link" aria-hidden="true">→</span>
+        <button class="arch-node" type="button" data-arch="pipeline" role="tab" aria-selected="false">Phase 3<br><strong>Multi-pipeline ops</strong></button>
+        <span class="arch-link" aria-hidden="true">→</span>
+        <button class="arch-node" type="button" data-arch="feedback" role="tab" aria-selected="false">Phase 4<br><strong>Feedback loop</strong></button>
+      </div>
+      <article id="archDetail" class="arch-detail" aria-live="polite">
+        <h3>Lead capture + qualification scoring</h3>
+        <p class="muted" style="margin-top:.4rem;"><strong>Goal:</strong> allow only high-signal records into operations. <strong>Implementation:</strong> engagement + fit scoring tied to required properties and standardized handoff contracts.</p>
+      </article>
     </section>
 
     <section id="presentationLab" class="section" aria-labelledby="presentation-title">
@@ -1096,6 +1154,79 @@ Contact: arorarajat12@gmail.com`;
     closeDeepDiveBtn.addEventListener('click', () => closeOverlay(deepDiveOverlay));
     deepDiveOverlay.addEventListener('click', (event) => {
       if (event.target === deepDiveOverlay) closeOverlay(deepDiveOverlay);
+    });
+
+
+    const heroNetwork = document.getElementById('heroNetwork');
+    if (heroNetwork && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const ctx = heroNetwork.getContext('2d');
+      let particles = [];
+      const setupNetwork = () => {
+        heroNetwork.width = heroNetwork.offsetWidth;
+        heroNetwork.height = heroNetwork.offsetHeight;
+        const count = Math.min(70, Math.max(25, Math.floor(heroNetwork.width / 28)));
+        particles = Array.from({ length: count }, () => ({
+          x: Math.random() * heroNetwork.width,
+          y: Math.random() * heroNetwork.height,
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: (Math.random() - 0.5) * 0.35,
+          r: Math.random() * 1.8 + 0.8
+        }));
+      };
+      const drawNetwork = () => {
+        ctx.clearRect(0, 0, heroNetwork.width, heroNetwork.height);
+        ctx.fillStyle = 'rgba(255,255,255,0.35)';
+        ctx.strokeStyle = 'rgba(170,184,255,0.12)';
+        particles.forEach((p, i) => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > heroNetwork.width) p.vx *= -1;
+          if (p.y < 0 || p.y > heroNetwork.height) p.vy *= -1;
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+          for (let j = i + 1; j < particles.length; j += 1) {
+            const q = particles[j];
+            const d = Math.hypot(p.x - q.x, p.y - q.y);
+            if (d < 120) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke(); }
+          }
+        });
+        requestAnimationFrame(drawNetwork);
+      };
+      setupNetwork();
+      window.addEventListener('resize', setupNetwork);
+      requestAnimationFrame(drawNetwork);
+    }
+
+    const archContent = {
+      capture: {
+        title: 'Lead capture + qualification scoring',
+        body: '<strong>Goal:</strong> allow only high-signal records into operations. <strong>Implementation:</strong> engagement + fit scoring tied to required properties and standardized handoff contracts.'
+      },
+      routing: {
+        title: 'Lifecycle routing governance',
+        body: '<strong>Goal:</strong> remove handoff ambiguity. <strong>Implementation:</strong> stage-state triggers move records to the right owner with SLA reminders and exception handling.'
+      },
+      pipeline: {
+        title: 'Multi-pipeline execution model',
+        body: '<strong>Goal:</strong> preserve clean process boundaries across use cases. <strong>Implementation:</strong> separate but harmonized pipelines with common data contracts and reporting keys.'
+      },
+      feedback: {
+        title: 'Attribution and feedback loop',
+        body: '<strong>Goal:</strong> keep optimization continuous. <strong>Implementation:</strong> closed-loop reporting detects bottlenecks and feeds changes back into capture and routing rules.'
+      }
+    };
+    const archButtons = Array.from(document.querySelectorAll('.arch-node'));
+    const archDetail = document.getElementById('archDetail');
+    archButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const key = button.getAttribute('data-arch');
+        const content = archContent[key];
+        if (!content || !archDetail) return;
+        archButtons.forEach((btn) => {
+          const active = btn === button;
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        archDetail.innerHTML = `<h3>${content.title}</h3><p class="muted" style="margin-top:.4rem;">${content.body}</p>`;
+      });
     });
 
     const params = new URLSearchParams(window.location.search);
