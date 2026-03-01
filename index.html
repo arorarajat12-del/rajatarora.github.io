@@ -292,6 +292,28 @@
     .arch-step { border:1px solid rgba(170,184,255,.45); border-radius:10px; padding:.45rem .55rem; background:rgba(170,184,255,.10); font-size:.82rem; }
     .arch-arrow { color:#aab8ff; text-align:center; font-weight:700; }
 
+    .overlay-card.case-modal {
+      background:#ffffff;
+      color:#0f172a;
+      border:1px solid #dbe2ea;
+      box-shadow:0 24px 48px rgba(15,23,42,.18);
+    }
+    .overlay-card.case-modal .muted { color:#475569; }
+    .overlay-card.case-modal h3,
+    .overlay-card.case-modal h4 { color:#0f172a; }
+    .overlay-card.case-modal .bullet-list { color:#334155; }
+    .overlay-card.case-modal .case-panel { border-color:#dbe2ea; background:#f8fafc; }
+    .overlay-card.case-modal .arch-step { border-color:#bfdbfe; background:#eff6ff; color:#1e3a8a; }
+    .overlay-card.case-modal .arch-arrow { color:#1d4ed8; }
+    .overlay-card.case-modal .case-kpi { border-color:#86efac; background:#f0fdf4; color:#166534; }
+    .overlay-card.case-modal .btn {
+      background:#0f172a;
+      border-color:#0f172a;
+      color:#fff;
+    }
+    .overlay-card.case-modal .btn:hover,
+    .overlay-card.case-modal .btn:focus-visible { background:#1e293b; border-color:#1e293b; }
+
     .code-block { margin-top:.65rem; border:1px solid var(--line); border-radius:10px; background:rgba(0,0,0,.3); padding:.7rem; overflow:auto; }
     .code-block pre { margin:0; font-size:.8rem; color:#dce3ff; }
 
@@ -621,6 +643,14 @@
           <ul id="caseStudySolution" class="bullet-list"></ul>
           <h4 style="margin-top:.7rem;">Impact</h4>
           <ul id="caseStudyImpact" class="bullet-list"></ul>
+          <div id="caseStudyDiffWrap" style="margin-top:.7rem;">
+            <h4>Why this is different</h4>
+            <ul id="caseStudyDiff" class="bullet-list"></ul>
+          </div>
+          <div id="caseStudyDemoWrap" style="margin-top:.7rem;">
+            <h4>What this demonstrates</h4>
+            <ul id="caseStudyDemo" class="bullet-list"></ul>
+          </div>
         </div>
       </div>
       <button id="closeCaseStudy" class="btn" type="button" style="margin-top:.8rem;">Close</button>
@@ -793,7 +823,9 @@
           'Enabled referrer-to-referee mapping and program-level conversion reporting',
           'Produced successful referrals in the first week after launch'
         ],
-        diagram: ['Alumni Graduates', 'Code Generation (Zapier → HubSpot)', 'Automated Referral Email', 'Applicant Intake + Code Input', 'Validation + Contact Association', 'Discounted Invoice Automation (20%)', 'Slack Notification + Dashboards']
+        diagram: ['Alumni Graduates', 'Code Generation (Zapier → HubSpot)', 'Automated Referral Email', 'Applicant Intake + Code Input', 'Validation + Contact Association', 'Discounted Invoice Automation (20%)', 'Slack Notification + Dashboards'],
+        differential: ['Previous tool required multi-step alumni flow and produced weak tracking; new system is frictionless and structured end-to-end.', 'Referral relationships are modeled as CRM associations, not plain text, enabling true reporting intelligence.', 'Financial logic (20% discount invoice selection) is embedded in automation, removing manual intervention.'],
+        demonstrates: ['End-to-end systems architecture thinking', 'CRM data modeling for reportability and scale', 'Ability to replace paid tools with reliable internal systems', 'Balancing user experience simplicity with operational rigor']
       },
       ssot: {
         title: 'HubSpot as Single Source of Truth',
@@ -802,7 +834,9 @@
         problem: 'Inconsistent lifecycle definitions and ownership rules caused dashboard disputes and handoff friction.',
         solution: ['Standardized lifecycle model', 'Mapped ownership boundaries', 'Added governance and data quality gates'],
         impact: ['Improved dashboard trust', 'Reduced handoff ambiguity', 'Enabled consistent KPI review cadence'],
-        diagram: ['Intake Data', 'Lifecycle Governance', 'Owner Routing', 'Data Contract Checks', 'Leadership Dashboard']
+        diagram: ['Intake Data', 'Lifecycle Governance', 'Owner Routing', 'Data Contract Checks', 'Leadership Dashboard'],
+        differential: [],
+        demonstrates: []
       },
       finance: {
         title: 'Finance Ops Automation (Invoicing)',
@@ -811,7 +845,9 @@
         problem: 'Manual invoice creation and reconciliation were slow and error-prone.',
         solution: ['Automated intake and validation', 'Exception handling path', 'Accounting sync workflow'],
         impact: ['Faster invoice turnaround', 'Cleaner audit history', 'Lower manual effort'],
-        diagram: ['Request Intake', 'Validation Rules', 'Exception Handling', 'Invoice Generation', 'Accounting Sync']
+        diagram: ['Request Intake', 'Validation Rules', 'Exception Handling', 'Invoice Generation', 'Accounting Sync'],
+        differential: [],
+        demonstrates: []
       },
       onboarding: {
         title: 'Contractor Onboarding Pipeline',
@@ -820,7 +856,9 @@
         problem: 'Onboarding moved through scattered channels with unclear ownership.',
         solution: ['Defined stage model', 'Automated reminders and approvals', 'Structured intake standards'],
         impact: ['More predictable onboarding cycles', 'Fewer missed handoffs', 'Higher operational consistency'],
-        diagram: ['Onboarding Intake', 'Owner Assignment', 'SLA Reminder Layer', 'Approval Gate', 'Ready State']
+        diagram: ['Onboarding Intake', 'Owner Assignment', 'SLA Reminder Layer', 'Approval Gate', 'Ready State'],
+        differential: [],
+        demonstrates: []
       }
     };
 
@@ -834,6 +872,14 @@
       document.getElementById('caseStudyImpact').innerHTML = data.impact.map((item) => `<li>${item}</li>`).join('');
       document.getElementById('caseStudyKpis').innerHTML = data.kpis.map((kpi) => `<span class="case-kpi">${kpi}</span>`).join('');
       document.getElementById('caseStudyDiagram').innerHTML = data.diagram.map((step, index) => `<div class="arch-step">${step}</div>${index < data.diagram.length - 1 ? '<div class="arch-arrow">↓</div>' : ''}`).join('');
+      const diffWrap = document.getElementById('caseStudyDiffWrap');
+      const demoWrap = document.getElementById('caseStudyDemoWrap');
+      const diff = data.differential || [];
+      const demo = data.demonstrates || [];
+      document.getElementById('caseStudyDiff').innerHTML = diff.map((item) => `<li>${item}</li>`).join('');
+      document.getElementById('caseStudyDemo').innerHTML = demo.map((item) => `<li>${item}</li>`).join('');
+      diffWrap.style.display = diff.length ? 'block' : 'none';
+      demoWrap.style.display = demo.length ? 'block' : 'none';
       openOverlay(caseStudyOverlay);
     };
 
