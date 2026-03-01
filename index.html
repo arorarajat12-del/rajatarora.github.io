@@ -197,6 +197,11 @@
     .chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.8rem; }
     .bullet-list { margin: 0.75rem 0 0; padding-left: 1rem; color: var(--muted); }
     .bullet-list li { margin-bottom: 0.35rem; }
+    .proof-chips { display:flex; flex-wrap:wrap; gap:.35rem; margin-top:.55rem; }
+    .proof-chip { border:1px solid rgba(16,185,129,.45); background:rgba(16,185,129,.12); color:#a7f3d0; border-radius:999px; padding:.2rem .55rem; font-size:.72rem; font-weight:650; }
+    .context-note { margin-top:.55rem; font-size:.82rem; color:var(--muted-2); }
+    details.toolkit-panel { margin-top:.85rem; border:1px solid var(--line); border-radius:12px; padding:.6rem .7rem; background:rgba(255,255,255,.03); }
+    details.toolkit-panel summary { cursor:pointer; font-weight:700; color:#fff; }
 
     .evidence-btn { margin-top:.65rem; }
     .video-btn { margin-top:.45rem; margin-left:.45rem; }
@@ -347,9 +352,7 @@
 
           <div class="hero-actions">
             <a href="#work" class="btn btn-primary">View case studies →</a>
-            <a href="#contact" class="btn">Contact</a>
             <a href="mailto:arorarajat12@gmail.com" class="btn">Email</a>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" class="btn">LinkedIn</a>
           </div>
 
           <div class="stats">
@@ -357,6 +360,7 @@
             <div class="glass stat"><p class="muted-2">Systems</p><strong>HubSpot + GTM stack</strong></div>
             <div class="glass stat"><p class="muted-2">Focus</p><strong>SSOT + scale</strong></div>
           </div>
+          <p class="context-note">Context: metrics shown are aggregated across multiple engagements and anonymized for NDA compliance.</p>
 
           <div class="quick-pack">
             <div id="quickPackRole"><strong>Recruiter quick-pack:</strong> Open to RevOps / Business Systems / GTM Systems roles.</div>
@@ -364,13 +368,15 @@
             <div id="quickPackSummary">Call-ready summary: “I bring systems clarity to cross-functional execution.”</div>
           </div>
 
-          <div class="toolkit" aria-label="Recruiter toolkit">
-            <button class="btn btn-ghost" id="copyPitch" type="button">Copy 30s pitch</button>
-            <button class="btn btn-ghost" id="copyStory" type="button">Copy 2-min story</button>
-            <button class="btn btn-ghost" id="downloadBrief" type="button">Download hiring brief</button>
-            <button class="btn btn-ghost" id="shareSnapshot" type="button">Copy recruiter link</button>
-          </div>
-          <p class="hotkeys">Hotkeys: <strong>R</strong> recruiter mode · <strong>D</strong> live demo · <strong>?</strong> command help</p>
+          <details class="toolkit-panel" aria-label="Recruiter toolkit">
+            <summary>Interview toolkit</summary>
+            <div class="toolkit">
+              <button class="btn btn-ghost" id="copyPitch" type="button">Copy 30s pitch</button>
+              <button class="btn btn-ghost" id="copyStory" type="button">Copy 2-min story</button>
+              <button class="btn btn-ghost" id="downloadBrief" type="button">Download hiring brief</button>
+              <button class="btn btn-ghost" id="shareSnapshot" type="button">Copy recruiter link</button>
+            </div>
+          </details>
         </div>
 
         <aside class="hero-side">
@@ -395,10 +401,10 @@
       <h2 id="work-title" style="margin-top:.45rem;">Case studies</h2>
       <p class="section-sub muted">Built to show outcomes and thinking. Detailed walkthroughs (screenshots/diagrams) available privately depending on NDA constraints.</p>
       <div class="cards-2">
-        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Governance</span><span class="pill">Reporting</span></div><h3>HubSpot as Single Source of Truth</h3><p class="muted" style="margin-top:.45rem;">Standardized lifecycle stages, ownership, and data integrity across teams.</p><ul class="bullet-list"><li>Unified stakeholder data model across departments</li><li>Reduced duplicated records and reporting drift</li><li>Implemented governance + automation to prevent regression</li><li>Enabled leadership-ready dashboards teams trust</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="ssot">Open evidence</button><button class="btn video-btn" type="button" data-video="ssot">Play case video</button><div class="evidence-drawer" id="drawer-ssot"><h4>Problem</h4><p>Lifecycle definitions were inconsistent between teams, causing reporting disputes.</p><h4>Architecture decision</h4><p>Unified stage model + owner mapping + data-quality gates in HubSpot.</p><h4>Measured result</h4><p>Reporting trust improved and handoff confusion dropped significantly.</p></div></article>
-        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">QuickBooks</span><span class="pill">Zapier/Make</span></div><h3>Finance Ops Automation (Invoicing)</h3><p class="muted" style="margin-top:.45rem;">Reduced manual processing and improved accuracy from request → invoice.</p><ul class="bullet-list"><li>Automated intake → validation → invoicing workflow</li><li>Eliminated repetitive reconciliation steps</li><li>Created consistent audit trail and exception handling</li><li>Improved cycle time from request to invoice</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="finance">Open evidence</button><button class="btn video-btn" type="button" data-video="finance">Play case video</button><div class="evidence-drawer" id="drawer-finance"><h4>Problem</h4><p>Manual invoice creation caused delays and reconciliation overhead.</p><h4>Architecture decision</h4><p>Form-driven intake with validation branch before QuickBooks sync.</p><h4>Measured result</h4><p>Faster invoice turnaround and fewer exception tickets.</p></div></article>
-        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Automation</span><span class="pill">Slack</span></div><h3>Contractor Onboarding Pipeline</h3><p class="muted" style="margin-top:.45rem;">Built a consistent onboarding workflow with clear handoffs and reminders.</p><ul class="bullet-list"><li>Designed stages + ownership across stakeholders</li><li>Automated reminders, tasks, and approvals</li><li>Reduced back-and-forth via structured intake</li><li>Improved time-to-ready for new contractors</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="onboarding">Open evidence</button><button class="btn video-btn" type="button" data-video="onboarding">Play case video</button><div class="evidence-drawer" id="drawer-onboarding"><h4>Problem</h4><p>Onboarding moved through email threads with unclear owners.</p><h4>Architecture decision</h4><p>Stage-gated pipeline with SLA reminders and approval checkpoints.</p><h4>Measured result</h4><p>More predictable onboarding cycles and reduced missed handoffs.</p></div></article>
-        <article class="glass case"><div class="chip-row"><span class="pill">Web</span><span class="pill">AI Chatbot</span><span class="pill">HubSpot</span></div><h3>Website AI Chatbot Implementation</h3><p class="muted" style="margin-top:.45rem;">Deployed guided experiences with routing, lead capture, and deflection.</p><ul class="bullet-list"><li>Implemented routing logic for FAQ vs sales vs support</li><li>Captured structured data into CRM properties</li><li>Reduced inbound load via deflection</li><li>Improved response speed and conversion paths</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="chatbot">Open evidence</button><button class="btn video-btn" type="button" data-video="chatbot">Play case video</button><div class="evidence-drawer" id="drawer-chatbot"><h4>Problem</h4><p>Website inquiries lacked structured qualification and routing consistency.</p><h4>Architecture decision</h4><p>Intent branching + CRM field mapping + fallback routing.</p><h4>Measured result</h4><p>Higher quality lead context and lower support deflection noise.</p></div></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Governance</span><span class="pill">Reporting</span></div><h3>HubSpot as Single Source of Truth</h3><p class="muted" style="margin-top:.45rem;">Standardized lifecycle stages, ownership, and data integrity across teams.</p><div class="proof-chips"><span class="proof-chip">Reporting trust ↑</span><span class="proof-chip">Lifecycle clarity ↑</span></div><ul class="bullet-list"><li>Unified stakeholder data model across departments</li><li>Reduced duplicated records and reporting drift</li><li>Implemented governance + automation to prevent regression</li><li>Enabled leadership-ready dashboards teams trust</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="ssot">Open evidence</button><button class="btn video-btn" type="button" data-video="ssot">Play case video</button><div class="evidence-drawer" id="drawer-ssot"><h4>Problem</h4><p>Lifecycle definitions were inconsistent between teams, causing reporting disputes.</p><h4>Architecture decision</h4><p>Unified stage model + owner mapping + data-quality gates in HubSpot.</p><h4>Measured result</h4><p>Reporting trust improved and handoff confusion dropped significantly.</p></div></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">QuickBooks</span><span class="pill">Zapier/Make</span></div><h3>Finance Ops Automation (Invoicing)</h3><p class="muted" style="margin-top:.45rem;">Reduced manual processing and improved accuracy from request → invoice.</p><div class="proof-chips"><span class="proof-chip">Cycle time ↓</span><span class="proof-chip">Auditability ↑</span></div><ul class="bullet-list"><li>Automated intake → validation → invoicing workflow</li><li>Eliminated repetitive reconciliation steps</li><li>Created consistent audit trail and exception handling</li><li>Improved cycle time from request to invoice</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="finance">Open evidence</button><button class="btn video-btn" type="button" data-video="finance">Play case video</button><div class="evidence-drawer" id="drawer-finance"><h4>Problem</h4><p>Manual invoice creation caused delays and reconciliation overhead.</p><h4>Architecture decision</h4><p>Form-driven intake with validation branch before QuickBooks sync.</p><h4>Measured result</h4><p>Faster invoice turnaround and fewer exception tickets.</p></div></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Automation</span><span class="pill">Slack</span></div><h3>Contractor Onboarding Pipeline</h3><p class="muted" style="margin-top:.45rem;">Built a consistent onboarding workflow with clear handoffs and reminders.</p><div class="proof-chips"><span class="proof-chip">Time-to-ready ↓</span><span class="proof-chip">Handoff quality ↑</span></div><ul class="bullet-list"><li>Designed stages + ownership across stakeholders</li><li>Automated reminders, tasks, and approvals</li><li>Reduced back-and-forth via structured intake</li><li>Improved time-to-ready for new contractors</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="onboarding">Open evidence</button><button class="btn video-btn" type="button" data-video="onboarding">Play case video</button><div class="evidence-drawer" id="drawer-onboarding"><h4>Problem</h4><p>Onboarding moved through email threads with unclear owners.</p><h4>Architecture decision</h4><p>Stage-gated pipeline with SLA reminders and approval checkpoints.</p><h4>Measured result</h4><p>More predictable onboarding cycles and reduced missed handoffs.</p></div></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">Web</span><span class="pill">AI Chatbot</span><span class="pill">HubSpot</span></div><h3>Website AI Chatbot Implementation</h3><p class="muted" style="margin-top:.45rem;">Deployed guided experiences with routing, lead capture, and deflection.</p><div class="proof-chips"><span class="proof-chip">Routing accuracy ↑</span><span class="proof-chip">Response speed ↑</span></div><ul class="bullet-list"><li>Implemented routing logic for FAQ vs sales vs support</li><li>Captured structured data into CRM properties</li><li>Reduced inbound load via deflection</li><li>Improved response speed and conversion paths</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="chatbot">Open evidence</button><button class="btn video-btn" type="button" data-video="chatbot">Play case video</button><div class="evidence-drawer" id="drawer-chatbot"><h4>Problem</h4><p>Website inquiries lacked structured qualification and routing consistency.</p><h4>Architecture decision</h4><p>Intent branching + CRM field mapping + fallback routing.</p><h4>Measured result</h4><p>Higher quality lead context and lower support deflection noise.</p></div></article>
       </div>
 
       <div class="scoreboard" aria-label="Impact scoreboard">
@@ -499,7 +505,7 @@
           <p class="muted-2" style="margin-top:.45rem;">Email: <a href="mailto:arorarajat12@gmail.com" style="color:#fff;">arorarajat12@gmail.com</a></p>
           <div class="chip-row" style="margin-top:.55rem;"><span class="pill ok-pill">Open to full-time roles</span><span class="pill ok-pill">Open to contract projects</span></div>
         </div>
-        <div class="actions"><a class="btn btn-primary" href="mailto:arorarajat12@gmail.com">Email →</a><a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn →</a><a class="btn" href="#" onclick="alert('Add your resume link here (PDF).'); return false;">Resume (PDF) →</a></div>
+        <div class="actions"><a class="btn btn-primary" href="mailto:arorarajat12@gmail.com">Email →</a><a class="btn" href="https://www.linkedin.com/in/rajat-arora/" target="_blank" rel="noreferrer">LinkedIn →</a><button id="openResumeInfo" class="btn" type="button">Resume (PDF) →</button></div>
       </div>
     </section>
 
@@ -553,6 +559,15 @@
           <div class="video-track"><span id="videoProgress"></span></div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div id="resumeOverlay" class="overlay" aria-hidden="true">
+    <div class="overlay-card">
+      <h3>Resume link setup</h3>
+      <p class="muted" style="margin-top:.45rem;">Add your public PDF resume URL to the Resume button for direct recruiter access.</p>
+      <p class="muted" style="margin-top:.45rem;">Until then, recruiters can request it at <a href="mailto:arorarajat12@gmail.com" style="color:#fff;">arorarajat12@gmail.com</a>.</p>
+      <button id="closeResumeInfo" class="btn" type="button" style="margin-top:.75rem;">Close</button>
     </div>
   </div>
 
@@ -651,7 +666,6 @@
       quickSummaryEl.textContent = profile.summary;
       knownForListEl.innerHTML = profile.known.map((item) => `<li>${item}</li>`).join('');
       roleButtons.forEach((btn) => btn.classList.toggle('active', btn.dataset.role === role));
-      showToast(`${role.toUpperCase()} view active`);
     };
 
     roleButtons.forEach((btn) => btn.addEventListener('click', () => setRoleView(btn.dataset.role)));
@@ -685,6 +699,9 @@ Contact: arorarajat12@gmail.com`;
     const openVaultBtn = document.getElementById('openVault');
     const vaultOverlay = document.getElementById('vaultOverlay');
     const closeVaultBtn = document.getElementById('closeVault');
+    const resumeOverlay = document.getElementById('resumeOverlay');
+    const openResumeInfoBtn = document.getElementById('openResumeInfo');
+    const closeResumeInfoBtn = document.getElementById('closeResumeInfo');
     const caseVideoOverlay = document.getElementById('caseVideoOverlay');
     const closeCaseVideoBtn = document.getElementById('closeCaseVideo');
     const caseVideoTitle = document.getElementById('caseVideoTitle');
@@ -771,6 +788,16 @@ Contact: arorarajat12@gmail.com`;
       if (event.target === vaultOverlay) toggleVault();
     });
 
+    const toggleResumeInfo = () => {
+      const open = resumeOverlay.classList.toggle('show');
+      resumeOverlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+    };
+    openResumeInfoBtn.addEventListener('click', toggleResumeInfo);
+    closeResumeInfoBtn.addEventListener('click', toggleResumeInfo);
+    resumeOverlay.addEventListener('click', (event) => {
+      if (event.target === resumeOverlay) toggleResumeInfo();
+    });
+
     window.addEventListener('keydown', (event) => {
       const key = event.key.toLowerCase();
       if (key === 'r') setRecruiterMode(!recruiterMode);
@@ -779,6 +806,7 @@ Contact: arorarajat12@gmail.com`;
       if (key === 'escape' && helpOverlay.classList.contains('show')) toggleHelp();
       if (key === 'escape' && vaultOverlay.classList.contains('show')) toggleVault();
       if (key === 'escape' && caseVideoOverlay.classList.contains('show')) stopCaseVideo();
+      if (key === 'escape' && resumeOverlay.classList.contains('show')) toggleResumeInfo();
     });
 
     const revealEls = Array.from(document.querySelectorAll('.reveal'));
