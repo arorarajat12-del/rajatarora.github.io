@@ -988,44 +988,52 @@
         beforeAfter: []
       },
       projecttracking: {
-        title: 'Designed End-to-End Project Tracking System',
-        context: 'Built a scalable reporting system integrating HubSpot, Google Sheets, and QuickBooks for government-related project delivery workflows.',
-        kpis: ['Manual weekly reporting eliminated', 'Real-time client visibility enabled', 'Stage-duration tracking introduced', 'Scaled across 300+ permits'],
-        problem: 'Weekly updates were created manually in Google Sheets and email, with fragmented data and no central, real-time status visibility.',
+        title: 'Designed End-to-End Project Tracking System Integrating HubSpot, Google Sheets, and QuickBooks, Eliminating Manual Reporting and Enabling Real-Time Client Visibility',
+        context: 'Worked with a client managing multiple government-related projects requiring ongoing status updates and stakeholder reporting. The existing workflow relied heavily on manual Google Sheets reporting and email communication. My role was to design a scalable system that automated reporting, improved visibility, and maintained the client's existing experience.',
+        kpis: ['Manual weekly reporting eliminated', 'Real-time client visibility enabled', 'Stage-to-stage duration tracking introduced', 'Scaled across 300+ permit records and hundreds of projects'],
+        problem: 'The process was highly manual and inefficient: teams manually updated statuses, wrote emails, and sent weekly updates to multiple stakeholders. Clients had delayed visibility, there was no structured tracking of status progression or time between stages, and reporting data was fragmented outside a central system.',
         constraints: [
-          'Clients were already accustomed to Google Sheets format and could not be forced to change',
-          'Needed to support hundreds of projects and 300+ permit records',
-          'Required multi-level relationships: Sales → Project → Permit',
-          'No engineering support; built fully in HubSpot + automation stack'
+          'Clients were accustomed to Google Sheets reporting and could not change format',
+          'Needed to support hundreds of projects and records at scale',
+          'Required multi-level system relationships: Sales → Project → Permit',
+          'No engineering support; solution had to run in HubSpot + automation stack',
+          'Needed real-time updates plus weekly summary communication'
         ],
         approach: [
-          'Preserved familiar front-end reporting experience in Google Sheets to ensure adoption',
-          'Used HubSpot as system of record with pipeline-driven status control',
-          'Automated data sync and communication instead of manual report creation',
-          'Accepted higher initial architecture complexity for long-term consistency and scale'
+          'Preserved Google Sheets as the front-end reporting experience to protect adoption and familiarity',
+          'Established HubSpot as the single source of truth for lifecycle status and reporting data',
+          'Built a pipeline-driven backend system to control updates consistently',
+          'Automated reporting and communications instead of manual entry and manual sends',
+          'Accepted higher upfront architecture complexity to enable scalability, consistency, and zero manual reporting'
         ],
         solution: [
-          'Implemented multi-layer pipeline architecture (Sales, Project, Permit)',
-          'Configured stage transitions (~15 stages) to trigger status/comment updates',
-          'Auto-generated project sheets and synchronized updates dynamically',
-          'Added time-between-stage tracking to expose bottlenecks',
-          'Triggered weekly summaries, milestone notifications, and real-time updates'
+          'Designed multi-layer pipeline architecture: Sales Pipeline → Project Pipeline → Permit Pipeline',
+          'Supported multiple projects per client and multiple permits per project',
+          'Built stage-driven reporting engine across ~15 stages with automated status updates, comments, and internal notes',
+          'Auto-generated a new Google Sheet report per project and synchronized pipeline updates dynamically',
+          'Included time-between-stage tracking to expose bottlenecks and progression timing',
+          'Implemented weekly automated status emails and milestone-triggered notifications',
+          'Integrated QuickBooks so moving to “Quote Sent” auto-created a client-ready estimate'
         ],
         execution: [
-          'Built workflow automation in HubSpot for stage-driven reporting logic',
-          'Connected Google Sheets for automated project report generation and sync',
-          'Implemented automated communication layer for weekly and milestone updates',
-          'Integrated QuickBooks estimate creation at the Quote Sent stage'
+          'Designed and built the full system using HubSpot workflows and automation integrations',
+          'Implemented multi-pipeline architecture, sheet generation/sync, and stage-based reporting logic',
+          'Configured communication automations for weekly and milestone-based stakeholder updates',
+          'Connected QuickBooks estimate generation into lifecycle flow',
+          'Created a structured data model to improve reporting accuracy and long-term scalability',
+          'Delivered seamless rollout with zero disruption to the client-facing reporting experience'
         ],
         impact: [
           'Eliminated manual weekly reporting process',
-          'Enabled real-time visibility for clients and internal teams',
+          'Enabled real-time client visibility into project status',
           'Improved data consistency and reporting accuracy',
-          'Scaled across hundreds of projects with no client workflow disruption'
+          'Introduced time-based stage tracking as a new operational capability',
+          'Achieved high adoption with no required client workflow change',
+          'Scaled across 300+ permit records and hundreds of projects'
         ],
-        diagram: ['Sales Pipeline', 'Project Pipeline', 'Permit Pipeline', 'Stage-Driven Update Engine', 'Google Sheets Real-Time Sync', 'Weekly + Milestone Notifications', 'QuickBooks Estimate Creation'],
-        differential: ['Maintained familiar Google Sheets front-end while modernizing the entire backend architecture.', 'Turned fragmented updates into a unified CRM-driven reporting system with temporal stage analytics.'],
-        demonstrates: ['Systems integration across CRM, spreadsheets, and accounting layers', 'Process architecture that balances adoption with scalability', 'Operational design for high-volume, multi-entity project tracking'],
+        diagram: ['Sales Pipeline', 'Project Pipeline', 'Permit Pipeline', 'Pipeline-Driven Reporting Engine (~15 stages)', 'Google Sheets Auto-Creation + Real-Time Sync', 'Weekly + Milestone Communication Layer', 'QuickBooks Estimate Automation'],
+        differential: ['Kept the familiar Google Sheets interface while transforming the backend into a structured CRM-driven operating system.', 'Turned fragmented manual updates into automated lifecycle reporting with stage-time analytics and finance integration.'],
+        demonstrates: ['End-to-end systems architecture across HubSpot, Google Sheets, and QuickBooks', 'Operational design balancing user adoption with scalable backend rigor', 'Automation-first execution for high-volume, multi-entity project delivery tracking'],
         beforeAfter: [
           ['Manual Google Sheet updates', 'Automated real-time sync'],
           ['Weekly email creation', 'Automated reporting + notifications'],
