@@ -172,9 +172,6 @@
 
     .hero-copy { max-width: 62ch; margin-top: 1rem; font-size: 1.04rem; }
     .hero-copy { transition: opacity .35s ease, transform .35s ease; }
-    .role-switch { margin-top: .8rem; display:flex; gap:.45rem; flex-wrap:wrap; }
-    .role-btn { border:1px solid var(--line); background:rgba(255,255,255,.03); color:var(--muted); border-radius:999px; padding:.45rem .78rem; min-height:44px; font-size:.78rem; font-weight:700; cursor:pointer; }
-    .role-btn.active { color:#fff; border-color:rgba(170,184,255,.55); background:rgba(170,184,255,.12); }
     .hero-actions { margin-top: 1.35rem; display: flex; gap: 0.55rem; flex-wrap: wrap; }
     .stats { margin-top: 1.4rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; }
     .stat { border-radius: var(--radius); padding: 0.95rem; }
@@ -412,7 +409,7 @@
       <a href="#top" class="brand">Rajat Arora</a>
       <nav aria-label="Primary">
         <a href="#work">Work</a>
-        <a href="#proof">Proof</a>
+        <a href="#proof">Metrics</a>
         <a href="#architecture">Architecture</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
@@ -427,28 +424,22 @@
     <section class="hero" id="top" aria-labelledby="hero-title" style="position:relative; overflow:hidden;">
       <canvas id="heroNetwork" class="hero-network" aria-hidden="true"></canvas>
       <div class="hero-tags">
-        <span class="pill">Demand-to-Revenue Ops</span><span class="pill">CRM Architecture</span><span class="pill">Marketing Automation</span><span class="pill">PLG + Sales-Led GTM</span>
+        <span class="pill">RevOps</span><span class="pill">GTM Strategy</span><span class="pill">CRM Architecture</span><span class="pill">Marketing Automation</span>
       </div>
 
       <div class="hero-grid">
         <div>
           <h1 id="hero-title">Architecting <span class="hero-title-muted">Scale.</span></h1>
-          <p id="heroCopy" class="hero-copy muted">Scaling breaks people-dependent processes. I design demand-to-revenue systems with clear lifecycle definitions, accountable handoffs, and reporting leadership can trust weekly.</p>
-
-          <div class="role-switch" aria-label="Role targeted view">
-            <button class="role-btn active" data-role="revops" type="button" aria-pressed="true">RevOps</button>
-            <button class="role-btn" data-role="bizsys" type="button" aria-pressed="false">Business Systems</button>
-            <button class="role-btn" data-role="gtm" type="button" aria-pressed="false">GTM Systems</button>
-          </div>
+          <p id="heroCopy" class="hero-copy muted">Scaling breaks people-dependent processes. I design demand-to-revenue systems with clear lifecycle definitions, accountable handoffs, and reporting leadership can actually trust.</p>
 
           <div class="hero-actions">
             <a href="#work" class="btn btn-primary">View case studies →</a>
-            <a href="mailto:arorarajat12@gmail.com" class="btn">Email</a>
+            <a href="mailto:arorarajat12@gmail.com" class="btn">Contact me</a>
           </div>
 
           <div class="stats">
             <div class="glass stat"><p class="muted-2">Automation built</p><strong>600+ workflows</strong></div>
-            <div class="glass stat"><p class="muted-2">Systems</p><strong>HubSpot + GTM stack</strong></div>
+            <div class="glass stat"><p class="muted-2">Systems</p><strong>HubSpot + Salesforce</strong></div>
             <div class="glass stat"><p class="muted-2">Focus</p><strong>SSOT + scale</strong></div>
           </div>
           <p class="context-note">Context: metrics shown are aggregated across multiple engagements and anonymized for NDA compliance.</p>
@@ -569,7 +560,7 @@
         <article class="timeline-step reveal"><h3>Before</h3><p class="muted" style="margin-top:.35rem;">Fragmented lifecycle ownership, ad-hoc workflows, and inconsistent reporting trust.</p></article>
         <article class="timeline-step reveal"><h3>System design</h3><p class="muted" style="margin-top:.35rem;">Mapped lifecycle architecture, ownership boundaries, and governance checkpoints.</p></article>
         <article class="timeline-step reveal"><h3>Automation</h3><p class="muted" style="margin-top:.35rem;">Connected high-friction handoffs with robust workflows and exception handling.</p></article>
-        <article class="timeline-step reveal"><h3>Outcome</h3><p class="muted" style="margin-top:.35rem;">Faster execution, lower manual load, and dashboards leadership can trust weekly.</p></article>
+        <article class="timeline-step reveal"><h3>Outcome</h3><p class="muted" style="margin-top:.35rem;">Faster execution, lower manual load, and dashboards leadership can actually trust.</p></article>
       </div>
     </section>
 
