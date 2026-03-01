@@ -204,17 +204,13 @@
     details.toolkit-panel summary { cursor:pointer; font-weight:700; color:#fff; }
 
     .evidence-btn { margin-top:.65rem; }
-    .video-btn { margin-top:.45rem; margin-left:.45rem; }
-
-    .video-shell { margin-top:.7rem; border:1px solid var(--line); border-radius:12px; background:#0d1329; padding:.75rem; }
-    .video-head { display:flex; justify-content:space-between; gap:.6rem; align-items:center; }
-    .video-title { font-weight:700; font-size:.92rem; }
-    .video-scene { color:var(--muted); font-size:.85rem; }
-    .video-canvas { margin-top:.6rem; height:170px; border:1px solid var(--line); border-radius:10px; background:linear-gradient(180deg,#121b39,#0c1126); position:relative; overflow:hidden; }
-    .video-track { position:absolute; inset:auto 0 0 0; height:3px; background:rgba(255,255,255,.15); }
-    .video-track > span { display:block; height:100%; width:0; background:linear-gradient(90deg,#818cf8,#22d3ee); transition:width .95s linear; }
-    .video-node { position:absolute; width:34px; height:34px; border-radius:10px; background:rgba(129,140,248,.8); filter:drop-shadow(0 0 8px rgba(129,140,248,.45)); transition:all .7s ease; }
-    .video-node.alt { background:rgba(34,211,238,.78); }
+    .diagram-btn { margin-top:.45rem; margin-left:.45rem; }
+    .deepdive-btn { margin-top:.45rem; margin-left:.45rem; }
+    .diagram-shell { margin-top:.7rem; border:1px solid var(--line); border-radius:12px; background:#0d1329; padding:.75rem; }
+    .diagram-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.55rem; margin-top:.65rem; }
+    .diagram-node { border:1px solid rgba(170,184,255,.45); border-radius:10px; padding:.5rem; background:rgba(170,184,255,.12); font-size:.8rem; }
+    .diagram-node small { display:block; margin-top:.2rem; color:var(--muted); font-size:.72rem; }
+    .diagram-arrow { text-align:center; color:#aab8ff; font-weight:700; font-size:1.1rem; align-self:center; }
     .evidence-drawer { margin-top:.65rem; border:1px dashed rgba(170,184,255,.35); border-radius:12px; background:rgba(170,184,255,.06); padding:.7rem; display:none; }
     .evidence-drawer.open { display:block; }
     .evidence-drawer h4 { margin:.2rem 0 .35rem; font-size:.85rem; color:#dbe2ff; letter-spacing:.02em; text-transform:uppercase; }
@@ -279,7 +275,7 @@
     .overlay.show { display: flex; }
 
     .overlay-card {
-      width: min(720px, 100%);
+      width: min(820px, 100%);
       border: 1px solid var(--line);
       border-radius: 16px;
       background: linear-gradient(180deg, #111a31, #0f172b);
@@ -290,6 +286,30 @@
     .overlay-card h3 { font-size: 1.15rem; }
     .overlay-card ul { margin: 0.75rem 0 0; padding-left: 1rem; color: var(--muted); }
     .overlay-card li { margin-bottom: 0.45rem; }
+
+    .code-block { margin-top:.65rem; border:1px solid var(--line); border-radius:10px; background:rgba(0,0,0,.3); padding:.7rem; overflow:auto; }
+    .code-block pre { margin:0; font-size:.8rem; color:#dce3ff; }
+
+    .vault-item { position:relative; }
+    .vault-item .tooltip-diagram {
+      position:absolute;
+      left:50%;
+      bottom:calc(100% + .35rem);
+      transform:translateX(-50%);
+      width:240px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:linear-gradient(180deg,#121b39,#0e1730);
+      padding:.45rem;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .16s ease;
+      box-shadow:0 12px 25px rgba(0,0,0,.45);
+    }
+    .vault-item:hover .tooltip-diagram,
+    .vault-item:focus-within .tooltip-diagram { opacity:1; }
+    .diagram-mini { border:1px solid rgba(170,184,255,.45); border-radius:8px; padding:.35rem; font-size:.67rem; color:#dce3ff; }
+    .diagram-mini + .diagram-mini { margin-top:.35rem; }
 
     footer { margin-top: 0.8rem; font-size: 0.84rem; color: rgba(255, 255, 255, 0.46); padding: 0.5rem 0 2.2rem; }
 
@@ -345,9 +365,9 @@
           <p id="heroCopy" class="hero-copy muted">I build scalable operating foundations across HubSpot and connected tools — clean data, clear lifecycle workflows, and automation that sticks — so teams execute faster and leadership can trust reporting.</p>
 
           <div class="role-switch" aria-label="Role targeted view">
-            <button class="role-btn active" data-role="revops" type="button">RevOps</button>
-            <button class="role-btn" data-role="bizsys" type="button">Business Systems</button>
-            <button class="role-btn" data-role="gtm" type="button">GTM Systems</button>
+            <button class="role-btn active" data-role="revops" type="button" aria-pressed="true">RevOps</button>
+            <button class="role-btn" data-role="bizsys" type="button" aria-pressed="false">Business Systems</button>
+            <button class="role-btn" data-role="gtm" type="button" aria-pressed="false">GTM Systems</button>
           </div>
 
           <div class="hero-actions">
@@ -401,10 +421,10 @@
       <h2 id="work-title" style="margin-top:.45rem;">Case studies</h2>
       <p class="section-sub muted">Built to show outcomes and thinking. Detailed walkthroughs (screenshots/diagrams) available privately depending on NDA constraints.</p>
       <div class="cards-2">
-        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Governance</span><span class="pill">Reporting</span></div><h3>HubSpot as Single Source of Truth</h3><p class="muted" style="margin-top:.45rem;">Standardized lifecycle stages, ownership, and data integrity across teams.</p><div class="proof-chips"><span class="proof-chip">Reporting trust ↑</span><span class="proof-chip">Lifecycle clarity ↑</span></div><ul class="bullet-list"><li>Unified stakeholder data model across departments</li><li>Reduced duplicated records and reporting drift</li><li>Implemented governance + automation to prevent regression</li><li>Enabled leadership-ready dashboards teams trust</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="ssot">Open evidence</button><button class="btn video-btn" type="button" data-video="ssot">Play case video</button><div class="evidence-drawer" id="drawer-ssot"><h4>Problem</h4><p>Lifecycle definitions were inconsistent between teams, causing reporting disputes.</p><h4>Architecture decision</h4><p>Unified stage model + owner mapping + data-quality gates in HubSpot.</p><h4>Measured result</h4><p>Reporting trust improved and handoff confusion dropped significantly.</p></div></article>
-        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">QuickBooks</span><span class="pill">Zapier/Make</span></div><h3>Finance Ops Automation (Invoicing)</h3><p class="muted" style="margin-top:.45rem;">Reduced manual processing and improved accuracy from request → invoice.</p><div class="proof-chips"><span class="proof-chip">Cycle time ↓</span><span class="proof-chip">Auditability ↑</span></div><ul class="bullet-list"><li>Automated intake → validation → invoicing workflow</li><li>Eliminated repetitive reconciliation steps</li><li>Created consistent audit trail and exception handling</li><li>Improved cycle time from request to invoice</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="finance">Open evidence</button><button class="btn video-btn" type="button" data-video="finance">Play case video</button><div class="evidence-drawer" id="drawer-finance"><h4>Problem</h4><p>Manual invoice creation caused delays and reconciliation overhead.</p><h4>Architecture decision</h4><p>Form-driven intake with validation branch before QuickBooks sync.</p><h4>Measured result</h4><p>Faster invoice turnaround and fewer exception tickets.</p></div></article>
-        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Automation</span><span class="pill">Slack</span></div><h3>Contractor Onboarding Pipeline</h3><p class="muted" style="margin-top:.45rem;">Built a consistent onboarding workflow with clear handoffs and reminders.</p><div class="proof-chips"><span class="proof-chip">Time-to-ready ↓</span><span class="proof-chip">Handoff quality ↑</span></div><ul class="bullet-list"><li>Designed stages + ownership across stakeholders</li><li>Automated reminders, tasks, and approvals</li><li>Reduced back-and-forth via structured intake</li><li>Improved time-to-ready for new contractors</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="onboarding">Open evidence</button><button class="btn video-btn" type="button" data-video="onboarding">Play case video</button><div class="evidence-drawer" id="drawer-onboarding"><h4>Problem</h4><p>Onboarding moved through email threads with unclear owners.</p><h4>Architecture decision</h4><p>Stage-gated pipeline with SLA reminders and approval checkpoints.</p><h4>Measured result</h4><p>More predictable onboarding cycles and reduced missed handoffs.</p></div></article>
-        <article class="glass case"><div class="chip-row"><span class="pill">Web</span><span class="pill">AI Chatbot</span><span class="pill">HubSpot</span></div><h3>Website AI Chatbot Implementation</h3><p class="muted" style="margin-top:.45rem;">Deployed guided experiences with routing, lead capture, and deflection.</p><div class="proof-chips"><span class="proof-chip">Routing accuracy ↑</span><span class="proof-chip">Response speed ↑</span></div><ul class="bullet-list"><li>Implemented routing logic for FAQ vs sales vs support</li><li>Captured structured data into CRM properties</li><li>Reduced inbound load via deflection</li><li>Improved response speed and conversion paths</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="chatbot">Open evidence</button><button class="btn video-btn" type="button" data-video="chatbot">Play case video</button><div class="evidence-drawer" id="drawer-chatbot"><h4>Problem</h4><p>Website inquiries lacked structured qualification and routing consistency.</p><h4>Architecture decision</h4><p>Intent branching + CRM field mapping + fallback routing.</p><h4>Measured result</h4><p>Higher quality lead context and lower support deflection noise.</p></div></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Governance</span><span class="pill">Reporting</span></div><h3>HubSpot as Single Source of Truth</h3><p class="muted" style="margin-top:.45rem;">Standardized lifecycle stages, ownership, and data integrity across teams.</p><div class="proof-chips"><span class="proof-chip">Reporting trust ↑</span><span class="proof-chip">Lifecycle clarity ↑</span></div><ul class="bullet-list"><li>Unified stakeholder data model across departments</li><li>Reduced duplicated records and reporting drift</li><li>Implemented governance + automation to prevent regression</li><li>Enabled leadership-ready dashboards teams trust</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="ssot">Open evidence</button><button class="btn diagram-btn" type="button" data-diagram="ssot">View architecture diagram</button><button class="btn deepdive-btn" type="button" data-deepdive="ssot">Technical deep-dive</button><div class="evidence-drawer" id="drawer-ssot"><h4>Problem</h4><p>Lifecycle definitions were inconsistent between teams, causing reporting disputes.</p><h4>Architecture decision</h4><p>Unified stage model + owner mapping + data-quality gates in HubSpot.</p><h4>Measured result</h4><p>Reporting trust improved and handoff confusion dropped significantly.</p></div></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">QuickBooks</span><span class="pill">Zapier/Make</span></div><h3>Finance Ops Automation (Invoicing)</h3><p class="muted" style="margin-top:.45rem;">Reduced manual processing and improved accuracy from request → invoice.</p><div class="proof-chips"><span class="proof-chip">Cycle time ↓</span><span class="proof-chip">Auditability ↑</span></div><ul class="bullet-list"><li>Automated intake → validation → invoicing workflow</li><li>Eliminated repetitive reconciliation steps</li><li>Created consistent audit trail and exception handling</li><li>Improved cycle time from request to invoice</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="finance">Open evidence</button><button class="btn diagram-btn" type="button" data-diagram="finance">View architecture diagram</button><button class="btn deepdive-btn" type="button" data-deepdive="finance">Technical deep-dive</button><div class="evidence-drawer" id="drawer-finance"><h4>Problem</h4><p>Manual invoice creation caused delays and reconciliation overhead.</p><h4>Architecture decision</h4><p>Form-driven intake with validation branch before QuickBooks sync.</p><h4>Measured result</h4><p>Faster invoice turnaround and fewer exception tickets.</p></div></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Automation</span><span class="pill">Slack</span></div><h3>Contractor Onboarding Pipeline</h3><p class="muted" style="margin-top:.45rem;">Built a consistent onboarding workflow with clear handoffs and reminders.</p><div class="proof-chips"><span class="proof-chip">Time-to-ready ↓</span><span class="proof-chip">Handoff quality ↑</span></div><ul class="bullet-list"><li>Designed stages + ownership across stakeholders</li><li>Automated reminders, tasks, and approvals</li><li>Reduced back-and-forth via structured intake</li><li>Improved time-to-ready for new contractors</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="onboarding">Open evidence</button><button class="btn diagram-btn" type="button" data-diagram="onboarding">View architecture diagram</button><button class="btn deepdive-btn" type="button" data-deepdive="onboarding">Technical deep-dive</button><div class="evidence-drawer" id="drawer-onboarding"><h4>Problem</h4><p>Onboarding moved through email threads with unclear owners.</p><h4>Architecture decision</h4><p>Stage-gated pipeline with SLA reminders and approval checkpoints.</p><h4>Measured result</h4><p>More predictable onboarding cycles and reduced missed handoffs.</p></div></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">Web</span><span class="pill">AI Chatbot</span><span class="pill">HubSpot</span></div><h3>Website AI Chatbot Implementation</h3><p class="muted" style="margin-top:.45rem;">Deployed guided experiences with routing, lead capture, and deflection.</p><div class="proof-chips"><span class="proof-chip">Routing accuracy ↑</span><span class="proof-chip">Response speed ↑</span></div><ul class="bullet-list"><li>Implemented routing logic for FAQ vs sales vs support</li><li>Captured structured data into CRM properties</li><li>Reduced inbound load via deflection</li><li>Improved response speed and conversion paths</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="chatbot">Open evidence</button><button class="btn diagram-btn" type="button" data-diagram="chatbot">View architecture diagram</button><button class="btn deepdive-btn" type="button" data-deepdive="chatbot">Technical deep-dive</button><div class="evidence-drawer" id="drawer-chatbot"><h4>Problem</h4><p>Website inquiries lacked structured qualification and routing consistency.</p><h4>Architecture decision</h4><p>Intent branching + CRM field mapping + fallback routing.</p><h4>Measured result</h4><p>Higher quality lead context and lower support deflection noise.</p></div></article>
       </div>
 
       <div class="scoreboard" aria-label="Impact scoreboard">
@@ -419,25 +439,25 @@
         <p class="muted" style="margin-top:.35rem;">Models both operating efficiency and pipeline conversion lift.</p>
         <div class="impact-calc-grid">
           <label>Manual hours/week
-            <input id="calcHours" type="number" min="1" step="1" value="12" />
+            <input id="calcHours" aria-controls="calcResult calcRange" type="number" min="1" step="1" value="12" />
           </label>
           <label>Automation gain (%)
-            <input id="calcGain" type="number" min="1" max="100" step="1" value="35" />
+            <input id="calcGain" aria-controls="calcResult calcRange" type="number" min="1" max="100" step="1" value="35" />
           </label>
           <label>Blended hourly cost (USD)
-            <input id="calcRate" type="number" min="10" step="1" value="70" />
+            <input id="calcRate" aria-controls="calcResult calcRange" type="number" min="10" step="1" value="70" />
           </label>
           <label>Pipeline value / quarter (USD)
-            <input id="calcPipe" type="number" min="0" step="1000" value="500000" />
+            <input id="calcPipe" aria-controls="calcResult calcRange" type="number" min="0" step="1000" value="500000" />
           </label>
           <label>Win-rate lift (percentage points)
-            <input id="calcWinLift" type="number" min="0" max="30" step="0.5" value="1.5" />
+            <input id="calcWinLift" aria-controls="calcResult calcRange" type="number" min="0" max="30" step="0.5" value="1.5" />
           </label>
           <label>Gross margin (%)
-            <input id="calcMargin" type="number" min="1" max="100" step="1" value="75" />
+            <input id="calcMargin" aria-controls="calcResult calcRange" type="number" min="1" max="100" step="1" value="75" />
           </label>
         </div>
-        <div class="impact-calc-result">
+        <div class="impact-calc-result" aria-live="polite" aria-atomic="true">
           <strong id="calcResult">$15,288 efficiency + $22,500 pipeline / year</strong>
           <span id="calcRange" class="muted">Estimated annual value range: $34,009 – $44,412.</span>
         </div>
@@ -542,32 +562,35 @@
       <h3>Proof Vault (NDA-safe)</h3>
       <p class="muted" style="margin-top:.35rem;">Representative implementation evidence formats used in live interviews.</p>
       <div class="vault-grid">
-        <article class="vault-item"><strong>Lifecycle Architecture Map</strong><p>Stage definitions, ownership transitions, and qualification guardrails across GTM teams.</p></article>
-        <article class="vault-item"><strong>Automation Runbook</strong><p>Trigger logic, fail-safe branches, and exception-handling standards for production workflows.</p></article>
-        <article class="vault-item"><strong>Dashboard Trust Checklist</strong><p>Data contract checks that prevent drift and keep executive reporting dependable.</p></article>
-        <article class="vault-item"><strong>Onboarding System Blueprint</strong><p>Cross-functional handoff matrix with SLA reminders and auditability controls.</p></article>
+        <article class="vault-item" tabindex="0"><strong>Lifecycle Architecture Map</strong><p>Stage definitions, ownership transitions, and qualification guardrails across GTM teams.</p><div class="tooltip-diagram" role="img" aria-label="Sanitized lifecycle architecture preview"><div class="diagram-mini">Marketing Intake → MQL Gate → AE Ownership</div><div class="diagram-mini">Auto SLA Alerts + Audit Fields</div></div></article>
+        <article class="vault-item" tabindex="0"><strong>Automation Runbook</strong><p>Trigger logic, fail-safe branches, and exception-handling standards for production workflows.</p><div class="tooltip-diagram" role="img" aria-label="Sanitized automation runbook preview"><div class="diagram-mini">Trigger: Stage change</div><div class="diagram-mini">Branch: Valid / Exception / Retry</div></div></article>
+        <article class="vault-item" tabindex="0"><strong>Dashboard Trust Checklist</strong><p>Data contract checks that prevent drift and keep executive reporting dependable.</p><div class="tooltip-diagram" role="img" aria-label="Sanitized dashboard trust checklist preview"><div class="diagram-mini">Field Contract Validation</div><div class="diagram-mini">Source Match + Weekly Drift Alert</div></div></article>
+        <article class="vault-item" tabindex="0"><strong>Onboarding System Blueprint</strong><p>Cross-functional handoff matrix with SLA reminders and auditability controls.</p><div class="tooltip-diagram" role="img" aria-label="Sanitized onboarding blueprint preview"><div class="diagram-mini">Request → Compliance → Tool Access</div><div class="diagram-mini">Owner Escalation if SLA breached</div></div></article>
       </div>
       <button id="closeVault" class="btn" type="button" style="margin-top:.75rem;">Close vault</button>
     </div>
   </div>
 
 
-  <div id="caseVideoOverlay" class="overlay" aria-hidden="true">
+
+
+
+  <div id="architectureOverlay" class="overlay" aria-hidden="true">
     <div class="overlay-card">
-      <div class="video-shell">
-        <div class="video-head">
-          <div>
-            <div id="caseVideoTitle" class="video-title">Case walkthrough video</div>
-            <div id="caseVideoScene" class="video-scene">Scene 1</div>
-          </div>
-          <button id="closeCaseVideo" class="btn" type="button">Close</button>
-        </div>
-        <div class="video-canvas" aria-label="Animated case sequence preview">
-          <div id="videoNodeA" class="video-node"></div>
-          <div id="videoNodeB" class="video-node alt"></div>
-          <div class="video-track"><span id="videoProgress"></span></div>
-        </div>
-      </div>
+      <h3 id="architectureTitle">Architecture diagram</h3>
+      <p id="architectureSummary" class="muted" style="margin-top:.35rem;">NDA-safe context view of systems and data flow.</p>
+      <div class="diagram-shell" id="architectureDiagram" role="img" aria-label="Architecture flow diagram"></div>
+      <button id="closeArchitecture" class="btn" type="button" style="margin-top:.75rem;">Close</button>
+    </div>
+  </div>
+
+  <div id="deepDiveOverlay" class="overlay" aria-hidden="true">
+    <div class="overlay-card">
+      <h3 id="deepDiveTitle">Technical deep-dive</h3>
+      <p id="deepDiveSummary" class="muted" style="margin-top:.35rem;">Sanitized implementation details and design trade-offs.</p>
+      <div class="code-block"><pre id="deepDivePayload"></pre></div>
+      <ul id="deepDiveTradeoffs"></ul>
+      <button id="closeDeepDive" class="btn" type="button" style="margin-top:.75rem;">Close</button>
     </div>
   </div>
 
@@ -674,7 +697,11 @@
       quickTeamsEl.textContent = profile.teams;
       quickSummaryEl.textContent = profile.summary;
       knownForListEl.innerHTML = profile.known.map((item) => `<li>${item}</li>`).join('');
-      roleButtons.forEach((btn) => btn.classList.toggle('active', btn.dataset.role === role));
+      roleButtons.forEach((btn) => {
+        const active = btn.dataset.role === role;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
     };
 
     roleButtons.forEach((btn) => btn.addEventListener('click', () => setRoleView(btn.dataset.role)));
@@ -711,13 +738,17 @@ Contact: arorarajat12@gmail.com`;
     const resumeOverlay = document.getElementById('resumeOverlay');
     const openResumeInfoBtn = document.getElementById('openResumeInfo');
     const closeResumeInfoBtn = document.getElementById('closeResumeInfo');
-    const caseVideoOverlay = document.getElementById('caseVideoOverlay');
-    const closeCaseVideoBtn = document.getElementById('closeCaseVideo');
-    const caseVideoTitle = document.getElementById('caseVideoTitle');
-    const caseVideoScene = document.getElementById('caseVideoScene');
-    const videoNodeA = document.getElementById('videoNodeA');
-    const videoNodeB = document.getElementById('videoNodeB');
-    const videoProgress = document.getElementById('videoProgress');
+    const architectureOverlay = document.getElementById('architectureOverlay');
+    const closeArchitectureBtn = document.getElementById('closeArchitecture');
+    const architectureTitle = document.getElementById('architectureTitle');
+    const architectureSummary = document.getElementById('architectureSummary');
+    const architectureDiagram = document.getElementById('architectureDiagram');
+    const deepDiveOverlay = document.getElementById('deepDiveOverlay');
+    const closeDeepDiveBtn = document.getElementById('closeDeepDive');
+    const deepDiveTitle = document.getElementById('deepDiveTitle');
+    const deepDiveSummary = document.getElementById('deepDiveSummary');
+    const deepDivePayload = document.getElementById('deepDivePayload');
+    const deepDiveTradeoffs = document.getElementById('deepDiveTradeoffs');
 
 
     let activeOverlay = null;
@@ -851,7 +882,8 @@ Contact: arorarajat12@gmail.com`;
       if (event.altKey && key === '?') toggleHelp();
       if (key === 'escape' && helpOverlay.classList.contains('show')) toggleHelp();
       if (key === 'escape' && vaultOverlay.classList.contains('show')) toggleVault();
-      if (key === 'escape' && caseVideoOverlay.classList.contains('show')) stopCaseVideo();
+      if (key === 'escape' && architectureOverlay.classList.contains('show')) closeOverlay(architectureOverlay);
+      if (key === 'escape' && deepDiveOverlay.classList.contains('show')) closeOverlay(deepDiveOverlay);
       if (key === 'escape' && resumeOverlay.classList.contains('show')) toggleResumeInfo();
     });
 
@@ -909,102 +941,161 @@ Contact: arorarajat12@gmail.com`;
     [calcHours, calcGain, calcRate, calcPipe, calcWinLift, calcMargin].forEach((el) => el.addEventListener('input', updateImpactCalc));
     updateImpactCalc();
 
-    const videoScripts = {
+    const architectureProfiles = {
       ssot: {
-        title: 'HubSpot SSOT — animated walkthrough',
-        scenes: [
-          'Fragmented lifecycle stages across teams',
-          'Unified model and ownership gates',
-          'Governed data flow into dashboards',
-          'Reliable reporting baseline established'
+        title: 'HubSpot SSOT — context architecture',
+        summary: 'Sanitized C4-style context showing lifecycle governance and reporting flow.',
+        nodes: [
+          ['Web Forms', 'Lead + account capture'],
+          ['HubSpot Core', 'Lifecycle + ownership model'],
+          ['BI Dashboard', 'Executive reporting outputs']
         ]
       },
       finance: {
-        title: 'Finance automation — animated walkthrough',
-        scenes: [
-          'Manual request and invoice bottlenecks',
-          'Validation + exception path introduced',
-          'Automated sync to accounting system',
-          'Faster and cleaner invoice operations'
+        title: 'Finance automation — context architecture',
+        summary: 'NDA-safe process map from intake to validated accounting sync.',
+        nodes: [
+          ['Request Intake', 'Structured form submission'],
+          ['Validation Logic', 'Rules + exception branch'],
+          ['QuickBooks', 'Invoice creation + status sync']
         ]
       },
       onboarding: {
-        title: 'Onboarding pipeline — animated walkthrough',
-        scenes: [
-          'Ownership ambiguity in onboarding',
-          'Stage-gated flow with reminders',
-          'Automated approvals and notifications',
-          'Predictable time-to-ready achieved'
+        title: 'Contractor onboarding — process architecture',
+        summary: 'Stage-gated onboarding design with ownership, SLA alerts, and audit trail.',
+        nodes: [
+          ['Onboarding Request', 'Role + access package'],
+          ['Workflow Engine', 'SLA reminders + approvals'],
+          ['Slack/HubSpot', 'Notifications + status source']
         ]
       },
       chatbot: {
-        title: 'AI chatbot routing — animated walkthrough',
-        scenes: [
-          'Unstructured inbound inquiries',
-          'Intent routing by path type',
-          'Structured CRM field capture',
-          'Better lead quality and deflection'
+        title: 'Website chatbot — integration architecture',
+        summary: 'Intent router design across FAQ deflection, sales routing, and CRM writeback.',
+        nodes: [
+          ['Website Chat UI', 'Intent capture'],
+          ['Routing Service', 'FAQ / sales / support branch'],
+          ['HubSpot CRM', 'Field mapping + assignment']
         ]
       }
     };
 
-    let caseVideoTimer = null;
-    let caseVideoStep = 0;
-
-    const setVideoNodes = (step) => {
-      const presets = [
-        { a: [20, 22, 0.8], b: [72, 62, 0.75] },
-        { a: [42, 40, 0.95], b: [68, 20, 0.9] },
-        { a: [62, 55, 0.9], b: [22, 70, 0.8] },
-        { a: [78, 34, 1], b: [48, 68, 0.88] }
-      ];
-      const p = presets[step % presets.length];
-      videoNodeA.style.left = p.a[0] + '%';
-      videoNodeA.style.top = p.a[1] + '%';
-      videoNodeA.style.transform = `translate(-50%, -50%) scale(${p.a[2]})`;
-      videoNodeB.style.left = p.b[0] + '%';
-      videoNodeB.style.top = p.b[1] + '%';
-      videoNodeB.style.transform = `translate(-50%, -50%) scale(${p.b[2]})`;
+    const deepDiveProfiles = {
+      ssot: {
+        title: 'HubSpot SSOT — technical deep-dive',
+        summary: 'Sanitized lifecycle contract payload and governance choices.',
+        payload: `{
+  "event": "lifecycle_transition",
+  "recordId": "CONTACT_ID",
+  "fromStage": "MQL",
+  "toStage": "SQL",
+  "owner": "AE_ID",
+  "guardrails": {
+    "requiredFields": ["segment", "source", "qualification_date"],
+    "rejectOnMissing": true
+  }
+}`,
+        tradeoffs: [
+          'Chose strict field validation to improve reporting trust, accepting occasional operator retries.',
+          'Prioritized centralized lifecycle governance over team-specific custom stages to reduce drift.',
+          'Used explicit owner handoff checkpoints instead of inferred routing for auditability.'
+        ]
+      },
+      finance: {
+        title: 'Finance automation — technical deep-dive',
+        summary: 'Sanitized intake-to-invoice payload and reliability trade-offs.',
+        payload: `{
+  "workflow": "invoice_create",
+  "input": {"requestId": "REQ_ID", "amount": 12400, "currency": "USD"},
+  "validation": {"taxCode": "STANDARD", "vendorStatus": "APPROVED"},
+  "onError": {"action": "queue_exception", "channel": "finance-ops"}
+}`,
+        tradeoffs: [
+          'Added pre-sync validation branch to lower accounting corrections, increasing workflow complexity.',
+          'Kept middleware stateless for easier support, with retry queue handling transient API failures.',
+          'Chose deterministic exception routing over silent retries to protect audit trails.'
+        ]
+      },
+      onboarding: {
+        title: 'Onboarding pipeline — technical deep-dive',
+        summary: 'Sanitized stage orchestration pattern and scaling considerations.',
+        payload: `{
+  "pipeline": "contractor_onboarding",
+  "stages": ["intake", "approval", "provisioning", "ready"],
+  "slaHours": 48,
+  "escalation": {"afterHours": 72, "notifyRole": "ops_manager"}
+}`,
+        tradeoffs: [
+          'Used stage-gate model for accountability, accepting less ad-hoc flexibility.',
+          'Implemented SLA escalations in workflow layer rather than Slack bots for centralized control.',
+          'Kept approval matrix shallow to maintain throughput while preserving compliance checks.'
+        ]
+      },
+      chatbot: {
+        title: 'AI chatbot routing — technical deep-dive',
+        summary: 'Sanitized intent classification payload and routing architecture decisions.',
+        payload: `{
+  "intent": "pricing_question",
+  "confidence": 0.87,
+  "route": "sales",
+  "crmWriteback": {
+    "property": "chat_intent",
+    "value": "pricing_question"
+  }
+}`,
+        tradeoffs: [
+          'Used confidence threshold + fallback queue to reduce misroutes at the cost of occasional manual triage.',
+          'Captured normalized intent values to support reporting consistency across GTM teams.',
+          'Separated FAQ deflection from sales routing to improve response quality and conversion paths.'
+        ]
+      }
     };
 
-    const stopCaseVideo = () => {
-      if (caseVideoTimer) clearInterval(caseVideoTimer);
-      caseVideoTimer = null;
-      closeOverlay(caseVideoOverlay);
-      videoProgress.style.width = '0%';
+    const renderArchitecture = (key) => {
+      const profile = architectureProfiles[key];
+      if (!profile) return;
+      architectureTitle.textContent = profile.title;
+      architectureSummary.textContent = profile.summary;
+      architectureDiagram.innerHTML = `
+        <div class="diagram-grid">
+          <div class="diagram-node">${profile.nodes[0][0]}<small>${profile.nodes[0][1]}</small></div>
+          <div class="diagram-arrow" aria-hidden="true">→</div>
+          <div class="diagram-node">${profile.nodes[1][0]}<small>${profile.nodes[1][1]}</small></div>
+        </div>
+        <div class="diagram-grid" style="margin-top:.45rem;">
+          <div class="diagram-node" style="grid-column: 2 / span 1;">${profile.nodes[2][0]}<small>${profile.nodes[2][1]}</small></div>
+        </div>`;
+      openOverlay(architectureOverlay);
+      showToast('Architecture diagram opened');
     };
 
-    const playCaseVideo = (key) => {
-      const script = videoScripts[key];
-      if (!script) return;
-      caseVideoTitle.textContent = script.title;
-      openOverlay(caseVideoOverlay);
-      caseVideoStep = 0;
-      videoProgress.style.width = '0%';
-      const render = () => {
-        caseVideoScene.textContent = `Scene ${caseVideoStep + 1}: ${script.scenes[caseVideoStep]}`;
-        setVideoNodes(caseVideoStep);
-        videoProgress.style.width = `${((caseVideoStep + 1) / script.scenes.length) * 100}%`;
-        caseVideoStep += 1;
-        if (caseVideoStep >= script.scenes.length) {
-          clearInterval(caseVideoTimer);
-          caseVideoTimer = null;
-          showToast('Case video complete');
-        }
-      };
-      render();
-      if (caseVideoTimer) clearInterval(caseVideoTimer);
-      caseVideoTimer = setInterval(render, 1100);
-      showToast('Playing case video');
+    const openDeepDive = (key) => {
+      const profile = deepDiveProfiles[key];
+      if (!profile) return;
+      deepDiveTitle.textContent = profile.title;
+      deepDiveSummary.textContent = profile.summary;
+      deepDivePayload.textContent = profile.payload;
+      deepDiveTradeoffs.innerHTML = profile.tradeoffs.map((item) => `<li>${item}</li>`).join('');
+      openOverlay(deepDiveOverlay);
+      showToast('Technical deep-dive opened');
     };
 
-    const videoButtons = Array.from(document.querySelectorAll('.video-btn'));
-    videoButtons.forEach((button) => {
-      button.addEventListener('click', () => playCaseVideo(button.getAttribute('data-video')));
+    const diagramButtons = Array.from(document.querySelectorAll('.diagram-btn'));
+    diagramButtons.forEach((button) => {
+      button.addEventListener('click', () => renderArchitecture(button.getAttribute('data-diagram')));
     });
-    closeCaseVideoBtn.addEventListener('click', stopCaseVideo);
-    caseVideoOverlay.addEventListener('click', (event) => {
-      if (event.target === caseVideoOverlay) stopCaseVideo();
+    const deepDiveButtons = Array.from(document.querySelectorAll('.deepdive-btn'));
+    deepDiveButtons.forEach((button) => {
+      button.addEventListener('click', () => openDeepDive(button.getAttribute('data-deepdive')));
+    });
+
+    closeArchitectureBtn.addEventListener('click', () => closeOverlay(architectureOverlay));
+    architectureOverlay.addEventListener('click', (event) => {
+      if (event.target === architectureOverlay) closeOverlay(architectureOverlay);
+    });
+    closeDeepDiveBtn.addEventListener('click', () => closeOverlay(deepDiveOverlay));
+    deepDiveOverlay.addEventListener('click', (event) => {
+      if (event.target === deepDiveOverlay) closeOverlay(deepDiveOverlay);
     });
 
     const params = new URLSearchParams(window.location.search);
