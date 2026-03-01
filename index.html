@@ -43,10 +43,6 @@
         linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 40%, var(--bg-bottom) 100%);
     }
 
-    body.recruiter-mode .optional,
-    body.recruiter-mode #about,
-    body.recruiter-mode #proof,
-    body.recruiter-mode #faqRecruiter,
     body.recruiter-mode .toolkit,
     body.recruiter-mode .hero-side,
     body.recruiter-mode #presentationLab {
@@ -103,7 +99,10 @@
       border: 1px solid var(--line);
       background: var(--card);
       border-radius: 999px;
-      padding: 0.25rem 0.7rem;
+      padding: 0.35rem 0.75rem;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
       font-size: 0.75rem;
       color: rgba(255, 255, 255, 0.84);
       font-weight: 600;
@@ -118,6 +117,7 @@
       text-decoration: none;
       border-radius: 12px;
       padding: 0.7rem 1rem;
+      min-height: 44px;
       font-size: 0.88rem;
       font-weight: 700;
       display: inline-flex;
@@ -156,7 +156,7 @@
     .top-actions { display: flex; gap: 0.45rem; flex-wrap: wrap; justify-content: flex-end; }
     .brand { color: #fff; text-decoration: none; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; }
     nav { display: flex; gap: 1rem; }
-    nav a { color: rgba(255, 255, 255, 0.72); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+    nav a { color: rgba(255, 255, 255, 0.72); text-decoration: none; font-size: 0.9rem; font-weight: 500; min-height:44px; display:inline-flex; align-items:center; padding:0 .15rem; }
     nav a:hover { color: #fff; }
 
     main { padding: 0 0 1rem; }
@@ -174,7 +174,7 @@
     .hero-copy { max-width: 62ch; margin-top: 1rem; font-size: 1.04rem; }
     .hero-copy { transition: opacity .35s ease, transform .35s ease; }
     .role-switch { margin-top: .8rem; display:flex; gap:.45rem; flex-wrap:wrap; }
-    .role-btn { border:1px solid var(--line); background:rgba(255,255,255,.03); color:var(--muted); border-radius:999px; padding:.35rem .72rem; font-size:.78rem; font-weight:700; cursor:pointer; }
+    .role-btn { border:1px solid var(--line); background:rgba(255,255,255,.03); color:var(--muted); border-radius:999px; padding:.45rem .78rem; min-height:44px; font-size:.78rem; font-weight:700; cursor:pointer; }
     .role-btn.active { color:#fff; border-color:rgba(170,184,255,.55); background:rgba(170,184,255,.12); }
     .hero-actions { margin-top: 1.35rem; display: flex; gap: 0.55rem; flex-wrap: wrap; }
     .stats { margin-top: 1.4rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; }
@@ -415,8 +415,8 @@
       </div>
 
       <div class="impact-calc" aria-label="Impact calculator lite">
-        <h3>Impact calculator lite</h3>
-        <p class="muted" style="margin-top:.35rem;">Quick estimate to anchor ROI discussion in interviews.</p>
+        <h3>Impact model (efficiency + revenue)</h3>
+        <p class="muted" style="margin-top:.35rem;">Models both operating efficiency and pipeline conversion lift.</p>
         <div class="impact-calc-grid">
           <label>Manual hours/week
             <input id="calcHours" type="number" min="1" step="1" value="12" />
@@ -427,10 +427,19 @@
           <label>Blended hourly cost (USD)
             <input id="calcRate" type="number" min="10" step="1" value="70" />
           </label>
+          <label>Pipeline value / quarter (USD)
+            <input id="calcPipe" type="number" min="0" step="1000" value="500000" />
+          </label>
+          <label>Win-rate lift (percentage points)
+            <input id="calcWinLift" type="number" min="0" max="30" step="0.5" value="1.5" />
+          </label>
+          <label>Gross margin (%)
+            <input id="calcMargin" type="number" min="1" max="100" step="1" value="75" />
+          </label>
         </div>
         <div class="impact-calc-result">
-          <strong id="calcResult">$15,288 / year</strong>
-          <span id="calcRange" class="muted">Estimated savings range: $13,759 – $16,817 annually.</span>
+          <strong id="calcResult">$15,288 efficiency + $22,500 pipeline / year</strong>
+          <span id="calcRange" class="muted">Estimated annual value range: $34,009 – $44,412.</span>
         </div>
       </div>
     </section>
@@ -518,9 +527,9 @@
     <div class="overlay-card">
       <h3>Command Help</h3>
       <ul>
-        <li><strong>R</strong> → Toggle recruiter mode</li>
-        <li><strong>D</strong> → Start live demo walkthrough</li>
-        <li><strong>?</strong> → Open/close this help panel</li>
+        <li><strong>Alt+R</strong> → Toggle recruiter mode</li>
+        <li><strong>Alt+D</strong> → Start live demo walkthrough</li>
+        <li><strong>Alt+?</strong> → Open/close this help panel</li>
         <li><strong>Esc</strong> → Close help panel</li>
         <li><strong>Copy recruiter link</strong> → Shares URL that auto-enables recruiter mode</li>
       </ul>
@@ -710,6 +719,45 @@ Contact: arorarajat12@gmail.com`;
     const videoNodeB = document.getElementById('videoNodeB');
     const videoProgress = document.getElementById('videoProgress');
 
+
+    let activeOverlay = null;
+    let lastFocusedEl = null;
+    const focusableSelector = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+    const openOverlay = (overlay) => {
+      if (!overlay) return;
+      lastFocusedEl = document.activeElement;
+      overlay.classList.add('show');
+      overlay.setAttribute('aria-hidden', 'false');
+      activeOverlay = overlay;
+      const first = overlay.querySelector(focusableSelector);
+      if (first) first.focus();
+    };
+
+    const closeOverlay = (overlay) => {
+      if (!overlay) return;
+      overlay.classList.remove('show');
+      overlay.setAttribute('aria-hidden', 'true');
+      if (activeOverlay === overlay) activeOverlay = null;
+      if (lastFocusedEl && document.contains(lastFocusedEl)) lastFocusedEl.focus();
+    };
+
+    const trapFocusInOverlay = (event) => {
+      if (event.key !== 'Tab' || !activeOverlay) return;
+      const nodes = Array.from(activeOverlay.querySelectorAll(focusableSelector));
+      if (!nodes.length) return;
+      const first = nodes[0];
+      const last = nodes[nodes.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener('keydown', trapFocusInOverlay);
+
     let recruiterMode = false;
     let activeSpotlight = null;
     let demoRunning = false;
@@ -746,7 +794,6 @@ Contact: arorarajat12@gmail.com`;
         const el = document.querySelector(step.selector);
         if (!el) continue;
         setSpotlight(el);
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
         showToast(step.msg);
         await new Promise((resolve) => setTimeout(resolve, 1200));
       }
@@ -757,8 +804,8 @@ Contact: arorarajat12@gmail.com`;
     };
 
     const toggleHelp = () => {
-      const open = helpOverlay.classList.toggle('show');
-      helpOverlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+      if (helpOverlay.classList.contains('show')) closeOverlay(helpOverlay);
+      else openOverlay(helpOverlay);
     };
 
     const copyRecruiterLink = async () => {
@@ -778,9 +825,8 @@ Contact: arorarajat12@gmail.com`;
     });
 
     const toggleVault = () => {
-      const open = vaultOverlay.classList.toggle('show');
-      vaultOverlay.setAttribute('aria-hidden', open ? 'false' : 'true');
-      if (open) showToast('Proof Vault opened');
+      if (vaultOverlay.classList.contains('show')) closeOverlay(vaultOverlay);
+      else { openOverlay(vaultOverlay); showToast('Proof Vault opened'); }
     };
     openVaultBtn.addEventListener('click', toggleVault);
     closeVaultBtn.addEventListener('click', toggleVault);
@@ -789,8 +835,8 @@ Contact: arorarajat12@gmail.com`;
     });
 
     const toggleResumeInfo = () => {
-      const open = resumeOverlay.classList.toggle('show');
-      resumeOverlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+      if (resumeOverlay.classList.contains('show')) closeOverlay(resumeOverlay);
+      else openOverlay(resumeOverlay);
     };
     openResumeInfoBtn.addEventListener('click', toggleResumeInfo);
     closeResumeInfoBtn.addEventListener('click', toggleResumeInfo);
@@ -800,9 +846,9 @@ Contact: arorarajat12@gmail.com`;
 
     window.addEventListener('keydown', (event) => {
       const key = event.key.toLowerCase();
-      if (key === 'r') setRecruiterMode(!recruiterMode);
-      if (key === 'd') runLiveDemo();
-      if (key === '?') toggleHelp();
+      if (event.altKey && key === 'r') setRecruiterMode(!recruiterMode);
+      if (event.altKey && key === 'd') runLiveDemo();
+      if (event.altKey && key === '?') toggleHelp();
       if (key === 'escape' && helpOverlay.classList.contains('show')) toggleHelp();
       if (key === 'escape' && vaultOverlay.classList.contains('show')) toggleVault();
       if (key === 'escape' && caseVideoOverlay.classList.contains('show')) stopCaseVideo();
@@ -840,18 +886,27 @@ Contact: arorarajat12@gmail.com`;
     const calcRate = document.getElementById('calcRate');
     const calcResult = document.getElementById('calcResult');
     const calcRange = document.getElementById('calcRange');
+    const calcPipe = document.getElementById('calcPipe');
+    const calcWinLift = document.getElementById('calcWinLift');
+    const calcMargin = document.getElementById('calcMargin');
 
     const updateImpactCalc = () => {
       const hours = Math.max(1, Number(calcHours.value) || 0);
       const gain = Math.min(100, Math.max(1, Number(calcGain.value) || 0));
       const rate = Math.max(10, Number(calcRate.value) || 0);
-      const annual = hours * (gain / 100) * rate * 52;
-      const low = annual * 0.9;
-      const high = annual * 1.1;
-      calcResult.textContent = `$${Math.round(annual).toLocaleString()} / year`;
-      calcRange.textContent = `Estimated savings range: $${Math.round(low).toLocaleString()} – $${Math.round(high).toLocaleString()} annually.`;
+      const pipe = Math.max(0, Number(calcPipe.value) || 0);
+      const winLift = Math.max(0, Number(calcWinLift.value) || 0) / 100;
+      const margin = Math.max(0.01, Number(calcMargin.value) || 0) / 100;
+
+      const efficiencyAnnual = hours * (gain / 100) * rate * 52;
+      const pipelineAnnual = pipe * 4 * winLift * margin;
+      const total = efficiencyAnnual + pipelineAnnual;
+      const low = total * 0.9;
+      const high = total * 1.1;
+      calcResult.textContent = `$${Math.round(efficiencyAnnual).toLocaleString()} efficiency + $${Math.round(pipelineAnnual).toLocaleString()} pipeline / year`;
+      calcRange.textContent = `Estimated annual value range: $${Math.round(low).toLocaleString()} – $${Math.round(high).toLocaleString()}.`;
     };
-    [calcHours, calcGain, calcRate].forEach((el) => el.addEventListener('input', updateImpactCalc));
+    [calcHours, calcGain, calcRate, calcPipe, calcWinLift, calcMargin].forEach((el) => el.addEventListener('input', updateImpactCalc));
     updateImpactCalc();
 
     const videoScripts = {
@@ -915,8 +970,7 @@ Contact: arorarajat12@gmail.com`;
     const stopCaseVideo = () => {
       if (caseVideoTimer) clearInterval(caseVideoTimer);
       caseVideoTimer = null;
-      caseVideoOverlay.classList.remove('show');
-      caseVideoOverlay.setAttribute('aria-hidden', 'true');
+      closeOverlay(caseVideoOverlay);
       videoProgress.style.width = '0%';
     };
 
@@ -924,8 +978,7 @@ Contact: arorarajat12@gmail.com`;
       const script = videoScripts[key];
       if (!script) return;
       caseVideoTitle.textContent = script.title;
-      caseVideoOverlay.classList.add('show');
-      caseVideoOverlay.setAttribute('aria-hidden', 'false');
+      openOverlay(caseVideoOverlay);
       caseVideoStep = 0;
       videoProgress.style.width = '0%';
       const render = () => {
