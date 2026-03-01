@@ -633,7 +633,7 @@
 
   <div id="caseStudyOverlay" class="overlay" aria-hidden="true">
     <div class="overlay-card case-modal" role="dialog" aria-modal="true" aria-labelledby="caseStudyTitle">
-      <h3 id="caseStudyTitle">Case study</h3>
+      <h3 id="caseStudyTitle" tabindex="-1" data-overlay-initial-focus>Case study</h3>
       <p id="caseStudyContext" class="muted" style="margin-top:.35rem;"></p>
       <div id="caseStudyKpis" class="case-meta"></div>
       <div class="case-grid">
@@ -724,14 +724,24 @@
     let lastFocusedEl = null;
     const focusableSelector = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
+    const focusWithoutScroll = (el) => {
+      if (!el) return;
+      try {
+        el.focus({ preventScroll: true });
+      } catch (error) {
+        el.focus();
+      }
+    };
+
     const openOverlay = (overlay) => {
       if (!overlay) return;
       lastFocusedEl = document.activeElement;
       overlay.classList.add('show');
       overlay.setAttribute('aria-hidden', 'false');
       activeOverlay = overlay;
+      const preferred = overlay.querySelector('[data-overlay-initial-focus]');
       const first = overlay.querySelector(focusableSelector);
-      if (first) first.focus();
+      focusWithoutScroll(preferred || first);
     };
 
     const closeOverlay = (overlay) => {
