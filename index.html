@@ -3,338 +3,1275 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rajat Arora — Business Systems & Automation Architect</title>
-  <meta name="description" content="Business Systems & Automation Architect. I build scalable RevOps + operational systems with clean data, reliable reporting, and automation that sticks." />
+  <title>Rajat Arora — Revenue Operations & Business Systems</title>
+  <meta name="description" content="Revenue Operations and Business Systems specialist. I build lifecycle design, reporting governance, and automation that helps GTM teams execute predictably." />
   <meta name="theme-color" content="#0b0b10" />
-
-  <!-- Tailwind via CDN (no install needed) -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta property="og:title" content="Rajat Arora — Revenue Operations & Business Systems" />
+  <meta property="og:description" content="Revenue operations and business systems leadership focused on measurable operational outcomes." />
+  <meta property="og:type" content="website" />
 
   <style>
+    :root {
+      --bg-top: #05050a;
+      --bg-mid: #070712;
+      --bg-bottom: #05050a;
+      --text: #fff;
+      --muted: rgba(255, 255, 255, 0.74);
+      --muted-2: rgba(255, 255, 255, 0.58);
+      --line: rgba(255, 255, 255, 0.10);
+      --card: rgba(255, 255, 255, 0.04);
+      --card-strong: rgba(255, 255, 255, 0.06);
+      --radius: 18px;
+      --radius-lg: 24px;
+      --ok-bg: rgba(16, 185, 129, 0.12);
+      --ok-line: rgba(16, 185, 129, 0.45);
+      --brand: #aab8ff;
+    }
+
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    /* subtle background noise */
-    .noise {
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      line-height: 1.6;
       background-image:
-        radial-gradient(circle at 20% 0%, rgba(99,102,241,0.22), transparent 55%),
-        radial-gradient(circle at 80% 10%, rgba(34,211,238,0.14), transparent 55%),
-        radial-gradient(circle at 40% 120%, rgba(16,185,129,0.12), transparent 55%),
-        linear-gradient(180deg, #05050a 0%, #070712 40%, #05050a 100%);
+        radial-gradient(circle at 20% 0%, rgba(99, 102, 241, 0.22), transparent 55%),
+        radial-gradient(circle at 80% 10%, rgba(34, 211, 238, 0.14), transparent 55%),
+        radial-gradient(circle at 40% 120%, rgba(16, 185, 129, 0.12), transparent 55%),
+        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 40%, var(--bg-bottom) 100%);
     }
-    .glass {
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: 0 18px 50px rgba(0,0,0,0.38);
+
+    body.recruiter-mode .toolkit,
+    body.recruiter-mode .hero-side,
+    body.recruiter-mode #presentationLab {
+      display: none !important;
     }
-    .muted { color: rgba(255,255,255,0.72); }
-    .muted2 { color: rgba(255,255,255,0.58); }
-    .line { border-color: rgba(255,255,255,0.10); }
-    .pill {
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
+
+    body.recruiter-mode .hero-grid,
+    body.recruiter-mode .cards-2,
+    body.recruiter-mode .scoreboard {
+      grid-template-columns: 1fr;
     }
-    .btn {
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
+
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      z-index: 120;
+      background: rgba(255, 255, 255, 0.12);
     }
-    .btn:hover { border-color: rgba(255,255,255,0.22); }
-    .btnPrimary {
-      background: #ffffff;
+
+    .progress > span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #818cf8, #22d3ee);
+      transition: width 120ms linear;
+    }
+
+    .container { width: min(1120px, calc(100% - 2rem)); margin-inline: auto; }
+
+    .skip-link {
+      position: absolute;
+      top: -120%;
+      left: 1rem;
+      background: #fff;
       color: #0a0a0a;
-      border: 1px solid rgba(255,255,255,0.0);
+      padding: 0.4rem 0.7rem;
+      border-radius: 8px;
+      font-weight: 700;
+      z-index: 130;
     }
-    .btnPrimary:hover { background: #e8e8ff; }
-    a:focus { outline: 2px solid rgba(99,102,241,0.8); outline-offset: 2px; }
+    .skip-link:focus { top: 1rem; }
+
+    .glass {
+      background: linear-gradient(180deg, var(--card-strong), rgba(255, 255, 255, 0.02));
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
+      backdrop-filter: blur(8px);
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 999px;
+      padding: 0.35rem 0.75rem;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.84);
+      font-weight: 600;
+    }
+
+    .ok-pill { border-color: var(--ok-line); background: var(--ok-bg); color: #9af2cd; }
+
+    .btn {
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      padding: 0.7rem 1rem;
+      min-height: 44px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: 140ms ease;
+      cursor: pointer;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-1px) scale(1.01);
+      outline: none;
+    }
+
+    .btn-primary { border: 1px solid transparent; background: #fff; color: #0a0a0a; }
+    .btn-primary:hover,
+    .btn-primary:focus-visible { background: #e8e8ff; }
+
+    .btn-ghost { border-color: rgba(170, 184, 255, 0.4); color: var(--brand); background: rgba(170, 184, 255, 0.08); }
+
+    a:focus-visible,
+    button:focus-visible { outline: 2px solid rgba(99, 102, 241, 0.8); outline-offset: 2px; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(7, 7, 18, 0.65);
+    }
+
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.9rem 0; }
+    .top-actions { display: flex; gap: 0.45rem; flex-wrap: wrap; justify-content: flex-end; }
+    .brand { color: #fff; text-decoration: none; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; }
+    nav { display: flex; gap: 1rem; }
+    nav a { color: rgba(255, 255, 255, 0.72); text-decoration: none; font-size: 0.9rem; font-weight: 500; min-height:44px; display:inline-flex; align-items:center; padding:0 .15rem; }
+    nav a:hover { color: #fff; }
+
+    main { padding: 0 0 1rem; }
+    .hero { padding: 3rem 0 2.7rem; }
+    .hero-tags { display: flex; gap: 0.45rem; flex-wrap: wrap; }
+    .hero-grid { margin-top: 1.5rem; display: grid; gap: 1rem; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); align-items: start; }
+
+    h1 { margin: 0; font-size: clamp(2.4rem, 8.6vw, 6.2rem); line-height: 0.95; letter-spacing: -0.03em; max-width: 10ch; text-wrap: balance; font-weight: 800; }
+    .hero-title-muted { display:block; color:#8e97a8; }
+    h2 { margin: 0; font-size: clamp(1.45rem, 2.6vw, 2.05rem); line-height: 1.2; letter-spacing: -0.02em; }
+    h3 { margin: 0; font-size: 1.18rem; line-height: 1.25; letter-spacing: -0.01em; }
+    p { margin: 0; }
+    .muted { color: var(--muted); }
+    .muted-2 { color: var(--muted-2); }
+
+    .hero-copy { max-width: 62ch; margin-top: 1rem; font-size: 1.04rem; }
+    .hero-copy { transition: opacity .35s ease, transform .35s ease; }
+    .role-switch { margin-top: .8rem; display:flex; gap:.45rem; flex-wrap:wrap; }
+    .role-btn { border:1px solid var(--line); background:rgba(255,255,255,.03); color:var(--muted); border-radius:999px; padding:.45rem .78rem; min-height:44px; font-size:.78rem; font-weight:700; cursor:pointer; }
+    .role-btn.active { color:#fff; border-color:rgba(170,184,255,.55); background:rgba(170,184,255,.12); }
+    .hero-actions { margin-top: 1.35rem; display: flex; gap: 0.55rem; flex-wrap: wrap; }
+    .stats { margin-top: 1.4rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; }
+    .stat { border-radius: var(--radius); padding: 0.95rem; }
+    .stat strong { display: block; font-size: 1.35rem; margin-top: 0.15rem; }
+
+    .quick-pack { margin-top: 0.75rem; border-top: 1px solid var(--line); padding-top: 0.75rem; display: grid; gap: 0.45rem; font-size: 0.85rem; color: var(--muted); }
+    .toolkit { margin-top: 0.9rem; display: flex; flex-wrap: wrap; gap: 0.45rem; }
+
+    .side-card { border-radius: var(--radius-lg); padding: 1.2rem; }
+    .side-list { list-style: none; margin: 0.8rem 0 0; padding: 0; display: grid; gap: 0.6rem; }
+    .side-list li { border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255, 255, 255, 0.05); padding: 0.75rem; }
+
+
+
+    .hero-network {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      z-index:-1;
+      opacity:.4;
+      pointer-events:none;
+    }
+
+    .bento-grid { margin-top:1rem; display:grid; gap:.8rem; grid-template-columns:repeat(4,minmax(0,1fr)); }
+    .bento-card { border:1px solid var(--line); border-radius:16px; background:linear-gradient(180deg,var(--card-strong),rgba(255,255,255,.02)); padding:.95rem; }
+    .bento-card.large { grid-column:span 2; grid-row:span 2; }
+    .kpi-ring { width:74px; aspect-ratio:1 / 1; border-radius:50%; margin:.55rem auto .35rem; position:relative; background:conic-gradient(#818cf8 calc(var(--p)*1%), rgba(255,255,255,.09) 0); }
+    .kpi-ring::after { content:''; position:absolute; inset:9px; border-radius:50%; background:#0a0f1d; }
+    .kpi-ring span { position:absolute; inset:0; display:grid; place-items:center; z-index:1; font-size:.8rem; font-weight:700; }
+
+    .arch-pipeline { margin-top:1rem; display:flex; gap:.5rem; align-items:center; overflow-x:auto; padding-bottom:.35rem; }
+    .arch-node { border:1px solid var(--line); border-radius:12px; min-width:180px; padding:.75rem; background:rgba(255,255,255,.03); color:#fff; cursor:pointer; text-align:left; }
+    .arch-node.active, .arch-node:hover { border-color:rgba(129,140,248,.8); box-shadow:0 0 0 2px rgba(129,140,248,.2); }
+    .arch-link { color:#aab8ff; font-weight:700; }
+    .arch-detail { margin-top:.8rem; border:1px solid var(--line); border-radius:14px; padding:.85rem; background:rgba(255,255,255,.02); }
+
+    .section { border-top: 1px solid var(--line); padding: 2.4rem 0; }
+    .eyebrow { margin: 0; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em; color: rgba(255, 255, 255, 0.56); font-weight: 700; }
+    .section-sub { margin-top: 0.7rem; max-width: 70ch; }
+
+    .cards-2 { margin-top: 1.2rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; }
+    .case { border-radius: var(--radius-lg); padding: 1.1rem; }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.8rem; }
+    .bullet-list { margin: 0.75rem 0 0; padding-left: 1rem; color: var(--muted); }
+    .bullet-list li { margin-bottom: 0.35rem; }
+    .proof-chips { display:flex; flex-wrap:wrap; gap:.35rem; margin-top:.55rem; }
+    .proof-chip { border:1px solid rgba(16,185,129,.45); background:rgba(16,185,129,.12); color:#a7f3d0; border-radius:999px; padding:.2rem .55rem; font-size:.72rem; font-weight:650; }
+    .context-note { margin-top:.55rem; font-size:.82rem; color:var(--muted-2); }
+    details.toolkit-panel { margin-top:.85rem; border:1px solid var(--line); border-radius:12px; padding:.6rem .7rem; background:rgba(255,255,255,.03); }
+    details.toolkit-panel summary { cursor:pointer; font-weight:700; color:#fff; }
+
+    .evidence-btn { margin-top:.65rem; }
+    .diagram-btn { margin-top:.45rem; margin-left:.45rem; }
+    .deepdive-btn { margin-top:.45rem; margin-left:.45rem; }
+    .diagram-shell { margin-top:.7rem; border:1px solid var(--line); border-radius:12px; background:#0d1329; padding:.75rem; }
+    .diagram-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.55rem; margin-top:.65rem; }
+    .diagram-node { border:1px solid rgba(170,184,255,.45); border-radius:10px; padding:.5rem; background:rgba(170,184,255,.12); font-size:.8rem; }
+    .diagram-node small { display:block; margin-top:.2rem; color:var(--muted); font-size:.72rem; }
+    .diagram-arrow { text-align:center; color:#aab8ff; font-weight:700; font-size:1.1rem; align-self:center; }
+    .evidence-drawer { margin-top:.65rem; border:1px dashed rgba(170,184,255,.35); border-radius:12px; background:rgba(170,184,255,.06); padding:.7rem; display:none; }
+    .evidence-drawer.open { display:block; }
+    .evidence-drawer h4 { margin:.2rem 0 .35rem; font-size:.85rem; color:#dbe2ff; letter-spacing:.02em; text-transform:uppercase; }
+    .evidence-drawer p { color:var(--muted); font-size:.88rem; }
+
+    .impact-calc { margin-top:1rem; border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.03); padding:.9rem; }
+    .impact-calc-grid { margin-top:.65rem; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.6rem; }
+    .impact-calc label { display:grid; gap:.3rem; color:var(--muted); font-size:.84rem; }
+    .impact-calc input { width:100%; border:1px solid var(--line); border-radius:10px; padding:.55rem .6rem; background:rgba(255,255,255,.04); color:#fff; }
+    .impact-calc-result { margin-top:.7rem; border:1px solid rgba(16,185,129,.45); background:rgba(16,185,129,.12); border-radius:10px; padding:.7rem; }
+    .impact-calc-result strong { font-size:1.2rem; display:block; }
+
+    .scoreboard { margin-top: 1rem; border-top: 1px solid var(--line); padding-top: 0.9rem; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem; }
+    .score { border: 1px solid var(--line); border-radius: 12px; padding: 0.7rem; background: rgba(255, 255, 255, 0.03); }
+    .score strong { display: block; font-size: 1.2rem; }
+
+    .presentation-lab { margin-top: 1.2rem; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.03); padding: .9rem; }
+    .presentation-lab h3 { font-size: 1rem; }
+    .presentation-grid { margin-top: .7rem; display:grid; grid-template-columns: 1fr 1fr; gap:.65rem; }
+    .presentation-grid article { border:1px solid var(--line); border-radius:10px; padding:.65rem; background:rgba(255,255,255,.02); }
+    .presentation-grid p { color: var(--muted); font-size:.86rem; margin-top:.35rem; }
+
+    .timeline { margin-top: 1rem; display:grid; gap:.65rem; grid-template-columns: repeat(4, minmax(0,1fr)); }
+    .timeline-step { border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.03); padding:.8rem; position:relative; }
+    .timeline-step::before { content:''; position:absolute; top:-1px; left:-1px; right:-1px; height:2px; background:linear-gradient(90deg,#818cf8,#22d3ee); border-radius:12px 12px 0 0; opacity:.55; }
+
+    .reveal { opacity:0; transform: translateY(10px); transition: opacity .45s ease, transform .45s ease; }
+    .reveal.visible { opacity:1; transform: translateY(0); }
+
+    .vault-grid { margin-top:.75rem; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.55rem; }
+    .vault-item { border:1px solid var(--line); border-radius:10px; padding:.65rem; background:rgba(255,255,255,.03); }
+    .vault-item p { color:var(--muted); font-size:.86rem; margin-top:.3rem; }
+
+    .spotlight { box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.75), 0 0 0 10px rgba(129, 140, 248, 0.1), 0 18px 50px rgba(0, 0, 0, 0.38) !important; }
+
+    .faq { margin-top: 1rem; display: grid; gap: 0.6rem; }
+    .faq details { border: 1px solid var(--line); border-radius: 12px; padding: 0.75rem 0.85rem; background: rgba(255, 255, 255, 0.03); }
+    .faq summary { cursor: pointer; font-weight: 700; color: #fff; }
+    .faq p { margin-top: 0.55rem; color: var(--muted); }
+
+    .contact-card { margin-top: 1rem; border-radius: var(--radius-lg); padding: 1.2rem; display: flex; gap: 1rem; justify-content: space-between; align-items: center; }
+
+    .toast {
+      position: fixed; bottom: 1rem; right: 1rem; background: rgba(13, 19, 34, 0.95); border: 1px solid var(--line);
+      color: #fff; padding: 0.65rem 0.85rem; border-radius: 10px; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+      z-index: 120; opacity: 0; transform: translateY(8px); pointer-events: none; transition: 0.18s ease; font-size: 0.85rem;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    .hotkeys { margin-top: 0.5rem; color: var(--muted-2); font-size: 0.75rem; }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 8, 18, 0.86);
+      z-index: 140;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .overlay.show { display: flex; }
+
+    .overlay-card {
+      width: min(820px, 100%);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: linear-gradient(180deg, #111a31, #0f172b);
+      padding: 1rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    .overlay-card h3 { font-size: 1.15rem; }
+    .overlay-card ul { margin: 0.75rem 0 0; padding-left: 1rem; color: var(--muted); }
+    .overlay-card li { margin-bottom: 0.45rem; }
+
+    .code-block { margin-top:.65rem; border:1px solid var(--line); border-radius:10px; background:rgba(0,0,0,.3); padding:.7rem; overflow:auto; }
+    .code-block pre { margin:0; font-size:.8rem; color:#dce3ff; }
+
+    .vault-item { position:relative; }
+    .vault-item .tooltip-diagram {
+      position:absolute;
+      left:50%;
+      bottom:calc(100% + .35rem);
+      transform:translateX(-50%);
+      width:240px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:linear-gradient(180deg,#121b39,#0e1730);
+      padding:.45rem;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .16s ease;
+      box-shadow:0 12px 25px rgba(0,0,0,.45);
+    }
+    .vault-item:hover .tooltip-diagram,
+    .vault-item:focus-within .tooltip-diagram { opacity:1; }
+    .diagram-mini { border:1px solid rgba(170,184,255,.45); border-radius:8px; padding:.35rem; font-size:.67rem; color:#dce3ff; }
+    .diagram-mini + .diagram-mini { margin-top:.35rem; }
+
+    footer { margin-top: 0.8rem; font-size: 0.84rem; color: rgba(255, 255, 255, 0.46); padding: 0.5rem 0 2.2rem; }
+
+    @media (max-width: 960px) {
+      nav { display: none; }
+      .hero-grid,
+      .stats,
+      .cards-2,
+      .scoreboard,
+      .presentation-grid, .timeline, .vault-grid, .impact-calc-grid, .bento-grid { grid-template-columns: 1fr; }
+      .contact-card { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 1ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
+<body>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <a href="#main" class="skip-link">Skip to content</a>
 
-<body class="noise text-white">
-  <!-- Top bar -->
-  <header class="sticky top-0 z-50 backdrop-blur border-b line">
-    <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
-      <a href="#top" class="font-semibold tracking-tight">Rajat Arora</a>
-
-      <nav class="hidden md:flex gap-6 text-sm text-white/70">
-        <a href="#work" class="hover:text-white">Work</a>
-        <a href="#proof" class="hover:text-white">Proof</a>
-        <a href="#about" class="hover:text-white">About</a>
-        <a href="#contact" class="hover:text-white">Contact</a>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#top" class="brand">Rajat Arora</a>
+      <nav aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#proof">Proof</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
       </nav>
-
-      <a href="#contact" class="rounded-xl px-4 py-2 text-sm font-semibold btnPrimary">
-        Let’s talk →
-      </a>
+      <div class="top-actions">
+        <button id="startDemo" class="btn btn-ghost" type="button">Live demo</button>
+        <button id="toggleRecruiterMode" class="btn" type="button">Recruiter mode</button>
+      </div>
     </div>
   </header>
 
-  <main id="top" class="max-w-6xl mx-auto px-5">
-    <!-- Hero -->
-    <section class="pt-12 pb-10 md:pt-16 md:pb-12">
-      <div class="flex flex-wrap gap-2">
-        <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Business Systems</span>
-        <span class="pill rounded-full px-3 py-1 text-xs text-white/80">RevOps</span>
-        <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Automation</span>
-        <span class="pill rounded-full px-3 py-1 text-xs text-white/80">HubSpot</span>
-        <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Toronto, Canada</span>
+  <main id="main" class="container">
+    <section class="hero" id="top" aria-labelledby="hero-title" style="position:relative; overflow:hidden;">
+      <canvas id="heroNetwork" class="hero-network" aria-hidden="true"></canvas>
+      <div class="hero-tags">
+        <span class="pill">Business Systems</span><span class="pill">RevOps</span><span class="pill">Automation</span><span class="pill">HubSpot</span><span class="pill">Toronto, Canada</span>
       </div>
 
-      <div class="mt-6 grid gap-10 md:grid-cols-12 md:items-start">
-        <div class="md:col-span-8">
-          <h1 class="text-4xl md:text-6xl font-semibold leading-tight tracking-tight">
-            Business Systems & Automation Architect
-          </h1>
+      <div class="hero-grid">
+        <div>
+          <h1 id="hero-title">Architecting <span class="hero-title-muted">Revenue Scale.</span></h1>
+          <p id="heroCopy" class="hero-copy muted">Scaling breaks people-dependent processes. I design demand-to-revenue systems with clear lifecycle definitions, accountable handoffs, and reporting leadership can trust weekly.</p>
 
-          <p class="mt-5 text-lg muted max-w-2xl">
-            I build scalable operating foundations across HubSpot and connected tools — clean data, clear lifecycle workflows,
-            and automation that sticks — so teams execute faster and leadership can trust reporting.
-          </p>
-
-          <div class="mt-7 flex flex-wrap gap-3">
-            <a href="#work" class="rounded-xl px-5 py-3 text-sm font-semibold btnPrimary">
-              View case studies →
-            </a>
-            <a href="#contact" class="rounded-xl px-5 py-3 text-sm font-semibold btn">
-              Contact
-            </a>
-            <a href="mailto:arorarajat12@gmail.com" class="rounded-xl px-5 py-3 text-sm font-semibold btn">
-              Email
-            </a>
-            <!-- Replace with your LinkedIn URL -->
-            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" class="rounded-xl px-5 py-3 text-sm font-semibold btn">
-              LinkedIn
-            </a>
+          <div class="role-switch" aria-label="Role targeted view">
+            <button class="role-btn active" data-role="revops" type="button" aria-pressed="true">RevOps</button>
+            <button class="role-btn" data-role="bizsys" type="button" aria-pressed="false">Business Systems</button>
+            <button class="role-btn" data-role="gtm" type="button" aria-pressed="false">GTM Systems</button>
           </div>
 
-          <div class="mt-10 grid gap-4 sm:grid-cols-3">
-            <div class="glass rounded-2xl p-4">
-              <p class="text-sm muted2">Automation built</p>
-              <p class="mt-1 text-2xl font-semibold">600+ workflows</p>
-            </div>
-            <div class="glass rounded-2xl p-4">
-              <p class="text-sm muted2">Systems</p>
-              <p class="mt-1 text-2xl font-semibold">HubSpot + GTM stack</p>
-            </div>
-            <div class="glass rounded-2xl p-4">
-              <p class="text-sm muted2">Focus</p>
-              <p class="mt-1 text-2xl font-semibold">SSOT + scale</p>
-            </div>
+          <div class="hero-actions">
+            <a href="#work" class="btn btn-primary">View case studies →</a>
+            <a href="mailto:arorarajat12@gmail.com" class="btn">Email</a>
           </div>
+
+          <div class="stats">
+            <div class="glass stat"><p class="muted-2">Automation built</p><strong>600+ workflows</strong></div>
+            <div class="glass stat"><p class="muted-2">Systems</p><strong>HubSpot + GTM stack</strong></div>
+            <div class="glass stat"><p class="muted-2">Focus</p><strong>SSOT + scale</strong></div>
+          </div>
+          <p class="context-note">Context: metrics shown are aggregated across multiple engagements and anonymized for NDA compliance.</p>
+
+          <div class="quick-pack">
+            <div id="quickPackRole"><strong>Recruiter quick-pack:</strong> Open to RevOps Manager, Business Systems Analyst, and GTM Systems roles.</div>
+            <div id="quickPackTeams">Best-fit teams: PLG or sales-led SaaS orgs tightening demand-to-revenue execution.</div>
+            <div id="quickPackSummary">Call-ready summary: “I design demand-to-revenue systems that improve velocity, forecast confidence, and handoff quality.”</div>
+          </div>
+
+          <details class="toolkit-panel" aria-label="Recruiter toolkit">
+            <summary>Interview toolkit</summary>
+            <div class="toolkit">
+              <button class="btn btn-ghost" id="copyPitch" type="button">Copy 30s pitch</button>
+              <button class="btn btn-ghost" id="copyStory" type="button">Copy 2-min story</button>
+              <button class="btn btn-ghost" id="downloadBrief" type="button">Download hiring brief</button>
+              <button class="btn btn-ghost" id="shareSnapshot" type="button">Copy recruiter link</button>
+            </div>
+          </details>
         </div>
 
-        <div class="md:col-span-4">
-          <div class="glass rounded-3xl p-6">
-            <p class="text-sm text-white/80">Signature outcomes</p>
-            <ul class="mt-4 space-y-3 text-sm muted">
-              <li class="rounded-2xl border line bg-white/5 p-4">
-                <p class="font-semibold text-white">Operational efficiency</p>
-                <p class="mt-1 muted">Remove manual work. Reduce errors. Speed up execution.</p>
-              </li>
-              <li class="rounded-2xl border line bg-white/5 p-4">
-                <p class="font-semibold text-white">Data foundations</p>
-                <p class="mt-1 muted">Governance + structure so reporting doesn’t drift.</p>
-              </li>
-              <li class="rounded-2xl border line bg-white/5 p-4">
-                <p class="font-semibold text-white">Lifecycle clarity</p>
-                <p class="mt-1 muted">Clear stages, ownership, and handoffs across teams.</p>
-              </li>
+        <aside class="hero-side">
+          <div class="glass side-card">
+            <p class="muted">Signature outcomes</p>
+            <ul class="side-list">
+              <li><p><strong>Operational efficiency</strong></p><p class="muted">Remove manual work. Reduce errors. Speed up execution.</p></li>
+              <li><p><strong>Data foundations</strong></p><p class="muted">Governance + structure so reporting doesn’t drift.</p></li>
+              <li><p><strong>Lifecycle clarity</strong></p><p class="muted">Clear stages, ownership, and handoffs across teams.</p></li>
             </ul>
-
-            <div class="mt-5 border-t line pt-5">
-              <p class="text-sm text-white/80">Operating style</p>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="pill rounded-full px-3 py-1 text-xs text-white/80">System-first</span>
-                <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Governance</span>
-                <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Measure impact</span>
-                <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Ship fast</span>
-                <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Reduce chaos</span>
-              </div>
+            <div style="margin-top:1rem; border-top:1px solid var(--line); padding-top:1rem;">
+              <p class="muted">Operating style</p>
+              <div class="chip-row" style="margin-top:.55rem;"><span class="pill">System-first</span><span class="pill">Governance</span><span class="pill">Measure impact</span><span class="pill">Ship fast</span><span class="pill">Reduce chaos</span></div>
             </div>
           </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="work" class="section" aria-labelledby="work-title">
+      <p class="eyebrow">Selected work</p>
+      <h2 id="work-title" style="margin-top:.45rem;">Case studies</h2>
+      <p class="section-sub muted">Built to show outcomes and thinking. Detailed walkthroughs (screenshots/diagrams) available privately depending on NDA constraints.</p>
+      <div class="cards-2">
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Governance</span><span class="pill">Reporting</span></div><h3>HubSpot as Single Source of Truth</h3><p class="muted" style="margin-top:.45rem;">Standardized lifecycle stages, ownership, and data integrity across teams.</p><div class="proof-chips"><span class="proof-chip">Reporting trust ↑</span><span class="proof-chip">Lifecycle clarity ↑</span></div><ul class="bullet-list"><li>Unified stakeholder data model across departments</li><li>Reduced duplicated records and reporting drift</li><li>Implemented governance + automation to prevent regression</li><li>Enabled leadership-ready dashboards teams trust</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="ssot">Open evidence</button><button class="btn diagram-btn" type="button" data-diagram="ssot">View architecture diagram</button><button class="btn deepdive-btn" type="button" data-deepdive="ssot">Technical deep-dive</button><div class="evidence-drawer" id="drawer-ssot"><h4>Problem</h4><p>Lifecycle definitions were inconsistent between teams, causing reporting disputes.</p><h4>Architecture decision</h4><p>Unified stage model + owner mapping + data-quality gates in HubSpot.</p><h4>Measured result</h4><p>Reporting trust improved and handoff confusion dropped significantly.</p></div></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">QuickBooks</span><span class="pill">Zapier/Make</span></div><h3>Finance Ops Automation (Invoicing)</h3><p class="muted" style="margin-top:.45rem;">Reduced manual processing and improved accuracy from request → invoice.</p><div class="proof-chips"><span class="proof-chip">Cycle time ↓</span><span class="proof-chip">Auditability ↑</span></div><ul class="bullet-list"><li>Automated intake → validation → invoicing workflow</li><li>Eliminated repetitive reconciliation steps</li><li>Created consistent audit trail and exception handling</li><li>Improved cycle time from request to invoice</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="finance">Open evidence</button><button class="btn diagram-btn" type="button" data-diagram="finance">View architecture diagram</button><button class="btn deepdive-btn" type="button" data-deepdive="finance">Technical deep-dive</button><div class="evidence-drawer" id="drawer-finance"><h4>Problem</h4><p>Manual invoice creation caused delays and reconciliation overhead.</p><h4>Architecture decision</h4><p>Form-driven intake with validation branch before QuickBooks sync.</p><h4>Measured result</h4><p>Faster invoice turnaround and fewer exception tickets.</p></div></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Automation</span><span class="pill">Slack</span></div><h3>Contractor Onboarding Pipeline</h3><p class="muted" style="margin-top:.45rem;">Built a consistent onboarding workflow with clear handoffs and reminders.</p><div class="proof-chips"><span class="proof-chip">Time-to-ready ↓</span><span class="proof-chip">Handoff quality ↑</span></div><ul class="bullet-list"><li>Designed stages + ownership across stakeholders</li><li>Automated reminders, tasks, and approvals</li><li>Reduced back-and-forth via structured intake</li><li>Improved time-to-ready for new contractors</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="onboarding">Open evidence</button><button class="btn diagram-btn" type="button" data-diagram="onboarding">View architecture diagram</button><button class="btn deepdive-btn" type="button" data-deepdive="onboarding">Technical deep-dive</button><div class="evidence-drawer" id="drawer-onboarding"><h4>Problem</h4><p>Onboarding moved through email threads with unclear owners.</p><h4>Architecture decision</h4><p>Stage-gated pipeline with SLA reminders and approval checkpoints.</p><h4>Measured result</h4><p>More predictable onboarding cycles and reduced missed handoffs.</p></div></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">Web</span><span class="pill">Inbound Ops</span><span class="pill">HubSpot</span></div><h3>Inbound Qualification & Routing System</h3><p class="muted" style="margin-top:.45rem;">Standardized inbound qualification and owner routing to improve speed-to-first-response and pipeline hygiene.</p><div class="proof-chips"><span class="proof-chip">Qualification quality ↑</span><span class="proof-chip">Response SLAs ↑</span></div><ul class="bullet-list"><li>Implemented qualification rules for sales, support, and partner pathways</li><li>Captured structured data into CRM properties</li><li>Reduced manual triage with structured routing rules</li><li>Improved first-response SLAs and routing consistency</li></ul><button class="btn btn-ghost evidence-btn" type="button" data-drawer="chatbot">Open evidence</button><button class="btn diagram-btn" type="button" data-diagram="chatbot">View architecture diagram</button><button class="btn deepdive-btn" type="button" data-deepdive="chatbot">Technical deep-dive</button><div class="evidence-drawer" id="drawer-chatbot"><h4>Problem</h4><p>Inbound leads were inconsistently qualified and often assigned to the wrong owner.</p><h4>Architecture decision</h4><p>Qualification rubric + mandatory CRM fields + owner-assignment logic.</p><h4>Measured result</h4><p>Higher quality handoffs and fewer routing escalations.</p></div></article>
+      </div>
+
+      <div class="scoreboard" aria-label="Impact scoreboard">
+        <div class="score"><strong>40%</strong><span class="muted">Less manual ops in high-friction processes</span></div>
+        <div class="score"><strong>2x</strong><span class="muted">Faster lifecycle handoff visibility</span></div>
+        <div class="score"><strong>30%+</strong><span class="muted">Cleaner reporting reliability baseline</span></div>
+        <div class="score"><strong>High</strong><span class="muted">Team adoption with low retraining overhead</span></div>
+      </div>
+
+      <div class="bento-grid" aria-label="Impact bento grid">
+        <article class="bento-card large">
+          <h3>Systems over silos</h3>
+          <p class="muted" style="margin-top:.45rem;">Most RevOps friction is a design problem, not a tooling problem. I model lifecycle ownership, enforce field contracts, and automate handoffs so reporting becomes a byproduct of good architecture.</p>
+          <p class="muted" style="margin-top:.55rem;">Core stack: HubSpot, Make/Zapier, QuickBooks, Slack, API connectors.</p>
+        </article>
+        <article class="bento-card" style="--p:85;"><p class="eyebrow">Time saved</p><div class="kpi-ring"><span>85%</span></div><p class="muted" style="text-align:center;">Automation uplift in high-volume admin tasks.</p></article>
+        <article class="bento-card" style="--p:40;"><p class="eyebrow">Accuracy gain</p><div class="kpi-ring"><span>40%</span></div><p class="muted" style="text-align:center;">Cleaner invoicing + reduced rework loops.</p></article>
+        <article class="bento-card" style="--p:60;"><p class="eyebrow">SLA performance</p><div class="kpi-ring"><span>60%</span></div><p class="muted" style="text-align:center;">Structured routing improved speed-to-first-response.</p></article>
+      </div>
+
+      <div class="impact-calc" aria-label="Impact calculator lite">
+        <h3>Impact model (efficiency + revenue)</h3>
+        <p class="muted" style="margin-top:.35rem;">Models both operating efficiency and pipeline conversion lift.</p>
+        <div class="impact-calc-grid">
+          <label>Manual hours/week
+            <input id="calcHours" aria-controls="calcResult calcRange" type="number" min="1" step="1" value="12" />
+          </label>
+          <label>Automation gain (%)
+            <input id="calcGain" aria-controls="calcResult calcRange" type="number" min="1" max="100" step="1" value="35" />
+          </label>
+          <label>Blended hourly cost (USD)
+            <input id="calcRate" aria-controls="calcResult calcRange" type="number" min="10" step="1" value="70" />
+          </label>
+          <label>Pipeline value / quarter (USD)
+            <input id="calcPipe" aria-controls="calcResult calcRange" type="number" min="0" step="1000" value="500000" />
+          </label>
+          <label>Win-rate lift (percentage points)
+            <input id="calcWinLift" aria-controls="calcResult calcRange" type="number" min="0" max="30" step="0.5" value="1.5" />
+          </label>
+          <label>Gross margin (%)
+            <input id="calcMargin" aria-controls="calcResult calcRange" type="number" min="1" max="100" step="1" value="75" />
+          </label>
+        </div>
+        <div class="impact-calc-result" aria-live="polite" aria-atomic="true">
+          <strong id="calcResult">$15,288 efficiency + $22,500 pipeline / year</strong>
+          <span id="calcRange" class="muted">Estimated annual value range: $34,009 – $44,412.</span>
         </div>
       </div>
     </section>
 
-    <!-- Work -->
-    <section id="work" class="py-12 border-t line">
-      <div class="flex items-end justify-between gap-6 flex-wrap">
+
+    <section id="architecture" class="section" aria-labelledby="architecture-title">
+      <p class="eyebrow">Blueprint</p>
+      <h2 id="architecture-title" style="margin-top:.45rem;">Revenue operations system blueprint</h2>
+      <p class="section-sub muted">Click each stage to inspect how capture, routing, pipeline governance, and feedback loops work together.</p>
+      <div class="arch-pipeline" role="tablist" aria-label="Architecture stages">
+        <button class="arch-node active" type="button" data-arch="capture" role="tab" aria-selected="true">Phase 1<br><strong>Capture + score</strong></button>
+        <span class="arch-link" aria-hidden="true">→</span>
+        <button class="arch-node" type="button" data-arch="routing" role="tab" aria-selected="false">Phase 2<br><strong>Lifecycle routing</strong></button>
+        <span class="arch-link" aria-hidden="true">→</span>
+        <button class="arch-node" type="button" data-arch="pipeline" role="tab" aria-selected="false">Phase 3<br><strong>Multi-pipeline ops</strong></button>
+        <span class="arch-link" aria-hidden="true">→</span>
+        <button class="arch-node" type="button" data-arch="feedback" role="tab" aria-selected="false">Phase 4<br><strong>Feedback loop</strong></button>
+      </div>
+      <article id="archDetail" class="arch-detail" aria-live="polite">
+        <h3>Lead capture + qualification scoring</h3>
+        <p class="muted" style="margin-top:.4rem;"><strong>Goal:</strong> allow only high-signal records into operations. <strong>Implementation:</strong> engagement + fit scoring tied to required properties and standardized handoff contracts.</p>
+      </article>
+    </section>
+
+    <section id="presentationLab" class="section" aria-labelledby="presentation-title">
+      <p class="eyebrow">Presentation lab</p>
+      <h2 id="presentation-title" style="margin-top:.45rem;">One-click recruiter presentation flow</h2>
+      <div class="presentation-lab">
+        <h3>What this recruiter flow includes</h3>
+        <div class="presentation-grid">
+          <article>
+            <strong>Guided demo mode</strong>
+            <p>Automatically walks through your strongest sections in the right pitch order.</p>
+          </article>
+          <article>
+            <strong>Shareable recruiter URL</strong>
+            <p>Generates a link that opens directly in recruiter mode and jumps to case studies.</p>
+          </article>
+          <article>
+            <strong>Keyboard-driven control</strong>
+            <p>Run the whole flow without touching the mouse during calls.</p>
+          </article>
+          <article>
+            <strong>Command overlay</strong>
+            <p>Built-in operator panel so you never forget keys in live conversations.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="timelineStory" class="section" aria-labelledby="timeline-title">
+      <p class="eyebrow">Storytelling timeline</p>
+      <h2 id="timeline-title" style="margin-top:.45rem;">Before → system design → automation → outcome</h2>
+      <div class="timeline">
+        <article class="timeline-step reveal"><h3>Before</h3><p class="muted" style="margin-top:.35rem;">Fragmented lifecycle ownership, ad-hoc workflows, and inconsistent reporting trust.</p></article>
+        <article class="timeline-step reveal"><h3>System design</h3><p class="muted" style="margin-top:.35rem;">Mapped lifecycle architecture, ownership boundaries, and governance checkpoints.</p></article>
+        <article class="timeline-step reveal"><h3>Automation</h3><p class="muted" style="margin-top:.35rem;">Connected high-friction handoffs with robust workflows and exception handling.</p></article>
+        <article class="timeline-step reveal"><h3>Outcome</h3><p class="muted" style="margin-top:.35rem;">Faster execution, lower manual load, and dashboards leadership can trust weekly.</p></article>
+      </div>
+    </section>
+
+    <section id="proof" class="section optional" aria-labelledby="proof-title">
+      <p class="eyebrow">Proof</p>
+      <h2 id="proof-title" style="margin-top:.45rem;">Tools & credibility</h2>
+      <div style="margin-top:.75rem;"><button id="openVault" class="btn btn-ghost" type="button">Open Proof Vault</button></div>
+      <div class="cards-2">
+        <article class="glass case"><h3>Tool stack</h3><p class="muted" style="margin-top:.55rem;">HubSpot • Zapier • Make • Slack • Apollo • Typeform • Stripe • QuickBooks • Box • Asana/ClickUp • inbound qualification tools • APIs</p></article>
+        <article class="glass case"><h3>What I’m known for</h3><ul id="knownForList" class="bullet-list"><li>Turning messy ops into clean, governed architecture</li><li>Automation that doesn’t break when teams scale</li><li>Clear lifecycle stages, ownership, and handoffs</li><li>Translating ambiguity into decisions + execution</li></ul></article>
+      </div>
+    </section>
+
+    <section id="about" class="section optional" aria-labelledby="about-title">
+      <p class="eyebrow">About</p>
+      <h2 id="about-title" style="margin-top:.45rem;">How I work</h2>
+      <div class="cards-2" style="grid-template-columns:minmax(0,2fr) minmax(0,1fr);">
+        <article class="glass case"><h3>Short version</h3><p class="muted" style="margin-top:.55rem;">I work at the intersection of revenue operations, CRM governance, and systems enablement. I focus on converting strategy into operating cadence: clear funnel definitions (MQL/PQL/SQL), reliable owner routing, and workflows teams actually follow.</p><p class="muted" style="margin-top:.7rem;">I’m strongest in cross-functional environments where sales, marketing, and operations are misaligned and need a practical operating model that scales.</p></article>
+        <article class="glass case"><h3>What I value</h3><ul class="bullet-list"><li>Clarity over complexity</li><li>Governance over heroics</li><li>Systems that outlive people</li><li>Simple UX for operators</li></ul></article>
+      </div>
+
+      <div id="faqRecruiter" class="faq" aria-label="Frequently asked recruiter questions">
+        <details><summary>How do you usually start with a new team?</summary><p>I start with lifecycle mapping + ownership clarity, then layer governance, then automate high-friction flows tied to KPI outcomes.</p></details>
+        <details><summary>What’s your strongest differentiator?</summary><p>I combine systems architecture depth with operator-first UX, so what gets built is both durable and adopted quickly.</p></details>
+      </div>
+    </section>
+
+
+    <section id="target-fit" class="section" aria-labelledby="target-fit-title">
+      <p class="eyebrow">Target fit</p>
+      <h2 id="target-fit-title" style="margin-top:.45rem;">Where this operating model fits best</h2>
+      <div class="cards-2">
+        <article class="glass case">
+          <h3>High-growth SaaS environments</h3>
+          <p class="muted" style="margin-top:.5rem;">Best aligned to environments similar to BioRender, AfterShip, AgencyAnalytics, MapsPeople, and EvenUp — where RevOps must balance speed, governance, and cross-functional accountability.</p>
+          <ul class="bullet-list">
+            <li>Demand-to-revenue ownership across Marketing, Sales, and Customer Success</li>
+            <li>PQL + lifecycle qualification models for PLG and hybrid funnels</li>
+            <li>CRM technical debt reduction: dedupe, field standards, and source integrity</li>
+            <li>Operating cadence support: pipeline council rhythms and risk surfacing</li>
+          </ul>
+        </article>
+        <article class="glass case">
+          <h3>2026 RevOps metric framework</h3>
+          <ul class="bullet-list">
+            <li><strong>CAC payback:</strong> target 6–12 months</li>
+            <li><strong>LTV:CAC:</strong> maintain 3:1+ with visibility to 5:1 segments</li>
+            <li><strong>Forecast accuracy:</strong> committed quarter variance within ~5%</li>
+            <li><strong>NRR:</strong> support 120%+ through cleaner expansion signals</li>
+            <li><strong>Lead response:</strong> enforce rapid routing to avoid 1-hour decay risk</li>
+          </ul>
+          <p class="context-note">Focus is not vanity reporting; it is volume, value, velocity, and conversion quality across the full lifecycle.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <p class="eyebrow">Contact</p>
+      <h2 id="contact-title" style="margin-top:.45rem;">Let’s build something durable</h2>
+      <div class="glass contact-card">
         <div>
-          <p class="text-xs font-semibold tracking-widest text-white/55 uppercase">Selected work</p>
-          <h2 class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">Case studies</h2>
-          <p class="mt-3 muted max-w-2xl">
-            Built to show outcomes and thinking. Detailed walkthroughs (screenshots/diagrams) available privately depending on NDA constraints.
-          </p>
+          <p class="muted">If you’re hiring for RevOps leadership, Business Systems, or GTM Systems ownership, I’m open to roles where I can own demand-to-revenue execution end-to-end.</p>
+          <p class="muted-2" style="margin-top:.45rem;">Email: <a href="mailto:arorarajat12@gmail.com" style="color:#fff;">arorarajat12@gmail.com</a></p>
+          <div class="chip-row" style="margin-top:.55rem;"><span class="pill ok-pill">Open to full-time roles</span><span class="pill ok-pill">Open to contract projects</span></div>
         </div>
-      </div>
-
-      <div class="mt-8 grid gap-5 md:grid-cols-2">
-        <!-- Case 1 -->
-        <article class="glass rounded-3xl p-6">
-          <div class="flex flex-wrap gap-2">
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">HubSpot</span>
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Governance</span>
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Reporting</span>
-          </div>
-          <h3 class="mt-4 text-xl font-semibold">HubSpot as Single Source of Truth</h3>
-          <p class="mt-2 muted">Standardized lifecycle stages, ownership, and data integrity across teams.</p>
-
-          <ul class="mt-4 space-y-2 text-sm muted">
-            <li>• Unified stakeholder data model across departments</li>
-            <li>• Reduced duplicated records and reporting drift</li>
-            <li>• Implemented governance + automation to prevent regression</li>
-            <li>• Enabled leadership-ready dashboards teams trust</li>
-          </ul>
-        </article>
-
-        <!-- Case 2 -->
-        <article class="glass rounded-3xl p-6">
-          <div class="flex flex-wrap gap-2">
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">HubSpot</span>
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">QuickBooks</span>
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Zapier/Make</span>
-          </div>
-          <h3 class="mt-4 text-xl font-semibold">Finance Ops Automation (Invoicing)</h3>
-          <p class="mt-2 muted">Reduced manual processing and improved accuracy from request → invoice.</p>
-
-          <ul class="mt-4 space-y-2 text-sm muted">
-            <li>• Automated intake → validation → invoicing workflow</li>
-            <li>• Eliminated repetitive reconciliation steps</li>
-            <li>• Created consistent audit trail and exception handling</li>
-            <li>• Improved cycle time from request to invoice</li>
-          </ul>
-        </article>
-
-        <!-- Case 3 -->
-        <article class="glass rounded-3xl p-6">
-          <div class="flex flex-wrap gap-2">
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">HubSpot</span>
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Automation</span>
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Slack</span>
-          </div>
-          <h3 class="mt-4 text-xl font-semibold">Contractor Onboarding Pipeline</h3>
-          <p class="mt-2 muted">Built a consistent onboarding workflow with clear handoffs and reminders.</p>
-
-          <ul class="mt-4 space-y-2 text-sm muted">
-            <li>• Designed stages + ownership across stakeholders</li>
-            <li>• Automated reminders, tasks, and approvals</li>
-            <li>• Reduced back-and-forth via structured intake</li>
-            <li>• Improved time-to-ready for new contractors</li>
-          </ul>
-        </article>
-
-        <!-- Case 4 -->
-        <article class="glass rounded-3xl p-6">
-          <div class="flex flex-wrap gap-2">
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Web</span>
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">AI Chatbot</span>
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">HubSpot</span>
-          </div>
-          <h3 class="mt-4 text-xl font-semibold">Website AI Chatbot Implementation</h3>
-          <p class="mt-2 muted">Deployed guided experiences with routing, lead capture, and deflection.</p>
-
-          <ul class="mt-4 space-y-2 text-sm muted">
-            <li>• Implemented routing logic for FAQ vs sales vs support</li>
-            <li>• Captured structured data into CRM properties</li>
-            <li>• Reduced inbound load via deflection</li>
-            <li>• Improved response speed and conversion paths</li>
-          </ul>
-        </article>
+        <div class="actions"><a class="btn btn-primary" href="mailto:arorarajat12@gmail.com">Email →</a><a class="btn" href="https://www.linkedin.com/in/rajat-arora/" target="_blank" rel="noreferrer">LinkedIn →</a><button id="openResumeInfo" class="btn" type="button">Resume (PDF) →</button></div>
       </div>
     </section>
 
-    <!-- Proof -->
-    <section id="proof" class="py-12 border-t line">
-      <p class="text-xs font-semibold tracking-widest text-white/55 uppercase">Proof</p>
-      <h2 class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">Tools & credibility</h2>
-
-      <div class="mt-8 grid gap-5 md:grid-cols-2">
-        <div class="glass rounded-3xl p-6">
-          <h3 class="text-lg font-semibold">Tool stack</h3>
-          <p class="mt-3 muted leading-relaxed">
-            HubSpot • Zapier • Make • Slack • Apollo • Typeform • Stripe • QuickBooks • Box • Asana/ClickUp • AI chatbots • APIs
-          </p>
-        </div>
-
-        <div class="glass rounded-3xl p-6">
-          <h3 class="text-lg font-semibold">What I’m known for</h3>
-          <ul class="mt-4 space-y-2 text-sm muted">
-            <li>• Turning messy ops into clean, governed architecture</li>
-            <li>• Automation that doesn’t break when teams scale</li>
-            <li>• Clear lifecycle stages, ownership, and handoffs</li>
-            <li>• Translating ambiguity into decisions + execution</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="py-12 border-t line">
-      <p class="text-xs font-semibold tracking-widest text-white/55 uppercase">About</p>
-      <h2 class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">How I work</h2>
-
-      <div class="mt-8 grid gap-5 md:grid-cols-3">
-        <div class="glass rounded-3xl p-6 md:col-span-2">
-          <h3 class="text-lg font-semibold">Short version</h3>
-          <p class="mt-3 muted leading-relaxed">
-            I work at the intersection of GTM operations, business systems, and automation.
-            My focus is building clean operating foundations: reliable data, clear workflows, governance that holds,
-            and connected tools that reduce manual work.
-          </p>
-          <p class="mt-4 muted leading-relaxed">
-            I’m strongest when the problem is ambiguous, cross-functional, and high impact — where structure and execution
-            have to land at the same time.
-          </p>
-        </div>
-
-        <div class="glass rounded-3xl p-6">
-          <h3 class="text-lg font-semibold">What I value</h3>
-          <ul class="mt-4 space-y-2 text-sm muted">
-            <li>• Clarity over complexity</li>
-            <li>• Governance over heroics</li>
-            <li>• Systems that outlive people</li>
-            <li>• Simple UX for operators</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="py-12 border-t line">
-      <p class="text-xs font-semibold tracking-widest text-white/55 uppercase">Contact</p>
-      <h2 class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">Let’s build something durable</h2>
-
-      <div class="mt-8 glass rounded-3xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-        <div>
-          <p class="muted max-w-2xl">
-            If you’re hiring for RevOps / GTM Systems / Business Systems, or need an operator who can architect and ship,
-            I’m open to conversations.
-          </p>
-          <p class="mt-2 text-sm muted2">
-            Email: <a class="underline hover:text-white" href="mailto:arorarajat12@gmail.com">arorarajat12@gmail.com</a>
-          </p>
-        </div>
-
-        <div class="flex flex-wrap gap-3">
-          <a class="rounded-xl px-5 py-3 text-sm font-semibold btnPrimary" href="mailto:arorarajat12@gmail.com">
-            Email →
-          </a>
-          <!-- Replace with your LinkedIn URL -->
-          <a class="rounded-xl px-5 py-3 text-sm font-semibold btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
-            LinkedIn →
-          </a>
-          <!-- Optional: link to your resume PDF once you have it -->
-          <a class="rounded-xl px-5 py-3 text-sm font-semibold btn" href="#" onclick="alert('Add your resume link here (PDF).')">
-            Resume (PDF) →
-          </a>
-        </div>
-      </div>
-
-      <footer class="py-10 text-sm text-white/45">
-        © <span id="year"></span> Rajat Arora. Built to showcase outcomes, not noise.
-      </footer>
-    </section>
+    <footer>© <span id="year"></span> Rajat Arora. Built to showcase outcomes, not noise.</footer>
   </main>
 
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <div id="helpOverlay" class="overlay" aria-hidden="true">
+    <div class="overlay-card">
+      <h3>Command Help</h3>
+      <ul>
+        <li><strong>Alt+R</strong> → Toggle recruiter mode</li>
+        <li><strong>Alt+D</strong> → Start live demo walkthrough</li>
+        <li><strong>Alt+?</strong> → Open/close this help panel</li>
+        <li><strong>Esc</strong> → Close help panel</li>
+        <li><strong>Copy recruiter link</strong> → Shares URL that auto-enables recruiter mode</li>
+      </ul>
+      <button id="closeHelp" class="btn" type="button" style="margin-top:.7rem;">Close help</button>
+    </div>
+  </div>
+
+  <div id="vaultOverlay" class="overlay" aria-hidden="true">
+    <div class="overlay-card">
+      <h3>Proof Vault (NDA-safe)</h3>
+      <p class="muted" style="margin-top:.35rem;">Representative implementation evidence formats used in live interviews.</p>
+      <div class="vault-grid">
+        <article class="vault-item" tabindex="0"><strong>Lifecycle Architecture Map</strong><p>Stage definitions, ownership transitions, and qualification guardrails across GTM teams.</p><div class="tooltip-diagram" role="img" aria-label="Sanitized lifecycle architecture preview"><div class="diagram-mini">Marketing Intake → MQL Gate → AE Ownership</div><div class="diagram-mini">Auto SLA Alerts + Audit Fields</div></div></article>
+        <article class="vault-item" tabindex="0"><strong>Automation Runbook</strong><p>Trigger logic, fail-safe branches, and exception-handling standards for production workflows.</p><div class="tooltip-diagram" role="img" aria-label="Sanitized automation runbook preview"><div class="diagram-mini">Trigger: Stage change</div><div class="diagram-mini">Branch: Valid / Exception / Retry</div></div></article>
+        <article class="vault-item" tabindex="0"><strong>Dashboard Trust Checklist</strong><p>Data contract checks that prevent drift and keep executive reporting dependable.</p><div class="tooltip-diagram" role="img" aria-label="Sanitized dashboard trust checklist preview"><div class="diagram-mini">Field Contract Validation</div><div class="diagram-mini">Source Match + Weekly Drift Alert</div></div></article>
+        <article class="vault-item" tabindex="0"><strong>Onboarding System Blueprint</strong><p>Cross-functional handoff matrix with SLA reminders and auditability controls.</p><div class="tooltip-diagram" role="img" aria-label="Sanitized onboarding blueprint preview"><div class="diagram-mini">Request → Compliance → Tool Access</div><div class="diagram-mini">Owner Escalation if SLA breached</div></div></article>
+      </div>
+      <button id="closeVault" class="btn" type="button" style="margin-top:.75rem;">Close vault</button>
+    </div>
+  </div>
+
+
+
+
+
+  <div id="architectureOverlay" class="overlay" aria-hidden="true">
+    <div class="overlay-card">
+      <h3 id="architectureTitle">Architecture diagram</h3>
+      <p id="architectureSummary" class="muted" style="margin-top:.35rem;">NDA-safe context view of systems and data flow.</p>
+      <div class="diagram-shell" id="architectureDiagram" role="img" aria-label="Architecture flow diagram"></div>
+      <button id="closeArchitecture" class="btn" type="button" style="margin-top:.75rem;">Close</button>
+    </div>
+  </div>
+
+  <div id="deepDiveOverlay" class="overlay" aria-hidden="true">
+    <div class="overlay-card">
+      <h3 id="deepDiveTitle">Technical deep-dive</h3>
+      <p id="deepDiveSummary" class="muted" style="margin-top:.35rem;">Sanitized implementation details and design trade-offs.</p>
+      <div class="code-block"><pre id="deepDivePayload"></pre></div>
+      <ul id="deepDiveTradeoffs"></ul>
+      <button id="closeDeepDive" class="btn" type="button" style="margin-top:.75rem;">Close</button>
+    </div>
+  </div>
+
+  <div id="resumeOverlay" class="overlay" aria-hidden="true">
+    <div class="overlay-card">
+      <h3>Resume link setup</h3>
+      <p class="muted" style="margin-top:.45rem;">Add your public PDF resume URL to the Resume button for direct recruiter access.</p>
+      <p class="muted" style="margin-top:.45rem;">Until then, recruiters can request it at <a href="mailto:arorarajat12@gmail.com" style="color:#fff;">arorarajat12@gmail.com</a>.</p>
+      <button id="closeResumeInfo" class="btn" type="button" style="margin-top:.75rem;">Close</button>
+    </div>
+  </div>
+
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    const progressBar = document.getElementById('progressBar');
+    const updateProgress = () => {
+      const scrollTop = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const width = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
+      progressBar.style.width = width + '%';
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    const toast = document.getElementById('toast');
+    let toastTimer;
+    const showToast = (message) => {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+    };
+
+    const pitch = "Hi, I'm Rajat. I design RevOps and business systems that turn messy operations into reliable execution—clean data, clear lifecycle handoffs, and automation that scales.";
+    const story = "One example: I rebuilt a HubSpot lifecycle + governance model as a single source of truth. That reduced reporting drift, improved handoff clarity, and gave leadership dashboards they could trust weekly.";
+
+    const roleProfiles = {
+      revops: {
+        hero: 'I own demand-to-revenue architecture across marketing, sales, and success — lifecycle stages, SLAs, routing, and reporting governance that scale with growth.',
+        quick: '<strong>Recruiter quick-pack:</strong> Best for RevOps Manager/Senior RevOps roles owning funnel definitions, weekly pipeline cadence, and forecast/reporting integrity.',
+        teams: 'Best-fit teams: BioRender/AfterShip-style GTM orgs with PLG + sales-assisted motions and complex handoffs.',
+        summary: 'Call-ready summary: “I run pipeline as a managed system, not a series of ad-hoc handoffs.”',
+        known: [
+          'Lifecycle governance that reduces funnel ambiguity',
+          'Automation tied directly to conversion and velocity metrics',
+          'Reporting trust rebuilt through data contracts',
+          'Cross-functional operating alignment across GTM teams'
+        ]
+      },
+      bizsys: {
+        hero: 'I architect business systems with clear data contracts, object models, and automation standards so GTM operations remain usable as complexity grows.',
+        quick: '<strong>Recruiter quick-pack:</strong> Best for Business Systems Analyst/Manager roles focused on CRM design, governance, and process reliability.',
+        teams: 'Best-fit teams: teams rebuilding CRM architecture to reduce technical debt, duplicates, and reporting drift.',
+        summary: 'Call-ready summary: “I turn manual handoffs into governed systems with clear ownership.”',
+        known: [
+          'System-first architecture for maintainable operations',
+          'Governance controls preventing regression at scale',
+          'Operator-first process design with high adoption',
+          'Ambiguity-to-execution translation across stakeholders'
+        ]
+      },
+      gtm: {
+        hero: 'I design GTM systems that unify capture, qualification, routing, and feedback loops so lead response time drops and revenue velocity increases.',
+        quick: '<strong>Recruiter quick-pack:</strong> Best for GTM Systems roles bridging marketing ops, sales ops, and post-sales lifecycle data.',
+        teams: 'Best-fit teams: PLG + outbound teams adopting PQL logic, Reverse ETL enrichment, and stricter lifecycle governance.',
+        summary: 'Call-ready summary: “I make lead-to-revenue execution measurable and repeatable.”',
+        known: [
+          'GTM routing and lifecycle system design',
+          'Automation across lead-to-revenue handoffs',
+          'Pipeline visibility and reporting reliability',
+          'High-velocity execution with governance built in'
+        ]
+      }
+    };
+
+    const copyText = async (text, label) => {
+      await navigator.clipboard.writeText(text);
+      showToast(label + ' copied');
+    };
+
+    document.getElementById('copyPitch').addEventListener('click', () => copyText(pitch, '30s pitch'));
+    document.getElementById('copyStory').addEventListener('click', () => copyText(story, '2-min story'));
+
+    const heroCopyEl = document.getElementById('heroCopy');
+    const quickRoleEl = document.getElementById('quickPackRole');
+    const quickTeamsEl = document.getElementById('quickPackTeams');
+    const quickSummaryEl = document.getElementById('quickPackSummary');
+    const knownForListEl = document.getElementById('knownForList');
+    const roleButtons = Array.from(document.querySelectorAll('.role-btn'));
+
+    const setRoleView = (role) => {
+      const profile = roleProfiles[role];
+      if (!profile) return;
+      heroCopyEl.style.opacity = '.55';
+      heroCopyEl.style.transform = 'translateY(3px)';
+      setTimeout(() => {
+        heroCopyEl.textContent = profile.hero;
+        heroCopyEl.style.opacity = '1';
+        heroCopyEl.style.transform = 'translateY(0)';
+      }, 120);
+      quickRoleEl.innerHTML = profile.quick;
+      quickTeamsEl.textContent = profile.teams;
+      quickSummaryEl.textContent = profile.summary;
+      knownForListEl.innerHTML = profile.known.map((item) => `<li>${item}</li>`).join('');
+      roleButtons.forEach((btn) => {
+        const active = btn.dataset.role === role;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+    };
+
+    roleButtons.forEach((btn) => btn.addEventListener('click', () => setRoleView(btn.dataset.role)));
+    document.getElementById('downloadBrief').addEventListener('click', () => {
+      const brief = `Rajat Arora — Hiring Brief
+
+Role fit: RevOps / GTM Systems / Business Systems
+
+Core outcomes:
+- Clean lifecycle architecture
+- Reliable reporting trust
+- Durable automation at scale
+
+Contact: arorarajat12@gmail.com`;
+      const blob = new Blob([brief], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'rajat-arora-hiring-brief.txt';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(a.href);
+      showToast('Hiring brief downloaded');
+    });
+
+    const toggleBtn = document.getElementById('toggleRecruiterMode');
+    const demoBtn = document.getElementById('startDemo');
+    const shareBtn = document.getElementById('shareSnapshot');
+    const helpOverlay = document.getElementById('helpOverlay');
+    const closeHelpBtn = document.getElementById('closeHelp');
+    const openVaultBtn = document.getElementById('openVault');
+    const vaultOverlay = document.getElementById('vaultOverlay');
+    const closeVaultBtn = document.getElementById('closeVault');
+    const resumeOverlay = document.getElementById('resumeOverlay');
+    const openResumeInfoBtn = document.getElementById('openResumeInfo');
+    const closeResumeInfoBtn = document.getElementById('closeResumeInfo');
+    const architectureOverlay = document.getElementById('architectureOverlay');
+    const closeArchitectureBtn = document.getElementById('closeArchitecture');
+    const architectureTitle = document.getElementById('architectureTitle');
+    const architectureSummary = document.getElementById('architectureSummary');
+    const architectureDiagram = document.getElementById('architectureDiagram');
+    const deepDiveOverlay = document.getElementById('deepDiveOverlay');
+    const closeDeepDiveBtn = document.getElementById('closeDeepDive');
+    const deepDiveTitle = document.getElementById('deepDiveTitle');
+    const deepDiveSummary = document.getElementById('deepDiveSummary');
+    const deepDivePayload = document.getElementById('deepDivePayload');
+    const deepDiveTradeoffs = document.getElementById('deepDiveTradeoffs');
+
+
+    let activeOverlay = null;
+    let lastFocusedEl = null;
+    const focusableSelector = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+    const openOverlay = (overlay) => {
+      if (!overlay) return;
+      lastFocusedEl = document.activeElement;
+      overlay.classList.add('show');
+      overlay.setAttribute('aria-hidden', 'false');
+      activeOverlay = overlay;
+      const first = overlay.querySelector(focusableSelector);
+      if (first) first.focus();
+    };
+
+    const closeOverlay = (overlay) => {
+      if (!overlay) return;
+      overlay.classList.remove('show');
+      overlay.setAttribute('aria-hidden', 'true');
+      if (activeOverlay === overlay) activeOverlay = null;
+      if (lastFocusedEl && document.contains(lastFocusedEl)) lastFocusedEl.focus();
+    };
+
+    const trapFocusInOverlay = (event) => {
+      if (event.key !== 'Tab' || !activeOverlay) return;
+      const nodes = Array.from(activeOverlay.querySelectorAll(focusableSelector));
+      if (!nodes.length) return;
+      const first = nodes[0];
+      const last = nodes[nodes.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener('keydown', trapFocusInOverlay);
+
+    let recruiterMode = false;
+    let activeSpotlight = null;
+    let demoRunning = false;
+
+    const setSpotlight = (el) => {
+      if (activeSpotlight) activeSpotlight.classList.remove('spotlight');
+      activeSpotlight = el;
+      if (activeSpotlight) activeSpotlight.classList.add('spotlight');
+    };
+
+    const setRecruiterMode = (enabled, quiet = false) => {
+      recruiterMode = enabled;
+      document.body.classList.toggle('recruiter-mode', recruiterMode);
+      toggleBtn.textContent = recruiterMode ? 'Full mode' : 'Recruiter mode';
+      if (!quiet) showToast(recruiterMode ? 'Recruiter mode on' : 'Full mode on');
+      if (!recruiterMode) setSpotlight(null);
+    };
+
+    const runLiveDemo = async () => {
+      if (demoRunning) return;
+      demoRunning = true;
+      if (!recruiterMode) setRecruiterMode(true, true);
+      showToast('Live recruiter demo started');
+
+      const steps = [
+        { selector: '#hero-title', msg: 'Step 1: Positioning headline' },
+        { selector: '.quick-pack', msg: 'Step 2: Recruiter quick-pack' },
+        { selector: '#work', msg: 'Step 3: Case studies' },
+        { selector: '.scoreboard', msg: 'Step 4: Impact scoreboard' },
+        { selector: '#contact', msg: 'Step 5: Conversion CTA' }
+      ];
+
+      for (const step of steps) {
+        const el = document.querySelector(step.selector);
+        if (!el) continue;
+        setSpotlight(el);
+        showToast(step.msg);
+        await new Promise((resolve) => setTimeout(resolve, 1200));
+      }
+
+      showToast('Demo complete');
+      setSpotlight(null);
+      demoRunning = false;
+    };
+
+    const toggleHelp = () => {
+      if (helpOverlay.classList.contains('show')) closeOverlay(helpOverlay);
+      else openOverlay(helpOverlay);
+    };
+
+    const copyRecruiterLink = async () => {
+      const url = new URL(window.location.href);
+      url.searchParams.set('mode', 'recruiter');
+      url.searchParams.set('focus', 'work');
+      await navigator.clipboard.writeText(url.toString());
+      showToast('Recruiter link copied');
+    };
+
+    toggleBtn.addEventListener('click', () => setRecruiterMode(!recruiterMode));
+    demoBtn.addEventListener('click', runLiveDemo);
+    shareBtn.addEventListener('click', copyRecruiterLink);
+    closeHelpBtn.addEventListener('click', toggleHelp);
+    helpOverlay.addEventListener('click', (event) => {
+      if (event.target === helpOverlay) toggleHelp();
+    });
+
+    const toggleVault = () => {
+      if (vaultOverlay.classList.contains('show')) closeOverlay(vaultOverlay);
+      else { openOverlay(vaultOverlay); showToast('Proof Vault opened'); }
+    };
+    openVaultBtn.addEventListener('click', toggleVault);
+    closeVaultBtn.addEventListener('click', toggleVault);
+    vaultOverlay.addEventListener('click', (event) => {
+      if (event.target === vaultOverlay) toggleVault();
+    });
+
+    const toggleResumeInfo = () => {
+      if (resumeOverlay.classList.contains('show')) closeOverlay(resumeOverlay);
+      else openOverlay(resumeOverlay);
+    };
+    openResumeInfoBtn.addEventListener('click', toggleResumeInfo);
+    closeResumeInfoBtn.addEventListener('click', toggleResumeInfo);
+    resumeOverlay.addEventListener('click', (event) => {
+      if (event.target === resumeOverlay) toggleResumeInfo();
+    });
+
+    window.addEventListener('keydown', (event) => {
+      const key = event.key.toLowerCase();
+      if (event.altKey && key === 'r') setRecruiterMode(!recruiterMode);
+      if (event.altKey && key === 'd') runLiveDemo();
+      if (event.altKey && key === '?') toggleHelp();
+      if (key === 'escape' && helpOverlay.classList.contains('show')) toggleHelp();
+      if (key === 'escape' && vaultOverlay.classList.contains('show')) toggleVault();
+      if (key === 'escape' && architectureOverlay.classList.contains('show')) closeOverlay(architectureOverlay);
+      if (key === 'escape' && deepDiveOverlay.classList.contains('show')) closeOverlay(deepDiveOverlay);
+      if (key === 'escape' && resumeOverlay.classList.contains('show')) toggleResumeInfo();
+    });
+
+    const revealEls = Array.from(document.querySelectorAll('.reveal'));
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      revealEls.forEach((el) => revealObserver.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('visible'));
+    }
+
+    const evidenceButtons = Array.from(document.querySelectorAll('.evidence-btn'));
+    evidenceButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const id = button.getAttribute('data-drawer');
+        const drawer = document.getElementById(`drawer-${id}`);
+        if (!drawer) return;
+        const open = drawer.classList.toggle('open');
+        button.textContent = open ? 'Hide evidence' : 'Open evidence';
+      });
+    });
+
+    const calcHours = document.getElementById('calcHours');
+    const calcGain = document.getElementById('calcGain');
+    const calcRate = document.getElementById('calcRate');
+    const calcResult = document.getElementById('calcResult');
+    const calcRange = document.getElementById('calcRange');
+    const calcPipe = document.getElementById('calcPipe');
+    const calcWinLift = document.getElementById('calcWinLift');
+    const calcMargin = document.getElementById('calcMargin');
+
+    const updateImpactCalc = () => {
+      const hours = Math.max(1, Number(calcHours.value) || 0);
+      const gain = Math.min(100, Math.max(1, Number(calcGain.value) || 0));
+      const rate = Math.max(10, Number(calcRate.value) || 0);
+      const pipe = Math.max(0, Number(calcPipe.value) || 0);
+      const winLift = Math.max(0, Number(calcWinLift.value) || 0) / 100;
+      const margin = Math.max(0.01, Number(calcMargin.value) || 0) / 100;
+
+      const efficiencyAnnual = hours * (gain / 100) * rate * 52;
+      const pipelineAnnual = pipe * 4 * winLift * margin;
+      const total = efficiencyAnnual + pipelineAnnual;
+      const low = total * 0.9;
+      const high = total * 1.1;
+      calcResult.textContent = `$${Math.round(efficiencyAnnual).toLocaleString()} efficiency + $${Math.round(pipelineAnnual).toLocaleString()} pipeline / year`;
+      calcRange.textContent = `Estimated annual value range: $${Math.round(low).toLocaleString()} – $${Math.round(high).toLocaleString()}.`;
+    };
+    [calcHours, calcGain, calcRate, calcPipe, calcWinLift, calcMargin].forEach((el) => el.addEventListener('input', updateImpactCalc));
+    updateImpactCalc();
+
+    const architectureProfiles = {
+      ssot: {
+        title: 'HubSpot SSOT — context architecture',
+        summary: 'Sanitized C4-style context showing lifecycle governance and reporting flow.',
+        nodes: [
+          ['Web Forms', 'Lead + account capture'],
+          ['HubSpot Core', 'Lifecycle + ownership model'],
+          ['BI Dashboard', 'Executive reporting outputs']
+        ]
+      },
+      finance: {
+        title: 'Finance automation — context architecture',
+        summary: 'NDA-safe process map from intake to validated accounting sync.',
+        nodes: [
+          ['Request Intake', 'Structured form submission'],
+          ['Validation Logic', 'Rules + exception branch'],
+          ['QuickBooks', 'Invoice creation + status sync']
+        ]
+      },
+      onboarding: {
+        title: 'Contractor onboarding — process architecture',
+        summary: 'Stage-gated onboarding design with ownership, SLA alerts, and audit trail.',
+        nodes: [
+          ['Onboarding Request', 'Role + access package'],
+          ['Workflow Engine', 'SLA reminders + approvals'],
+          ['Slack/HubSpot', 'Notifications + status source']
+        ]
+      },
+      chatbot: {
+        title: 'Inbound qualification routing — integration architecture',
+        summary: 'Qualification routing design across sales, support, and partner paths with CRM writeback.',
+        nodes: [
+          ['Inbound Form/Chat', 'Qualification intake'],
+          ['Routing Service', 'Sales / support / partner branch'],
+          ['HubSpot CRM', 'Field mapping + assignment']
+        ]
+      }
+    };
+
+    const deepDiveProfiles = {
+      ssot: {
+        title: 'HubSpot SSOT — technical deep-dive',
+        summary: 'Sanitized lifecycle contract payload and governance choices.',
+        payload: `{
+  "event": "lifecycle_transition",
+  "recordId": "CONTACT_ID",
+  "fromStage": "MQL",
+  "toStage": "SQL",
+  "owner": "AE_ID",
+  "guardrails": {
+    "requiredFields": ["segment", "source", "qualification_date"],
+    "rejectOnMissing": true
+  }
+}`,
+        tradeoffs: [
+          'Chose strict field validation to improve reporting trust, accepting occasional operator retries.',
+          'Prioritized centralized lifecycle governance over team-specific custom stages to reduce drift.',
+          'Used explicit owner handoff checkpoints instead of inferred routing for auditability.'
+        ]
+      },
+      finance: {
+        title: 'Finance automation — technical deep-dive',
+        summary: 'Sanitized intake-to-invoice payload and reliability trade-offs.',
+        payload: `{
+  "workflow": "invoice_create",
+  "input": {"requestId": "REQ_ID", "amount": 12400, "currency": "USD"},
+  "validation": {"taxCode": "STANDARD", "vendorStatus": "APPROVED"},
+  "onError": {"action": "queue_exception", "channel": "finance-ops"}
+}`,
+        tradeoffs: [
+          'Added pre-sync validation branch to lower accounting corrections, increasing workflow complexity.',
+          'Kept middleware stateless for easier support, with retry queue handling transient API failures.',
+          'Chose deterministic exception routing over silent retries to protect audit trails.'
+        ]
+      },
+      onboarding: {
+        title: 'Onboarding pipeline — technical deep-dive',
+        summary: 'Sanitized stage orchestration pattern and scaling considerations.',
+        payload: `{
+  "pipeline": "contractor_onboarding",
+  "stages": ["intake", "approval", "provisioning", "ready"],
+  "slaHours": 48,
+  "escalation": {"afterHours": 72, "notifyRole": "ops_manager"}
+}`,
+        tradeoffs: [
+          'Used stage-gate model for accountability, accepting less ad-hoc flexibility.',
+          'Implemented SLA escalations in workflow layer rather than Slack bots for centralized control.',
+          'Kept approval matrix shallow to maintain throughput while preserving compliance checks.'
+        ]
+      },
+      chatbot: {
+        title: 'Inbound qualification routing — technical deep-dive',
+        summary: 'Sanitized qualification payload and routing architecture decisions.',
+        payload: `{
+  "qualification_type": "sales_pricing",
+  "confidence": 0.87,
+  "route": "sales",
+  "crmWriteback": {
+    "property": "qualification_type",
+    "value": "sales_pricing"
+  }
+}`,
+        tradeoffs: [
+          'Used qualification threshold + fallback queue to reduce misroutes at the cost of occasional manual triage.',
+          'Captured normalized qualification values to support reporting consistency across GTM teams.',
+          'Separated support triage from sales routing to improve SLA adherence and conversion quality.'
+        ]
+      }
+    };
+
+    const renderArchitecture = (key) => {
+      const profile = architectureProfiles[key];
+      if (!profile) return;
+      architectureTitle.textContent = profile.title;
+      architectureSummary.textContent = profile.summary;
+      architectureDiagram.innerHTML = `
+        <div class="diagram-grid">
+          <div class="diagram-node">${profile.nodes[0][0]}<small>${profile.nodes[0][1]}</small></div>
+          <div class="diagram-arrow" aria-hidden="true">→</div>
+          <div class="diagram-node">${profile.nodes[1][0]}<small>${profile.nodes[1][1]}</small></div>
+        </div>
+        <div class="diagram-grid" style="margin-top:.45rem;">
+          <div class="diagram-node" style="grid-column: 2 / span 1;">${profile.nodes[2][0]}<small>${profile.nodes[2][1]}</small></div>
+        </div>`;
+      openOverlay(architectureOverlay);
+      showToast('Architecture diagram opened');
+    };
+
+    const openDeepDive = (key) => {
+      const profile = deepDiveProfiles[key];
+      if (!profile) return;
+      deepDiveTitle.textContent = profile.title;
+      deepDiveSummary.textContent = profile.summary;
+      deepDivePayload.textContent = profile.payload;
+      deepDiveTradeoffs.innerHTML = profile.tradeoffs.map((item) => `<li>${item}</li>`).join('');
+      openOverlay(deepDiveOverlay);
+      showToast('Technical deep-dive opened');
+    };
+
+    const diagramButtons = Array.from(document.querySelectorAll('.diagram-btn'));
+    diagramButtons.forEach((button) => {
+      button.addEventListener('click', () => renderArchitecture(button.getAttribute('data-diagram')));
+    });
+    const deepDiveButtons = Array.from(document.querySelectorAll('.deepdive-btn'));
+    deepDiveButtons.forEach((button) => {
+      button.addEventListener('click', () => openDeepDive(button.getAttribute('data-deepdive')));
+    });
+
+    closeArchitectureBtn.addEventListener('click', () => closeOverlay(architectureOverlay));
+    architectureOverlay.addEventListener('click', (event) => {
+      if (event.target === architectureOverlay) closeOverlay(architectureOverlay);
+    });
+    closeDeepDiveBtn.addEventListener('click', () => closeOverlay(deepDiveOverlay));
+    deepDiveOverlay.addEventListener('click', (event) => {
+      if (event.target === deepDiveOverlay) closeOverlay(deepDiveOverlay);
+    });
+
+
+    const heroNetwork = document.getElementById('heroNetwork');
+    if (heroNetwork && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const ctx = heroNetwork.getContext('2d');
+      let particles = [];
+      const setupNetwork = () => {
+        heroNetwork.width = heroNetwork.offsetWidth;
+        heroNetwork.height = heroNetwork.offsetHeight;
+        const count = Math.min(70, Math.max(25, Math.floor(heroNetwork.width / 28)));
+        particles = Array.from({ length: count }, () => ({
+          x: Math.random() * heroNetwork.width,
+          y: Math.random() * heroNetwork.height,
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: (Math.random() - 0.5) * 0.35,
+          r: Math.random() * 1.8 + 0.8
+        }));
+      };
+      const drawNetwork = () => {
+        ctx.clearRect(0, 0, heroNetwork.width, heroNetwork.height);
+        ctx.fillStyle = 'rgba(255,255,255,0.35)';
+        ctx.strokeStyle = 'rgba(170,184,255,0.12)';
+        particles.forEach((p, i) => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > heroNetwork.width) p.vx *= -1;
+          if (p.y < 0 || p.y > heroNetwork.height) p.vy *= -1;
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+          for (let j = i + 1; j < particles.length; j += 1) {
+            const q = particles[j];
+            const d = Math.hypot(p.x - q.x, p.y - q.y);
+            if (d < 120) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke(); }
+          }
+        });
+        requestAnimationFrame(drawNetwork);
+      };
+      setupNetwork();
+      window.addEventListener('resize', setupNetwork);
+      requestAnimationFrame(drawNetwork);
+    }
+
+    const archContent = {
+      capture: {
+        title: 'Lead capture + qualification scoring',
+        body: '<strong>Goal:</strong> allow only high-signal records into operations. <strong>Implementation:</strong> engagement + fit scoring tied to required properties and standardized handoff contracts.'
+      },
+      routing: {
+        title: 'Lifecycle routing governance',
+        body: '<strong>Goal:</strong> remove handoff ambiguity. <strong>Implementation:</strong> stage-state triggers move records to the right owner with SLA reminders and exception handling.'
+      },
+      pipeline: {
+        title: 'Multi-pipeline execution model',
+        body: '<strong>Goal:</strong> preserve clean process boundaries across use cases. <strong>Implementation:</strong> separate but harmonized pipelines with common data contracts and reporting keys.'
+      },
+      feedback: {
+        title: 'Attribution and feedback loop',
+        body: '<strong>Goal:</strong> keep optimization continuous. <strong>Implementation:</strong> closed-loop reporting detects bottlenecks and feeds changes back into capture and routing rules.'
+      }
+    };
+    const archButtons = Array.from(document.querySelectorAll('.arch-node'));
+    const archDetail = document.getElementById('archDetail');
+    archButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const key = button.getAttribute('data-arch');
+        const content = archContent[key];
+        if (!content || !archDetail) return;
+        archButtons.forEach((btn) => {
+          const active = btn === button;
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        archDetail.innerHTML = `<h3>${content.title}</h3><p class="muted" style="margin-top:.4rem;">${content.body}</p>`;
+      });
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('mode') === 'recruiter') {
+      setRecruiterMode(true, true);
+      const focus = params.get('focus');
+      const target = focus ? document.getElementById(focus) : null;
+      if (target) {
+        setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
+      }
+      showToast('Recruiter mode loaded from shared link');
+    }
+    if (params.get('demo') === '1') {
+      setTimeout(runLiveDemo, 200);
+    }
   </script>
 </body>
 </html>
