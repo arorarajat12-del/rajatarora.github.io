@@ -833,6 +833,63 @@
       revealEls.forEach((el) => el.classList.add('visible'));
     }
 
+    const heroCopyEl = document.getElementById('heroCopy');
+    const knownForListEl = document.getElementById('knownForList');
+    const roleButtons = Array.from(document.querySelectorAll('.role-btn'));
+    const roleProfiles = {
+      revops: {
+        hero: 'Scaling breaks people-dependent processes. I design demand-to-revenue systems with clear lifecycle definitions, accountable handoffs, and reporting leadership can trust weekly.',
+        known: [
+          'Turning messy ops into clean, governed architecture',
+          'Automation that doesn’t break when teams scale',
+          'Clear lifecycle stages, ownership, and handoffs',
+          'Translating ambiguity into decisions + execution'
+        ]
+      },
+      bizsys: {
+        hero: 'I design business systems that connect people, process, and tools into reliable operating infrastructure teams can trust at scale.',
+        known: [
+          'System-first architecture for maintainable operations',
+          'Governance controls that reduce regressions',
+          'Structured handoffs across cross-functional stakeholders',
+          'Documentation and workflows that scale beyond individuals'
+        ]
+      },
+      gtm: {
+        hero: 'I build GTM systems that improve qualification, routing, and conversion execution—so revenue teams move faster with clean, trusted data.',
+        known: [
+          'Lead-to-revenue lifecycle and routing design',
+          'Behavior-driven automation across funnel stages',
+          'Attribution and conversion visibility for leadership',
+          'Operational rigor paired with high-velocity execution'
+        ]
+      }
+    };
+
+    const setRoleView = (role) => {
+      const profile = roleProfiles[role];
+      if (!profile) return;
+      if (heroCopyEl) {
+        heroCopyEl.style.opacity = '.55';
+        heroCopyEl.style.transform = 'translateY(3px)';
+        setTimeout(() => {
+          heroCopyEl.textContent = profile.hero;
+          heroCopyEl.style.opacity = '1';
+          heroCopyEl.style.transform = 'translateY(0)';
+        }, 120);
+      }
+      if (knownForListEl && Array.isArray(profile.known)) {
+        knownForListEl.innerHTML = profile.known.map((item) => `<li>${item}</li>`).join('');
+      }
+      roleButtons.forEach((btn) => {
+        const active = btn.dataset.role === role;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+    };
+
+    roleButtons.forEach((btn) => btn.addEventListener('click', () => setRoleView(btn.dataset.role)));
+
     const caseStudies = {
       gtmos: {
         title: "Designed and Implemented End-to-End GTM Operating System Connecting Marketing, Sales, Onboarding, and Revenue Intelligence",
