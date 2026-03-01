@@ -438,7 +438,7 @@
       <div class="cards-2">
         <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Zapier</span><span class="pill">Slack</span></div><h3>Fully Automated Referral Engine</h3><p class="muted" style="margin-top:.45rem;">Replaced a paid referral platform with a fully automated in-house system that enabled reliable tracking and reporting.</p><div class="proof-chips"><span class="proof-chip">Tool dependency removed</span><span class="proof-chip">Structured reporting ↑</span></div><ul class="bullet-list"><li>Auto-generated alumni referral codes at graduation</li><li>Applied referral discount logic (20%) with zero manual intervention</li><li>Linked referrer and referee as structured CRM relationships</li><li>Triggered Slack alerts and dashboard-ready reporting</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="referral">Open case study</button></article>
         <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Governance</span><span class="pill">Reporting</span></div><h3>HubSpot as Single Source of Truth</h3><p class="muted" style="margin-top:.45rem;">Standardized lifecycle stages, ownership, and data integrity across teams.</p><div class="proof-chips"><span class="proof-chip">Reporting trust ↑</span><span class="proof-chip">Lifecycle clarity ↑</span></div><ul class="bullet-list"><li>Unified stakeholder data model across departments</li><li>Reduced duplicated records and reporting drift</li><li>Implemented governance + automation to prevent regression</li><li>Enabled leadership-ready dashboards teams trust</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="ssot">Open case study</button></article>
-        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">QuickBooks</span><span class="pill">Zapier/Make</span></div><h3>Finance Ops Automation (Invoicing)</h3><p class="muted" style="margin-top:.45rem;">Reduced manual processing and improved accuracy from request → invoice.</p><div class="proof-chips"><span class="proof-chip">Cycle time ↓</span><span class="proof-chip">Auditability ↑</span></div><ul class="bullet-list"><li>Automated intake → validation → invoicing workflow</li><li>Eliminated repetitive reconciliation steps</li><li>Created consistent audit trail and exception handling</li><li>Improved cycle time from request to invoice</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="finance">Open case study</button></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">QuickBooks</span><span class="pill">Zapier/Make</span></div><h3>Finance Ops Automation (Invoicing)</h3><p class="muted" style="margin-top:.45rem;">Reduced manual processing and improved accuracy from request → invoice.</p><div class="proof-chips"><span class="proof-chip">Cycle time ↓</span><span class="proof-chip">Auditability ↑</span></div><ul class="bullet-list"><li>Automated intake → validation → invoicing workflow</li><li>Eliminated repetitive reconciliation steps</li><li>Created consistent audit trail and exception handling</li><li>Improved cycle time from request to invoice</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="finance">Open case study</button></article><article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Google Sheets</span><span class="pill">QuickBooks</span></div><h3>End-to-End Project Tracking System</h3><p class="muted" style="margin-top:.45rem;">Built a CRM-driven reporting system that synced live project status to Google Sheets and automated stakeholder communication.</p><div class="proof-chips"><span class="proof-chip">Manual reporting removed</span><span class="proof-chip">Real-time visibility ↑</span></div><ul class="bullet-list"><li>Connected Sales → Project → Permit pipelines with stage logic</li><li>Automated Google Sheets creation and real-time updates</li><li>Enabled stage-to-stage duration tracking and milestone emails</li><li>Integrated QuickBooks estimate creation at quote stage</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="projecttracking">Open case study</button></article>
         <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Automation</span><span class="pill">Slack</span></div><h3>Contractor Onboarding Pipeline</h3><p class="muted" style="margin-top:.45rem;">Built a consistent onboarding workflow with clear handoffs and reminders.</p><div class="proof-chips"><span class="proof-chip">Time-to-ready ↓</span><span class="proof-chip">Handoff quality ↑</span></div><ul class="bullet-list"><li>Designed stages + ownership across stakeholders</li><li>Automated reminders, tasks, and approvals</li><li>Reduced back-and-forth via structured intake</li><li>Improved time-to-ready for new contractors</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="onboarding">Open case study</button></article>
       </div>
 
@@ -900,6 +900,53 @@
         differential: [],
         demonstrates: [],
         beforeAfter: []
+      },
+      projecttracking: {
+        title: 'Designed End-to-End Project Tracking System',
+        context: 'Built a scalable reporting system integrating HubSpot, Google Sheets, and QuickBooks for government-related project delivery workflows.',
+        kpis: ['Manual weekly reporting eliminated', 'Real-time client visibility enabled', 'Stage-duration tracking introduced', 'Scaled across 300+ permits'],
+        problem: 'Weekly updates were created manually in Google Sheets and email, with fragmented data and no central, real-time status visibility.',
+        constraints: [
+          'Clients were already accustomed to Google Sheets format and could not be forced to change',
+          'Needed to support hundreds of projects and 300+ permit records',
+          'Required multi-level relationships: Sales → Project → Permit',
+          'No engineering support; built fully in HubSpot + automation stack'
+        ],
+        approach: [
+          'Preserved familiar front-end reporting experience in Google Sheets to ensure adoption',
+          'Used HubSpot as system of record with pipeline-driven status control',
+          'Automated data sync and communication instead of manual report creation',
+          'Accepted higher initial architecture complexity for long-term consistency and scale'
+        ],
+        solution: [
+          'Implemented multi-layer pipeline architecture (Sales, Project, Permit)',
+          'Configured stage transitions (~15 stages) to trigger status/comment updates',
+          'Auto-generated project sheets and synchronized updates dynamically',
+          'Added time-between-stage tracking to expose bottlenecks',
+          'Triggered weekly summaries, milestone notifications, and real-time updates'
+        ],
+        execution: [
+          'Built workflow automation in HubSpot for stage-driven reporting logic',
+          'Connected Google Sheets for automated project report generation and sync',
+          'Implemented automated communication layer for weekly and milestone updates',
+          'Integrated QuickBooks estimate creation at the Quote Sent stage'
+        ],
+        impact: [
+          'Eliminated manual weekly reporting process',
+          'Enabled real-time visibility for clients and internal teams',
+          'Improved data consistency and reporting accuracy',
+          'Scaled across hundreds of projects with no client workflow disruption'
+        ],
+        diagram: ['Sales Pipeline', 'Project Pipeline', 'Permit Pipeline', 'Stage-Driven Update Engine', 'Google Sheets Real-Time Sync', 'Weekly + Milestone Notifications', 'QuickBooks Estimate Creation'],
+        differential: ['Maintained familiar Google Sheets front-end while modernizing the entire backend architecture.', 'Turned fragmented updates into a unified CRM-driven reporting system with temporal stage analytics.'],
+        demonstrates: ['Systems integration across CRM, spreadsheets, and accounting layers', 'Process architecture that balances adoption with scalability', 'Operational design for high-volume, multi-entity project tracking'],
+        beforeAfter: [
+          ['Manual Google Sheet updates', 'Automated real-time sync'],
+          ['Weekly email creation', 'Automated reporting + notifications'],
+          ['No time tracking', 'Stage-to-stage duration tracking'],
+          ['Fragmented systems', 'Unified CRM-driven system'],
+          ['Delayed visibility', 'Real-time client updates']
+        ]
       },
       onboarding: {
         title: 'Contractor Onboarding Pipeline',
