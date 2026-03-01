@@ -374,8 +374,7 @@
         <a href="#contact">Contact</a>
       </nav>
       <div class="top-actions">
-        <button id="startDemo" class="btn btn-ghost" type="button">Live demo</button>
-        <button id="toggleRecruiterMode" class="btn" type="button">Recruiter mode</button>
+                <button id="toggleRecruiterMode" class="btn" type="button">Recruiter mode</button>
       </div>
     </div>
   </header>
@@ -636,7 +635,6 @@
       <h3>Command Help</h3>
       <ul>
         <li><strong>Alt+R</strong> → Toggle recruiter mode</li>
-        <li><strong>Alt+D</strong> → Start live demo walkthrough</li>
         <li><strong>Alt+?</strong> → Open/close this help panel</li>
         <li><strong>Esc</strong> → Close help panel</li>
         <li><strong>Copy recruiter link</strong> → Shares URL that auto-enables recruiter mode</li>
@@ -816,7 +814,6 @@ Contact: arorarajat12@gmail.com`;
     });
 
     const toggleBtn = document.getElementById('toggleRecruiterMode');
-    const demoBtn = document.getElementById('startDemo');
     const shareBtn = document.getElementById('shareSnapshot');
     const helpOverlay = document.getElementById('helpOverlay');
     const closeHelpBtn = document.getElementById('closeHelp');
@@ -878,48 +875,12 @@ Contact: arorarajat12@gmail.com`;
     document.addEventListener('keydown', trapFocusInOverlay);
 
     let recruiterMode = false;
-    let activeSpotlight = null;
-    let demoRunning = false;
-
-    const setSpotlight = (el) => {
-      if (activeSpotlight) activeSpotlight.classList.remove('spotlight');
-      activeSpotlight = el;
-      if (activeSpotlight) activeSpotlight.classList.add('spotlight');
-    };
 
     const setRecruiterMode = (enabled, quiet = false) => {
       recruiterMode = enabled;
       document.body.classList.toggle('recruiter-mode', recruiterMode);
       toggleBtn.textContent = recruiterMode ? 'Full mode' : 'Recruiter mode';
       if (!quiet) showToast(recruiterMode ? 'Recruiter mode on' : 'Full mode on');
-      if (!recruiterMode) setSpotlight(null);
-    };
-
-    const runLiveDemo = async () => {
-      if (demoRunning) return;
-      demoRunning = true;
-      if (!recruiterMode) setRecruiterMode(true, true);
-      showToast('Live recruiter demo started');
-
-      const steps = [
-        { selector: '#hero-title', msg: 'Step 1: Positioning headline' },
-        { selector: '.quick-pack', msg: 'Step 2: Recruiter quick-pack' },
-        { selector: '#work', msg: 'Step 3: Case studies' },
-        { selector: '.scoreboard', msg: 'Step 4: Impact scoreboard' },
-        { selector: '#contact', msg: 'Step 5: Conversion CTA' }
-      ];
-
-      for (const step of steps) {
-        const el = document.querySelector(step.selector);
-        if (!el) continue;
-        setSpotlight(el);
-        showToast(step.msg);
-        await new Promise((resolve) => setTimeout(resolve, 1200));
-      }
-
-      showToast('Demo complete');
-      setSpotlight(null);
-      demoRunning = false;
     };
 
     const toggleHelp = () => {
@@ -936,7 +897,6 @@ Contact: arorarajat12@gmail.com`;
     };
 
     toggleBtn.addEventListener('click', () => setRecruiterMode(!recruiterMode));
-    demoBtn.addEventListener('click', runLiveDemo);
     shareBtn.addEventListener('click', copyRecruiterLink);
     closeHelpBtn.addEventListener('click', toggleHelp);
     helpOverlay.addEventListener('click', (event) => {
@@ -966,7 +926,6 @@ Contact: arorarajat12@gmail.com`;
     window.addEventListener('keydown', (event) => {
       const key = event.key.toLowerCase();
       if (event.altKey && key === 'r') setRecruiterMode(!recruiterMode);
-      if (event.altKey && key === 'd') runLiveDemo();
       if (event.altKey && key === '?') toggleHelp();
       if (key === 'escape' && helpOverlay.classList.contains('show')) toggleHelp();
       if (key === 'escape' && vaultOverlay.classList.contains('show')) toggleVault();
@@ -1268,9 +1227,6 @@ Contact: arorarajat12@gmail.com`;
         setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
       }
       showToast('Recruiter mode loaded from shared link');
-    }
-    if (params.get('demo') === '1') {
-      setTimeout(runLiveDemo, 200);
     }
   </script>
 </body>
