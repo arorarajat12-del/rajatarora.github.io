@@ -9,7 +9,6 @@
   <meta property="og:title" content="Rajat Arora — Revenue Operations & Business Systems" />
   <meta property="og:description" content="Revenue operations and business systems leadership focused on measurable operational outcomes." />
   <meta property="og:type" content="website" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -35,9 +34,7 @@
     body {
       margin: 0;
       color: var(--text);
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       line-height: 1.6;
       background-image:
         radial-gradient(circle at 20% 0%, rgba(99, 102, 241, 0.22), transparent 55%),
@@ -165,19 +162,8 @@
     .hero-tags { display: flex; gap: 0.45rem; flex-wrap: wrap; }
     .hero-grid { margin-top: 1.5rem; display: grid; gap: 1rem; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); align-items: start; }
 
-    .hero-title {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      font-weight: 800;
-      font-size: clamp(72px, 9vw, 150px);
-      line-height: 0.88;
-      letter-spacing: -0.04em;
-      margin: 0;
-    }
-
-    .hero-muted {
-      display: block;
-      color: rgba(255,255,255,0.5);
-    }
+    h1 { margin: 0; font-size: clamp(2.4rem, 8.6vw, 6.2rem); line-height: 0.95; letter-spacing: -0.03em; max-width: 10ch; text-wrap: balance; font-weight: 800; font-style: normal; }
+    .hero-title-muted { display:block; color:#8e97a8; }
     h2 { margin: 0; font-size: clamp(1.45rem, 2.6vw, 2.05rem); line-height: 1.2; letter-spacing: -0.02em; }
     h3 { margin: 0; font-size: 1.18rem; line-height: 1.25; letter-spacing: -0.01em; }
     p { margin: 0; }
@@ -408,9 +394,7 @@
 
       <div class="hero-grid">
         <div>
-          <h1 id="hero-title" class="hero-title">Architecting
-            <span class="hero-muted">Scale.</span>
-          </h1>
+          <h1 id="hero-title">Architecting <span class="hero-title-muted">Scale.</span></h1>
           <p id="heroCopy" class="hero-copy muted">Scaling breaks people-dependent processes. I design demand-to-revenue systems with clear lifecycle definitions, accountable handoffs, and reporting leadership can trust weekly.</p>
 
           <div class="role-switch" aria-label="Role targeted view">
