@@ -9,6 +9,7 @@
   <meta property="og:title" content="Rajat Arora — Revenue Operations & Business Systems" />
   <meta property="og:description" content="Revenue operations and business systems leadership focused on measurable operational outcomes." />
   <meta property="og:type" content="website" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -162,7 +163,7 @@
     .hero-tags { display: flex; gap: 0.45rem; flex-wrap: wrap; }
     .hero-grid { margin-top: 1.5rem; display: grid; gap: 1rem; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); align-items: start; }
 
-    h1 { margin: 0; font-size: clamp(2.4rem, 8.6vw, 6.2rem); line-height: 0.95; letter-spacing: -0.03em; max-width: 10ch; text-wrap: balance; font-weight: 800; }
+    h1 { margin: 0; font-size: clamp(2.4rem, 8.6vw, 6.2rem); line-height: 0.95; letter-spacing: -0.03em; max-width: 10ch; text-wrap: balance; font-weight: 800; font-style: normal; }
     .hero-title-muted { display:block; color:#8e97a8; }
     h2 { margin: 0; font-size: clamp(1.45rem, 2.6vw, 2.05rem); line-height: 1.2; letter-spacing: -0.02em; }
     h3 { margin: 0; font-size: 1.18rem; line-height: 1.25; letter-spacing: -0.01em; }
@@ -216,7 +217,8 @@
     .section-sub { margin-top: 0.7rem; max-width: 70ch; }
 
     .cards-2 { margin-top: 1.2rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; }
-    .case { border-radius: var(--radius-lg); padding: 1.1rem; }
+    .case { border-radius: var(--radius-lg); padding: 1.1rem; display:flex; flex-direction:column; }
+    .case .open-case-btn { margin-top:auto; align-self:flex-start; }
     .chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.8rem; }
     .bullet-list { margin: 0.75rem 0 0; padding-left: 1rem; color: var(--muted); }
     .bullet-list li { margin-bottom: 0.35rem; }
@@ -248,6 +250,8 @@
     .faq p { margin-top: 0.55rem; color: var(--muted); }
 
     .contact-card { margin-top: 1rem; border-radius: var(--radius-lg); padding: 1.2rem; display: flex; gap: 1rem; justify-content: space-between; align-items: center; }
+    .contact-card .actions { display:flex; gap:.55rem; flex-wrap:wrap; justify-content:center; align-items:center; }
+    .contact-card .actions .btn { white-space: nowrap; }
 
     .toast {
       position: fixed; bottom: 1rem; right: 1rem; background: rgba(13, 19, 34, 0.95); border: 1px solid var(--line);
@@ -373,7 +377,6 @@
       <a href="#top" class="brand">Rajat Arora</a>
       <nav aria-label="Primary">
         <a href="#work">Work</a>
-        <a href="#proof">Proof</a>
         <a href="#architecture">Architecture</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
@@ -409,7 +412,7 @@
 
           <div class="stats">
             <div class="glass stat"><p class="muted-2">Automation built</p><strong>600+ workflows</strong></div>
-            <div class="glass stat"><p class="muted-2">Systems</p><strong>HubSpot + GTM stack</strong></div>
+            <div class="glass stat"><p class="muted-2">Systems</p><strong>Multi-platform GTM systems</strong></div>
             <div class="glass stat"><p class="muted-2">Focus</p><strong>SSOT + scale</strong></div>
           </div>
           <p class="context-note">Context: metrics shown are aggregated across multiple engagements and anonymized for NDA compliance.</p>
@@ -436,153 +439,89 @@
       <h2 id="work-title" style="margin-top:.45rem;">Case studies</h2>
       <p class="section-sub muted">Each case study opens in a structured frame with context, architecture, implementation details, and outcomes.</p>
       <div class="cards-2">
-        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Typeform</span><span class="pill">PandaDoc</span></div><h3>Designed and Implemented End-to-End GTM Operating System</h3><p class="muted" style="margin-top:.45rem;">Connected marketing, sales, onboarding, and revenue intelligence into one scalable lifecycle architecture.</p><div class="proof-chips"><span class="proof-chip">Lifecycle automation ↑</span><span class="proof-chip">Forecast visibility ↑</span></div><ul class="bullet-list"><li>Built structured MQL → SQL lead scoring with behavioral, intent, and demographic signals</li><li>Designed connected Sales, Onboarding, Branding, Growth, and Retention pipelines</li><li>Implemented multi-touch attribution for campaign-to-revenue visibility</li><li>Integrated Typeform, PandaDoc, and Calendly with precise routing logic</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="gtmos">Open case study</button></article>
-        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Zapier</span><span class="pill">Slack</span></div><h3>Fully Automated Referral Engine</h3><p class="muted" style="margin-top:.45rem;">Replaced a paid referral platform with a fully automated in-house system that enabled reliable tracking and reporting.</p><div class="proof-chips"><span class="proof-chip">Tool dependency removed</span><span class="proof-chip">Structured reporting ↑</span></div><ul class="bullet-list"><li>Auto-generated alumni referral codes at graduation</li><li>Applied referral discount logic (20%) with zero manual intervention</li><li>Linked referrer and referee as structured CRM relationships</li><li>Triggered Slack alerts and dashboard-ready reporting</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="referral">Open case study</button></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">Shopify</span><span class="pill">HubSpot</span><span class="pill">Slack + AI</span></div><h3>AI-Driven Shift Allocation & Operations Automation</h3><p class="muted" style="margin-top:.45rem;">Replaced fully manual shift coordination with end-to-end automation across Shopify, HubSpot, Zapier, Slack, Gmail, Box, and Google Drive.</p><div class="proof-chips"><span class="proof-chip">Hours → near-instant</span><span class="proof-chip">Double bookings eliminated</span></div><ul class="bullet-list"><li>Parsed unstructured Shopify shift requests with ChatGPT API into standardized postings</li><li>Auto-routed shifts to regional Slack channels using HubSpot location data</li><li>Enforced first-claim ownership lock to prevent overlap and conflicts</li><li>Triggered encrypted client/attendant confirmations automatically via Gmail</li><li>Tracked shift status, ownership, and revenue in a centralized HubSpot pipeline</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="shiftalloc">Open case study</button></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Zapier</span><span class="pill">Slack</span></div><h3>In-House Alumni Referral System</h3><p class="muted" style="margin-top:.45rem;">Replaced Referral Factory with a fully automated, zero-cost referral engine built natively in HubSpot + Zapier.</p><div class="proof-chips"><span class="proof-chip">2 referrals in week one</span><span class="proof-chip">Zero reported breaks</span></div><ul class="bullet-list"><li>Auto-generated unique referral codes at graduation with automated delivery</li><li>Automated 20% discount assignment and referral invoice flow end-to-end</li><li>Linked referrer-referee relationships as structured HubSpot associations</li><li>Pushed real-time referral redemption notifications to Slack</li><li>Eliminated recurring third-party software cost</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="referral">Open case study</button></article>
         <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Eventbrite</span><span class="pill">Automation</span></div><h3>Automated Recruitment & Lead Nurturing System</h3><p class="muted" style="margin-top:.45rem;">Designed an end-to-end funnel automation system from lead capture through admissions handoff.</p><div class="proof-chips"><span class="proof-chip">~85% manual workload ↓</span><span class="proof-chip">4,000+ applicants scaled</span></div><ul class="bullet-list"><li>Built pipeline-driven recruitment journey with clear progression logic</li><li>Automated behavior-based nurturing and conversion routing</li><li>Integrated Eventbrite and scheduling flows into stage updates</li><li>Automated handoff from recruitment to admissions pipeline</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="ssot">Open case study</button></article>
         <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">QuickBooks</span><span class="pill">Zapier</span></div><h3>Automating Invoicing & Payment Reconciliation</h3><p class="muted" style="margin-top:.45rem;">Built an end-to-end Finance Ops system that automated invoicing, payment visibility, and deal-level reconciliation.</p><div class="proof-chips"><span class="proof-chip">Manual invoicing removed</span><span class="proof-chip">Real-time payment visibility ↑</span></div><ul class="bullet-list"><li>Used HubSpot deal stage as trigger for invoice generation</li><li>Added validation step for participant and discount accuracy</li><li>Automated invoice creation + payment status synchronization</li><li>Moved deals automatically to Invoice Paid with Slack notifications</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="finance">Open case study</button></article><article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Google Sheets</span><span class="pill">QuickBooks</span></div><h3>End-to-End Project Tracking System</h3><p class="muted" style="margin-top:.45rem;">Built a CRM-driven reporting system that synced live project status to Google Sheets and automated stakeholder communication.</p><div class="proof-chips"><span class="proof-chip">Manual reporting removed</span><span class="proof-chip">Scaled across 300+ permits</span></div><ul class="bullet-list"><li>Connected Sales → Project → Permit pipelines with stage logic</li><li>Automated Google Sheets creation and real-time updates</li><li>Enabled stage-to-stage duration tracking and milestone emails</li><li>Integrated QuickBooks estimate creation at quote stage</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="projecttracking">Open case study</button></article>
-        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">People Ops</span><span class="pill">IT + Finance</span></div><h3>Centralized Contractor Onboarding System</h3><p class="muted" style="margin-top:.45rem;">Designed a pipeline-driven onboarding workflow with structured approvals, governance, and lifecycle tracking.</p><div class="proof-chips"><span class="proof-chip">Manual coordination removed</span><span class="proof-chip">Full audit trail enabled</span></div><ul class="bullet-list"><li>Built single intake flow for all contractor requests</li><li>Implemented People → Finance → IT sequential approvals</li><li>Automated cross-team notifications and stage progression</li><li>Enabled status visibility, timestamps, and decision ownership</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="onboarding">Open case study</button></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Typeform</span><span class="pill">PandaDoc</span></div><h3>Built End-to-End GTM Operating System</h3><p class="muted" style="margin-top:.45rem;">Connected marketing, sales, onboarding, and revenue intelligence into one lifecycle architecture.</p><div class="proof-chips"><span class="proof-chip">Lifecycle automation ↑</span><span class="proof-chip">Forecast visibility ↑</span></div><ul class="bullet-list"><li>Built structured MQL → SQL lead scoring with behavioral, intent, and demographic signals</li><li>Designed connected Sales, Onboarding, Branding, Growth, and Retention pipelines</li><li>Implemented multi-touch attribution for campaign-to-revenue visibility</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="gtmos">Open case study</button></article>
       </div>
 
       <div class="scoreboard" aria-label="Impact scoreboard">
-        <div class="score"><strong>40%</strong><span class="muted">Less manual ops in high-friction processes</span></div>
-        <div class="score"><strong>2x</strong><span class="muted">Faster lifecycle handoff visibility</span></div>
-        <div class="score"><strong>30%+</strong><span class="muted">Cleaner reporting reliability baseline</span></div>
-        <div class="score"><strong>High</strong><span class="muted">Team adoption with low retraining overhead</span></div>
-      </div>
-
-      <div class="bento-grid" aria-label="Impact bento grid">
-        <article class="bento-card large">
-          <h3>Systems over silos</h3>
-          <p class="muted" style="margin-top:.45rem;">Most RevOps friction is a design problem, not a tooling problem. I model lifecycle ownership, enforce field contracts, and automate handoffs so reporting becomes a byproduct of good architecture.</p>
-          <p class="muted" style="margin-top:.55rem;">Core stack: HubSpot, Make/Zapier, QuickBooks, Slack, API connectors.</p>
-        </article>
+        <div class="score"><strong>~85%</strong><span class="muted">Manual recruitment workload reduced through automation</span></div>
+        <div class="score"><strong>4,000+</strong><span class="muted">Applicants scaled with structured funnel orchestration</span></div>
+        <div class="score"><strong>300+</strong><span class="muted">Permits tracked through live project reporting workflows</span></div>
+        <div class="score"><strong>20%</strong><span class="muted">Referral discount logic automated with zero manual intervention</span></div>
       </div>
 
       <div class="glass case" style="margin-top:1rem;">
-        <h3>What I improve in the first 90 days</h3>
+        <h3>Leadership impact at a glance</h3>
         <div class="cards-2" style="margin-top:.7rem;">
           <article class="glass case">
-            <p class="eyebrow">System stability</p>
+            <p class="eyebrow">What improves</p>
             <ul class="bullet-list">
-              <li>Normalize lifecycle definitions and owner handoffs</li>
-              <li>Reduce duplicate records and enforce required fields</li>
-              <li>Document automation runbooks and exception paths</li>
+              <li>Execution speed across GTM workflows</li>
+              <li>Ownership clarity across Marketing, Sales, and Systems</li>
+              <li>Forecast and pipeline trust for leadership decisions</li>
             </ul>
           </article>
           <article class="glass case">
-            <p class="eyebrow">Revenue execution</p>
+            <p class="eyebrow">What I build</p>
             <ul class="bullet-list">
-              <li>Establish pipeline review cadence and risk flags</li>
-              <li>Improve lead routing SLAs and response consistency</li>
-              <li>Strengthen forecast confidence with trusted dashboards</li>
+              <li>Governed automation systems with clear SLAs and controls</li>
+              <li>Lifecycle architecture with durable handoff standards</li>
+              <li>Operating cadence that keeps teams aligned as the business scales</li>
             </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="architecture" class="section" aria-labelledby="architecture-title">
-      <p class="eyebrow">Blueprint</p>
-      <h2 id="architecture-title" style="margin-top:.45rem;">Revenue operations system blueprint</h2>
-      <p class="section-sub muted">Click each stage to inspect how capture, routing, pipeline governance, and feedback loops work together.</p>
-      <div class="arch-pipeline" role="tablist" aria-label="Architecture stages">
-        <button class="arch-node active" type="button" data-arch="capture" role="tab" aria-selected="true">Phase 1<br><strong>Capture + score</strong></button>
-        <span class="arch-link" aria-hidden="true">→</span>
-        <button class="arch-node" type="button" data-arch="routing" role="tab" aria-selected="false">Phase 2<br><strong>Lifecycle routing</strong></button>
-        <span class="arch-link" aria-hidden="true">→</span>
-        <button class="arch-node" type="button" data-arch="pipeline" role="tab" aria-selected="false">Phase 3<br><strong>Multi-pipeline ops</strong></button>
-        <span class="arch-link" aria-hidden="true">→</span>
-        <button class="arch-node" type="button" data-arch="feedback" role="tab" aria-selected="false">Phase 4<br><strong>Feedback loop</strong></button>
-      </div>
-      <article id="archDetail" class="arch-detail" aria-live="polite">
-        <h3>Lead capture + qualification scoring</h3>
-        <p class="muted" style="margin-top:.4rem;"><strong>Goal:</strong> allow only high-signal records into operations. <strong>Implementation:</strong> engagement + fit scoring tied to required properties and standardized handoff contracts.</p>
-      </article>
-    </section>
-
-    <section id="operatingCadence" class="section" aria-labelledby="cadence-title">
-      <p class="eyebrow">Operating cadence</p>
-      <h2 id="cadence-title" style="margin-top:.45rem;">How I run RevOps with leadership teams</h2>
+    <section id="architecture" class="section" aria-labelledby="operating-system-title">
+      <p class="eyebrow">Operating model</p>
+      <h2 id="operating-system-title" style="margin-top:.45rem;">How I run operating systems end-to-end</h2>
       <div class="cards-2">
         <article class="glass case">
-          <h3>Weekly pipeline council</h3>
+          <h3>1) Diagnose</h3>
           <ul class="bullet-list">
-            <li>Review creation, progression, and conversion by segment</li>
-            <li>Escalate lifecycle bottlenecks and ownership conflicts</li>
-            <li>Track SLA adherence and risk by stage</li>
+            <li>Map friction in lifecycle flow, handoffs, and data reliability</li>
+            <li>Prioritize high-impact fixes by business risk and execution drag</li>
           </ul>
         </article>
         <article class="glass case">
-          <h3>Monthly systems governance</h3>
+          <h3>2) Institutionalize</h3>
           <ul class="bullet-list">
-            <li>Audit workflow health and exception volume</li>
-            <li>Prioritize CRM technical debt remediation</li>
-            <li>Confirm reporting contract integrity with stakeholders</li>
+            <li>Set standards for ownership, definitions, routing, and governance cadence</li>
+            <li>Implement automation with controls, QA checks, and exception handling</li>
           </ul>
         </article>
       </div>
-    </section>
-
-    <section id="timelineStory" class="section" aria-labelledby="timeline-title">
-      <p class="eyebrow">Storytelling timeline</p>
-      <h2 id="timeline-title" style="margin-top:.45rem;">Before → system design → automation → outcome</h2>
-      <div class="timeline">
-        <article class="timeline-step reveal"><h3>Before</h3><p class="muted" style="margin-top:.35rem;">Fragmented lifecycle ownership, ad-hoc workflows, and inconsistent reporting trust.</p></article>
-        <article class="timeline-step reveal"><h3>System design</h3><p class="muted" style="margin-top:.35rem;">Mapped lifecycle architecture, ownership boundaries, and governance checkpoints.</p></article>
-        <article class="timeline-step reveal"><h3>Automation</h3><p class="muted" style="margin-top:.35rem;">Connected high-friction handoffs with robust workflows and exception handling.</p></article>
-        <article class="timeline-step reveal"><h3>Outcome</h3><p class="muted" style="margin-top:.35rem;">Faster execution, lower manual load, and dashboards leadership can trust weekly.</p></article>
-      </div>
-    </section>
-
-    <section id="proof" class="section optional" aria-labelledby="proof-title">
-      <p class="eyebrow">Proof</p>
-      <h2 id="proof-title" style="margin-top:.45rem;">Tools & credibility</h2>
-      <div style="margin-top:.75rem;"><button id="openVault" class="btn btn-ghost" type="button">Open Proof Vault</button></div>
-      <div class="cards-2">
-        <article class="glass case"><h3>Tool stack</h3><p class="muted" style="margin-top:.55rem;">HubSpot • Zapier • Make • Slack • Apollo • Typeform • Stripe • QuickBooks • Box • Asana/ClickUp • inbound qualification tools • APIs</p></article>
-        <article class="glass case"><h3>What I’m known for</h3><ul id="knownForList" class="bullet-list"><li>Turning messy ops into clean, governed architecture</li><li>Automation that doesn’t break when teams scale</li><li>Clear lifecycle stages, ownership, and handoffs</li><li>Translating ambiguity into decisions + execution</li></ul></article>
-      </div>
+      <p class="section-sub muted">Result: less manual overhead, faster cross-functional execution, and reliable visibility into performance and risk.</p>
     </section>
 
     <section id="about" class="section optional" aria-labelledby="about-title">
       <p class="eyebrow">About</p>
-      <h2 id="about-title" style="margin-top:.45rem;">How I work</h2>
+      <h2 id="about-title" style="margin-top:.45rem;">Why teams hire me</h2>
       <div class="cards-2" style="grid-template-columns:minmax(0,2fr) minmax(0,1fr);">
-        <article class="glass case"><h3>Short version</h3><p class="muted" style="margin-top:.55rem;">I work at the intersection of revenue operations, CRM governance, and systems enablement. I focus on converting strategy into operating cadence: clear funnel definitions (MQL/PQL/SQL), reliable owner routing, and workflows teams actually follow.</p><p class="muted" style="margin-top:.7rem;">I’m strongest in cross-functional environments where sales, marketing, and operations are misaligned and need a practical operating model that scales.</p></article>
-        <article class="glass case"><h3>What I value</h3><ul class="bullet-list"><li>Clarity over complexity</li><li>Governance over heroics</li><li>Systems that outlive people</li><li>Simple UX for operators</li></ul></article>
-      </div>
-
-      <div id="faqRecruiter" class="faq" aria-label="Frequently asked recruiter questions">
-        <details><summary>How do you usually start with a new team?</summary><p>I start with lifecycle mapping + ownership clarity, then layer governance, then automate high-friction flows tied to KPI outcomes.</p></details>
-        <details><summary>What’s your strongest differentiator?</summary><p>I combine systems architecture depth with operator-first UX, so what gets built is both durable and adopted quickly.</p></details>
-      </div>
-    </section>
-
-
-    <section id="target-fit" class="section" aria-labelledby="target-fit-title">
-      <p class="eyebrow">Target fit</p>
-      <h2 id="target-fit-title" style="margin-top:.45rem;">Where this operating model fits best</h2>
-      <div class="cards-2">
         <article class="glass case">
-          <h3>High-growth SaaS environments</h3>
-          <p class="muted" style="margin-top:.5rem;">Best aligned to environments similar to BioRender, AfterShip, AgencyAnalytics, MapsPeople, and EvenUp — where RevOps must balance speed, governance, and cross-functional accountability.</p>
-          <ul class="bullet-list">
-            <li>Demand-to-revenue ownership across Marketing, Sales, and Customer Success</li>
-            <li>PQL + lifecycle qualification models for PLG and hybrid funnels</li>
-            <li>CRM technical debt reduction: dedupe, field standards, and source integrity</li>
-            <li>Operating cadence support: pipeline council rhythms and risk surfacing</li>
+          <h3>What I’m known for</h3>
+          <ul id="knownForList" class="bullet-list">
+            <li>Building operating models leadership can govern and scale</li>
+            <li>Turning GTM strategy into measurable system execution</li>
+            <li>Raising reporting trust so decisions are based on signal, not noise</li>
+            <li>Balancing execution speed with governance and maintainability</li>
+            <li>Creating cross-functional alignment through explicit ownership</li>
           </ul>
+          <h3 style="margin-top:.9rem;">How I work</h3>
+          <p class="muted" style="margin-top:.45rem;">I start by aligning leadership on lifecycle definitions, ownership, and decision cadence. Then I sequence high-friction workflows into a practical roadmap that delivers early wins while strengthening long-term architecture.</p>
         </article>
         <article class="glass case">
-          <h3>2026 RevOps metric framework</h3>
+          <h3>Values + stack</h3>
           <ul class="bullet-list">
-            <li><strong>CAC payback:</strong> target 6–12 months</li>
-            <li><strong>LTV:CAC:</strong> maintain 3:1+ with visibility to 5:1 segments</li>
-            <li><strong>Forecast accuracy:</strong> committed quarter variance within ~5%</li>
-            <li><strong>NRR:</strong> support 120%+ through cleaner expansion signals</li>
-            <li><strong>Lead response:</strong> enforce rapid routing to avoid 1-hour decay risk</li>
+            <li>Clarity over complexity</li>
+            <li>Governance over heroics</li>
+            <li>Systems that outlive people</li>
+            <li>Operator-first design for adoption</li>
           </ul>
-          <p class="context-note">Focus is not vanity reporting; it is volume, value, velocity, and conversion quality across the full lifecycle.</p>
         </article>
       </div>
     </section>
@@ -592,11 +531,11 @@
       <h2 id="contact-title" style="margin-top:.45rem;">Let’s build something durable</h2>
       <div class="glass contact-card">
         <div>
-          <p class="muted">If you’re hiring for RevOps leadership, Business Systems, or GTM Systems ownership, I’m open to roles where I can own demand-to-revenue execution end-to-end.</p>
+          <p class="muted">If you’re hiring for RevOps leadership, Business Systems, GTM Systems ownership, or Marketing Automation leadership, I’m open to roles where I can lead demand-to-revenue execution end-to-end and build systems that scale with the business.</p>
           <p class="muted-2" style="margin-top:.45rem;">Email: <a href="mailto:arorarajat12@gmail.com" style="color:#fff;">arorarajat12@gmail.com</a></p>
           <div class="chip-row" style="margin-top:.55rem;"><span class="pill ok-pill">Open to full-time roles</span><span class="pill ok-pill">Open to contract projects</span></div>
         </div>
-        <div class="actions"><a class="btn btn-primary" href="mailto:arorarajat12@gmail.com">Email →</a><a class="btn" href="https://www.linkedin.com/in/rajat-arora/" target="_blank" rel="noreferrer">LinkedIn →</a><button id="openResumeInfo" class="btn" type="button">Resume (PDF) →</button></div>
+        <div class="actions"><a class="btn btn-primary" href="mailto:arorarajat12@gmail.com">Email →</a><a class="btn" href="https://www.linkedin.com/in/rajat-arora-b681281a4/" target="_blank" rel="noreferrer">LinkedIn&nbsp;↗</a></div>
       </div>
     </section>
 
@@ -792,28 +731,32 @@
       if (vaultOverlay.classList.contains('show')) closeOverlay(vaultOverlay);
       else { openOverlay(vaultOverlay); showToast('Proof Vault opened'); }
     };
-    openVaultBtn.addEventListener('click', toggleVault);
-    closeVaultBtn.addEventListener('click', toggleVault);
-    vaultOverlay.addEventListener('click', (event) => {
-      if (event.target === vaultOverlay) toggleVault();
-    });
+    if (openVaultBtn && closeVaultBtn && vaultOverlay) {
+      openVaultBtn.addEventListener('click', toggleVault);
+      closeVaultBtn.addEventListener('click', toggleVault);
+      vaultOverlay.addEventListener('click', (event) => {
+        if (event.target === vaultOverlay) toggleVault();
+      });
+    }
 
     const toggleResumeInfo = () => {
       if (resumeOverlay.classList.contains('show')) closeOverlay(resumeOverlay);
       else openOverlay(resumeOverlay);
     };
-    openResumeInfoBtn.addEventListener('click', toggleResumeInfo);
-    closeResumeInfoBtn.addEventListener('click', toggleResumeInfo);
-    resumeOverlay.addEventListener('click', (event) => {
-      if (event.target === resumeOverlay) toggleResumeInfo();
-    });
+    if (openResumeInfoBtn && closeResumeInfoBtn && resumeOverlay) {
+      openResumeInfoBtn.addEventListener('click', toggleResumeInfo);
+      closeResumeInfoBtn.addEventListener('click', toggleResumeInfo);
+      resumeOverlay.addEventListener('click', (event) => {
+        if (event.target === resumeOverlay) toggleResumeInfo();
+      });
+    }
 
     window.addEventListener('keydown', (event) => {
       const key = event.key.toLowerCase();
       if (event.altKey && key === 'r') setRecruiterMode(!recruiterMode);
       if (event.altKey && key === '?') toggleHelp();
       if (key === 'escape' && helpOverlay.classList.contains('show')) toggleHelp();
-      if (key === 'escape' && vaultOverlay.classList.contains('show')) toggleVault();
+      if (key === 'escape' && vaultOverlay && vaultOverlay.classList.contains('show')) toggleVault();
       if (key === 'escape' && caseStudyOverlay.classList.contains('show')) closeOverlay(caseStudyOverlay);
       if (key === 'escape' && resumeOverlay.classList.contains('show')) toggleResumeInfo();
     });
@@ -840,10 +783,11 @@
       revops: {
         hero: 'Scaling breaks people-dependent processes. I design demand-to-revenue systems with clear lifecycle definitions, accountable handoffs, and reporting leadership can trust weekly.',
         known: [
-          'Turning messy ops into clean, governed architecture',
-          'Automation that doesn’t break when teams scale',
-          'Clear lifecycle stages, ownership, and handoffs',
-          'Translating ambiguity into decisions + execution'
+          'Building operating models leadership can govern and scale',
+          'Turning GTM strategy into measurable system execution',
+          'Raising reporting trust so decisions are based on signal, not noise',
+          'Balancing execution speed with governance and maintainability',
+          'Creating cross-functional alignment through explicit ownership'
         ]
       },
       bizsys: {
@@ -891,6 +835,76 @@
     roleButtons.forEach((btn) => btn.addEventListener('click', () => setRoleView(btn.dataset.role)));
 
     const caseStudies = {
+      shiftalloc: {
+        title: 'AI-Driven Shift Allocation & Operations Automation: Replacing Manual Coordination with an End-to-End Automated System',
+        context: 'A healthcare staffing organization managed shift allocation manually across regional teams. Clients purchased service hours in Shopify and submitted free-text shift details. Internal staff had to interpret every order, manually post each shift to the right regional Slack channel, and then manually send confirmations. I designed and built a three-month, end-to-end system across Shopify, HubSpot, Zapier, Slack, Gmail, AI, Box, and Google Drive to automate the full lifecycle.',
+        kpis: ['Hundreds of manual operational hours saved', 'Double bookings eliminated via ownership lock', 'Hours-long cycle time reduced to near-instant automation', 'Delivered full end-to-end system in 3 months'],
+        problem: 'The process was fragmented and human-dependent at every step: unstructured Shopify input required manual interpretation, channel routing was manual and error-prone, shift claims lacked conflict prevention, communications were manually drafted, data tracking was scattered, file handling was ad hoc, and reporting on volume/fill/utilization/revenue was not possible.',
+        constraints: [
+          'No engineering resources; required no/low-code + API integration approach',
+          'Client input remained unstructured and had to be interpreted as-is',
+          'Required real-time conflict prevention across attendants/channels',
+          'Needed encrypted, compliant handling of client/attendant PII',
+          'Required centralized file handling across Box and Google Drive',
+          'Needed unified orchestration across Shopify, HubSpot, Zapier, Slack, Gmail, ChatGPT API, Box, and Google Drive',
+          'Regional routing had to use real-time HubSpot location data',
+          'Full system delivery required within three months'
+        ],
+        approach: [
+          'Designed a single end-to-end lifecycle automation instead of patching individual bottlenecks',
+          'Introduced AI parsing to convert unstructured client orders into standardized shift postings',
+          'Implemented dynamic routing to regional Slack channels based on HubSpot data',
+          'Built first-claim ownership lock to enforce real-time conflict prevention',
+          'Automated encrypted communications for both client and attendant on claim',
+          'Centralized lifecycle tracking, revenue data, and reporting in HubSpot pipeline architecture'
+        ],
+        solution: [
+          'Order Capture Layer: Shopify order + free-text request ingested in Zapier in real time',
+          'AI Parsing Layer: ChatGPT API interprets and standardizes dates/times/services/instructions',
+          'Data Enrichment Layer: HubSpot client/location data appended for context and routing',
+          'Dynamic Routing Layer: Zapier auto-posts to correct regional Slack channel',
+          'Ownership Lock Layer: first valid Slack claim locks shift; all later claims rejected',
+          'Communication Layer: Gmail sends encrypted confirmations to both client and attendant',
+          'CRM Tracking Layer: HubSpot pipeline tracks shift status, ownership, and revenue',
+          'File Management Layer: Box + Google Drive integrations centralize documents',
+          'Reporting Layer: dashboards track volume, fill rate, utilization, regional throughput, and revenue'
+        ],
+        execution: [
+          'Mapped full order-to-confirmation lifecycle and removed each manual touchpoint',
+          'Integrated Shopify + Zapier for real-time order and payment capture',
+          'Built ChatGPT parsing function in Zapier for free-text shift interpretation',
+          'Connected HubSpot enrichment and dynamic regional routing logic',
+          'Implemented interactive Slack claim workflow with lock enforcement',
+          'Built encrypted Gmail confirmation automations for both stakeholders',
+          'Created HubSpot deal pipeline/properties for status, owner, and revenue',
+          'Integrated Box/Google Drive for automated centralized file handling',
+          'Built reporting dashboards and delivered the system in three months'
+        ],
+        impact: [
+          'Saved hundreds of hours previously spent on coordination and manual communication',
+          'Eliminated double bookings with system-enforced ownership locking',
+          'Reduced cycle time from hours of coordination to near-instant processing',
+          'Removed manual intervention from Shopify submission through confirmation',
+          'Established first centralized structured data layer for shift operations and revenue',
+          'Enabled reporting on fill rates, utilization, regional activity, and revenue performance',
+          'Centralized document handling through Box and Google Drive',
+          'Created scalable operational foundation that supports higher volume without added headcount'
+        ],
+        diagram: ['Shopify order capture', 'AI parsing (ChatGPT via Zapier)', 'HubSpot data enrichment', 'Regional Slack auto-routing', 'First-claim ownership lock', 'Encrypted Gmail confirmations', 'HubSpot shift pipeline tracking', 'Box + Google Drive file layer', 'Operational dashboards'],
+        differential: ['The win came from redesigning the full lifecycle as a connected automation pipeline instead of optimizing isolated tasks.', 'AI parsing absorbed unstructured client input at the edge, eliminating the highest-friction manual bottleneck while preserving user behavior.'],
+        demonstrates: ['Complex multi-platform automation architecture and delivery', 'Practical AI integration for operational throughput (not novelty)', 'Real-time system design with conflict prevention and ownership controls', 'Deep HubSpot pipeline/data/reporting implementation capability', 'Revenue operations design with trackable utilization and performance visibility', 'Compliant handling of sensitive data across communication and file workflows', 'Execution under no-engineering constraints and fixed timeline'],
+        beforeAfter: [
+          ['Unstructured free-text orders', 'AI-parsed standardized shift postings'],
+          ['Manual message interpretation', 'Automated parsing + formatting'],
+          ['Manual regional channel selection', 'Dynamic HubSpot-driven auto-routing'],
+          ['Overlapping claims and double bookings', 'First-claim lock with automatic rejection'],
+          ['Manual confirmation emails', 'Automated encrypted dual-party confirmations'],
+          ['Scattered tracking in threads/spreadsheets', 'Centralized HubSpot pipeline with structured properties'],
+          ['Ad hoc file sharing', 'Automated Box/Google Drive file management'],
+          ['No operational reporting', 'Dashboards for fill, utilization, and revenue'],
+          ['Human-coordination bottleneck', 'End-to-end hands-off automation']
+        ]
+      },
       gtmos: {
         title: "Designed and Implemented End-to-End GTM Operating System Connecting Marketing, Sales, Onboarding, and Revenue Intelligence",
         context: "Worked with a client to design and implement a scalable go-to-market system across marketing, sales, onboarding, and account management. The organization lacked structured lifecycle management, reliable attribution, and revenue visibility. My role was to architect a connected system that improved lead qualification, execution, and decision-making across the entire revenue funnel.",
@@ -967,54 +981,73 @@
         ]
       },
       referral: {
-        title: 'Building a Fully Automated Referral Engine',
-        context: 'Worked with the Alumni team to redesign referrals for SalesCamp and AdTech by replacing Referral Factory with a fully automated HubSpot + Zapier system.',
-        kpis: ['Third-party tool eliminated', 'Structured attribution enabled', 'Manual effort reduced to near-zero', '2 successful referrals in week one'],
-        problem: 'The prior process depended on a paid external tool, tracked referrals in unstructured text, and forced a multi-step alumni experience that hurt adoption and reporting reliability.',
+        title: 'In-House Alumni Referral System: Replacing a Third-Party Tool with a Fully Automated, Zero-Cost Referral Engine (HubSpot + Zapier)',
+        context: 'The organization operated two flagship programs — Sales Camp and AdTech — each with its own intake application process. Applicants who entered a valid referral code received a 20% discount. At the time, referrals were run through Referral Factory (paid subscription). I was asked to replace it with an in-house system because the existing workflow created friction for alumni, applicants, and internal teams.',
+        kpis: ['2 successful referrals in the first week', 'Recurring software cost eliminated', 'Zero reported post-launch system breaks', 'Manual referral discount handling fully removed'],
+        problem: 'Referral Factory created compounding issues: cumbersome multi-page alumni flow, inaccurate tracking, poor HubSpot integration with unstructured text data, manual discount/invoicing intervention, no real-time internal visibility, and recurring subscription cost despite weak reliability.',
         constraints: [
-          'No engineering support; solution had to run in HubSpot + Zapier ecosystem',
-          'Needed clean structured data model for accurate reporting and attribution',
-          'System had to support two programs (SalesCamp + AdTech)',
-          'End-to-end automation required with minimal alumni friction'
+          'No engineering resources; built entirely with HubSpot + Zapier',
+          'Needed to work across Sales Camp and AdTech with program-specific tracking',
+          'Alumni experience had to be frictionless and fully automated',
+          'Discount application and invoicing had to be zero-touch',
+          'Reporting needed referrer-referee links, per-program breakdowns, and volume tracking',
+          'System needed day-one reliability to preserve trust with alumni and admissions'
         ],
         approach: [
-          'Replaced external dependency entirely to reduce cost and increase control',
-          'Prioritized data structure first (property design + associations) over quick UI fixes',
-          'Designed around automatic referral-code generation and owner mapping',
-          'Accepted higher upfront design effort for long-term scalability and reliability'
+          'Proposed fully native build in existing stack instead of another referral vendor',
+          'Anchored referral lifecycle to graduation event as the primary trigger',
+          'Used Zapier for unique code generation and HubSpot for structured storage/automation',
+          'Captured referral redemption directly in native intake forms',
+          'Automated referrer-referee association so attribution became queryable/reportable',
+          'Accepted higher upfront design complexity for permanent savings and full data ownership'
         ],
         solution: [
-          'Graduation trigger auto-generates unique referral code via Zapier and stores it in a dedicated HubSpot property',
-          'Automated personalized email sends each alumni their referral code (no login, no portal setup)',
-          'Intake form captures referral code, validates it, and links referrer to applicant automatically',
-          'Automation applies discount logic (20%) and selects the correct invoice flow with zero manual intervention',
-          'Slack notifications provide real-time internal visibility'
+          'Trigger Layer: deal stage change to Graduated in HubSpot starts workflow',
+          'Code Generation Layer: Zapier writes unique referral code to dedicated HubSpot properties',
+          'Distribution Layer: HubSpot automatically emails graduates their personalized referral code',
+          'Redemption Layer: referral code field embedded directly in Sales Camp and AdTech intake forms',
+          'Discount + Invoice Layer: workflow applies 20% discount, picks alumni referral invoice template, and sends automatically',
+          'Association Layer: system auto-links referrer and referee deals in HubSpot',
+          'Notification Layer: Slack alerts on each redemption for real-time team visibility',
+          'Reporting Layer: dashboards for volume by program, leaderboard, and conversion quality'
         ],
         execution: [
-          'Built HubSpot + Zapier workflows for code generation, emailing, validation, invoicing, and notifications',
-          'Implemented structured referral relationship model (referrer ↔ referee)',
-          'Configured intake validation and dynamic invoicing paths',
-          'Published dashboards for referral volume, conversion, and program-level performance'
+          'Mapped full lifecycle from graduation trigger to invoice delivery',
+          'Built Zapier code generation tied to HubSpot deal-stage changes',
+          'Created dedicated HubSpot properties for referral status, code, and discount flags',
+          'Configured intake form capture into admissions pipeline',
+          'Built workflows for discount assignment and invoice-template selection',
+          'Implemented referrer-referee automatic deal associations',
+          'Integrated Slack notification workflow for instant internal awareness',
+          'Built dashboards for program volume, referrer activity, and conversion',
+          'Decommissioned Referral Factory and removed recurring subscription cost'
         ],
         impact: [
-          'Fully eliminated third-party referral software dependency',
-          'Created accurate, reportable referral tracking and attribution visibility',
-          'Reduced manual work across admissions and operations',
-          'System showed immediate adoption with two successful referrals in first week',
-          'Delivered scalable architecture supporting multiple programs'
+          'Two successful referrals in first week validated adoption immediately',
+          'Eliminated recurring third-party referral software cost',
+          'Reduced alumni effort from multi-page flow to zero-step code delivery at graduation',
+          'Removed all manual discount and invoice intervention',
+          'Achieved zero reported system breaks/errors post-launch',
+          'Enabled real-time internal referral visibility via Slack',
+          'Established structured, reportable referral data layer that previous system lacked',
+          'Outperformed previous process on referral volume, accuracy, and operational efficiency'
         ],
-        diagram: ['Alumni Graduates', 'Code Generation (Zapier → HubSpot)', 'Automated Referral Email', 'Applicant Intake + Code Input', 'Validation + Contact Association', 'Discounted Invoice Automation (20%)', 'Slack Notification + Dashboards', 'Reporting & Dashboards'],
-        differential: ['Previous workflow was fragmented and tool-bound; new system is native, automated, and reportable end-to-end.', 'Data is modeled as structured CRM relationships instead of text notes, enabling reliable analytics and attribution.', 'Operations teams receive real-time referral visibility without manual dashboard checks.'],
-        demonstrates: ['End-to-end system architecture in RevOps context', 'Strong CRM data modeling and attribution design', 'Ability to replace paid tooling with scalable internal automation', 'Execution focus across UX, operations, and reporting outcomes'],
+        diagram: ['Graduation trigger (HubSpot)', 'Unique code generation (Zapier)', 'Automated personalized code email', 'Referral code capture in intake form', 'Auto-discount + invoice template logic', 'Referrer-referee deal association', 'Slack referral alert', 'HubSpot reporting dashboards'],
+        differential: ['Key shift: moved from fragmented tool-dependent process to native lifecycle automation.', 'System-native data architecture made automation, reporting, and association reliable instead of text-based and fragile.', 'Future-state initiative scoped: pooled recognition draw for alumni referrals over rolling six-month windows.'],
+        demonstrates: ['Ability to replace paid third-party tooling with zero-cost in-house automation', 'End-to-end lifecycle design from trigger event to invoicing/reporting', 'Deep HubSpot execution across properties, workflows, associations, form logic, and dashboards', 'Cross-platform system design with Zapier + HubSpot + Slack without engineering dependency', 'Data architecture mindset focused on reportability and operational reliability', 'Stakeholder translation from business request to delivered system', 'Balanced reliability, user experience, and operational efficiency as equal priorities'],
         beforeAfter: [
-          ['Third-party tool dependency', 'Fully in-house system'],
-          ['Unstructured text data', 'Structured, reportable data'],
-          ['Manual discount application', 'Automated invoicing'],
-          ['Multi-step alumni process', 'Frictionless code sharing'],
-          ['Poor tracking', 'Full attribution visibility']
+          ['Third-party tool with recurring cost', 'Zero additional software cost'],
+          ['Multi-step alumni code generation', 'Auto-generated unique codes at graduation'],
+          ['Manual code distribution', 'Automated personalized graduation email'],
+          ['Inaccurate tracking + broken integration', 'Native HubSpot tracking with full reporting'],
+          ['Unstructured text data', 'Structured properties + associations'],
+          ['Manual discount invoicing', 'Automated discount + invoice selection'],
+          ['No real-time visibility', 'Instant Slack notifications'],
+          ['No referrer-referee linking', 'Automatic CRM association model'],
+          ['Unreliable process', 'Zero reported post-launch breaks']
         ]
       },
-            ssot: {
+      ssot: {
         title: 'Designing an Automated Recruitment & Lead Nurturing System (End-to-End Funnel Automation)',
         context: 'The recruitment team had no structured system to track, nurture, or convert incoming leads. Prospective participants entered through multiple channels, but there was no centralized workflow to guide them through recruitment or prepare them for admissions. My role was to design and implement a scalable automated system for lead intake, qualification, nurturing, and progression into admissions.',
         kpis: ['~85% manual workload reduced', 'Hundreds of hours saved weekly', '4,000+ applicants scaled in months', 'Recruitment-to-admissions handoff automated'],
@@ -1187,61 +1220,6 @@
           ['Delayed visibility', 'Real-time client updates']
         ]
       },
-      onboarding: {
-        title: 'Designing a Centralized Contractor Onboarding System (Approval-Driven Operations)',
-        context: 'Multiple teams (IT, Finance, and People Operations) were involved in onboarding external contractors. Teams requesting contractors had to manually coordinate approvals, communications, and onboarding readiness across departments. My role was to design a centralized system that structured the process, reduced manual coordination, and introduced visibility, accountability, and governance.',
-        kpis: ['Manual coordination eliminated', 'Cross-team approvals structured', 'Full audit trail established', 'Real-time status visibility enabled'],
-        problem: 'The contractor onboarding process was fragmented: no centralized workflow, ad-hoc communication, heavy back-and-forth across People Ops, Finance, and IT, no approval history, and limited visibility into onboarding status, timelines, budgets, or contract details. This increased delays, errors, and governance risk.',
-        constraints: [
-          'Required coordination across multiple departments with different responsibilities',
-          'Needed sequential approval flow (People → Finance → IT)',
-          'No engineering support; built within HubSpot + automation stack',
-          'Required full visibility and audit history for governance',
-          'Needed to capture detailed contractor information upfront'
-        ],
-        approach: [
-          'Introduced a single structured intake form as the entry point',
-          'Captured all required contractor details upfront to reduce downstream rework',
-          'Designed sequential department approvals instead of parallel ad-hoc messaging',
-          'Automated notifications and handoffs to remove manual chasing',
-          'Logged every action for auditability and compliance',
-          'Accepted upfront data-model complexity to remove long-term operational chaos'
-        ],
-        solution: [
-          'Intake & Data Capture Layer: request form captures contractor profile, budget/hours, duration, and supporting documents',
-          'Record Creation & Pipeline Entry: form submission auto-creates contractor onboarding record in pipeline',
-          'Sequential Approval Workflow: People Ops review → Finance validation → IT enablement',
-          'Per-stage Automation: approvals/rejections trigger next notifications, status updates, and decision logging',
-          'Governance Layer: tracks approval history, timestamps, and decision ownership',
-          'Lifecycle Tracking: tracks contract dates, contractor status, associated team, and role'
-        ],
-        execution: [
-          'Designed contractor onboarding pipeline in HubSpot',
-          'Built structured intake form for comprehensive request capture',
-          'Implemented multi-stage People/Finance/IT approval workflow',
-          'Created stage-based automation for cross-team notifications',
-          'Defined properties for governance and audit tracking',
-          'Enabled lifecycle tracking for ongoing contractor management'
-        ],
-        impact: [
-          'Eliminated manual coordination across teams',
-          'Introduced a structured, repeatable onboarding process',
-          'Improved visibility into contractor status and approvals',
-          'Reduced communication errors and delays',
-          'Enabled full audit trail for governance and compliance',
-          'Created scalable system for ongoing contractor management'
-        ],
-        diagram: ['Intake Form Submission', 'Onboarding Record Created', 'People Ops Approval', 'Finance Approval', 'IT Enablement (Access + Tools)', 'Automated Notifications + Stage Updates', 'Audit Log + Lifecycle Tracking'],
-        differential: ['The biggest improvement came from centralizing ownership and structuring approvals into one system.', 'Turning fragmented handoffs into accountable staged progression made onboarding transparent, reliable, and scalable.'],
-        demonstrates: ['Cross-functional system design (IT, Finance, People Ops)', 'Strong operational workflow and governance design', 'Ability to structure approval systems with auditability', 'Experience reducing organizational friction through automation', 'End-to-end ownership of internal operational systems'],
-        beforeAfter: [
-          ['Ad-hoc onboarding requests', 'Structured intake system'],
-          ['Manual cross-team communication', 'Automated approval workflow'],
-          ['No approval tracking', 'Full audit history'],
-          ['No visibility into status', 'Real-time pipeline tracking'],
-          ['High coordination effort', 'Seamless system-driven process']
-        ]
-      }
     };
 
     const renderCaseStudy = (key) => {
