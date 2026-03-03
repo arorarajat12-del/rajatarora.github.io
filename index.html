@@ -440,7 +440,7 @@
       <p class="section-sub muted">Each case study opens in a structured frame with context, architecture, implementation details, and outcomes.</p>
       <div class="cards-2">
         <article class="glass case"><div class="chip-row"><span class="pill">Slack</span><span class="pill">Automation</span><span class="pill">AI Logic</span></div><h3>AI-Powered Shift Allocation System</h3><p class="muted" style="margin-top:.45rem;">Replaced manual staffing coordination with instant, system-enforced shift ownership.</p><div class="proof-chips"><span class="proof-chip">30–60 min → instant</span><span class="proof-chip">Double bookings eliminated</span></div><ul class="bullet-list"><li>Built first-claim ownership logic with real-time lock enforcement</li><li>Automated Slack booking actions with immediate status updates</li><li>Created backend system-of-record for shift status and timestamps</li><li>Rejected duplicate claims automatically to prevent scheduling conflicts</li><li>Added instant booking confirmations so teams always saw live ownership status</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="shiftalloc">Open case study</button></article>
-        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Zapier</span><span class="pill">Slack</span></div><h3>Automated Referral Engine</h3><p class="muted" style="margin-top:.45rem;">Replaced a paid referral platform with an in-house system for reliable tracking and reporting.</p><div class="proof-chips"><span class="proof-chip">Tool dependency removed</span><span class="proof-chip">Structured reporting ↑</span></div><ul class="bullet-list"><li>Auto-generated alumni referral codes at graduation</li><li>Applied referral discount logic (20%) with zero manual intervention</li><li>Linked referrer and referee as structured CRM relationships</li><li>Triggered Slack alerts and dashboard-ready reporting</li><li>Introduced standardized referral attribution fields for cleaner analytics</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="referral">Open case study</button></article>
+        <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Zapier</span><span class="pill">Slack</span></div><h3>In-House Alumni Referral System</h3><p class="muted" style="margin-top:.45rem;">Replaced Referral Factory with a fully automated, zero-cost referral engine built natively in HubSpot + Zapier.</p><div class="proof-chips"><span class="proof-chip">2 referrals in week one</span><span class="proof-chip">Zero reported breaks</span></div><ul class="bullet-list"><li>Auto-generated unique referral codes at graduation with automated delivery</li><li>Automated 20% discount assignment and referral invoice flow end-to-end</li><li>Linked referrer-referee relationships as structured HubSpot associations</li><li>Pushed real-time referral redemption notifications to Slack</li><li>Eliminated recurring third-party software cost</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="referral">Open case study</button></article>
         <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Eventbrite</span><span class="pill">Automation</span></div><h3>Automated Recruitment & Lead Nurturing System</h3><p class="muted" style="margin-top:.45rem;">Designed an end-to-end funnel automation system from lead capture through admissions handoff.</p><div class="proof-chips"><span class="proof-chip">~85% manual workload ↓</span><span class="proof-chip">4,000+ applicants scaled</span></div><ul class="bullet-list"><li>Built pipeline-driven recruitment journey with clear progression logic</li><li>Automated behavior-based nurturing and conversion routing</li><li>Integrated Eventbrite and scheduling flows into stage updates</li><li>Automated handoff from recruitment to admissions pipeline</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="ssot">Open case study</button></article>
         <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">QuickBooks</span><span class="pill">Zapier</span></div><h3>Automating Invoicing & Payment Reconciliation</h3><p class="muted" style="margin-top:.45rem;">Built an end-to-end Finance Ops system that automated invoicing, payment visibility, and deal-level reconciliation.</p><div class="proof-chips"><span class="proof-chip">Manual invoicing removed</span><span class="proof-chip">Real-time payment visibility ↑</span></div><ul class="bullet-list"><li>Used HubSpot deal stage as trigger for invoice generation</li><li>Added validation step for participant and discount accuracy</li><li>Automated invoice creation + payment status synchronization</li><li>Moved deals automatically to Invoice Paid with Slack notifications</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="finance">Open case study</button></article><article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Google Sheets</span><span class="pill">QuickBooks</span></div><h3>End-to-End Project Tracking System</h3><p class="muted" style="margin-top:.45rem;">Built a CRM-driven reporting system that synced live project status to Google Sheets and automated stakeholder communication.</p><div class="proof-chips"><span class="proof-chip">Manual reporting removed</span><span class="proof-chip">Scaled across 300+ permits</span></div><ul class="bullet-list"><li>Connected Sales → Project → Permit pipelines with stage logic</li><li>Automated Google Sheets creation and real-time updates</li><li>Enabled stage-to-stage duration tracking and milestone emails</li><li>Integrated QuickBooks estimate creation at quote stage</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="projecttracking">Open case study</button></article>
         <article class="glass case"><div class="chip-row"><span class="pill">HubSpot</span><span class="pill">Typeform</span><span class="pill">PandaDoc</span></div><h3>Built End-to-End GTM Operating System</h3><p class="muted" style="margin-top:.45rem;">Connected marketing, sales, onboarding, and revenue intelligence into one lifecycle architecture.</p><div class="proof-chips"><span class="proof-chip">Lifecycle automation ↑</span><span class="proof-chip">Forecast visibility ↑</span></div><ul class="bullet-list"><li>Built structured MQL → SQL lead scoring with behavioral, intent, and demographic signals</li><li>Designed connected Sales, Onboarding, Branding, Growth, and Retention pipelines</li><li>Implemented multi-touch attribution for campaign-to-revenue visibility</li></ul><button class="btn btn-ghost open-case-btn" type="button" data-case="gtmos">Open case study</button></article>
@@ -964,54 +964,73 @@
         ]
       },
       referral: {
-        title: 'Building a Fully Automated Referral Engine',
-        context: 'Worked with the Alumni team to redesign referrals for SalesCamp and AdTech by replacing Referral Factory with a fully automated HubSpot + Zapier system.',
-        kpis: ['Third-party tool eliminated', 'Structured attribution enabled', 'Manual effort reduced to near-zero', '2 successful referrals in week one'],
-        problem: 'The prior process depended on a paid external tool, tracked referrals in unstructured text, and forced a multi-step alumni experience that hurt adoption and reporting reliability.',
+        title: 'In-House Alumni Referral System: Replacing a Third-Party Tool with a Fully Automated, Zero-Cost Referral Engine (HubSpot + Zapier)',
+        context: 'The organization operated two flagship programs — Sales Camp and AdTech — each with its own intake application process. Applicants who entered a valid referral code received a 20% discount. At the time, referrals were run through Referral Factory (paid subscription). I was asked to replace it with an in-house system because the existing workflow created friction for alumni, applicants, and internal teams.',
+        kpis: ['2 successful referrals in the first week', 'Recurring software cost eliminated', 'Zero reported post-launch system breaks', 'Manual referral discount handling fully removed'],
+        problem: 'Referral Factory created compounding issues: cumbersome multi-page alumni flow, inaccurate tracking, poor HubSpot integration with unstructured text data, manual discount/invoicing intervention, no real-time internal visibility, and recurring subscription cost despite weak reliability.',
         constraints: [
-          'No engineering support; solution had to run in HubSpot + Zapier ecosystem',
-          'Needed clean structured data model for accurate reporting and attribution',
-          'System had to support two programs (SalesCamp + AdTech)',
-          'End-to-end automation required with minimal alumni friction'
+          'No engineering resources; built entirely with HubSpot + Zapier',
+          'Needed to work across Sales Camp and AdTech with program-specific tracking',
+          'Alumni experience had to be frictionless and fully automated',
+          'Discount application and invoicing had to be zero-touch',
+          'Reporting needed referrer-referee links, per-program breakdowns, and volume tracking',
+          'System needed day-one reliability to preserve trust with alumni and admissions'
         ],
         approach: [
-          'Replaced external dependency entirely to reduce cost and increase control',
-          'Prioritized data structure first (property design + associations) over quick UI fixes',
-          'Designed around automatic referral-code generation and owner mapping',
-          'Accepted higher upfront design effort for long-term scalability and reliability'
+          'Proposed fully native build in existing stack instead of another referral vendor',
+          'Anchored referral lifecycle to graduation event as the primary trigger',
+          'Used Zapier for unique code generation and HubSpot for structured storage/automation',
+          'Captured referral redemption directly in native intake forms',
+          'Automated referrer-referee association so attribution became queryable/reportable',
+          'Accepted higher upfront design complexity for permanent savings and full data ownership'
         ],
         solution: [
-          'Graduation trigger auto-generates unique referral code via Zapier and stores it in a dedicated HubSpot property',
-          'Automated personalized email sends each alumni their referral code (no login, no portal setup)',
-          'Intake form captures referral code, validates it, and links referrer to applicant automatically',
-          'Automation applies discount logic (20%) and selects the correct invoice flow with zero manual intervention',
-          'Slack notifications provide real-time internal visibility'
+          'Trigger Layer: deal stage change to Graduated in HubSpot starts workflow',
+          'Code Generation Layer: Zapier writes unique referral code to dedicated HubSpot properties',
+          'Distribution Layer: HubSpot automatically emails graduates their personalized referral code',
+          'Redemption Layer: referral code field embedded directly in Sales Camp and AdTech intake forms',
+          'Discount + Invoice Layer: workflow applies 20% discount, picks alumni referral invoice template, and sends automatically',
+          'Association Layer: system auto-links referrer and referee deals in HubSpot',
+          'Notification Layer: Slack alerts on each redemption for real-time team visibility',
+          'Reporting Layer: dashboards for volume by program, leaderboard, and conversion quality'
         ],
         execution: [
-          'Built HubSpot + Zapier workflows for code generation, emailing, validation, invoicing, and notifications',
-          'Implemented structured referral relationship model (referrer ↔ referee)',
-          'Configured intake validation and dynamic invoicing paths',
-          'Published dashboards for referral volume, conversion, and program-level performance'
+          'Mapped full lifecycle from graduation trigger to invoice delivery',
+          'Built Zapier code generation tied to HubSpot deal-stage changes',
+          'Created dedicated HubSpot properties for referral status, code, and discount flags',
+          'Configured intake form capture into admissions pipeline',
+          'Built workflows for discount assignment and invoice-template selection',
+          'Implemented referrer-referee automatic deal associations',
+          'Integrated Slack notification workflow for instant internal awareness',
+          'Built dashboards for program volume, referrer activity, and conversion',
+          'Decommissioned Referral Factory and removed recurring subscription cost'
         ],
         impact: [
-          'Fully eliminated third-party referral software dependency',
-          'Created accurate, reportable referral tracking and attribution visibility',
-          'Reduced manual work across admissions and operations',
-          'System showed immediate adoption with two successful referrals in first week',
-          'Delivered scalable architecture supporting multiple programs'
+          'Two successful referrals in first week validated adoption immediately',
+          'Eliminated recurring third-party referral software cost',
+          'Reduced alumni effort from multi-page flow to zero-step code delivery at graduation',
+          'Removed all manual discount and invoice intervention',
+          'Achieved zero reported system breaks/errors post-launch',
+          'Enabled real-time internal referral visibility via Slack',
+          'Established structured, reportable referral data layer that previous system lacked',
+          'Outperformed previous process on referral volume, accuracy, and operational efficiency'
         ],
-        diagram: ['Alumni Graduates', 'Code Generation (Zapier → HubSpot)', 'Automated Referral Email', 'Applicant Intake + Code Input', 'Validation + Contact Association', 'Discounted Invoice Automation (20%)', 'Slack Notification + Dashboards', 'Reporting & Dashboards'],
-        differential: ['Previous workflow was fragmented and tool-bound; new system is native, automated, and reportable end-to-end.', 'Data is modeled as structured CRM relationships instead of text notes, enabling reliable analytics and attribution.', 'Operations teams receive real-time referral visibility without manual dashboard checks.'],
-        demonstrates: ['End-to-end system architecture in RevOps context', 'Strong CRM data modeling and attribution design', 'Ability to replace paid tooling with scalable internal automation', 'Execution focus across UX, operations, and reporting outcomes'],
+        diagram: ['Graduation trigger (HubSpot)', 'Unique code generation (Zapier)', 'Automated personalized code email', 'Referral code capture in intake form', 'Auto-discount + invoice template logic', 'Referrer-referee deal association', 'Slack referral alert', 'HubSpot reporting dashboards'],
+        differential: ['Key shift: moved from fragmented tool-dependent process to native lifecycle automation.', 'System-native data architecture made automation, reporting, and association reliable instead of text-based and fragile.', 'Future-state initiative scoped: pooled recognition draw for alumni referrals over rolling six-month windows.'],
+        demonstrates: ['Ability to replace paid third-party tooling with zero-cost in-house automation', 'End-to-end lifecycle design from trigger event to invoicing/reporting', 'Deep HubSpot execution across properties, workflows, associations, form logic, and dashboards', 'Cross-platform system design with Zapier + HubSpot + Slack without engineering dependency', 'Data architecture mindset focused on reportability and operational reliability', 'Stakeholder translation from business request to delivered system', 'Balanced reliability, user experience, and operational efficiency as equal priorities'],
         beforeAfter: [
-          ['Third-party tool dependency', 'Fully in-house system'],
-          ['Unstructured text data', 'Structured, reportable data'],
-          ['Manual discount application', 'Automated invoicing'],
-          ['Multi-step alumni process', 'Frictionless code sharing'],
-          ['Poor tracking', 'Full attribution visibility']
+          ['Third-party tool with recurring cost', 'Zero additional software cost'],
+          ['Multi-step alumni code generation', 'Auto-generated unique codes at graduation'],
+          ['Manual code distribution', 'Automated personalized graduation email'],
+          ['Inaccurate tracking + broken integration', 'Native HubSpot tracking with full reporting'],
+          ['Unstructured text data', 'Structured properties + associations'],
+          ['Manual discount invoicing', 'Automated discount + invoice selection'],
+          ['No real-time visibility', 'Instant Slack notifications'],
+          ['No referrer-referee linking', 'Automatic CRM association model'],
+          ['Unreliable process', 'Zero reported post-launch breaks']
         ]
       },
-            ssot: {
+      ssot: {
         title: 'Designing an Automated Recruitment & Lead Nurturing System (End-to-End Funnel Automation)',
         context: 'The recruitment team had no structured system to track, nurture, or convert incoming leads. Prospective participants entered through multiple channels, but there was no centralized workflow to guide them through recruitment or prepare them for admissions. My role was to design and implement a scalable automated system for lead intake, qualification, nurturing, and progression into admissions.',
         kpis: ['~85% manual workload reduced', 'Hundreds of hours saved weekly', '4,000+ applicants scaled in months', 'Recruitment-to-admissions handoff automated'],
