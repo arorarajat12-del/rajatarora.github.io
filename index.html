@@ -982,12 +982,12 @@
       },
       referral: {
         title: 'In-House Alumni Referral System: Replacing a Third-Party Tool with a Fully Automated, Zero-Cost Referral Engine (HubSpot + Zapier)',
-        context: 'The organization operated two flagship programs — Sales Camp and AdTech — each with its own intake application process. Applicants who entered a valid referral code received a 20% discount. At the time, referrals were run through Referral Factory (paid subscription). I was asked to replace it with an in-house system because the existing workflow created friction for alumni, applicants, and internal teams.',
+        context: 'The organization operated two flagship programs — Sales Camp and AgTech — each with its own intake application process. Applicants who entered a valid referral code received a 20% discount. At the time, referrals were run through Referral Factory (paid subscription). I was asked to replace it with an in-house system because the existing workflow created friction for alumni, applicants, and internal teams.',
         kpis: ['2 successful referrals in the first week', 'Recurring software cost eliminated', 'Zero reported post-launch system breaks', 'Manual referral discount handling fully removed'],
         problem: 'Referral Factory created compounding issues: cumbersome multi-page alumni flow, inaccurate tracking, poor HubSpot integration with unstructured text data, manual discount/invoicing intervention, no real-time internal visibility, and recurring subscription cost despite weak reliability.',
         constraints: [
           'No engineering resources; built entirely with HubSpot + Zapier',
-          'Needed to work across Sales Camp and AdTech with program-specific tracking',
+          'Needed to work across Sales Camp and AgTech with program-specific tracking',
           'Alumni experience had to be frictionless and fully automated',
           'Discount application and invoicing had to be zero-touch',
           'Reporting needed referrer-referee links, per-program breakdowns, and volume tracking',
@@ -1005,7 +1005,7 @@
           'Trigger Layer: deal stage change to Graduated in HubSpot starts workflow',
           'Code Generation Layer: Zapier writes unique referral code to dedicated HubSpot properties',
           'Distribution Layer: HubSpot automatically emails graduates their personalized referral code',
-          'Redemption Layer: referral code field embedded directly in Sales Camp and AdTech intake forms',
+          'Redemption Layer: referral code field embedded directly in Sales Camp and AgTech intake forms',
           'Discount + Invoice Layer: workflow applies 20% discount, picks alumni referral invoice template, and sends automatically',
           'Association Layer: system auto-links referrer and referee deals in HubSpot',
           'Notification Layer: Slack alerts on each redemption for real-time team visibility',
