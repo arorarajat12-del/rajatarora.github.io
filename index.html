@@ -1,124 +1,487 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Whimble — Care that actually cares.</title>
-  <meta name="description" content="Whimble provides dependable attendant support for individuals and events. Care that actually cares." />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whimble — Care That Actually Cares</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--navy:#091F5B;--green:#248D5C;--light-green:#80E265;--blue:#1484D0;--light-blue:#9EECF3;
+--purple:#9D43CB;--pink:#F57DEC;--orange:#D7553D;--yellow:#FBD32C;
+--off-white:#F7F8FC;--warm-bg:#FDF8F0;--gray:#6B7280;--light-gray:#E5E7EB;--dark-gray:#374151;
+--serif:'DM Serif Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--dark-gray);line-height:1.6;background:#fff}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy);padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.nav-logo{height:32px}
+.nav-brand{color:#fff;font-family:var(--serif);font-size:1.35rem}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{color:#fff;font-size:.9rem;font-weight:500;opacity:.85;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.nav-cta{background:var(--green);color:#fff!important;padding:.5rem 1.2rem;border-radius:6px;font-weight:600;opacity:1!important;transition:transform .2s}
+.nav-cta:hover{transform:translateY(-1px)}
+.nav-mobile{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
+.nav-pages{display:flex;gap:.5rem;background:var(--off-white);padding:.5rem 2rem;position:fixed;top:64px;left:0;right:0;z-index:99;border-bottom:1px solid var(--light-gray)}
+.nav-pages a{font-size:.8rem;color:var(--navy);padding:.3rem .8rem;border-radius:4px;font-weight:500;transition:background .2s}
+.nav-pages a:hover,.nav-pages a.active{background:var(--navy);color:#fff}
+
+/* SECTIONS */
+.page{display:none}
+.page.active{display:block}
+section{padding:5rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+
+/* HERO */
+.hero{padding:8rem 2rem 5rem;background:linear-gradient(135deg,var(--navy) 0%,#0d2a6e 50%,#1a3a7a 100%);color:#fff;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(128,226,101,.12) 0%,transparent 70%);border-radius:50%}
+.hero-content{position:relative;z-index:1;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center}
+.hero h1{font-family:var(--serif);font-size:3rem;line-height:1.15;margin-bottom:1rem;color:#fff}
+.hero h1 em{color:var(--light-green);font-style:normal}
+.hero-sub{font-size:1.1rem;opacity:.85;margin-bottom:.5rem;line-height:1.6}
+.hero-location{font-size:.9rem;opacity:.6;margin-bottom:2rem}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--green);color:#fff;padding:.85rem 2rem;border-radius:8px;font-weight:600;font-size:1rem;border:none;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(36,141,92,.3)}
+.btn-secondary{background:transparent;color:#fff;padding:.85rem 2rem;border-radius:8px;font-weight:600;font-size:1rem;border:2px solid rgba(255,255,255,.3);cursor:pointer;transition:all .2s}
+.btn-secondary:hover{border-color:#fff;transform:translateY(-2px)}
+.hero-image{position:relative}
+.hero-image-placeholder{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,rgba(158,236,243,.15),rgba(128,226,101,.1));border-radius:16px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.1)}
+.hero-image-placeholder span{font-size:4rem}
+
+/* TRUST BAR */
+.trust-bar{background:var(--off-white);padding:1rem 2rem;border-bottom:1px solid var(--light-gray)}
+.trust-bar-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--navy);font-weight:500}
+.trust-item .check{color:var(--green);font-weight:700;font-size:1.1rem}
+
+/* HOW IT WORKS */
+.how-it-works{background:#fff}
+.section-label{font-size:.8rem;text-transform:uppercase;letter-spacing:2px;color:var(--green);font-weight:600;margin-bottom:.5rem}
+.section-title{font-family:var(--serif);font-size:2.2rem;color:var(--navy);margin-bottom:.5rem}
+.section-sub{color:var(--gray);font-size:1rem;margin-bottom:3rem;max-width:600px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.step{text-align:center;padding:2rem 1.5rem;border-radius:12px;background:var(--off-white);position:relative}
+.step-num{width:48px;height:48px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem;margin:0 auto 1rem}
+.step h3{font-family:var(--serif);font-size:1.2rem;color:var(--navy);margin-bottom:.5rem}
+.step p{font-size:.9rem;color:var(--gray)}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--warm-bg)}
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.testimonial-card{background:#fff;padding:2rem;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.06);position:relative}
+.testimonial-card::before{content:'"';font-family:var(--serif);font-size:4rem;color:var(--light-green);position:absolute;top:-.2rem;left:1rem;line-height:1}
+.testimonial-card p{font-size:.95rem;margin-top:1.5rem;font-style:italic;color:var(--dark-gray);line-height:1.7}
+.testimonial-card .source{margin-top:1rem;font-size:.8rem;color:var(--green);font-weight:600}
+
+/* SERVICES GRID */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.service-card{padding:2rem;border-radius:12px;border:1px solid var(--light-gray);transition:all .3s;cursor:pointer}
+.service-card:hover{border-color:var(--green);transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.service-card .icon{font-size:2rem;margin-bottom:1rem}
+.service-card h3{font-family:var(--serif);font-size:1.15rem;color:var(--navy);margin-bottom:.5rem}
+.service-card p{font-size:.85rem;color:var(--gray)}
+
+/* PARTNERS */
+.partners{background:var(--off-white)}
+.partner-logos{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;align-items:center;margin-top:1rem}
+.partner-logo{background:#fff;padding:1rem 1.5rem;border-radius:8px;font-weight:600;color:var(--navy);font-size:.85rem;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+
+/* PRICING */
+.pricing-card{max-width:600px;margin:0 auto;background:#fff;border-radius:16px;padding:3rem;box-shadow:0 4px 24px rgba(0,0,0,.08);text-align:center;border:2px solid var(--light-green)}
+.pricing-amount{font-family:var(--serif);font-size:3.5rem;color:var(--navy)}
+.pricing-amount span{font-size:1.2rem;color:var(--gray)}
+.pricing-detail{margin:.5rem 0;font-size:.95rem;color:var(--gray)}
+.pricing-compare{background:var(--off-white);padding:1rem;border-radius:8px;margin-top:1.5rem;font-size:.85rem;color:var(--dark-gray)}
+
+/* FAQ */
+.faq-list{max-width:700px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--light-gray);padding:1.2rem 0}
+.faq-q{font-weight:600;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:1rem}
+.faq-q::after{content:'+';font-size:1.5rem;color:var(--green);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s;font-size:.9rem;color:var(--gray);line-height:1.7}
+.faq-item.open .faq-a{max-height:300px;padding-top:.8rem}
+
+/* FINAL CTA */
+.final-cta{background:var(--navy);color:#fff;text-align:center}
+.final-cta h2{font-family:var(--serif);font-size:2.2rem;margin-bottom:.5rem}
+.final-cta p{opacity:.7;margin-bottom:2rem;font-size:1rem}
+.cta-form{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;max-width:500px;margin:0 auto}
+.cta-form input{padding:.85rem 1.2rem;border-radius:8px;border:none;font-size:1rem;flex:1;min-width:200px;font-family:var(--sans)}
+.cta-form select{padding:.85rem 1rem;border-radius:8px;border:none;font-size:.9rem;font-family:var(--sans);background:#fff}
+
+/* FOOTER */
+.footer{background:#050e2d;color:rgba(255,255,255,.6);padding:3rem 2rem 2rem}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem}
+.footer h4{color:#fff;font-size:.9rem;margin-bottom:1rem;font-weight:600}
+.footer a{display:block;font-size:.85rem;margin-bottom:.5rem;transition:color .2s}
+.footer a:hover{color:var(--light-green)}
+.footer-bottom{max-width:1100px;margin:2rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1);font-size:.8rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.newsletter-mini{display:flex;gap:.5rem;margin-top:.5rem}
+.newsletter-mini input{padding:.5rem .8rem;border-radius:6px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;font-size:.8rem;flex:1}
+.newsletter-mini button{padding:.5rem 1rem;border-radius:6px;background:var(--green);color:#fff;border:none;font-size:.8rem;font-weight:600;cursor:pointer}
+
+/* EVENT HERO */
+.event-hero{background:linear-gradient(135deg,var(--blue) 0%,#0d5ea0 100%);color:#fff;padding:8rem 2rem 5rem}
+.event-hero h1{font-family:var(--serif);font-size:2.8rem;max-width:600px}
+.event-hero p{opacity:.8;margin:1rem 0 2rem;max-width:500px}
+
+/* ABOUT */
+.about-hero{background:linear-gradient(135deg,var(--purple) 0%,#7a2aa0 100%);color:#fff;padding:8rem 2rem 5rem}
+.about-hero h1{font-family:var(--serif);font-size:2.8rem}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.value-card{padding:2rem;border-radius:12px;background:var(--off-white)}
+.value-card h3{font-family:var(--serif);color:var(--navy);margin-bottom:.5rem}
+.value-card p{font-size:.9rem;color:var(--gray)}
+
+/* RESOURCES */
+.resources-hero{background:linear-gradient(135deg,var(--orange) 0%,#c14a30 100%);color:#fff;padding:8rem 2rem 5rem}
+.resources-hero h1{font-family:var(--serif);font-size:2.8rem}
+.article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.article-card{border-radius:12px;overflow:hidden;border:1px solid var(--light-gray);transition:all .3s}
+.article-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.article-thumb{height:160px;background:var(--off-white);display:flex;align-items:center;justify-content:center;font-size:2.5rem}
+.article-body{padding:1.5rem}
+.article-tag{font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--green);font-weight:600}
+.article-body h3{font-family:var(--serif);font-size:1.1rem;color:var(--navy);margin:.5rem 0}
+.article-body p{font-size:.85rem;color:var(--gray)}
+
+/* GET STARTED */
+.getstarted-hero{background:linear-gradient(135deg,var(--navy) 0%,#0d2a6e 100%);color:#fff;padding:8rem 2rem 5rem;text-align:center}
+.getstarted-hero h1{font-family:var(--serif);font-size:2.8rem;margin-bottom:.5rem}
+.getstarted-hero p{opacity:.7;max-width:500px;margin:0 auto 2rem}
+.form-card{max-width:500px;margin:0 auto;background:#fff;border-radius:16px;padding:2.5rem;box-shadow:0 8px 32px rgba(0,0,0,.1)}
+.form-card h3{font-family:var(--serif);color:var(--navy);font-size:1.3rem;margin-bottom:1.5rem;text-align:center}
+.form-group{margin-bottom:1.2rem}
+.form-group label{display:block;font-size:.85rem;font-weight:600;color:var(--navy);margin-bottom:.3rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.75rem 1rem;border:1.5px solid var(--light-gray);border-radius:8px;font-size:.95rem;font-family:var(--sans);transition:border-color .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--green)}
+.form-group textarea{height:80px;resize:vertical}
+.form-submit{width:100%;padding:.85rem;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;font-family:var(--sans);transition:all .2s}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(36,141,92,.3)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.steps[style],.testimonial-grid,.services-grid,.values-grid,.article-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+.hero-content{grid-template-columns:1fr}
+.hero-image{display:none}
+.hero h1{font-size:2rem}
+.steps,.testimonial-grid,.services-grid,.values-grid,.article-grid{grid-template-columns:1fr}
+.footer-inner{grid-template-columns:1fr 1fr}
+.nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--navy);padding:1rem 2rem;flex-direction:column;align-items:flex-start;gap:1rem}
+.nav-links.open{display:flex}
+.nav-mobile{display:block}
+.nav-pages{overflow-x:auto;gap:.3rem}
+.trust-bar-inner{flex-direction:column;gap:.5rem;align-items:flex-start}
+}
+</style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="container nav">
-      <a class="brand" href="index.html">whimble</a>
-      <nav class="nav-links">
-        <a href="care.html">Individual Care</a>
-        <a href="events.html">Event Services</a>
-        <a href="resources.html">Resources</a>
-        <a href="about.html">About</a>
-      </nav>
-      <a class="btn btn-primary" href="contact.html">Get Started</a>
-    </div>
-  </header>
 
-  <main>
-    <section class="hero container">
-      <p class="kicker">Care that actually cares.</p>
-      <div class="hero-grid">
-        <div>
-          <h1>Reliable support for daily life and inclusive events.</h1>
-          <p class="sub">Whimble helps people with disabilities and event organizers access vetted attendants, transparent pricing, and real human support — without the chaos.</p>
-          <p>
-            <a class="btn btn-primary" href="contact.html">Book a care consult</a>
-            <a class="btn btn-secondary" href="events.html">Plan an event</a>
-          </p>
-          <div class="cta-strip">
-            <span class="pill">✅ Vetted attendants</span>
-            <span class="pill">✅ Coverage: Ottawa + West GTA</span>
-            <span class="pill">✅ Response target: within 30 min</span>
-          </div>
-        </div>
-        <aside class="card">
-          <h3 style="margin-top:0;">Quick route to the right path</h3>
-          <p class="sub" style="font-size:15px;">Choose your goal so we show the right form and timeline.</p>
-          <p><a class="btn btn-primary" style="width:100%;text-align:center" href="care.html#care-form">I need personal care support</a></p>
-          <p><a class="btn btn-secondary" style="width:100%;text-align:center" href="events.html#event-form">I need event accessibility staff</a></p>
-          <p><a class="btn btn-secondary" style="width:100%;text-align:center" href="resources.html#newsletter">I’m just researching for now</a></p>
-          <small class="note">Business purpose: route mixed-intent traffic into the highest-converting funnel immediately.</small>
-        </aside>
-      </div>
-    </section>
+<nav class="nav">
+  <a class="nav-brand" href="#" onclick="showPage('home');return false;">whimble</a>
+  <div class="nav-links" id="nav-links">
+    <a href="#" onclick="showPage('home');return false;">Home</a>
+    <a href="#" onclick="showPage('care');return false;">Individual Care</a>
+    <a href="#" onclick="showPage('events');return false;">Events</a>
+    <a href="#" onclick="showPage('about');return false;">About</a>
+    <a href="#" onclick="showPage('resources');return false;">Resources</a>
+    <a href="#" onclick="showPage('getstarted');return false;" class="nav-cta">Get Started</a>
+  </div>
+  <button class="nav-mobile" aria-label="Toggle navigation" onclick="toggleMobileNav()">☰</button>
+</nav>
 
-    <section class="section section-alt">
-      <div class="container">
-        <p class="kicker">Trust first, then ask</p>
-        <div class="row">
-          <article class="card"><h3>Attendant screening</h3><p>Vulnerable sector check, CPR/first-aid, references, interview, and in-person fit check.</p></article>
-          <article class="card"><h3>Transparent pricing</h3><p>$99 onboarding credit for new individual clients, then $39/hr. Event pricing via quote by staffing scope.</p></article>
-          <article class="card"><h3>Safety boundaries</h3><p>Clear non-emergency positioning and 911 guidance to protect clients and attendants.</p></article>
-        </div>
-      </div>
-    </section>
+<div class="nav-pages">
+  <a href="#" onclick="showPage('home');return false;" class="active" id="tab-home">Homepage</a>
+  <a href="#" onclick="showPage('care');return false;" id="tab-care">Individual Care</a>
+  <a href="#" onclick="showPage('events');return false;" id="tab-events">Events</a>
+  <a href="#" onclick="showPage('about');return false;" id="tab-about">About</a>
+  <a href="#" onclick="showPage('resources');return false;" id="tab-resources">Resources</a>
+  <a href="#" onclick="showPage('getstarted');return false;" id="tab-getstarted">Get Started</a>
+</div>
 
-    <section class="section container">
-      <p class="kicker">How users convert</p>
-      <h2>Simple 4-step growth flow</h2>
-      <div class="flow">
-        <article class="card"><h3>1) Awareness</h3><p>User lands on homepage, resource page, or service page from social/search/referral.</p></article>
-        <article class="card"><h3>2) Trust</h3><p>They review screening, location coverage, testimonials, and transparent process.</p></article>
-        <article class="card"><h3>3) Qualification</h3><p>Smart form captures type (individual/event), city, urgency, and support needs.</p></article>
-        <article class="card"><h3>4) Conversion</h3><p>Team follows up quickly; unready visitors join newsletter/waitlist to stay warm.</p></article>
-      </div>
-    </section>
+<div id="page-home" class="page active">
+<section class="hero">
+<div class="hero-content">
+<div>
+<h1>Your caregiver cancelled.<br><em>We'll be there in 24 hours.</em></h1>
+<p class="hero-sub">Vetted, flexible personal care for people with disabilities and seniors. No long-term contracts. No 3-hour minimums.</p>
+<p class="hero-location">Currently serving Ottawa & Greater Toronto Area</p>
+<div class="hero-ctas">
+<button class="btn-primary" onclick="showPage('care')">I Need Care →</button>
+<button class="btn-secondary" onclick="showPage('events')">Plan an Inclusive Event</button>
+</div>
+</div>
+<div class="hero-image"><div class="hero-image-placeholder"><span>🤝</span></div></div>
+</div>
+</section>
 
-    <section class="section section-alt">
-      <div class="container row">
-        <article class="card">
-          <p class="badge">Primary conversion</p>
-          <h3>Individual Care</h3>
-          <p>For people who need support with bathroom breaks, mobility, meals, and everyday routines.</p>
-          <p><a class="btn btn-primary" href="care.html">See care services</a></p>
-        </article>
-        <article class="card">
-          <p class="badge">Revenue expansion</p>
-          <h3>Event Services</h3>
-          <p>For festivals, conferences, and venues needing trained on-site attendants for accessibility.</p>
-          <p><a class="btn btn-primary" href="events.html">Request event quote</a></p>
-        </article>
-        <article class="card">
-          <p class="badge">Nurture</p>
-          <h3>Resources + Newsletter</h3>
-          <p>For low-intent visitors. Education now, conversion later with light-touch updates.</p>
-          <p><a class="btn btn-primary" href="resources.html">Open resource hub</a></p>
-        </article>
-      </div>
-    </section>
+<div class="trust-bar"><div class="trust-bar-inner">
+<div class="trust-item"><span class="check">✓</span> Fully vetted caregivers</div>
+<div class="trust-item"><span class="check">✓</span> $39/hr — 1-hour minimum</div>
+<div class="trust-item"><span class="check">✓</span> On-demand & scheduled</div>
+<div class="trust-item"><span class="check">✓</span> Client-directed care</div>
+<div class="trust-item"><span class="check">✓</span> Ottawa & Toronto</div>
+</div></div>
 
-    <section class="section container">
-      <h2>Proof that this model works</h2>
-      <div class="row">
-        <blockquote class="card"><strong>Client:</strong> “The process was clear, human, and respectful from the first call.”</blockquote>
-        <blockquote class="card"><strong>Event partner:</strong> “Whimble helped us serve guests with dignity instead of scrambling last minute.”</blockquote>
-        <article class="card"><h3>Coverage and capacity</h3><p>Current service area is clearly communicated up front; out-of-area users are routed to waitlist.</p></article>
-      </div>
-    </section>
+<section class="how-it-works"><div class="container">
+<p class="section-label">How It Works</p>
+<h2 class="section-title">Care in three simple steps</h2>
+<p class="section-sub">No agencies. No waiting lists. No giving up control of your care.</p>
+<div class="steps">
+<div class="step"><div class="step-num">1</div><h3>Tell Us What You Need</h3><p>Sign up and share your care needs, preferences, and schedule. Whether it's personal care, errands, or cleaning — we've got you.</p></div>
+<div class="step"><div class="step-num">2</div><h3>We Match You</h3><p>Our platform matches you with a vetted, qualified attendant based on your location, needs, and preferences. Every attendant undergoes background checks and a live interview.</p></div>
+<div class="step"><div class="step-num">3</div><h3>Get Care, Your Way</h3><p>Your attendant arrives on your schedule. You direct the care. After each visit, share feedback to help us continuously improve.</p></div>
+</div></div>
+</section>
 
-    <section class="section section-alt">
-      <div class="container card" id="faq">
-        <h2 style="margin-top:0">Top FAQs (pre-conversion)</h2>
-        <p><strong>Where does Whimble operate today?</strong><br>Ottawa + west end of the Greater Toronto Area, 7am–11pm daily.</p>
-        <p><strong>Can I book emergency medical support?</strong><br>No. Whimble is not emergency/medical response. For emergencies call 911.</p>
-        <p><strong>Why is onboarding required?</strong><br>It allows safety checks, routine planning, and stronger client-attendant matching.</p>
-        <p><a class="btn btn-secondary" href="contact.html">Ask a specific question</a></p>
-      </div>
-    </section>
-  </main>
+<section class="testimonials"><div class="container">
+<p class="section-label">What Clients Say</p>
+<h2 class="section-title">Real people. Real relief.</h2>
+<div class="testimonial-grid">
+<div class="testimonial-card"><p>Just so grateful this service exists. Take all my money.</p><div class="source">— Current Client, Ottawa</div></div>
+<div class="testimonial-card"><p>I'll definitely use Whimble again. Their respect for client's time and needs is unparalleled. Excellent service.</p><div class="source">— Current Client</div></div>
+<div class="testimonial-card"><p>Accessing willing/ready personal care assistance with the tap of a button would alleviate a huge amount of stress, both off of me and my family.</p><div class="source">— Current Client</div></div>
+</div></div>
+</section>
 
-  <footer>
-    <div class="container cta-strip">
-      <span>© 2026 Whimble concept prototype • Care that actually cares.</span>
-      <span><a href="contact.html">Get Started</a> · <a href="resources.html#newsletter">Newsletter</a></span>
-    </div>
-  </footer>
+<section style="background:#fff"><div class="container">
+<p class="section-label">Our Services</p><h2 class="section-title">Support for every part of your day</h2>
+<p class="section-sub">From daily routines to unexpected moments — we've got you covered.</p>
+<div class="services-grid">
+<div class="service-card"><div class="icon">🛁</div><h3>Personal Care</h3><p>Bathing, dressing, grooming — feeling your best for the day ahead.</p></div>
+<div class="service-card"><div class="icon">🛒</div><h3>Errands</h3><p>Groceries, pharmacy runs, packages — an extra set of hands when you need it.</p></div>
+<div class="service-card"><div class="icon">🧹</div><h3>Cleaning</h3><p>Make your home your haven. Light cleaning, laundry, decluttering.</p></div>
+<div class="service-card"><div class="icon">🍳</div><h3>Cooking</h3><p>Meal prep and support so you have the energy to seize the day.</p></div>
+<div class="service-card"><div class="icon">🚿</div><h3>Bathroom Support</h3><p>Bladder and bowel routine help — at home or out in the world.</p></div>
+<div class="service-card"><div class="icon">🎪</div><h3>Event Support</h3><p>On-site personal care at concerts, festivals, conferences, and more.</p></div>
+</div></div>
+</section>
+
+<section class="partners"><div class="container" style="text-align:center">
+<p class="section-label">Trusted By</p>
+<h2 class="section-title">Powering accessibility at Canada's biggest events</h2>
+<div class="partner-logos">
+<div class="partner-logo">🏒 Hockey Canada</div><div class="partner-logo">🎵 Ottawa Bluesfest</div><div class="partner-logo">🎡 Canadian National Exhibition</div><div class="partner-logo">🏛️ CSA Group</div><div class="partner-logo">🎬 Ottawa Intl Animation Fest</div><div class="partner-logo">🏆 Ottawa Accessibility Award</div>
+</div></div>
+</section>
+
+<section style="background:#fff"><div class="container" style="text-align:center">
+<p class="section-label">Simple, Transparent Pricing</p>
+<h2 class="section-title">No hidden fees. No surprises.</h2>
+<div class="pricing-card">
+<div class="pricing-amount">$39<span>/hr + HST</span></div>
+<p class="pricing-detail"><strong>1-hour minimum</strong> — no 3-hour commitments</p>
+<p class="pricing-detail">$99 + HST one-time onboarding (includes home visit & care assessment)</p>
+<div class="pricing-compare"><strong>How we compare:</strong> Traditional agencies charge $42+/hr with 3-hour minimums and long-term contracts. Whimble gives you flexibility and control — on your terms.</div>
+<div style="margin-top:1.5rem"><button class="btn-primary" onclick="showPage('getstarted')">Get Started Today →</button></div>
+</div></div>
+</section>
+
+<section style="background:var(--off-white)"><div class="container">
+<p class="section-label">Common Questions</p><h2 class="section-title">Frequently Asked Questions</h2>
+<div class="faq-list">
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Where does Whimble currently operate?</div><div class="faq-a">We currently have personal care attendants across Ottawa and in the west end of the Greater Toronto Area. If you're outside our service area, join our waitlist and we'll notify you when we launch in your city.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">How are caregivers vetted?</div><div class="faq-a">Every caregiver must submit a vulnerable sector check, provide 2 professional references, hold valid CPR/First Aid certification and professional liability insurance, and pass a live interview reviewing their skills and qualifications.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What happens when I sign up?</div><div class="faq-a">After signing up, we schedule a virtual interview to learn about your needs and routines, followed by a home visit to confirm access procedures and equipment. Then you're ready to start requesting care.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Can I choose my caregiver?</div><div class="faq-a">Our platform matches you based on your location, needs, and preferences. You can provide feedback after each visit, and we'll prioritize attendants you've had positive experiences with.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What if I need help outside my home?</div><div class="faq-a">Whimble supports you wherever life takes you — appointments, errands, events, travel. Our care isn't limited to your home.</div></div>
+</div></div>
+</section>
+
+<section class="final-cta"><div class="container">
+<h2>Ready to get started?</h2>
+<p>Care on your terms. Tell us where you are and we'll take it from there.</p>
+<div class="cta-form">
+<input type="email" placeholder="Your email address">
+<select><option>Ottawa</option><option>Toronto / GTA</option><option>Other city</option></select>
+<button class="btn-primary" onclick="showPage('getstarted')">Get Started →</button>
+</div></div>
+</section>
+</div>
+
+<div id="page-care" class="page">
+<section class="hero" style="padding-bottom:4rem"><div class="container">
+<p class="section-label" style="color:var(--light-green)">Individual Care</p>
+<h1 style="font-family:var(--serif);font-size:2.8rem;color:#fff;margin-bottom:1rem">When your routine support system fails,<br><em style="color:var(--light-green)">we're there.</em></h1>
+<p style="color:rgba(255,255,255,.8);font-size:1.1rem;max-width:550px;margin-bottom:2rem">Flexible, on-demand personal care for people with disabilities and seniors in Ottawa & Toronto. No long-term contracts. You direct the care.</p>
+<button class="btn-primary" onclick="showPage('getstarted')" style="font-size:1.1rem;padding:1rem 2.5rem">Get Started Now →</button>
+</div></section>
+
+<div class="trust-bar"><div class="trust-bar-inner">
+<div class="trust-item"><span class="check">✓</span> Vulnerable sector checks</div><div class="trust-item"><span class="check">✓</span> 2 professional references</div><div class="trust-item"><span class="check">✓</span> Live interview process</div><div class="trust-item"><span class="check">✓</span> CPR/First Aid certified</div><div class="trust-item"><span class="check">✓</span> Professional liability insurance</div>
+</div></div>
+
+<section style="background:#fff"><div class="container">
+<p class="section-label">Who It's For</p><h2 class="section-title">Whimble supports people across every stage of life</h2>
+<div class="services-grid" style="margin-top:2rem">
+<div class="service-card"><div class="icon">♿</div><h3>Physical Disability</h3><p>Personal care, household support, and community participation on your terms.</p></div>
+<div class="service-card"><div class="icon">👨‍👩‍👧</div><h3>Adult Children of Aging Parents</h3><p>Peace of mind knowing your parent has trusted, flexible care when you can't be there.</p></div>
+<div class="service-card"><div class="icon">🧓</div><h3>Aging & Seniors</h3><p>Maintain independence and quality of life with support that adapts to your needs.</p></div>
+<div class="service-card"><div class="icon">💜</div><h3>Chronic Illness</h3><p>Support during flare-ups and bad days. No scheduling weeks in advance.</p></div>
+<div class="service-card"><div class="icon">🩹</div><h3>Short-Term Recovery</h3><p>Post-surgery or injury? Get temporary help without a long-term commitment.</p></div>
+<div class="service-card"><div class="icon">🤲</div><h3>Primary Caregivers</h3><p>Reliable backup when you need a break. Reduce stress. Delegate with confidence.</p></div>
+</div></div>
+</section>
+
+<section style="background:var(--off-white)"><div class="container">
+<p class="section-label">Our Services</p><h2 class="section-title">What we help with</h2>
+<div class="services-grid" style="margin-top:2rem">
+<div class="service-card" style="background:#fff"><div class="icon">🛁</div><h3>Personal Care</h3><p>Bathing, dressing, grooming — we'll help you feel your best.</p></div>
+<div class="service-card" style="background:#fff"><div class="icon">🛒</div><h3>Errands</h3><p>Groceries, pharmacy, packages, pet rides — we're your extra set of hands.</p></div>
+<div class="service-card" style="background:#fff"><div class="icon">🧹</div><h3>Cleaning</h3><p>Light cleaning, laundry, decluttering your space.</p></div>
+<div class="service-card" style="background:#fff"><div class="icon">🍳</div><h3>Cooking</h3><p>Meal prep and meal support to keep you fueled.</p></div>
+<div class="service-card" style="background:#fff"><div class="icon">🚿</div><h3>Bathroom Support</h3><p>Bladder and bowel routines — at home or on the go.</p></div>
+<div class="service-card" style="background:#fff"><div class="icon">🛞</div><h3>Roadside Assistance</h3><p>Equipment malfunction? We'll help you get where you're going safely.</p></div>
+</div></div>
+</section>
+
+<section style="background:#fff"><div class="container" style="text-align:center">
+<p class="section-label">Pricing</p>
+<div class="pricing-card"><div class="pricing-amount">$39<span>/hr + HST</span></div>
+<p class="pricing-detail"><strong>1-hour minimum</strong> — the only platform with no multi-hour commitment</p>
+<p class="pricing-detail">$99 + HST one-time onboarding fee</p>
+<div class="pricing-compare"><strong>Traditional agencies:</strong> $42+/hr, 3-hour minimums, rigid schedules, long-term contracts.</div>
+<div style="margin-top:1.5rem"><button class="btn-primary" onclick="showPage('getstarted')">Get Started →</button></div></div>
+</div></section>
+
+<section class="testimonials"><div class="container">
+<p class="section-label">Client Stories</p><h2 class="section-title">What our clients say</h2>
+<div class="testimonial-grid">
+<div class="testimonial-card"><p>Just so grateful this service exists. Take all my money.</p><div class="source">— Client, Ottawa</div></div>
+<div class="testimonial-card"><p>I'll definitely use Whimble again. Their respect for client's time and needs is unparalleled.</p><div class="source">— Client</div></div>
+<div class="testimonial-card"><p>Accessing care assistance with the tap of a button alleviates a huge amount of stress off of me and my family.</p><div class="source">— Client</div></div>
+</div></div>
+</section>
+
+<section class="final-cta"><div class="container"><h2>Care that actually cares.</h2><p>Sign up today and be covered when regular care falls through.</p>
+<button class="btn-primary" onclick="showPage('getstarted')" style="font-size:1.1rem;padding:1rem 2.5rem">Get Started Now →</button></div></section>
+</div>
+
+<div id="page-events" class="page">
+<section class="event-hero"><div class="container">
+<p class="section-label" style="color:var(--light-blue)">Event Services</p>
+<h1>Make your event <em style="color:var(--light-blue);font-style:italic">truly</em> inclusive.</h1>
+<p>True accessibility is more than a ramp. Whimble provides on-site personal care attendants so every guest can fully participate — not just attend.</p>
+<div class="hero-ctas"><button class="btn-primary" onclick="showPage('getstarted')">Request a Quote →</button><button class="btn-secondary" onclick="showPage('resources')">Download Our Free Events Guide</button></div>
+</div></section>
+
+<section class="testimonials"><div class="container"><p class="section-label">Trusted by Leading Organizations</p><h2 class="section-title">What event organizers say</h2>
+<div class="testimonial-grid">
+<div class="testimonial-card"><p>We aimed to make this World Juniors one of the most inclusive events yet. Having Whimble available is a game-changer for our events!</p><div class="source">— Khanh Be, Hockey Canada</div></div>
+<div class="testimonial-card"><p>Adding Whimble has shown patrons that we hear their concerns and want to provide as much support as we can.</p><div class="source">— Stef Mason, Ottawa Bluesfest</div></div>
+<div class="testimonial-card"><p>As an event planner, it's wonderful to know attendant support is there for our delegates. What you're offering is a long overdue game-changer.</p><div class="source">— Laura Pelan, CSA Group</div></div>
+</div></div></section>
+
+<section style="background:#fff"><div class="container"><p class="section-label">How It Works</p><h2 class="section-title">Four steps to a fully inclusive event</h2>
+<div class="steps" style="grid-template-columns:repeat(4,1fr)">
+<div class="step"><div class="step-num">1</div><h3>Book Whimble</h3><p>Share your event details — date, location, expected attendance. We handle the rest.</p></div>
+<div class="step"><div class="step-num">2</div><h3>We Staff Up</h3><p>We recommend and schedule the right number of vetted, insured attendants for your event.</p></div>
+<div class="step"><div class="step-num">3</div><h3>On-Site Care</h3><p>Attendants help guests with washroom use, eating, gear changes, and navigating the venue.</p></div>
+<div class="step"><div class="step-num">4</div><h3>Insights Report</h3><p>Post-event, receive accessibility insights and feedback to improve year over year.</p></div>
+</div></div></section>
+
+<section style="background:var(--off-white)"><div class="container" style="text-align:center"><h2 class="section-title">Attending an event with Whimble support?</h2>
+<p style="color:var(--gray);max-width:500px;margin:1rem auto 2rem">If you're a guest at an event where Whimble provides on-site care, look for attendants in white Whimble shirts. They're there for you — no booking required.</p>
+<button class="btn-primary" onclick="showPage('resources')">Learn More About Guest Support →</button></div></section>
+
+<section class="final-cta" style="background:var(--blue)"><div class="container"><h2>Ready to elevate your event's accessibility?</h2><p>Get a custom quote for on-site personal care support at your next event.</p><button class="btn-primary" onclick="showPage('getstarted')" style="font-size:1.1rem;padding:1rem 2.5rem">Request a Quote →</button></div></section>
+</div>
+
+<div id="page-about" class="page">
+<section class="about-hero"><div class="container"><p class="section-label" style="color:rgba(255,255,255,.7)">About Whimble</p><h1>Care that actually cares.</h1><p style="opacity:.8;margin-top:1rem;max-width:550px;font-size:1.1rem">We're building a world where disability doesn't limit personal freedom. Whimble is Canada's first tech-enabled, client-directed on-demand personal care platform.</p></div></section>
+
+<section style="background:#fff"><div class="container"><p class="section-label">The Problem</p><h2 class="section-title">Traditional care systems are broken.</h2>
+<p style="color:var(--gray);max-width:700px;margin-bottom:2rem;font-size:1.05rem">They're rigid, slow, dehumanizing, and built for predictable schedules — but real life is messy. When attendants cancel, unexpected needs arise, or aging parents need help, people lose independence and dignity. Existing support systems can't keep up.</p>
+<p class="section-label">Our Promise</p><h2 class="section-title">When routine support systems fail, Whimble is there.</h2>
+<p style="color:var(--gray);max-width:700px;font-size:1.05rem">We provide trusted, reliable, on-demand personal care that maintains independence, dignity, and peace of mind. Powered by technology. Delivered by humans.</p>
+</div></section>
+
+<section style="background:var(--off-white)"><div class="container"><p class="section-label">Our Values</p><h2 class="section-title">What drives us</h2>
+<div class="values-grid" style="margin-top:2rem">
+<div class="value-card"><h3>🤝 Dignity</h3><p>Everyone deserves respect in their care. We uphold each client's sense of self-worth.</p></div>
+<div class="value-card"><h3>😄 Humour</h3><p>A little lightheartedness goes a long way. Warmth and connection in every interaction.</p></div>
+<div class="value-card"><h3>💙 Client-Centred</h3><p>Clients are at the heart of every decision. Flexible, responsive, and always personalized.</p></div>
+<div class="value-card"><h3>🔒 Trust</h3><p>From vetting to transparent communication, we build genuine, trusting relationships.</p></div>
+<div class="value-card"><h3>📖 Transparency</h3><p>Clear pricing, open communication, and honest processes at every step.</p></div>
+<div class="value-card"><h3>💡 Innovation</h3><p>Continuously improving our tools and services to make care more accessible.</p></div>
+</div></div></section>
+
+<section class="partners"><div class="container" style="text-align:center"><p class="section-label">Supported By</p><h2 class="section-title">Our partners & supporters</h2>
+<div class="partner-logos"><div class="partner-logo">ATS</div><div class="partner-logo">Invest Ottawa</div><div class="partner-logo">Mitacs</div><div class="partner-logo">City of Ottawa</div></div>
+</div></section>
+
+<section class="final-cta" style="background:var(--purple)"><div class="container"><h2>Join our mission</h2><p>We're hiring. Come build the future of care with us.</p><button class="btn-primary" style="background:var(--navy)">View Careers →</button></div></section>
+</div>
+
+<div id="page-resources" class="page">
+<section class="resources-hero"><div class="container"><p class="section-label" style="color:rgba(255,255,255,.7)">Resource Hub</p><h1>Learn. Prepare. Thrive.</h1><p style="opacity:.8;margin-top:1rem;max-width:500px">Care tips, accessibility guides, community stories, and the latest from Whimble.</p></div></section>
+
+<section style="background:#fff"><div class="container"><div class="article-grid">
+<div class="article-card"><div class="article-thumb">📋</div><div class="article-body"><div class="article-tag">Guide</div><h3>Planning an Inclusive Event: A Complete Guide</h3><p>Your practical, community-rooted roadmap to events that are genuinely inclusive — not just compliant.</p></div></div>
+<div class="article-card"><div class="article-thumb">🏠</div><div class="article-body"><div class="article-tag">Care Tips</div><h3>How to Prepare for Your First Whimble Visit</h3><p>What to expect during onboarding, the home visit, and your first care session.</p></div></div>
+<div class="article-card"><div class="article-thumb">💰</div><div class="article-body"><div class="article-tag">Guide</div><h3>Understanding Ontario Care Funding Options</h3><p>A breakdown of provincial programs and how they might offset your care costs.</p></div></div>
+<div class="article-card"><div class="article-thumb">👩‍👧</div><div class="article-body"><div class="article-tag">Community</div><h3>Client Spotlight: How Sarah Found Freedom</h3><p>One client's story of regaining independence through on-demand support.</p></div></div>
+<div class="article-card"><div class="article-thumb">🎵</div><div class="article-body"><div class="article-tag">News</div><h3>Whimble at Ottawa Bluesfest 2025: A Recap</h3><p>How on-site attendants helped hundreds of guests enjoy the festival.</p></div></div>
+<div class="article-card"><div class="article-thumb">🧠</div><div class="article-body"><div class="article-tag">Care Tips</div><h3>5 Things to Tell Your New Caregiver</h3><p>Communication tips to make your care experience better from day one.</p></div></div>
+</div></div></section>
+
+<section style="background:var(--off-white);text-align:center"><div class="container"><h2 class="section-title">Stay in the loop</h2><p style="color:var(--gray);margin-bottom:2rem">Monthly care tips, event recaps, community highlights, and new service area announcements.</p>
+<div class="cta-form" style="max-width:400px;margin:0 auto"><input type="email" placeholder="Your email address" style="border:1.5px solid var(--light-gray)"><button class="btn-primary">Subscribe →</button></div>
+</div></section>
+</div>
+
+<div id="page-getstarted" class="page">
+<section class="getstarted-hero"><div class="container"><h1>Let's get you the care you need.</h1><p>Tell us a bit about yourself and we'll take it from there. Whether you're in Ottawa, Toronto, or somewhere else — we want to hear from you.</p></div></section>
+
+<section style="background:var(--off-white);padding-top:3rem"><div class="container"><div class="form-card">
+<h3>Get Started with Whimble</h3>
+<div class="form-group"><label>Your Name</label><input type="text" placeholder="First and last name"></div>
+<div class="form-group"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+<div class="form-group"><label>Phone</label><input type="tel" placeholder="(555) 123-4567"></div>
+<div class="form-group"><label>Your City or Postal Code</label><input type="text" placeholder="e.g. Ottawa, M5V 2T6"></div>
+<div class="form-group"><label>I'm looking for...</label>
+<select><option>Personal care for myself</option><option>Care for a family member</option><option>Event accessibility support</option><option>I want to become a caregiver</option><option>General inquiry</option></select></div>
+<div class="form-group"><label>Tell us more (optional)</label><textarea placeholder="Share any details about your care needs, schedule, or questions."></textarea></div>
+<button class="form-submit">Submit →</button>
+<p style="text-align:center;margin-top:1rem;font-size:.8rem;color:var(--gray)">We'll respond within 1 business day. Your information is secure.</p>
+</div></div></section>
+
+<section style="background:var(--off-white)"><div class="container" style="text-align:center"><p style="color:var(--gray)">Already a Whimble client? <a href="https://beta.whimble.ca/password" style="color:var(--green);font-weight:600">Place a request here →</a></p></div></section>
+</div>
+
+<footer class="footer"><div class="footer-inner">
+<div><div class="nav-brand" style="margin-bottom:1rem;display:inline-block;">whimble</div><p style="font-size:.85rem;max-width:280px">On-demand, client-directed personal care for people with disabilities and seniors. Ottawa & Toronto.</p><div class="newsletter-mini" style="margin-top:1rem"><input type="email" placeholder="Your email"><button>Subscribe</button></div></div>
+<div><h4>Services</h4><a href="#" onclick="showPage('care');return false;">Individual Care</a><a href="#" onclick="showPage('events');return false;">Event Services</a><a href="#" onclick="showPage('getstarted');return false;">Get Started</a><a href="#">Become a Caregiver</a></div>
+<div><h4>Company</h4><a href="#" onclick="showPage('about');return false;">About Us</a><a href="#" onclick="showPage('resources');return false;">Resources</a><a href="#">Careers</a><a href="#">Contact</a></div>
+<div><h4>Support</h4><a href="#" onclick="showPage('home');return false;">FAQ</a><a href="#">Trust & Safety</a><a href="#">Terms & Conditions</a><a href="#">Privacy Policy</a><a href="mailto:hello@whimble.ca">hello@whimble.ca</a></div>
+</div>
+<div class="footer-bottom"><span>© 2026 Whimble Care Inc. All Rights Reserved.</span><span>"Care that actually cares."</span></div></footer>
+
+<script>
+function toggleMobileNav(){
+  document.getElementById('nav-links').classList.toggle('open');
+}
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  var page = document.getElementById('page-' + id);
+  if (page) page.classList.add('active');
+  document.querySelectorAll('.nav-pages a').forEach(a => a.classList.remove('active'));
+  var tab = document.getElementById('tab-' + id);
+  if (tab) tab.classList.add('active');
+  document.getElementById('nav-links').classList.remove('open');
+  window.scrollTo(0, 0);
+}
+</script>
+
 </body>
 </html>
