@@ -1,340 +1,254 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rajat Arora — Business Systems & Automation Architect</title>
-  <meta name="description" content="Business Systems & Automation Architect. I build scalable RevOps + operational systems with clean data, reliable reporting, and automation that sticks." />
-  <meta name="theme-color" content="#0b0b10" />
-
-  <!-- Tailwind via CDN (no install needed) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    html { scroll-behavior: smooth; }
-    /* subtle background noise */
-    .noise {
-      background-image:
-        radial-gradient(circle at 20% 0%, rgba(99,102,241,0.22), transparent 55%),
-        radial-gradient(circle at 80% 10%, rgba(34,211,238,0.14), transparent 55%),
-        radial-gradient(circle at 40% 120%, rgba(16,185,129,0.12), transparent 55%),
-        linear-gradient(180deg, #05050a 0%, #070712 40%, #05050a 100%);
-    }
-    .glass {
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: 0 18px 50px rgba(0,0,0,0.38);
-    }
-    .muted { color: rgba(255,255,255,0.72); }
-    .muted2 { color: rgba(255,255,255,0.58); }
-    .line { border-color: rgba(255,255,255,0.10); }
-    .pill {
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
-    }
-    .btn {
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-    }
-    .btn:hover { border-color: rgba(255,255,255,0.22); }
-    .btnPrimary {
-      background: #ffffff;
-      color: #0a0a0a;
-      border: 1px solid rgba(255,255,255,0.0);
-    }
-    .btnPrimary:hover { background: #e8e8ff; }
-    a:focus { outline: 2px solid rgba(99,102,241,0.8); outline-offset: 2px; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Whimble — Care That Actually Cares</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#091F5B;--green:#248D5C;--light-green:#80E265;--blue:#1484D0;--orange:#D7553D;--purple:#9D43CB;--off-white:#F7F8FC;--warm-bg:#FDF8F0;--gray:#6B7280;--light-gray:#E5E7EB;--dark-gray:#374151;--serif:'DM Serif Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+body{font-family:var(--sans);color:var(--dark-gray);line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{max-width:1100px;margin:0 auto;padding:0 1.25rem}
+.skip-link{position:absolute;left:-9999px;top:0;background:#fff;color:#000;padding:.5rem .75rem;z-index:9999}
+.skip-link:focus{left:.5rem;top:.5rem}
+.nav{position:sticky;top:0;z-index:100;background:var(--navy);height:70px;display:flex;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
+.brand{font-family:var(--serif);color:#fff;font-size:1.35rem}
+.nav-links{display:flex;align-items:center;gap:1.5rem}
+.nav-links a{color:#fff;opacity:.9;font-size:.95rem}
+.nav-links a[aria-current="page"]{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.nav-toggle{display:none;background:none;border:0;color:#fff;font-size:1.35rem}
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:#fff;border:0;border-radius:8px;padding:.85rem 1.35rem;font-weight:600;cursor:pointer}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-secondary{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4);border-radius:8px;padding:.8rem 1.2rem;font-weight:600;cursor:pointer}
+.btn-secondary-dark{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:var(--navy);border:1px solid var(--light-gray);border-radius:8px;padding:.8rem 1.2rem;font-weight:600;cursor:pointer}
+:focus-visible{outline:3px solid #111;outline-offset:2px}
+.page{display:none}
+.page.active{display:block}
+.hero{background:linear-gradient(135deg,var(--navy),#1a3a7a);color:#fff;padding:5.5rem 0 4rem}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}
+.hero h1{font-family:var(--serif);font-size:3rem;line-height:1.14;margin-bottom:.8rem}
+.hero h1 em{color:var(--light-green);font-style:normal}
+.hero p{opacity:.88;max-width:620px}
+.cta-row{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.5rem}
+.hero-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:1.2rem}
+.trust{background:var(--off-white);border-top:1px solid var(--light-gray);border-bottom:1px solid var(--light-gray);padding:1rem 0}
+.trust ul{list-style:none;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.trust li{font-size:.9rem;color:var(--navy);font-weight:600}
+.section{padding:4rem 0}
+.section h2{font-family:var(--serif);font-size:2.1rem;color:var(--navy);margin-bottom:.5rem}
+.kicker{font-size:.75rem;text-transform:uppercase;letter-spacing:1.7px;color:var(--green);font-weight:700;margin-bottom:.5rem}
+.sub{color:var(--gray);max-width:700px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.7rem}
+.card{background:#fff;border:1px solid var(--light-gray);border-radius:12px;padding:1.2rem}
+.card h3{font-family:var(--serif);color:var(--navy);margin-bottom:.4rem}
+.bg-off{background:var(--off-white)}
+.price-card{margin-top:1rem;padding:1.25rem;border:2px solid var(--light-green);border-radius:12px;background:#fff;max-width:560px}
+.price{font-family:var(--serif);color:var(--navy);font-size:2.3rem}
+.faq{max-width:760px;margin-top:1.25rem}
+.faq-item{border-bottom:1px solid var(--light-gray)}
+.faq-btn{width:100%;background:none;border:0;text-align:left;display:flex;justify-content:space-between;align-items:center;padding:1rem 0;font-weight:700;color:var(--navy);font-size:1rem;cursor:pointer}
+.faq-btn::after{content:'+';font-size:1.4rem;color:var(--green)}
+.faq-btn[aria-expanded="true"]::after{content:'−'}
+.faq-panel{padding:0 0 1rem 0;color:var(--gray)}
+.final{background:var(--navy);color:#fff;text-align:center}
+.final h2{font-family:var(--serif);font-size:2.1rem}
+.footer{background:#050e2d;color:rgba(255,255,255,.65);padding:2rem 0}
+.footer .row{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.footer a{color:#fff}
+.simple-hero{color:#fff;padding:4.3rem 0}
+.care{background:linear-gradient(135deg,var(--navy),#1a3a7a)}
+.events{background:linear-gradient(135deg,var(--blue),#0d5ea0)}
+.about{background:linear-gradient(135deg,var(--purple),#7a2aa0)}
+.resources{background:linear-gradient(135deg,var(--orange),#c14a30)}
+.getstarted{background:linear-gradient(135deg,var(--navy),#0d2a6e)}
+.form-card{max-width:620px;background:#fff;border-radius:14px;padding:1.25rem;border:1px solid var(--light-gray);margin-top:1rem}
+label{display:block;font-size:.86rem;font-weight:700;color:var(--navy);margin:.7rem 0 .25rem}
+input,select,textarea{width:100%;border:1.5px solid var(--light-gray);border-radius:8px;padding:.72rem .85rem;font:inherit}
+@media(max-width:860px){
+  .hero-grid,.grid-3{grid-template-columns:1fr}
+  .nav-toggle{display:block}
+  .nav-links{display:none;position:absolute;top:70px;left:0;right:0;background:var(--navy);padding:1rem 1.25rem;flex-direction:column;align-items:flex-start}
+  .nav-links.open{display:flex}
+  .hero h1{font-size:2.2rem}
+}
+</style>
 </head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#" onclick="showPage('home');return false;">whimble</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav" onclick="toggleNav(this)">☰</button>
+    <nav id="primary-nav" class="nav-links" aria-label="Primary">
+      <a data-page="home" href="#" onclick="showPage('home');return false;" aria-current="page">Home</a>
+      <a data-page="care" href="#" onclick="showPage('care');return false;">Individual Care</a>
+      <a data-page="events" href="#" onclick="showPage('events');return false;">Events</a>
+      <a data-page="about" href="#" onclick="showPage('about');return false;">About</a>
+      <a data-page="resources" href="#" onclick="showPage('resources');return false;">Resources</a>
+      <a href="#" onclick="showPage('getstarted');return false;" class="btn-primary">Get Started</a>
+    </nav>
+  </div>
+</header>
 
-<body class="noise text-white">
-  <!-- Top bar -->
-  <header class="sticky top-0 z-50 backdrop-blur border-b line">
-    <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
-      <a href="#top" class="font-semibold tracking-tight">Rajat Arora</a>
-
-      <nav class="hidden md:flex gap-6 text-sm text-white/70">
-        <a href="#work" class="hover:text-white">Work</a>
-        <a href="#proof" class="hover:text-white">Proof</a>
-        <a href="#about" class="hover:text-white">About</a>
-        <a href="#contact" class="hover:text-white">Contact</a>
-      </nav>
-
-      <a href="#contact" class="rounded-xl px-4 py-2 text-sm font-semibold btnPrimary">
-        Let’s talk →
-      </a>
-    </div>
-  </header>
-
-  <main id="top" class="max-w-6xl mx-auto px-5">
-    <!-- Hero -->
-    <section class="pt-12 pb-10 md:pt-16 md:pb-12">
-      <div class="flex flex-wrap gap-2">
-        <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Business Systems</span>
-        <span class="pill rounded-full px-3 py-1 text-xs text-white/80">RevOps</span>
-        <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Automation</span>
-        <span class="pill rounded-full px-3 py-1 text-xs text-white/80">HubSpot</span>
-        <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Toronto, Canada</span>
-      </div>
-
-      <div class="mt-6 grid gap-10 md:grid-cols-12 md:items-start">
-        <div class="md:col-span-8">
-          <h1 class="text-4xl md:text-6xl font-semibold leading-tight tracking-tight">
-            Business Systems & Automation Architect
-          </h1>
-
-          <p class="mt-5 text-lg muted max-w-2xl">
-            I build scalable operating foundations across HubSpot and connected tools — clean data, clear lifecycle workflows,
-            and automation that sticks — so teams execute faster and leadership can trust reporting.
-          </p>
-
-          <div class="mt-7 flex flex-wrap gap-3">
-            <a href="#work" class="rounded-xl px-5 py-3 text-sm font-semibold btnPrimary">
-              View case studies →
-            </a>
-            <a href="#contact" class="rounded-xl px-5 py-3 text-sm font-semibold btn">
-              Contact
-            </a>
-            <a href="mailto:arorarajat12@gmail.com" class="rounded-xl px-5 py-3 text-sm font-semibold btn">
-              Email
-            </a>
-            <!-- Replace with your LinkedIn URL -->
-            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" class="rounded-xl px-5 py-3 text-sm font-semibold btn">
-              LinkedIn
-            </a>
-          </div>
-
-          <div class="mt-10 grid gap-4 sm:grid-cols-3">
-            <div class="glass rounded-2xl p-4">
-              <p class="text-sm muted2">Automation built</p>
-              <p class="mt-1 text-2xl font-semibold">600+ workflows</p>
-            </div>
-            <div class="glass rounded-2xl p-4">
-              <p class="text-sm muted2">Systems</p>
-              <p class="mt-1 text-2xl font-semibold">HubSpot + GTM stack</p>
-            </div>
-            <div class="glass rounded-2xl p-4">
-              <p class="text-sm muted2">Focus</p>
-              <p class="mt-1 text-2xl font-semibold">SSOT + scale</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="md:col-span-4">
-          <div class="glass rounded-3xl p-6">
-            <p class="text-sm text-white/80">Signature outcomes</p>
-            <ul class="mt-4 space-y-3 text-sm muted">
-              <li class="rounded-2xl border line bg-white/5 p-4">
-                <p class="font-semibold text-white">Operational efficiency</p>
-                <p class="mt-1 muted">Remove manual work. Reduce errors. Speed up execution.</p>
-              </li>
-              <li class="rounded-2xl border line bg-white/5 p-4">
-                <p class="font-semibold text-white">Data foundations</p>
-                <p class="mt-1 muted">Governance + structure so reporting doesn’t drift.</p>
-              </li>
-              <li class="rounded-2xl border line bg-white/5 p-4">
-                <p class="font-semibold text-white">Lifecycle clarity</p>
-                <p class="mt-1 muted">Clear stages, ownership, and handoffs across teams.</p>
-              </li>
-            </ul>
-
-            <div class="mt-5 border-t line pt-5">
-              <p class="text-sm text-white/80">Operating style</p>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="pill rounded-full px-3 py-1 text-xs text-white/80">System-first</span>
-                <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Governance</span>
-                <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Measure impact</span>
-                <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Ship fast</span>
-                <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Reduce chaos</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Work -->
-    <section id="work" class="py-12 border-t line">
-      <div class="flex items-end justify-between gap-6 flex-wrap">
+<main id="main-content">
+  <div id="page-home" class="page active">
+    <section class="hero section">
+      <div class="container hero-grid">
         <div>
-          <p class="text-xs font-semibold tracking-widest text-white/55 uppercase">Selected work</p>
-          <h2 class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">Case studies</h2>
-          <p class="mt-3 muted max-w-2xl">
-            Built to show outcomes and thinking. Detailed walkthroughs (screenshots/diagrams) available privately depending on NDA constraints.
-          </p>
+          <h1>Your caregiver cancelled.<br><em>We’ll be there in 24 hours.</em></h1>
+          <p>Vetted, flexible personal care for people with disabilities and seniors in Ottawa and the GTA. No long-term contracts. No 3-hour minimums.</p>
+          <div class="cta-row">
+            <button class="btn-primary" onclick="showPage('getstarted')">Get Started</button>
+            <button class="btn-secondary" onclick="showPage('events')">Event Services</button>
+          </div>
         </div>
-      </div>
-
-      <div class="mt-8 grid gap-5 md:grid-cols-2">
-        <!-- Case 1 -->
-        <article class="glass rounded-3xl p-6">
-          <div class="flex flex-wrap gap-2">
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">HubSpot</span>
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Governance</span>
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Reporting</span>
-          </div>
-          <h3 class="mt-4 text-xl font-semibold">HubSpot as Single Source of Truth</h3>
-          <p class="mt-2 muted">Standardized lifecycle stages, ownership, and data integrity across teams.</p>
-
-          <ul class="mt-4 space-y-2 text-sm muted">
-            <li>• Unified stakeholder data model across departments</li>
-            <li>• Reduced duplicated records and reporting drift</li>
-            <li>• Implemented governance + automation to prevent regression</li>
-            <li>• Enabled leadership-ready dashboards teams trust</li>
-          </ul>
-        </article>
-
-        <!-- Case 2 -->
-        <article class="glass rounded-3xl p-6">
-          <div class="flex flex-wrap gap-2">
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">HubSpot</span>
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">QuickBooks</span>
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Zapier/Make</span>
-          </div>
-          <h3 class="mt-4 text-xl font-semibold">Finance Ops Automation (Invoicing)</h3>
-          <p class="mt-2 muted">Reduced manual processing and improved accuracy from request → invoice.</p>
-
-          <ul class="mt-4 space-y-2 text-sm muted">
-            <li>• Automated intake → validation → invoicing workflow</li>
-            <li>• Eliminated repetitive reconciliation steps</li>
-            <li>• Created consistent audit trail and exception handling</li>
-            <li>• Improved cycle time from request to invoice</li>
-          </ul>
-        </article>
-
-        <!-- Case 3 -->
-        <article class="glass rounded-3xl p-6">
-          <div class="flex flex-wrap gap-2">
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">HubSpot</span>
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Automation</span>
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Slack</span>
-          </div>
-          <h3 class="mt-4 text-xl font-semibold">Contractor Onboarding Pipeline</h3>
-          <p class="mt-2 muted">Built a consistent onboarding workflow with clear handoffs and reminders.</p>
-
-          <ul class="mt-4 space-y-2 text-sm muted">
-            <li>• Designed stages + ownership across stakeholders</li>
-            <li>• Automated reminders, tasks, and approvals</li>
-            <li>• Reduced back-and-forth via structured intake</li>
-            <li>• Improved time-to-ready for new contractors</li>
-          </ul>
-        </article>
-
-        <!-- Case 4 -->
-        <article class="glass rounded-3xl p-6">
-          <div class="flex flex-wrap gap-2">
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">Web</span>
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">AI Chatbot</span>
-            <span class="pill rounded-full px-3 py-1 text-xs text-white/80">HubSpot</span>
-          </div>
-          <h3 class="mt-4 text-xl font-semibold">Website AI Chatbot Implementation</h3>
-          <p class="mt-2 muted">Deployed guided experiences with routing, lead capture, and deflection.</p>
-
-          <ul class="mt-4 space-y-2 text-sm muted">
-            <li>• Implemented routing logic for FAQ vs sales vs support</li>
-            <li>• Captured structured data into CRM properties</li>
-            <li>• Reduced inbound load via deflection</li>
-            <li>• Improved response speed and conversion paths</li>
-          </ul>
-        </article>
+        <aside class="hero-card">
+          <p><strong>Care that actually cares.</strong></p>
+          <p style="margin-top:.5rem">Fast intake. Transparent pricing. Client-directed support.</p>
+        </aside>
       </div>
     </section>
 
-    <!-- Proof -->
-    <section id="proof" class="py-12 border-t line">
-      <p class="text-xs font-semibold tracking-widest text-white/55 uppercase">Proof</p>
-      <h2 class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">Tools & credibility</h2>
+    <section class="trust" aria-label="Trust signals">
+      <div class="container">
+        <ul>
+          <li>✓ Fully vetted caregivers</li>
+          <li>✓ $39/hr — 1-hour minimum</li>
+          <li>✓ On-demand & scheduled</li>
+          <li>✓ Client-directed care</li>
+          <li>✓ Ottawa & Toronto</li>
+        </ul>
+      </div>
+    </section>
 
-      <div class="mt-8 grid gap-5 md:grid-cols-2">
-        <div class="glass rounded-3xl p-6">
-          <h3 class="text-lg font-semibold">Tool stack</h3>
-          <p class="mt-3 muted leading-relaxed">
-            HubSpot • Zapier • Make • Slack • Apollo • Typeform • Stripe • QuickBooks • Box • Asana/ClickUp • AI chatbots • APIs
-          </p>
-        </div>
-
-        <div class="glass rounded-3xl p-6">
-          <h3 class="text-lg font-semibold">What I’m known for</h3>
-          <ul class="mt-4 space-y-2 text-sm muted">
-            <li>• Turning messy ops into clean, governed architecture</li>
-            <li>• Automation that doesn’t break when teams scale</li>
-            <li>• Clear lifecycle stages, ownership, and handoffs</li>
-            <li>• Translating ambiguity into decisions + execution</li>
-          </ul>
+    <section class="section">
+      <div class="container">
+        <p class="kicker">How It Works</p>
+        <h2>Care in three simple steps</h2>
+        <p class="sub">No agencies. No waiting lists. No giving up control of your care.</p>
+        <div class="grid-3">
+          <article class="card"><h3>1) Tell Us What You Need</h3><p>Share care needs, preferences, and schedule.</p></article>
+          <article class="card"><h3>2) We Match You</h3><p>Matched with a qualified caregiver based on fit and location.</p></article>
+          <article class="card"><h3>3) Get Care, Your Way</h3><p>Your caregiver arrives on your schedule. You direct care.</p></article>
         </div>
       </div>
     </section>
 
-    <!-- About -->
-    <section id="about" class="py-12 border-t line">
-      <p class="text-xs font-semibold tracking-widest text-white/55 uppercase">About</p>
-      <h2 class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">How I work</h2>
-
-      <div class="mt-8 grid gap-5 md:grid-cols-3">
-        <div class="glass rounded-3xl p-6 md:col-span-2">
-          <h3 class="text-lg font-semibold">Short version</h3>
-          <p class="mt-3 muted leading-relaxed">
-            I work at the intersection of GTM operations, business systems, and automation.
-            My focus is building clean operating foundations: reliable data, clear workflows, governance that holds,
-            and connected tools that reduce manual work.
-          </p>
-          <p class="mt-4 muted leading-relaxed">
-            I’m strongest when the problem is ambiguous, cross-functional, and high impact — where structure and execution
-            have to land at the same time.
-          </p>
+    <section class="section bg-off">
+      <div class="container">
+        <p class="kicker">Services + Pricing</p>
+        <h2>Support for daily life and unexpected moments</h2>
+        <div class="grid-3">
+          <article class="card"><h3>Personal Care</h3><p>Bathing, dressing, grooming.</p></article>
+          <article class="card"><h3>Errands + Home Support</h3><p>Groceries, cleaning, meal prep, appointments.</p></article>
+          <article class="card"><h3>Event Support</h3><p>On-site personal care at concerts, festivals, conferences.</p></article>
         </div>
-
-        <div class="glass rounded-3xl p-6">
-          <h3 class="text-lg font-semibold">What I value</h3>
-          <ul class="mt-4 space-y-2 text-sm muted">
-            <li>• Clarity over complexity</li>
-            <li>• Governance over heroics</li>
-            <li>• Systems that outlive people</li>
-            <li>• Simple UX for operators</li>
-          </ul>
+        <div class="price-card">
+          <div class="price">$39/hr + HST</div>
+          <p><strong>1-hour minimum</strong> · $99 + HST one-time onboarding fee.</p>
+          <div class="cta-row"><button class="btn-primary" onclick="showPage('getstarted')">Get Started</button></div>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="py-12 border-t line">
-      <p class="text-xs font-semibold tracking-widest text-white/55 uppercase">Contact</p>
-      <h2 class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">Let’s build something durable</h2>
-
-      <div class="mt-8 glass rounded-3xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-        <div>
-          <p class="muted max-w-2xl">
-            If you’re hiring for RevOps / GTM Systems / Business Systems, or need an operator who can architect and ship,
-            I’m open to conversations.
-          </p>
-          <p class="mt-2 text-sm muted2">
-            Email: <a class="underline hover:text-white" href="mailto:arorarajat12@gmail.com">arorarajat12@gmail.com</a>
-          </p>
-        </div>
-
-        <div class="flex flex-wrap gap-3">
-          <a class="rounded-xl px-5 py-3 text-sm font-semibold btnPrimary" href="mailto:arorarajat12@gmail.com">
-            Email →
-          </a>
-          <!-- Replace with your LinkedIn URL -->
-          <a class="rounded-xl px-5 py-3 text-sm font-semibold btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
-            LinkedIn →
-          </a>
-          <!-- Optional: link to your resume PDF once you have it -->
-          <a class="rounded-xl px-5 py-3 text-sm font-semibold btn" href="#" onclick="alert('Add your resume link here (PDF).')">
-            Resume (PDF) →
-          </a>
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Common Questions</p>
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq">
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false" aria-controls="faq-1" id="faq-btn-1" onclick="toggleFaq('1')">Where does Whimble currently operate?</button>
+            <div id="faq-1" class="faq-panel" role="region" aria-labelledby="faq-btn-1" hidden>We currently serve Ottawa and the west end of the Greater Toronto Area. Outside those areas, join our waitlist.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false" aria-controls="faq-2" id="faq-btn-2" onclick="toggleFaq('2')">How are caregivers vetted?</button>
+            <div id="faq-2" class="faq-panel" role="region" aria-labelledby="faq-btn-2" hidden>Vulnerable sector check, references, CPR/First Aid, liability insurance, and live interview.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false" aria-controls="faq-3" id="faq-btn-3" onclick="toggleFaq('3')">What happens after signup?</button>
+            <div id="faq-3" class="faq-panel" role="region" aria-labelledby="faq-btn-3" hidden>We run intake, schedule onboarding, and match your first care support request.</div>
+          </div>
         </div>
       </div>
-
-      <footer class="py-10 text-sm text-white/45">
-        © <span id="year"></span> Rajat Arora. Built to showcase outcomes, not noise.
-      </footer>
     </section>
-  </main>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+    <section class="section final">
+      <div class="container">
+        <h2>Ready to get started?</h2>
+        <p style="opacity:.8;margin:.4rem 0 1.2rem">Care on your terms. Tell us where you are and we’ll take it from there.</p>
+        <button class="btn-primary" onclick="showPage('getstarted')">Get Started</button>
+      </div>
+    </section>
+  </div>
+
+  <div id="page-care" class="page">
+    <section class="simple-hero care"><div class="container"><h1 style="font-family:var(--serif);font-size:2.5rem">Individual Care</h1><p>Flexible, on-demand support with transparent pricing and trusted vetting.</p><div class="cta-row"><button class="btn-primary" onclick="showPage('getstarted')">Get Started</button></div></div></section>
+  </div>
+
+  <div id="page-events" class="page">
+    <section class="simple-hero events"><div class="container"><h1 style="font-family:var(--serif);font-size:2.5rem">Event Services</h1><p>On-site attendant support that helps you run truly inclusive events.</p><div class="cta-row"><button class="btn-primary" onclick="showPage('getstarted')">Get Started</button></div></div></section>
+  </div>
+
+  <div id="page-about" class="page">
+    <section class="simple-hero about"><div class="container"><h1 style="font-family:var(--serif);font-size:2.5rem">About Whimble</h1><p>Care that actually cares. Human-first service, backed by thoughtful systems.</p><div class="cta-row"><button class="btn-primary" onclick="showPage('getstarted')">Get Started</button></div></div></section>
+  </div>
+
+  <div id="page-resources" class="page">
+    <section class="simple-hero resources"><div class="container"><h1 style="font-family:var(--serif);font-size:2.5rem">Resources</h1><p>Practical guides and updates for clients, families, and event organizers.</p><div class="cta-row"><button class="btn-primary" onclick="showPage('getstarted')">Get Started</button></div></div></section>
+  </div>
+
+  <div id="page-getstarted" class="page">
+    <section class="simple-hero getstarted"><div class="container"><h1 style="font-family:var(--serif);font-size:2.5rem">Let’s get you the care you need.</h1><p>Tell us a bit about your needs. We’ll respond within 1 business day.</p>
+      <form class="form-card" aria-label="Get started form">
+        <label for="name">Name</label><input id="name" type="text" placeholder="First and last name" />
+        <label for="email">Email</label><input id="email" type="email" placeholder="you@email.com" />
+        <label for="city">City / Postal Code</label><input id="city" type="text" placeholder="Ottawa, Toronto, or postal code" />
+        <label for="intent">I’m looking for...</label>
+        <select id="intent"><option>Personal care for myself</option><option>Care for a family member</option><option>Event accessibility support</option><option>General inquiry</option></select>
+        <label for="details">Details (optional)</label><textarea id="details" rows="4" placeholder="Tell us a bit more"></textarea>
+        <div class="cta-row"><button type="button" class="btn-primary">Get Started</button></div>
+      </form>
+    </div></section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container row">
+    <span>© 2026 Whimble Care Inc.</span>
+    <span>“Care that actually cares.” · <a href="#" onclick="showPage('getstarted');return false;">Get Started</a></span>
+  </div>
+</footer>
+
+<script>
+function toggleNav(btn){
+  var nav = document.getElementById('primary-nav');
+  var open = nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+function showPage(id){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  var page = document.getElementById('page-' + id);
+  if(page) page.classList.add('active');
+  document.querySelectorAll('#primary-nav a[data-page]').forEach(function(link){
+    link.removeAttribute('aria-current');
+    if(link.getAttribute('data-page') === id){link.setAttribute('aria-current','page');}
+  });
+  var nav = document.getElementById('primary-nav');
+  nav.classList.remove('open');
+  var toggle = document.querySelector('.nav-toggle');
+  if(toggle) toggle.setAttribute('aria-expanded','false');
+  window.scrollTo(0,0);
+}
+function toggleFaq(id){
+  var btn = document.getElementById('faq-btn-' + id);
+  var panel = document.getElementById('faq-' + id);
+  var expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+  panel.hidden = expanded;
+}
+</script>
 </body>
 </html>
