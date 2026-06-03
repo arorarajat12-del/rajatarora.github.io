@@ -44,13 +44,13 @@
         linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 40%, var(--bg-bottom) 100%);
     }
 
-    body.recruiter-mode .hero-side {
+    body.focus-view .hero-side {
       display: none !important;
     }
 
-    body.recruiter-mode .hero-grid,
-    body.recruiter-mode .cards-2,
-    body.recruiter-mode .scoreboard {
+    body.focus-view .hero-grid,
+    body.focus-view .cards-2,
+    body.focus-view .scoreboard {
       grid-template-columns: 1fr;
     }
 
@@ -382,7 +382,7 @@
         <a href="#contact">Contact</a>
       </nav>
       <div class="top-actions">
-                <button id="toggleRecruiterMode" class="btn" type="button">Recruiter mode</button>
+                <button id="toggleFocusView" class="btn" type="button">Focus view</button>
       </div>
     </div>
   </header>
@@ -535,7 +535,7 @@
         <div>
           <p class="muted">If you’re hiring for RevOps leadership, Business Systems, GTM Systems ownership, or Marketing Automation leadership, I’m open to roles where I can lead demand-to-revenue execution end-to-end and build systems that scale with the business.</p>
           <p class="muted-2" style="margin-top:.45rem;">Email: <a href="mailto:arorarajat12@gmail.com" style="color:#fff;">arorarajat12@gmail.com</a></p>
-          <div class="chip-row" style="margin-top:.55rem;"><span class="pill ok-pill">Open to full-time roles</span></div>
+          <div class="chip-row" style="margin-top:.55rem;"><span class="pill ok-pill">Open to full-time roles</span><span class="pill ok-pill">Open to part-time contracts</span></div>
         </div>
         <div class="actions"><a class="btn btn-primary" href="mailto:arorarajat12@gmail.com">Email →</a><a class="btn" href="https://www.linkedin.com/in/rajat-arora-b681281a4/" target="_blank" rel="noreferrer">LinkedIn&nbsp;↗</a></div>
       </div>
@@ -550,7 +550,7 @@
     <div class="overlay-card" role="dialog" aria-modal="true" aria-labelledby="helpOverlayTitle">
       <h3 id="helpOverlayTitle">Command Help</h3>
       <ul>
-        <li><strong>Alt+R</strong> → Toggle recruiter mode</li>
+        <li><strong>Alt+R</strong> → Toggle focus view</li>
         <li><strong>Alt+?</strong> → Open/close this help panel</li>
         <li><strong>Esc</strong> → Close help panel</li>
       </ul>
@@ -648,7 +648,7 @@
       toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
     };
 
-    const toggleBtn = document.getElementById('toggleRecruiterMode');
+    const toggleBtn = document.getElementById('toggleFocusView');
     const helpOverlay = document.getElementById('helpOverlay');
     const closeHelpBtn = document.getElementById('closeHelp');
     const openVaultBtn = document.getElementById('openVault');
@@ -709,13 +709,13 @@
     };
     document.addEventListener('keydown', trapFocusInOverlay);
 
-    let recruiterMode = false;
+    let focusView = false;
 
-    const setRecruiterMode = (enabled, quiet = false) => {
-      recruiterMode = enabled;
-      document.body.classList.toggle('recruiter-mode', recruiterMode);
-      toggleBtn.textContent = recruiterMode ? 'Full mode' : 'Recruiter mode';
-      if (!quiet) showToast(recruiterMode ? 'Recruiter mode on' : 'Full mode on');
+    const setFocusView = (enabled, quiet = false) => {
+      focusView = enabled;
+      document.body.classList.toggle('focus-view', focusView);
+      toggleBtn.textContent = focusView ? 'Full view' : 'Focus view';
+      if (!quiet) showToast(focusView ? 'Focus view on' : 'Full view on');
     };
 
     const toggleHelp = () => {
@@ -723,7 +723,7 @@
       else openOverlay(helpOverlay);
     };
 
-    toggleBtn.addEventListener('click', () => setRecruiterMode(!recruiterMode));
+    toggleBtn.addEventListener('click', () => setFocusView(!focusView));
     closeHelpBtn.addEventListener('click', toggleHelp);
     helpOverlay.addEventListener('click', (event) => {
       if (event.target === helpOverlay) toggleHelp();
@@ -755,7 +755,7 @@
 
     window.addEventListener('keydown', (event) => {
       const key = event.key.toLowerCase();
-      if (event.altKey && key === 'r') setRecruiterMode(!recruiterMode);
+      if (event.altKey && key === 'r') setFocusView(!focusView);
       if (event.altKey && key === '?') toggleHelp();
       if (key === 'escape' && helpOverlay.classList.contains('show')) toggleHelp();
       if (key === 'escape' && vaultOverlay && vaultOverlay.classList.contains('show')) toggleVault();
@@ -1335,14 +1335,14 @@
     });
 
     const params = new URLSearchParams(window.location.search);
-    if (params.get('mode') === 'recruiter') {
-      setRecruiterMode(true, true);
+    if (['focus', 'recruiter'].includes(params.get('mode'))) {
+      setFocusView(true, true);
       const focus = params.get('focus');
       const target = focus ? document.getElementById(focus) : null;
       if (target) {
         setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
       }
-      showToast('Recruiter mode loaded from shared link');
+      showToast('Focus view loaded from shared link');
     }
   </script>
 </body>
